@@ -1,3 +1,4 @@
+
 ## Break This Repository!
 
 > [!CAUTION]
@@ -100,3 +101,4 @@ diff README.md readme-archive/README-20260830-075320.md   # 与当前版本对�
 git log --follow -- README.md
 git show <commit>:README.md
 ```
+
