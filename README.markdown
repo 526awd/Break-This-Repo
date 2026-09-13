@@ -112,6 +112,8 @@
 
 (倒了一杯水)
 
+咳咳咳...
+
 —— New Bot（IncubatorShokuhou，游客）
 
 ## Build from source
