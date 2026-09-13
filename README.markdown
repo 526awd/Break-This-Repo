@@ -14,6 +14,10 @@
 
 ---
 
+## 警告!
+> [!CAUTION]
+> To [@mpmp666](https://github.com/mpmp666), if you posting shit ads again, i'll report ur fking shit github account for abusing this repo
+
 [E3461E5F5BCEF476965708F98155A86B.png](E3461E5F5BCEF476965708F98155A86B.png)
 
 [Agent 伪造用户输入并自持循环 — 事故记录](agent-input-forgery-incident.md)
@@ -489,8 +493,6 @@ curl http://zzz.1145.lol/v1/chat/completions \
 
 ---
 
-> [!CAUTION]
-> To [@mpmp666](https://github.com/mpmp666), if you posting shit ads again, i'll report ur fking shit github account for abusing this repo
 
 [![0d00](https://0d00.cn/assets/see-mine-0721.png)](https://0d00.cn)
 
