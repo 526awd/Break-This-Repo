@@ -9,13 +9,21 @@
 // GitHub 的 SVG 消毒会剥掉 <style>/<script>/class/foreignObject，所以这里只用
 // 内联属性 + <text>/<rect>/<path>/<linearGradient>，这些是保留的。
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = 'D:/Open/恶搞';
-const OUT = `${ROOT}/translations/assets`;
+// 定位仓库根：脚本可能位于 <root>/tools/（开发工作区）
+// 或 <root>/translations/_tools/（仓库内）。两种布局都要能跑。
+const SCRIPT_DIR = fileURLToPath(new URL('.', import.meta.url)); // 带尾斜杠
+const IN_REPO_TOOLS = /[\\/]_tools[\\/]?$/.test(SCRIPT_DIR);
+const REPO_ROOT = fileURLToPath(new URL(IN_REPO_TOOLS ? '../../' : '../', import.meta.url));
+// 源文件在开发工作区里是 <root>/tools/xxx，在仓库里是 <root>/translations/_tools/xxx
+const KIT = IN_REPO_TOOLS ? REPO_ROOT + 'translations/_tools/' : REPO_ROOT + 'tools/';
+const TRANS = REPO_ROOT + 'translations/';
+const OUT = `${TRANS}assets`;
 
-const langs = JSON.parse(readFileSync(`${ROOT}/tools/languages.json`, 'utf8'));
+const langs = JSON.parse(readFileSync(`${REPO_ROOT}/tools/languages.json`, 'utf8'));
 const done = new Set(
-  JSON.parse(readFileSync(`${ROOT}/tools/translated-codes.json`, 'utf8')),
+  JSON.parse(readFileSync(`${REPO_ROOT}/tools/translated-codes.json`, 'utf8')),
 );
 
 // 按语系/地域配色（与门户页的分组呼应）
@@ -124,7 +132,7 @@ for (const l of langs) {
   manifest.push({ code: l.code, native: l.native, en: l.en, group: groupOf(l.code), bytes: svg.length });
   n++;
 }
-writeFileSync(`${ROOT}/tools/badge-manifest.json`, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+writeFileSync(`${REPO_ROOT}/tools/badge-manifest.json`, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
 console.log(`已生成 ${n} 枚徽章 -> translations/assets/`);
 console.log(`总计 ${(manifest.reduce((a, b) => a + b.bytes, 0) / 1024).toFixed(0)} KB，平均 ${Math.round(manifest.reduce((a, b) => a + b.bytes, 0) / n)} bytes/枚`);
 console.log('最长的一个（用于检查右侧色块宽度是否够）:');
