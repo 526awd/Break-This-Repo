@@ -847,6 +847,8 @@ curl http://zzz.1145.lol/v1/chat/completions \
 # 冷知识
 按一下"."可以进入网页版微软大战代码(VS Code)
 
+# 你好，认识一下，有没有博客交换友链的uu
+https://wutongyu.site
 
 ## 现场基础设施考古档案
 
