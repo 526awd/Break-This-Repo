@@ -54,7 +54,7 @@ def observe(root: Path, baseline: str = BASELINE, revision: str = "HEAD") -> dic
             "entries": entries}
 
 
-def render(report: dict) -> str:
+def render(report: dict, events: str = "") -> str:
     entries = report["entries"]
     counts = {key: sum(e["status"] == key for e in entries) for key in LABELS}
     rate = round(100 * counts["retained"] / len(entries)) if entries else 0
@@ -65,7 +65,7 @@ def render(report: dict) -> str:
         f'<h3>{esc(e["directory"])}</h3><p>最近改动 <code>{esc(e["latest"][:10])}</code></p></article>'
         for i, e in enumerate(entries, 1)
     )
-    values = {"CARDS": cards, "TOTAL": str(len(entries)), "RATE": str(rate),
+    values = {"CARDS": cards, "EVENTS": events, "TOTAL": str(len(entries)), "RATE": str(rate),
               "RETAINED": str(counts["retained"]), "REVISITED": str(counts["revisited"]),
               "REMOVED": str(counts["removed"]), "BASELINE": esc(report["baseline"]),
               "REVISION": esc(report["revision"]), "DATE": esc(report["date"])}
@@ -89,12 +89,13 @@ h2{font-size:25px;margin:0}.section-head{display:flex;justify-content:space-betw
 [hidden]{display:none!important}.method{margin-top:44px;padding:26px;background:#e9ecdf;border-radius:8px}.method p{font-size:13px;margin-bottom:0}.provenance{display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:11px;margin-top:24px;color:var(--muted)}footer{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 @media(max-width:700px){main{padding:20px}.hero{grid-template-columns:1fr;padding:35px 0;gap:24px}.seal{width:230px;justify-self:center}.cat{font-size:30px}.seal strong{font-size:34px}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border:0}.grid{grid-template-columns:1fr}.provenance{grid-template-columns:1fr}header{letter-spacing:0}.section-head{display:block}h1{letter-spacing:-2px}}
 </style></head><body><main>
-<header><b>CHAOS OBSERVATORY / 仓库生态博物馆</b><span>展区 001 · 猫爪巡游</span></header>
+<header><b>CHAOS OBSERVATORY / 仓库生态博物馆</b><span>展区 001 · 猫爪巡游</span></header><nav aria-label="展区导航" style="display:flex;gap:24px;flex-wrap:wrap;margin:20px 0"><a href="index.html">猫爪足迹</a><a href="diary.html">消退日报</a></nav>
 <section class="hero"><div><div class="eyebrow">A SMALL TRACE IN A LIVING REPOSITORY</div><h1>猫来过。<br><span>然后呢？</span></h1><p class="intro">一条「喵～」提交，走过 {{TOTAL}} 个目录。这里记录猫爪如何留在历史里，又如何被后来者的创作轻轻覆盖。</p></div>
 <div class="seal"><div class="cat" aria-label="一只猫"> /\_/\\
 ( o.o )
  &gt; ^ &lt;</div><strong>{{RATE}}%</strong><small>最近改动仍停留在猫爪巡游</small></div></section>
 <section class="stats" aria-label="足迹统计"><div class="stat"><strong>{{TOTAL}}</strong><span>最初到访目录</span></div><div class="stat"><strong>{{RETAINED}}</strong><span>猫爪仍在</span></div><div class="stat"><strong>{{REVISITED}}</strong><span>后来者到访</span></div><div class="stat"><strong>{{REMOVED}}</strong><span>目录已消失</span></div></section>
+{{EVENTS}}
 <section><div class="section-head"><h2>足迹标本</h2><p id="count" aria-live="polite">共 {{TOTAL}} 件标本 · 每个目录都是一个展柜</p></div>
 <div class="controls" hidden><input id="search" type="search" placeholder="搜索目录名称…" aria-label="搜索目录名称"><select id="status" aria-label="按足迹状态筛选"><option value="all">全部状态</option><option value="retained">猫爪仍在</option><option value="revisited">后来者到访</option><option value="removed">目录已消失</option></select></div>
 <div class="grid">{{CARDS}}</div><p id="empty" hidden>这片展区暂时没有标本，换个关键词试试。</p></section>

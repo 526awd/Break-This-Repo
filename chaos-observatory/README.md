@@ -76,3 +76,26 @@ Shallow history, missing objects, and unknown revisions fail explicitly rather
 than producing misleading counts. A complete-history partial clone is usable
 when the needed objects are already local. The page records the snapshot SHA
 and commit time; it is not live and may differ from GitHub's cached presentation.
+
+## 猫爪消退日报 / Interval diary
+
+Compare two **mainline** snapshots after the meow event (use the merge commit
+that integrated PR #508 as the start, rather than its side-branch commit):
+
+```sh
+python3 meow_diary.py .. --from START_SHA --to END_SHA --output /tmp/diary.md
+python3 meow_diary.py .. --from START_SHA --to END_SHA --format html --output /tmp/diary.html
+```
+
+The Markdown diary and HTML recent-events panel count added, modified, deleted,
+exactly renamed, and type-changed files between the endpoints. Exact renames
+are separate from additions/deletions. Transient changes canceled before the
+end do not appear in these net counts. Mainline events follow the first-parent
+chain, so a branch and its merge are not counted twice. `--limit` (1–1000,
+default 100) limits only the displayed events; totals still cover the interval.
+The start must be on the end's first-parent chain. As with the museum, output
+must be a new file and shallow or incomplete history fails explicitly.
+
+This is a manually generated interval report, not a scheduled job. The included
+`diary.md` / `diary.html` record the inaugural museum merge: the observatory
+itself became an exhibit when it covered its own latest meow footprint.
