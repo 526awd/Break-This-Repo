@@ -100,7 +100,7 @@ def shell(title, body, script=""):
     return ('<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{html.escape(title)} · 仓库生态博物馆</title><style>{style}{extra}</style></head><body><main>'
             '<header><b>CHAOS OBSERVATORY / 仓库生态博物馆</b><span>持续形成中的展览</span></header>'
-            '<nav aria-label="展区导航"><a href="index.html">猫爪足迹</a><a href="diary.html">消退日报</a><a href="atlas.html">仓库地图</a></nav>'
+            '<nav aria-label="展区导航"><a href="index.html">猫爪足迹</a><a href="diary.html">消退日报</a><a href="atlas.html">仓库地图</a><a href="paths.html">奇葩路径</a></nav>'
             f'{body}<footer>只观察，不执行展品。数据来自指定 Git 提交。</footer></main><script>{script}</script></body></html>')
 
 
