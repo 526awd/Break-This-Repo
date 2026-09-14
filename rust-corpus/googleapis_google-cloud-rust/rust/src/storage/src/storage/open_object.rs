@@ -1,0 +1,1066 @@
+// Copyright 2025 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::Result;
+use crate::model_ext::{KeyAes256, OpenObjectRequest, ReadRange};
+use crate::object_descriptor::ObjectDescriptor;
+use crate::read_object::ReadObjectResponse;
+use crate::read_resume_policy::ReadResumePolicy;
+use crate::request_options::RequestOptions;
+use std::sync::Arc;
+use std::time::Duration;
+
+/// A request builder for [Storage::open_object][crate::client::Storage::open_object].
+///
+/// # Example
+/// ```
+/// use google_cloud_storage::client::Storage;
+/// # use google_cloud_storage::builder::storage::OpenObject;
+/// async fn sample(client: &Storage) -> anyhow::Result<()> {
+///     let builder: OpenObject = client
+///         .open_object("projects/_/buckets/my-bucket", "my-object");
+///     let descriptor = builder
+///         .set_generation(123)
+///         .send()
+///         .await?;
+///     println!("object metadata={:?}", descriptor.object());
+///     // Use `descriptor` to read data from `my-object`.
+///     Ok(())
+/// }
+/// ```
+#[derive(Clone, Debug)]
+pub struct OpenObject<S = crate::storage::transport::Storage> {
+    stub: Arc<S>,
+    request: OpenObjectRequest,
+    options: RequestOptions,
+}
+
+impl<S> OpenObject<S>
+where
+    S: crate::storage::stub::Storage + 'static,
+{
+    /// Sends the request, returning a new object descriptor.
+    ///
+    /// Example:
+    /// ```ignore
+    /// # use google_cloud_storage::{model_ext::KeyAes256, client::Storage};
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// let open = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .send()
+    ///     .await?;
+    /// println!("object metadata={:?}", open.object());
+    /// # Ok(()) }
+    /// ```
+    pub async fn send(self) -> Result<ObjectDescriptor> {
+        let (descriptor, _) = self.stub.open_object(self.request, self.options).await?;
+        Ok(descriptor)
+    }
+
+    /// Sends the request, returning a new object descriptor and reader.
+    ///
+    /// Example:
+    /// ```ignore
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::model_ext::ReadRange;
+    /// let (descriptor, mut reader) = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object.parquet")
+    ///     .send_and_read(ReadRange::tail(32))
+    ///     .await?;
+    /// println!("object metadata={:?}", descriptor.object());
+    /// let data = reader.next().await.transpose()?;
+    /// # Ok(()) }
+    /// ```
+    ///
+    /// This method allows applications to open an object and issue a read
+    /// request in the same RPC, which is typically faster than opening an
+    /// object and then issuing a `read_range()` call. This may be useful when
+    /// opening objects that have metadata information in a footer or header.
+    pub async fn send_and_read(
+        mut self,
+        range: ReadRange,
+    ) -> Result<(ObjectDescriptor, ReadObjectResponse)> {
+        self.request.ranges.push(range);
+        let (descriptor, mut readers) = self.stub.open_object(self.request, self.options).await?;
+        if readers.len() == 1 {
+            return Ok((descriptor, readers.pop().unwrap()));
+        }
+        // Even if the service returns multiple read ranges, with different ids,
+        // the code in the library will return an error and close the stream.
+        unreachable!("the stub cannot create more readers")
+    }
+}
+
+impl<S> OpenObject<S> {
+    pub(crate) fn new<B, O>(
+        stub: std::sync::Arc<S>,
+        bucket: B,
+        object: O,
+        options: RequestOptions,
+    ) -> Self
+    where
+        B: Into<String>,
+        O: Into<String>,
+    {
+        let request = OpenObjectRequest::default()
+            .set_bucket(bucket)
+            .set_object(object);
+        Self {
+            request,
+            options,
+            stub,
+        }
+    }
+
+    /// Enables computation of MD5 checksums.
+    ///
+    /// By default, MD5 checksum validation is disabled. The SDK enables CRC32C validation by default
+    /// instead.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::model_ext::ReadRange;
+    /// let builder = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .compute_md5();
+    /// let (descriptor, mut reader) = builder
+    ///     .send_and_read(ReadRange::all())
+    ///     .await?;
+    /// let mut contents = Vec::new();
+    /// while let Some(chunk) = reader.next().await.transpose()? {
+    ///     contents.extend_from_slice(&chunk);
+    /// }
+    /// println!("object contents={:?}", contents);
+    /// # Ok(()) }
+    /// ```
+    pub fn compute_md5(mut self) -> Self {
+        self.options.checksum.md5_hash = Some(crate::storage::checksum::details::Md5::default());
+        self
+    }
+
+    /// Enables computation of CRC32C checksums.
+    ///
+    /// Note that the library computes and verifies (if available) rolling CRC32C checksums at the end of
+    /// the download. Use `compute_crc32c(false)` to disable this object-level rolling computation, but note
+    /// that this reduces the data integrity guarantees. Data *can* be corrupted even when
+    /// downloaded over HTTPS or other encrypted channels.
+    ///
+    /// Note: Chunk-level CRC32C validation (validating each individual gRPC message as it arrives)
+    /// remains permanently enabled for maximum safety, as it is hardware-accelerated and adds negligible latency.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::model_ext::ReadRange;
+    /// let builder = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .compute_crc32c(false);
+    /// let (descriptor, mut reader) = builder
+    ///     .send_and_read(ReadRange::all())
+    ///     .await?;
+    /// let mut contents = Vec::new();
+    /// while let Some(chunk) = reader.next().await.transpose()? {
+    ///     contents.extend_from_slice(&chunk);
+    /// }
+    /// println!("object contents={:?}", contents);
+    /// # Ok(()) }
+    /// ```
+    pub fn compute_crc32c(mut self, enable: bool) -> Self {
+        self.options.checksum.crc32c =
+            enable.then(crate::storage::checksum::details::Crc32c::default);
+        self
+    }
+
+    /// If present, selects a specific revision of this object (as
+    /// opposed to the latest version, the default).
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::read_resume_policy::{AlwaysResume, ReadResumePolicyExt};
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .set_generation(123456)
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    pub fn set_generation<T: Into<i64>>(mut self, v: T) -> Self {
+        self.request = self.request.set_generation(v.into());
+        self
+    }
+
+    /// Makes the operation conditional on whether the object's current generation
+    /// matches the given value.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::read_resume_policy::{AlwaysResume, ReadResumePolicyExt};
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .set_if_generation_match(123456)
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    pub fn set_if_generation_match<T>(mut self, v: T) -> Self
+    where
+        T: Into<i64>,
+    {
+        self.request = self.request.set_if_generation_match(v.into());
+        self
+    }
+
+    /// Makes the operation conditional on whether the object's live generation
+    /// does not match the given value. If no live object exists, the precondition
+    /// fails.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::read_resume_policy::{AlwaysResume, ReadResumePolicyExt};
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .set_if_generation_not_match(123456)
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    pub fn set_if_generation_not_match<T>(mut self, v: T) -> Self
+    where
+        T: Into<i64>,
+    {
+        self.request = self.request.set_if_generation_not_match(v.into());
+        self
+    }
+
+    /// Makes the operation conditional on whether the object's current
+    /// metageneration matches the given value.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::read_resume_policy::{AlwaysResume, ReadResumePolicyExt};
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .set_if_metageneration_match(123456)
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    pub fn set_if_metageneration_match<T>(mut self, v: T) -> Self
+    where
+        T: Into<i64>,
+    {
+        self.request = self.request.set_if_metageneration_match(v.into());
+        self
+    }
+
+    /// Makes the operation conditional on whether the object's current
+    /// metageneration does not match the given value.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::read_resume_policy::{AlwaysResume, ReadResumePolicyExt};
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .set_if_metageneration_not_match(123456)
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    pub fn set_if_metageneration_not_match<T>(mut self, v: T) -> Self
+    where
+        T: Into<i64>,
+    {
+        self.request = self.request.set_if_metageneration_not_match(v.into());
+        self
+    }
+
+    /// The encryption key used with the Customer-Supplied Encryption Keys
+    /// feature. In raw bytes format (not base64-encoded).
+    ///
+    /// Example:
+    /// ```
+    /// # use google_cloud_storage::{model_ext::KeyAes256, client::Storage};
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// let key: &[u8] = &[97; 32];
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .set_key(KeyAes256::new(key)?)
+    ///     .send()
+    ///     .await?;
+    /// println!("response details={response:?}");
+    /// # Ok(()) }
+    /// ```
+    pub fn set_key(mut self, v: KeyAes256) -> Self {
+        self.request = self
+            .request
+            .set_common_object_request_params(crate::model::CommonObjectRequestParams::from(v));
+        self
+    }
+
+    /// The retry policy used for this request.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::retry_policy::RetryableErrors;
+    /// use std::time::Duration;
+    /// use google_cloud_gax::retry_policy::RetryPolicyExt;
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .with_retry_policy(
+    ///         RetryableErrors
+    ///             .with_attempt_limit(5)
+    ///             .with_time_limit(Duration::from_secs(10)),
+    ///     )
+    ///     .send()
+    ///     .await?;
+    /// println!("response details={response:?}");
+    /// # Ok(()) }
+    /// ```
+    pub fn with_retry_policy<V: Into<google_cloud_gax::retry_policy::RetryPolicyArg>>(
+        mut self,
+        v: V,
+    ) -> Self {
+        self.options.retry_policy = v.into().into();
+        self
+    }
+
+    /// The backoff policy used for this request.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use std::time::Duration;
+    /// use google_cloud_gax::exponential_backoff::ExponentialBackoff;
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .with_backoff_policy(ExponentialBackoff::default())
+    ///     .send()
+    ///     .await?;
+    /// println!("response details={response:?}");
+    /// # Ok(()) }
+    /// ```
+    pub fn with_backoff_policy<V: Into<google_cloud_gax::backoff_policy::BackoffPolicyArg>>(
+        mut self,
+        v: V,
+    ) -> Self {
+        self.options.backoff_policy = v.into().into();
+        self
+    }
+
+    /// The retry throttler used for this request.
+    ///
+    /// Most of the time you want to use the same throttler for all the requests
+    /// in a client, and even the same throttler for many clients. Rarely it
+    /// may be necessary to use an custom throttler for some subset of the
+    /// requests.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .with_retry_throttler(adhoc_throttler())
+    ///     .send()
+    ///     .await?;
+    /// println!("response details={response:?}");
+    /// fn adhoc_throttler() -> google_cloud_gax::retry_throttler::SharedRetryThrottler {
+    ///     # panic!();
+    /// }
+    /// # Ok(()) }
+    /// ```
+    pub fn with_retry_throttler<V: Into<google_cloud_gax::retry_throttler::RetryThrottlerArg>>(
+        mut self,
+        v: V,
+    ) -> Self {
+        self.options.retry_throttler = v.into().into();
+        self
+    }
+
+    /// Configure the resume policy for read requests.
+    ///
+    /// The Cloud Storage client library can automatically resume a read that is
+    /// interrupted by a transient error. Applications may want to limit the
+    /// number of read attempts, or may wish to expand the type of errors
+    /// treated as retryable.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use google_cloud_storage::read_resume_policy::{AlwaysResume, ReadResumePolicyExt};
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .with_read_resume_policy(AlwaysResume.with_attempt_limit(3))
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    pub fn with_read_resume_policy<V>(mut self, v: V) -> Self
+    where
+        V: ReadResumePolicy + 'static,
+    {
+        self.options.set_read_resume_policy(std::sync::Arc::new(v));
+        self
+    }
+
+    /// Configure per-attempt timeout.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// use std::time::Duration;
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .with_attempt_timeout(Duration::from_secs(120))
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    ///
+    /// The Cloud Storage client library times out `open_object()` attempts by
+    /// default (with a 60s timeout). Applications may want to set a different
+    /// value depending on how they are deployed.
+    ///
+    /// Note that the per-attempt timeout is subject to the overall retry loop
+    /// time limits (if any). The effective timeout for each attempt is the
+    /// smallest of (a) the per-attempt timeout, and (b) the remaining time in
+    /// the retry loop.
+    pub fn with_attempt_timeout(mut self, v: Duration) -> Self {
+        self.options.set_bidi_attempt_timeout(v);
+        self
+    }
+
+    /// Sets the `User-Agent` header for this request.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// let mut response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .with_user_agent("my-app/1.0.0")
+    ///     .send()
+    ///     .await?;
+    /// println!("response details={response:?}");
+    /// # Ok(()) }
+    /// ```
+    pub fn with_user_agent(mut self, user_agent: impl Into<String>) -> Self {
+        self.options.user_agent = Some(user_agent.into());
+        self
+    }
+
+    /// Sets the project that will be billed for this request.
+    ///
+    /// Required for [Requester Pays] buckets. The value overrides any
+    /// `quota_project_id` configured on the credentials; the credential-level
+    /// header is suppressed for this RPC.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_storage::client::Storage;
+    /// # async fn sample(client: &Storage) -> anyhow::Result<()> {
+    /// let response = client
+    ///     .open_object("projects/_/buckets/my-bucket", "my-object")
+    ///     .with_quota_project("my-billing-project")
+    ///     .send()
+    ///     .await?;
+    /// # Ok(()) }
+    /// ```
+    ///
+    /// [Requester Pays]: https://cloud.google.com/storage/docs/requester-pays
+    pub fn with_quota_project(mut self, project: impl Into<String>) -> Self {
+        self.options.set_quota_project(project);
+        self
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::client::Storage;
+    use crate::model::{CommonObjectRequestParams, Object};
+    use crate::model_ext::tests::create_key_helper;
+    use anyhow::Result;
+    use gaxi::grpc::tonic::{Response as TonicResponse, Result as TonicResult};
+    use google_cloud_auth::credentials::anonymous::Builder as Anonymous;
+    use google_cloud_gax::retry_policy::NeverRetry;
+    use http::HeaderValue;
+    use static_assertions::assert_impl_all;
+    use storage_grpc_mock::google::storage::v2::{
+        BidiReadObjectResponse, ChecksummedData, Object as ProtoObject, ObjectRangeData,
+        ReadRange as ProtoRange,
+    };
+    use storage_grpc_mock::{MockStorage, start};
+
+    const BUCKET_NAME: &str = "projects/_/buckets/test-bucket";
+    const OBJECT_NAME: &str = "test-object";
+    const USER_AGENT: &str = "quick_foxes_lazy_dogs/1.2.3";
+    const BIND_ADDRESS: &str = "0.0.0.0:0";
+
+    // Verify `open_object()` meets normal Send, Sync, requirements.
+    #[tokio::test]
+    async fn traits() -> Result<()> {
+        assert_impl_all!(OpenObject: Clone, std::fmt::Debug, Send, Sync);
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .build()
+            .await?;
+
+        fn need_send<T: Send>(_val: &T) {}
+        fn need_static<T: 'static>(_val: &T) {}
+
+        let open = client.open_object(BUCKET_NAME, OBJECT_NAME);
+        need_static(&open);
+
+        let fut = client.open_object(BUCKET_NAME, OBJECT_NAME).send();
+        need_send(&fut);
+        need_static(&fut);
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn open_object_normal() -> Result<()> {
+        let (tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+        let initial = BidiReadObjectResponse {
+            metadata: Some(ProtoObject {
+                bucket: BUCKET_NAME.to_string(),
+                name: OBJECT_NAME.to_string(),
+                generation: 123456,
+                size: 42,
+                ..ProtoObject::default()
+            }),
+            ..BidiReadObjectResponse::default()
+        };
+        tx.send(Ok(initial)).await?;
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object()
+            .return_once(|_| Ok(TonicResponse::from(rx)));
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_endpoint(endpoint)
+            .with_credentials(Anonymous::new().build())
+            .build()
+            .await?;
+        let descriptor = client.open_object(BUCKET_NAME, OBJECT_NAME).send().await?;
+
+        let got = descriptor.object();
+        let want = Object::new()
+            .set_bucket(BUCKET_NAME)
+            .set_name(OBJECT_NAME)
+            .set_generation(123456)
+            .set_size(42);
+        assert_eq!(got, want);
+
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn attributes() -> Result<()> {
+        let options = RequestOptions::new();
+        let builder = OpenObject::new(
+            Arc::new(StorageStub),
+            BUCKET_NAME.to_string(),
+            OBJECT_NAME.to_string(),
+            options,
+        )
+        .set_generation(123)
+        .set_if_generation_match(234)
+        .set_if_generation_not_match(345)
+        .set_if_metageneration_match(456)
+        .set_if_metageneration_not_match(567);
+        let want = OpenObjectRequest::default()
+            .set_bucket(BUCKET_NAME)
+            .set_object(OBJECT_NAME)
+            .set_generation(123)
+            .set_if_generation_match(234)
+            .set_if_generation_not_match(345)
+            .set_if_metageneration_match(456)
+            .set_if_metageneration_not_match(567);
+        assert_eq!(builder.request, want);
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn csek() -> Result<()> {
+        let options = RequestOptions::new();
+        let builder = OpenObject::new(
+            Arc::new(StorageStub),
+            BUCKET_NAME.to_string(),
+            OBJECT_NAME.to_string(),
+            options,
+        );
+
+        let (raw_key, _, _, _) = create_key_helper();
+        let key = KeyAes256::new(&raw_key)?;
+        let builder = builder.set_key(key.clone());
+        let want = OpenObjectRequest::default()
+            .set_bucket(BUCKET_NAME)
+            .set_object(OBJECT_NAME)
+            .set_common_object_request_params(CommonObjectRequestParams::from(key));
+        assert_eq!(builder.request, want);
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn request_options() -> Result<()> {
+        use crate::read_resume_policy::NeverResume;
+        use google_cloud_gax::exponential_backoff::ExponentialBackoffBuilder;
+        use google_cloud_gax::retry_policy::Aip194Strict;
+        use google_cloud_gax::retry_throttler::CircuitBreaker;
+
+        let options = RequestOptions::new();
+        let builder = OpenObject::new(
+            Arc::new(StorageStub),
+            BUCKET_NAME.to_string(),
+            OBJECT_NAME.to_string(),
+            options,
+        )
+        .with_backoff_policy(
+            ExponentialBackoffBuilder::default()
+                .with_scaling(4.0)
+                .build()
+                .expect("expontial backoff builds"),
+        )
+        .with_retry_policy(Aip194Strict)
+        .with_retry_throttler(CircuitBreaker::default())
+        .with_read_resume_policy(NeverResume)
+        .with_attempt_timeout(Duration::from_secs(120))
+        .with_user_agent(USER_AGENT);
+
+        let got = builder.options;
+        assert!(
+            format!("{:?}", got.backoff_policy).contains("ExponentialBackoff"),
+            "{got:?}"
+        );
+        assert!(
+            format!("{:?}", got.retry_policy).contains("Aip194Strict"),
+            "{got:?}"
+        );
+        assert!(
+            format!("{:?}", got.retry_throttler).contains("CircuitBreaker"),
+            "{got:?}"
+        );
+        assert!(
+            format!("{:?}", got.read_resume_policy()).contains("NeverResume"),
+            "{got:?}"
+        );
+        assert_eq!(
+            got.bidi_attempt_timeout,
+            Duration::from_secs(120),
+            "{got:?}"
+        );
+        assert_eq!(got.user_agent.as_deref(), Some(USER_AGENT), "{got:?}");
+
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn send() -> anyhow::Result<()> {
+        let (tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+        let initial = BidiReadObjectResponse {
+            metadata: Some(ProtoObject {
+                bucket: BUCKET_NAME.to_string(),
+                name: OBJECT_NAME.to_string(),
+                generation: 123456,
+                ..ProtoObject::default()
+            }),
+            ..BidiReadObjectResponse::default()
+        };
+        tx.send(Ok(initial)).await?;
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object()
+            .return_once(|_| Ok(TonicResponse::from(rx)));
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .with_endpoint(endpoint)
+            .build()
+            .await?;
+
+        let descriptor = client.open_object(BUCKET_NAME, OBJECT_NAME).send().await?;
+        let want = Object::new()
+            .set_bucket(BUCKET_NAME)
+            .set_name(OBJECT_NAME)
+            .set_generation(123456);
+        assert_eq!(descriptor.object(), want, "{descriptor:?}");
+        assert_eq!(
+            descriptor.headers().get("content-type"),
+            Some(&HeaderValue::from_static("application/grpc")),
+            "headers={:?}",
+            descriptor.headers()
+        );
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn send_and_read() -> anyhow::Result<()> {
+        let (tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+        let payload = Vec::from_iter((0..32).map(|i| i as u8));
+        let initial = BidiReadObjectResponse {
+            metadata: Some(ProtoObject {
+                bucket: BUCKET_NAME.to_string(),
+                name: OBJECT_NAME.to_string(),
+                generation: 123456,
+                ..ProtoObject::default()
+            }),
+            object_data_ranges: vec![ObjectRangeData {
+                read_range: Some(ProtoRange {
+                    read_id: 0_i64,
+                    ..ProtoRange::default()
+                }),
+                range_end: true,
+                checksummed_data: Some(ChecksummedData {
+                    content: payload.clone(),
+                    crc32c: None,
+                }),
+            }],
+            ..BidiReadObjectResponse::default()
+        };
+        tx.send(Ok(initial)).await?;
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object()
+            .return_once(|_| Ok(TonicResponse::from(rx)));
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .with_endpoint(endpoint)
+            .build()
+            .await?;
+
+        let (descriptor, mut reader) = client
+            .open_object(BUCKET_NAME, OBJECT_NAME)
+            .send_and_read(ReadRange::tail(32))
+            .await?;
+        let want = Object::new()
+            .set_bucket(BUCKET_NAME)
+            .set_name(OBJECT_NAME)
+            .set_generation(123456);
+        assert_eq!(descriptor.object(), want, "{descriptor:?}");
+        assert_eq!(
+            descriptor.headers().get("content-type"),
+            Some(&HeaderValue::from_static("application/grpc")),
+            "headers={:?}",
+            descriptor.headers()
+        );
+
+        let mut got_payload = Vec::new();
+        while let Some(chunk) = reader.next().await.transpose()? {
+            got_payload.extend_from_slice(&chunk);
+        }
+        assert_eq!(got_payload, payload);
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn send_and_read_checksum_bypassed_due_to_ranged_read() -> anyhow::Result<()> {
+        let (tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+        let payload = Vec::from_iter((0..32).map(|i| i as u8));
+        let expected_checksum = crc32c::crc32c(&payload);
+        let corrupted_checksum = expected_checksum + 1; // Corrupted!
+        let initial = BidiReadObjectResponse {
+            metadata: Some(ProtoObject {
+                bucket: BUCKET_NAME.to_string(),
+                name: OBJECT_NAME.to_string(),
+                generation: 123456,
+                checksums: Some(storage_grpc_mock::google::storage::v2::ObjectChecksums {
+                    crc32c: Some(corrupted_checksum),
+                    ..Default::default()
+                }),
+                ..ProtoObject::default()
+            }),
+            object_data_ranges: vec![ObjectRangeData {
+                read_range: Some(ProtoRange {
+                    read_id: 0_i64,
+                    ..ProtoRange::default()
+                }),
+                range_end: true,
+                checksummed_data: Some(ChecksummedData {
+                    content: payload.clone(),
+                    crc32c: None,
+                }),
+            }],
+            ..BidiReadObjectResponse::default()
+        };
+        tx.send(Ok(initial)).await?;
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object()
+            .return_once(|_| Ok(TonicResponse::from(rx)));
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .with_endpoint(endpoint)
+            .build()
+            .await?;
+
+        let (_descriptor, mut reader) = client
+            .open_object(BUCKET_NAME, OBJECT_NAME)
+            // Even though the client has checksums enabled by default,
+            // a ranged read will explicitly bypass the validation!
+            .send_and_read(ReadRange::segment(0, 32))
+            .await?;
+
+        let mut got_payload = Vec::new();
+        while let Some(res) = reader.next().await {
+            match res {
+                Ok(chunk) => got_payload.extend_from_slice(&chunk),
+                Err(e) => {
+                    panic!("Did not expect error on ranged read: {e}");
+                }
+            }
+        }
+        assert_eq!(got_payload, payload);
+        Ok(())
+    }
+    #[tokio::test]
+    async fn send_and_read_checksum_mismatch() -> anyhow::Result<()> {
+        let (tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+        let payload = Vec::from_iter((0..32).map(|i| i as u8));
+        let expected_checksum = crc32c::crc32c(&payload);
+        let corrupted_checksum = expected_checksum + 1; // Corrupted!
+        let initial = BidiReadObjectResponse {
+            metadata: Some(ProtoObject {
+                bucket: BUCKET_NAME.to_string(),
+                name: OBJECT_NAME.to_string(),
+                generation: 123456,
+                checksums: Some(storage_grpc_mock::google::storage::v2::ObjectChecksums {
+                    crc32c: Some(corrupted_checksum),
+                    ..Default::default()
+                }),
+                ..ProtoObject::default()
+            }),
+            object_data_ranges: vec![ObjectRangeData {
+                read_range: Some(ProtoRange {
+                    read_id: 0_i64,
+                    ..ProtoRange::default()
+                }),
+                range_end: true,
+                checksummed_data: Some(ChecksummedData {
+                    content: payload.clone(),
+                    crc32c: None,
+                }),
+            }],
+            ..BidiReadObjectResponse::default()
+        };
+        tx.send(Ok(initial)).await?;
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object()
+            .return_once(|_| Ok(TonicResponse::from(rx)));
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .with_endpoint(endpoint)
+            .build()
+            .await?;
+
+        let (_descriptor, mut reader) = client
+            .open_object(BUCKET_NAME, OBJECT_NAME)
+            .send_and_read(ReadRange::all())
+            .await?;
+
+        let mut got_payload = Vec::new();
+        let mut got_err = false;
+        while let Some(res) = reader.next().await {
+            match res {
+                Ok(chunk) => got_payload.extend_from_slice(&chunk),
+                Err(e) => {
+                    use std::error::Error as _;
+                    got_err = true;
+                    let source = e
+                        .source()
+                        .and_then(|err| err.downcast_ref::<crate::error::ReadError>());
+                    assert!(
+                        matches!(source, Some(crate::error::ReadError::ChecksumMismatch(_))),
+                        "Expected ChecksumMismatch, got: {source:?}"
+                    );
+                }
+            }
+        }
+        assert!(got_err, "Expected a checksum mismatch error");
+        assert_eq!(got_payload, payload);
+        Ok(())
+    }
+
+    #[tokio::test(start_paused = true)]
+    async fn timeout() -> anyhow::Result<()> {
+        let (_tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object()
+            .return_once(|_| Ok(TonicResponse::from(rx)));
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .with_endpoint(endpoint)
+            .with_retry_policy(NeverRetry)
+            .build()
+            .await?;
+
+        // This will timeout because we never send the initial message over `_tx`.
+        let target = Duration::from_secs(120);
+        let start = tokio::time::Instant::now();
+        let err = client
+            .open_object(BUCKET_NAME, OBJECT_NAME)
+            .with_attempt_timeout(target)
+            .send()
+            .await
+            .unwrap_err();
+        assert!(err.is_timeout(), "{err:?}");
+        assert_eq!(start.elapsed(), target);
+
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn user_agent() -> anyhow::Result<()> {
+        let (tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+        let initial = BidiReadObjectResponse {
+            metadata: Some(ProtoObject {
+                bucket: BUCKET_NAME.to_string(),
+                name: OBJECT_NAME.to_string(),
+                generation: 123456,
+                ..ProtoObject::default()
+            }),
+            ..BidiReadObjectResponse::default()
+        };
+        tx.send(Ok(initial)).await?;
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object().return_once(|request| {
+            let metadata = request.metadata();
+            let user_agent = metadata
+                .get(http::header::USER_AGENT.as_str())
+                .and_then(|v| v.to_str().ok())
+                .expect("user-agent should be set");
+
+            let got = user_agent.split(' ').any(|s| s == USER_AGENT);
+            assert!(got, "{user_agent:?}");
+
+            Ok(TonicResponse::from(rx))
+        });
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .with_endpoint(endpoint)
+            .build()
+            .await?;
+
+        let _descriptor = client
+            .open_object(BUCKET_NAME, OBJECT_NAME)
+            .with_user_agent(USER_AGENT)
+            .send()
+            .await?;
+        Ok(())
+    }
+
+    #[test]
+    fn checksum_toggles() -> Result<()> {
+        let options = RequestOptions::new();
+
+        // By default, crc32c is enabled and md5 is disabled.
+        assert!(options.checksum.crc32c.is_some());
+        assert!(options.checksum.md5_hash.is_none());
+
+        let builder = OpenObject::new(
+            Arc::new(StorageStub),
+            BUCKET_NAME.to_string(),
+            OBJECT_NAME.to_string(),
+            options,
+        )
+        .compute_crc32c(false)
+        .compute_md5();
+
+        let got = builder.options;
+        assert!(got.checksum.crc32c.is_none());
+        assert!(got.checksum.md5_hash.is_some());
+
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn quota_project() -> anyhow::Result<()> {
+        const PROJECT_NAME: &str = "project_lazy_dog";
+        let (tx, rx) = tokio::sync::mpsc::channel::<TonicResult<BidiReadObjectResponse>>(1);
+        let initial = BidiReadObjectResponse {
+            metadata: Some(ProtoObject {
+                bucket: BUCKET_NAME.to_string(),
+                name: OBJECT_NAME.to_string(),
+                generation: 123456,
+                ..ProtoObject::default()
+            }),
+            ..BidiReadObjectResponse::default()
+        };
+        tx.send(Ok(initial)).await?;
+
+        let mut mock = MockStorage::new();
+        mock.expect_bidi_read_object().return_once(|request| {
+            let user_project = request
+                .metadata()
+                .get("x-goog-user-project")
+                .and_then(|v| v.to_str().ok())
+                .expect("x-goog-user-project should be set");
+            assert_eq!(user_project, PROJECT_NAME);
+            Ok(TonicResponse::from(rx))
+        });
+        let (endpoint, _server) = start(BIND_ADDRESS, mock).await?;
+
+        let client = Storage::builder()
+            .with_credentials(Anonymous::new().build())
+            .with_endpoint(endpoint)
+            .build()
+            .await?;
+
+        let _descriptor = client
+            .open_object(BUCKET_NAME, OBJECT_NAME)
+            .with_quota_project(PROJECT_NAME)
+            .send()
+            .await?;
+        Ok(())
+    }
+
+    #[derive(Debug)]
+    struct StorageStub;
+    impl crate::stub::Storage for StorageStub {}
+}
