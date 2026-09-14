@@ -8,4 +8,12 @@
  * 震撼心灵的视觉盛宴：每一次视角的微调，都犹如在创作一幅动态的艺术珍品，带来兼具冲击力与沉浸感的感官震撼。
 准备好放空固有的知觉模式，去寻觅那个完全属于你的完美角落了吗？一场前所未有的艺术级探索正在等待着你。
 
+下载后解压即可游玩！
+
 下载地址：
+
+Windows: [点我下载Windows版](https://heey.cc.cd/download/catacombs-1.0.0-windows.zip)
+
+Mac: [点我下载Mac版](https://heey.cc.cd/download/catacombs-1.0.0-mac.zip)
+
+Linux: [点我下载Linux版](https://heey.cc.cd/download/catacombs-1.0.0-linux.zip)
