@@ -1,0 +1,50 @@
+# Copyright 2026 The RocketMQ Rust Authors
+# Licensed under the Apache License, Version 2.0.
+
+rocketmqHome = "/var/lib/rocketmq/controller"
+configStorePath = "/var/lib/rocketmq/controller/controller.properties"
+controllerType = "Raft"
+scanNotActiveBrokerInterval = 5000
+controllerThreadPoolNums = 16
+controllerRequestThreadPoolQueueCapacity = 50000
+mappedFileSize = 1048576
+controllerStorePath = "/var/lib/rocketmq/controller"
+electMasterMaxRetryCount = 3
+enableElectUncleanMaster = false
+isProcessReadEvent = false
+notifyBrokerRoleChanged = true
+scanInactiveMasterInterval = 5000
+raftScanWaitTimeoutMs = 1000
+configBlackList = "configBlackList;configStorePath"
+nodeId = 1
+listenAddr = "127.0.0.1:60109"
+controllerPeers = []
+electionTimeoutMs = 1000
+heartbeatIntervalMs = 300
+storagePath = "/var/lib/rocketmq/controller"
+storageBackend = "Memory"
+enableElectUncleanMasterLocal = false
+
+[[raftPeers]]
+id = 1
+addr = "127.0.0.1:60110"
+
+[observability]
+
+[observability.metrics]
+exporter = "disable"
+
+[observability.traces]
+exporter = "disable"
+
+[observability.logs]
+exporter = "disable"
+
+[observability.otlp]
+endpoint = "http://127.0.0.1:4317"
+protocol = "grpc"
+
+[observability.prometheus]
+host = "127.0.0.1"
+port = 5557
+path = "/metrics"

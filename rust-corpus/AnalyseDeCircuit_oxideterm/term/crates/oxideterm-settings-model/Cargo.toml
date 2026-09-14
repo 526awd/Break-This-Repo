@@ -1,0 +1,14 @@
+[package]
+name = "oxideterm-settings-model"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+oxideterm-ai = { path = "../oxideterm-ai" }
+oxideterm-cloud-sync = { path = "../oxideterm-cloud-sync" }
+oxideterm-settings = { path = "../oxideterm-settings" }
+oxideterm-terminal-semantic = { path = "../oxideterm-terminal-semantic", default-features = false }
+oxideterm-theme = { path = "../oxideterm-theme" }
+serde_json.workspace = true
+zeroize.workspace = true

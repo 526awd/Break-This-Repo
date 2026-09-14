@@ -1,0 +1,3883 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::BTreeSet;
+use std::collections::HashMap;
+use std::fmt;
+use std::sync::Arc;
+use std::time::Duration;
+use std::time::Instant;
+
+use async_trait::async_trait;
+use cheetah_string::CheetahString;
+use rocketmq_client_rust::client_config_for_managed_domain;
+#[cfg(test)]
+use rocketmq_client_rust::rpc_hook_from_outbound_signer;
+use rocketmq_client_rust::AckResult;
+use rocketmq_client_rust::AckStatus;
+use rocketmq_client_rust::ClientConfig as RocketmqClientConfig;
+use rocketmq_client_rust::ClientError;
+use rocketmq_client_rust::ClientInstanceHandle;
+use rocketmq_client_rust::ClientRpcHook;
+use rocketmq_client_rust::ClientRuntime;
+#[cfg(test)]
+use rocketmq_client_rust::ClientRuntimeConfig;
+use rocketmq_client_rust::DefaultMQProducer;
+use rocketmq_client_rust::PopResult;
+use rocketmq_client_rust::PopStatus;
+use rocketmq_client_rust::TelemetryHandle;
+use rocketmq_error::Error as CanonicalError;
+use rocketmq_model::common::attribute::topic_message_type::TopicMessageType;
+use rocketmq_model::common::boundary_type::BoundaryType;
+use rocketmq_model::common::filter::expression_type::ExpressionType;
+use rocketmq_model::common::lite::LiteSubscriptionDTO;
+use rocketmq_model::common::message::message_ext::MessageExt;
+use rocketmq_model::common::message::message_id::MessageId;
+use rocketmq_model::common::message::message_queue::MessageQueue;
+use rocketmq_model::common::message::message_queue_assignment::MessageQueueAssignment;
+use rocketmq_model::common::message::message_single::Message;
+use rocketmq_model::common::message::MessageConst;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_model::common::mix_all::LOGICAL_QUEUE_MOCK_BROKER_PREFIX;
+use rocketmq_model::common::mix_all::MASTER_ID;
+use rocketmq_model::common::sys_flag::message_sys_flag::MessageSysFlag;
+use rocketmq_model::common::sys_flag::pull_sys_flag::PullSysFlag;
+use rocketmq_model::result::PullStatus;
+use rocketmq_model::result::SendResult;
+use rocketmq_protocol::common::message::message_decoder as MessageDecoder;
+use rocketmq_protocol::protocol::body::acl_info::AclInfo;
+use rocketmq_protocol::protocol::body::batch_ack_builder::build_batch_ack_requests;
+use rocketmq_protocol::protocol::body::batch_ack_builder::BatchAckInput;
+use rocketmq_protocol::protocol::body::batch_ack_message_request_body::BatchAckMessageRequestBody;
+use rocketmq_protocol::protocol::body::broker_body::cluster_info::ClusterInfo;
+use rocketmq_protocol::protocol::body::request::lock_batch_request_body::LockBatchRequestBody;
+use rocketmq_protocol::protocol::body::response::lock_batch_response_body::LockBatchResponseBody;
+use rocketmq_protocol::protocol::body::unlock_batch_request_body::UnlockBatchRequestBody;
+use rocketmq_protocol::protocol::body::user_info::UserInfo;
+use rocketmq_protocol::protocol::header::ack_message_request_header::AckMessageRequestHeader;
+use rocketmq_protocol::protocol::header::change_invisible_time_request_header::ChangeInvisibleTimeRequestHeader;
+use rocketmq_protocol::protocol::header::end_transaction_request_header::EndTransactionRequestHeader;
+use rocketmq_protocol::protocol::header::extra_info_util::ExtraInfoUtil;
+use rocketmq_protocol::protocol::header::namesrv::topic_operation_header::TopicRequestHeader as PopTopicRequestHeader;
+use rocketmq_protocol::protocol::header::pop_message_request_header::PopMessageRequestHeader;
+use rocketmq_protocol::protocol::header::pull_message_request_header::PullMessageRequestHeader;
+use rocketmq_protocol::protocol::header::query_consumer_offset_request_header::QueryConsumerOffsetRequestHeader;
+use rocketmq_protocol::protocol::header::update_consumer_offset_header::UpdateConsumerOffsetRequestHeader;
+use rocketmq_protocol::protocol::heartbeat::message_model::MessageModel;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::route::topic_route_data::TopicRouteData;
+use rocketmq_protocol::protocol::route_facade::BrokerDataExt;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::SubscriptionGroupConfig;
+use rocketmq_protocol::rpc::rpc_request_header::RpcRequestHeader;
+use rocketmq_protocol::rpc::topic_request_header::TopicRequestHeader;
+use rocketmq_proxy_core::error::canonical;
+use rocketmq_proxy_core::proto::v2;
+use rocketmq_proxy_core::status::ProxyStatusMapper;
+use rocketmq_proxy_core::AckMessageEntry;
+use rocketmq_proxy_core::AckMessageRequest;
+use rocketmq_proxy_core::AckMessageResultEntry;
+use rocketmq_proxy_core::ChangeInvisibleDurationPlan;
+use rocketmq_proxy_core::ChangeInvisibleDurationRequest;
+use rocketmq_proxy_core::EndTransactionPlan;
+use rocketmq_proxy_core::EndTransactionRequest;
+use rocketmq_proxy_core::ForwardMessageToDeadLetterQueuePlan;
+use rocketmq_proxy_core::ForwardMessageToDeadLetterQueueRequest;
+use rocketmq_proxy_core::GetOffsetPlan;
+use rocketmq_proxy_core::GetOffsetRequest;
+use rocketmq_proxy_core::LiteSubscriptionSyncRequest;
+use rocketmq_proxy_core::MessageQueueTarget;
+use rocketmq_proxy_core::ProxyContext;
+use rocketmq_proxy_core::ProxyError;
+use rocketmq_proxy_core::ProxyPayloadStatus;
+use rocketmq_proxy_core::ProxyResult;
+use rocketmq_proxy_core::ProxyTopicMessageType;
+use rocketmq_proxy_core::PullMessagePlan;
+use rocketmq_proxy_core::PullMessageRequest;
+use rocketmq_proxy_core::QueryOffsetPlan;
+use rocketmq_proxy_core::QueryOffsetPolicy;
+use rocketmq_proxy_core::QueryOffsetRequest;
+use rocketmq_proxy_core::RecallMessagePlan;
+use rocketmq_proxy_core::RecallMessageRequest;
+use rocketmq_proxy_core::ReceiveMessagePlan;
+use rocketmq_proxy_core::ReceiveMessageRequest;
+use rocketmq_proxy_core::ReceivedMessage;
+use rocketmq_proxy_core::ResourceIdentity;
+use rocketmq_proxy_core::SendMessageEntry;
+use rocketmq_proxy_core::SendMessageRequest;
+use rocketmq_proxy_core::SendMessageResultEntry;
+use rocketmq_proxy_core::SubscriptionGroupMetadata;
+use rocketmq_proxy_core::TransactionResolution;
+use rocketmq_proxy_core::TransactionSource;
+use rocketmq_proxy_core::UpdateOffsetPlan;
+use rocketmq_proxy_core::UpdateOffsetRequest;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_security_api::OutboundSigner;
+
+use crate::config::ClusterConfig;
+use crate::config::ClusterExecutionDiagnostics;
+use crate::message::message_ext_to_core;
+use crate::message::message_from_core;
+
+#[path = "cluster_admission.rs"]
+mod cluster_admission;
+
+#[cfg(feature = "bench-support")]
+#[doc(hidden)]
+#[path = "cluster_bench_support.rs"]
+pub mod bench_support;
+
+#[async_trait]
+pub trait ClusterClient: Send + Sync {
+    fn transaction_producer_group(&self, _context: &ProxyContext) -> Option<String> {
+        None
+    }
+
+    /// Verifies that NameServer exposes at least one registered Broker route.
+    async fn readiness_check(&self) -> ProxyResult<()> {
+        Ok(())
+    }
+
+    async fn sync_lite_subscription(
+        &self,
+        _client_id: &str,
+        _request: &LiteSubscriptionSyncRequest,
+    ) -> ProxyResult<()> {
+        Ok(())
+    }
+
+    async fn query_route(&self, topic: &ResourceIdentity) -> ProxyResult<TopicRouteData>;
+
+    async fn query_assignment(
+        &self,
+        topic: &ResourceIdentity,
+        group: &ResourceIdentity,
+        client_id: &str,
+    ) -> ProxyResult<Option<Vec<MessageQueueAssignment>>>;
+
+    async fn query_topic_message_type(&self, topic: &ResourceIdentity) -> ProxyResult<ProxyTopicMessageType>;
+
+    async fn query_subscription_group(
+        &self,
+        topic: &ResourceIdentity,
+        group: &ResourceIdentity,
+    ) -> ProxyResult<Option<SubscriptionGroupMetadata>>;
+
+    async fn query_user(&self, _username: &str) -> ProxyResult<Option<UserInfo>> {
+        Ok(None)
+    }
+
+    async fn query_acl(&self, _subject: &str) -> ProxyResult<Option<AclInfo>> {
+        Ok(None)
+    }
+
+    async fn send_message(
+        &self,
+        context: &ProxyContext,
+        request: &SendMessageRequest,
+    ) -> ProxyResult<Vec<SendMessageResultEntry>>;
+
+    async fn recall_message(
+        &self,
+        context: &ProxyContext,
+        request: &RecallMessageRequest,
+    ) -> ProxyResult<RecallMessagePlan>;
+
+    async fn receive_message(
+        &self,
+        context: &ProxyContext,
+        request: &ReceiveMessageRequest,
+    ) -> ProxyResult<ReceiveMessagePlan>;
+
+    async fn pull_message(&self, context: &ProxyContext, request: &PullMessageRequest) -> ProxyResult<PullMessagePlan>;
+
+    async fn ack_message(
+        &self,
+        context: &ProxyContext,
+        request: &AckMessageRequest,
+    ) -> ProxyResult<Vec<AckMessageResultEntry>>;
+
+    async fn forward_message_to_dead_letter_queue(
+        &self,
+        context: &ProxyContext,
+        request: &ForwardMessageToDeadLetterQueueRequest,
+    ) -> ProxyResult<ForwardMessageToDeadLetterQueuePlan>;
+
+    async fn change_invisible_duration(
+        &self,
+        context: &ProxyContext,
+        request: &ChangeInvisibleDurationRequest,
+    ) -> ProxyResult<ChangeInvisibleDurationPlan>;
+
+    async fn update_offset(
+        &self,
+        context: &ProxyContext,
+        request: &UpdateOffsetRequest,
+    ) -> ProxyResult<UpdateOffsetPlan>;
+
+    async fn get_offset(&self, context: &ProxyContext, request: &GetOffsetRequest) -> ProxyResult<GetOffsetPlan>;
+
+    async fn query_offset(&self, context: &ProxyContext, request: &QueryOffsetRequest) -> ProxyResult<QueryOffsetPlan>;
+
+    async fn end_transaction(
+        &self,
+        context: &ProxyContext,
+        request: &EndTransactionRequest,
+    ) -> ProxyResult<EndTransactionPlan>;
+}
+
+#[async_trait]
+trait ClusterClientIo: Send + Sync {
+    async fn start(&self) -> Result<(), CanonicalError>;
+
+    async fn shutdown(&self);
+
+    async fn invoke_remoting(
+        &self,
+        _broker_addr: &CheetahString,
+        _request: RemotingCommand,
+        _timeout_millis: u64,
+    ) -> Result<RemotingCommand, CanonicalError> {
+        Err(canonical::argument(
+            "raw Remoting invocation is unavailable for this Client adapter".to_owned(),
+        ))
+    }
+
+    async fn sync_lite_subscription(
+        &self,
+        _broker_addr: &CheetahString,
+        _request: LiteSubscriptionDTO,
+        _timeout_millis: u64,
+    ) -> Result<(), CanonicalError> {
+        Ok(())
+    }
+
+    async fn topic_route(&self, topic: &str, timeout_millis: u64) -> Result<Option<TopicRouteData>, CanonicalError>;
+
+    async fn lock_batch_mq(
+        &self,
+        broker_addr: &str,
+        request: LockBatchRequestBody,
+        timeout_millis: u64,
+    ) -> Result<std::collections::HashSet<MessageQueue>, CanonicalError>;
+
+    async fn unlock_batch_mq(
+        &self,
+        broker_addr: &CheetahString,
+        request: UnlockBatchRequestBody,
+        timeout_millis: u64,
+    ) -> Result<(), CanonicalError>;
+
+    #[allow(
+        clippy::too_many_arguments,
+        reason = "mirrors the RocketMQ query-assignment wire contract"
+    )]
+    async fn query_assignment(
+        &self,
+        broker_addr: &CheetahString,
+        topic: CheetahString,
+        consumer_group: CheetahString,
+        client_id: CheetahString,
+        strategy_name: CheetahString,
+        message_model: MessageModel,
+        timeout_millis: u64,
+    ) -> Result<Option<Vec<MessageQueueAssignment>>, CanonicalError>;
+
+    async fn pop_message(
+        &self,
+        broker_name: &CheetahString,
+        broker_addr: &CheetahString,
+        request: PopMessageRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<PopResult, CanonicalError>;
+
+    async fn ack_message(
+        &self,
+        broker_addr: &CheetahString,
+        request: AckMessageRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<AckResult, CanonicalError>;
+
+    async fn batch_ack_message(
+        &self,
+        broker_addr: &CheetahString,
+        request: BatchAckMessageRequestBody,
+        timeout_millis: u64,
+    ) -> Result<AckResult, CanonicalError>;
+
+    async fn change_invisible_time(
+        &self,
+        broker_name: &CheetahString,
+        broker_addr: &CheetahString,
+        request: ChangeInvisibleTimeRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<AckResult, CanonicalError>;
+
+    async fn end_transaction(
+        &self,
+        broker_addr: &CheetahString,
+        request: EndTransactionRequestHeader,
+        remark: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<(), CanonicalError>;
+
+    async fn find_subscribe_broker_addr(
+        &self,
+        broker_name: &CheetahString,
+        broker_id: u64,
+        only_this_broker: bool,
+    ) -> Option<CheetahString>;
+
+    async fn refresh_topic_route(&self, topic: &CheetahString) -> bool;
+
+    async fn broker_name_for_queue(&self, queue: &MessageQueue) -> CheetahString;
+
+    async fn pull_outcome_from_broker(
+        &self,
+        broker_addr: &str,
+        request: PullMessageRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<rocketmq_model::result::PullOutcome<MessageExt>, CanonicalError>;
+
+    #[allow(clippy::too_many_arguments, reason = "mirrors the RocketMQ send-back wire contract")]
+    async fn consumer_send_message_back(
+        &self,
+        broker_addr: &str,
+        broker_name: Option<&str>,
+        message: &MessageExt,
+        consumer_group: &str,
+        delay_level: i32,
+        timeout_millis: u64,
+        max_consume_retry_times: i32,
+    ) -> Result<(), CanonicalError>;
+
+    async fn update_consumer_offset(
+        &self,
+        broker_addr: &CheetahString,
+        request: UpdateConsumerOffsetRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<(), CanonicalError>;
+
+    async fn query_consumer_offset(
+        &self,
+        broker_addr: &str,
+        request: QueryConsumerOffsetRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError>;
+
+    async fn min_offset(
+        &self,
+        broker_addr: &str,
+        queue: &MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError>;
+
+    async fn max_offset(
+        &self,
+        broker_addr: &str,
+        queue: &MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError>;
+
+    async fn search_offset(
+        &self,
+        broker_addr: &str,
+        queue: &MessageQueue,
+        timestamp: i64,
+        boundary_type: BoundaryType,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError>;
+
+    async fn topic_config(
+        &self,
+        broker_addr: &CheetahString,
+        topic: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<rocketmq_model::topic::TopicConfig, CanonicalError>;
+
+    async fn subscription_group_config(
+        &self,
+        broker_addr: &CheetahString,
+        group: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<SubscriptionGroupConfig, CanonicalError>;
+
+    async fn broker_cluster_info(&self, timeout_millis: u64) -> Result<ClusterInfo, CanonicalError>;
+
+    async fn user(
+        &self,
+        broker_addr: CheetahString,
+        username: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<Option<UserInfo>, CanonicalError>;
+
+    async fn acl(
+        &self,
+        broker_addr: CheetahString,
+        subject: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<Option<AclInfo>, CanonicalError>;
+}
+
+trait ClusterClientFactory: Send + Sync {
+    fn get_or_create(
+        &self,
+        client_runtime: &ClientRuntime,
+        domain_id: u64,
+        client_config: RocketmqClientConfig,
+        rpc_hook: Option<Arc<ClientRpcHook>>,
+    ) -> Result<Arc<dyn ClusterClientIo>, CanonicalError>;
+}
+
+struct DefaultClusterClientFactory;
+
+impl ClusterClientFactory for DefaultClusterClientFactory {
+    fn get_or_create(
+        &self,
+        client_runtime: &ClientRuntime,
+        domain_id: u64,
+        client_config: RocketmqClientConfig,
+        rpc_hook: Option<Arc<ClientRpcHook>>,
+    ) -> Result<Arc<dyn ClusterClientIo>, CanonicalError> {
+        ClientInstanceHandle::get_or_create(client_runtime, domain_id, client_config, rpc_hook)
+            .map_err(ClientError::into_error)
+            .map(|client| Arc::new(client) as Arc<dyn ClusterClientIo>)
+    }
+}
+
+#[cfg(test)]
+struct StaticClusterClientFactory {
+    client: Arc<dyn ClusterClientIo>,
+}
+
+#[cfg(test)]
+impl ClusterClientFactory for StaticClusterClientFactory {
+    fn get_or_create(
+        &self,
+        _client_runtime: &ClientRuntime,
+        _domain_id: u64,
+        _client_config: RocketmqClientConfig,
+        _rpc_hook: Option<Arc<ClientRpcHook>>,
+    ) -> Result<Arc<dyn ClusterClientIo>, CanonicalError> {
+        Ok(self.client.clone())
+    }
+}
+
+#[async_trait]
+impl ClusterClientIo for ClientInstanceHandle {
+    async fn start(&self) -> Result<(), CanonicalError> {
+        ClientInstanceHandle::start(self).await.map_err(ClientError::into_error)
+    }
+
+    async fn shutdown(&self) {
+        self.shutdown_owned().await;
+    }
+
+    async fn invoke_remoting(
+        &self,
+        broker_addr: &CheetahString,
+        request: RemotingCommand,
+        timeout_millis: u64,
+    ) -> Result<RemotingCommand, CanonicalError> {
+        ClientInstanceHandle::invoke_remoting(self, broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn sync_lite_subscription(
+        &self,
+        broker_addr: &CheetahString,
+        request: LiteSubscriptionDTO,
+        timeout_millis: u64,
+    ) -> Result<(), CanonicalError> {
+        self.sync_lite_subscription(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn topic_route(&self, topic: &str, timeout_millis: u64) -> Result<Option<TopicRouteData>, CanonicalError> {
+        self.topic_route(topic, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn lock_batch_mq(
+        &self,
+        broker_addr: &str,
+        request: LockBatchRequestBody,
+        timeout_millis: u64,
+    ) -> Result<std::collections::HashSet<MessageQueue>, CanonicalError> {
+        self.lock_batch_mq(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn unlock_batch_mq(
+        &self,
+        broker_addr: &CheetahString,
+        request: UnlockBatchRequestBody,
+        timeout_millis: u64,
+    ) -> Result<(), CanonicalError> {
+        self.unlock_batch_mq(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn query_assignment(
+        &self,
+        broker_addr: &CheetahString,
+        topic: CheetahString,
+        consumer_group: CheetahString,
+        client_id: CheetahString,
+        strategy_name: CheetahString,
+        message_model: MessageModel,
+        timeout_millis: u64,
+    ) -> Result<Option<Vec<MessageQueueAssignment>>, CanonicalError> {
+        self.query_assignment(
+            broker_addr,
+            topic,
+            consumer_group,
+            client_id,
+            strategy_name,
+            message_model,
+            timeout_millis,
+        )
+        .await
+        .map_err(ClientError::into_error)
+    }
+
+    async fn pop_message(
+        &self,
+        broker_name: &CheetahString,
+        broker_addr: &CheetahString,
+        request: PopMessageRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<PopResult, CanonicalError> {
+        self.pop_message(broker_name, broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn ack_message(
+        &self,
+        broker_addr: &CheetahString,
+        request: AckMessageRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<AckResult, CanonicalError> {
+        self.ack_message(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn batch_ack_message(
+        &self,
+        broker_addr: &CheetahString,
+        request: BatchAckMessageRequestBody,
+        timeout_millis: u64,
+    ) -> Result<AckResult, CanonicalError> {
+        self.batch_ack_message(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn change_invisible_time(
+        &self,
+        broker_name: &CheetahString,
+        broker_addr: &CheetahString,
+        request: ChangeInvisibleTimeRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<AckResult, CanonicalError> {
+        self.change_invisible_time(broker_name, broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn end_transaction(
+        &self,
+        broker_addr: &CheetahString,
+        request: EndTransactionRequestHeader,
+        remark: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<(), CanonicalError> {
+        self.end_transaction(broker_addr, request, remark, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn find_subscribe_broker_addr(
+        &self,
+        broker_name: &CheetahString,
+        broker_id: u64,
+        only_this_broker: bool,
+    ) -> Option<CheetahString> {
+        self.find_subscribe_broker_addr(broker_name, broker_id, only_this_broker)
+            .await
+    }
+
+    async fn refresh_topic_route(&self, topic: &CheetahString) -> bool {
+        self.refresh_topic_route(topic).await
+    }
+
+    async fn broker_name_for_queue(&self, queue: &MessageQueue) -> CheetahString {
+        self.broker_name_for_queue(queue).await
+    }
+
+    async fn pull_outcome_from_broker(
+        &self,
+        broker_addr: &str,
+        request: PullMessageRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<rocketmq_model::result::PullOutcome<MessageExt>, CanonicalError> {
+        self.pull_outcome_from_broker(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn consumer_send_message_back(
+        &self,
+        broker_addr: &str,
+        broker_name: Option<&str>,
+        message: &MessageExt,
+        consumer_group: &str,
+        delay_level: i32,
+        timeout_millis: u64,
+        max_consume_retry_times: i32,
+    ) -> Result<(), CanonicalError> {
+        self.consumer_send_message_back(
+            broker_addr,
+            broker_name,
+            message,
+            consumer_group,
+            delay_level,
+            timeout_millis,
+            max_consume_retry_times,
+        )
+        .await
+        .map_err(ClientError::into_error)
+    }
+
+    async fn update_consumer_offset(
+        &self,
+        broker_addr: &CheetahString,
+        request: UpdateConsumerOffsetRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<(), CanonicalError> {
+        self.update_consumer_offset(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn query_consumer_offset(
+        &self,
+        broker_addr: &str,
+        request: QueryConsumerOffsetRequestHeader,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError> {
+        self.query_consumer_offset(broker_addr, request, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn min_offset(
+        &self,
+        broker_addr: &str,
+        queue: &MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError> {
+        self.min_offset(broker_addr, queue, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn max_offset(
+        &self,
+        broker_addr: &str,
+        queue: &MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError> {
+        self.max_offset(broker_addr, queue, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn search_offset(
+        &self,
+        broker_addr: &str,
+        queue: &MessageQueue,
+        timestamp: i64,
+        boundary_type: BoundaryType,
+        timeout_millis: u64,
+    ) -> Result<i64, CanonicalError> {
+        self.search_offset(broker_addr, queue, timestamp, boundary_type, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn topic_config(
+        &self,
+        broker_addr: &CheetahString,
+        topic: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<rocketmq_model::topic::TopicConfig, CanonicalError> {
+        self.topic_config(broker_addr, topic, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn subscription_group_config(
+        &self,
+        broker_addr: &CheetahString,
+        group: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<SubscriptionGroupConfig, CanonicalError> {
+        self.subscription_group_config(broker_addr, group, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn broker_cluster_info(&self, timeout_millis: u64) -> Result<ClusterInfo, CanonicalError> {
+        self.broker_cluster_info(timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn user(
+        &self,
+        broker_addr: CheetahString,
+        username: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<Option<UserInfo>, CanonicalError> {
+        self.user(broker_addr, username, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn acl(
+        &self,
+        broker_addr: CheetahString,
+        subject: CheetahString,
+        timeout_millis: u64,
+    ) -> Result<Option<AclInfo>, CanonicalError> {
+        self.acl(broker_addr, subject, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+}
+
+#[async_trait]
+trait ClusterProducerIo: Send {
+    fn set_topics(&mut self, topics: Vec<CheetahString>);
+
+    fn topics(&self) -> Vec<CheetahString>;
+
+    fn set_send_timeout(&mut self, timeout_millis: u32);
+
+    fn producer_group(&self) -> CheetahString;
+
+    async fn start(&mut self) -> Result<(), CanonicalError>;
+
+    async fn shutdown(&mut self);
+
+    async fn recall_message(
+        &mut self,
+        topic: CheetahString,
+        recall_handle: CheetahString,
+    ) -> Result<String, CanonicalError>;
+
+    async fn fetch_publish_message_queues(&mut self, topic: &str) -> Result<Vec<MessageQueue>, CanonicalError>;
+
+    async fn send(&mut self, message: Message, timeout_millis: u64) -> Result<Option<SendResult>, CanonicalError>;
+
+    async fn send_to_queue(
+        &mut self,
+        message: Message,
+        queue: MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<Option<SendResult>, CanonicalError>;
+
+    async fn send_batch(&mut self, messages: Vec<Message>, timeout_millis: u64) -> Result<SendResult, CanonicalError>;
+
+    async fn send_batch_to_queue(
+        &mut self,
+        messages: Vec<Message>,
+        queue: MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<SendResult, CanonicalError>;
+}
+
+#[async_trait]
+impl ClusterProducerIo for DefaultMQProducer {
+    fn set_topics(&mut self, topics: Vec<CheetahString>) {
+        self.set_topics(topics);
+    }
+
+    fn topics(&self) -> Vec<CheetahString> {
+        self.topics()
+    }
+
+    fn set_send_timeout(&mut self, timeout_millis: u32) {
+        self.set_send_msg_timeout(timeout_millis);
+    }
+
+    fn producer_group(&self) -> CheetahString {
+        self.producer_group()
+    }
+
+    async fn start(&mut self) -> Result<(), CanonicalError> {
+        self.start().await.map_err(ClientError::into_error)
+    }
+
+    async fn shutdown(&mut self) {
+        self.shutdown_for_shared_factory().await;
+    }
+
+    async fn recall_message(
+        &mut self,
+        topic: CheetahString,
+        recall_handle: CheetahString,
+    ) -> Result<String, CanonicalError> {
+        self.recall_message(topic, recall_handle)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn fetch_publish_message_queues(&mut self, topic: &str) -> Result<Vec<MessageQueue>, CanonicalError> {
+        self.fetch_publish_message_queues(topic)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn send(&mut self, message: Message, timeout_millis: u64) -> Result<Option<SendResult>, CanonicalError> {
+        self.send_with_timeout(message, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn send_to_queue(
+        &mut self,
+        message: Message,
+        queue: MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<Option<SendResult>, CanonicalError> {
+        self.send_to_queue_with_timeout(message, queue, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn send_batch(&mut self, messages: Vec<Message>, timeout_millis: u64) -> Result<SendResult, CanonicalError> {
+        self.send_batch_with_timeout(messages, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+
+    async fn send_batch_to_queue(
+        &mut self,
+        messages: Vec<Message>,
+        queue: MessageQueue,
+        timeout_millis: u64,
+    ) -> Result<SendResult, CanonicalError> {
+        self.send_batch_to_queue_with_timeout(messages, queue, timeout_millis)
+            .await
+            .map_err(ClientError::into_error)
+    }
+}
+
+trait ClusterProducerFactory: Send + Sync {
+    fn create(
+        &self,
+        client_runtime: Arc<ClientRuntime>,
+        domain_id: u64,
+        config: &ClusterConfig,
+        producer_group: &str,
+        timeout_millis: u64,
+        rpc_hook: Option<Arc<ClientRpcHook>>,
+    ) -> Box<dyn ClusterProducerIo>;
+}
+
+struct DefaultClusterProducerFactory;
+
+impl ClusterProducerFactory for DefaultClusterProducerFactory {
+    fn create(
+        &self,
+        client_runtime: Arc<ClientRuntime>,
+        domain_id: u64,
+        config: &ClusterConfig,
+        producer_group: &str,
+        timeout_millis: u64,
+        rpc_hook: Option<Arc<ClientRpcHook>>,
+    ) -> Box<dyn ClusterProducerIo> {
+        Box::new(build_send_producer(
+            client_runtime,
+            domain_id,
+            config,
+            producer_group,
+            timeout_millis,
+            rpc_hook,
+        ))
+    }
+}
+
+pub struct RocketmqClusterClient {
+    executor: ClusterTaskExecutor,
+    producer_group_prefix: String,
+}
+
+impl RocketmqClusterClient {
+    pub fn new(
+        config: ClusterConfig,
+        signer: Option<Arc<dyn OutboundSigner>>,
+        service_context: &ChildServiceContext,
+        telemetry_handle: TelemetryHandle,
+    ) -> ProxyResult<Self> {
+        let executor = ClusterTaskExecutor::new(config.clone(), signer, service_context, telemetry_handle)?;
+        Ok(Self {
+            executor,
+            producer_group_prefix: config.producer_group_prefix,
+        })
+    }
+
+    /// Returns a low-cardinality snapshot of bounded command execution.
+    pub fn execution_diagnostics(&self) -> ClusterExecutionDiagnostics {
+        self.executor.lanes.snapshot()
+    }
+
+    pub(crate) async fn lock_batch_mq(&self, request: LockBatchRequestBody) -> ProxyResult<LockBatchResponseBody> {
+        self.executor.lock_batch_mq(request).await
+    }
+
+    pub(crate) async fn unlock_batch_mq(&self, request: UnlockBatchRequestBody) -> ProxyResult<()> {
+        self.executor.unlock_batch_mq(request).await
+    }
+
+    pub(crate) async fn forward_remoting(
+        &self,
+        broker_name: String,
+        request: RemotingCommand,
+        timeout_millis: u64,
+    ) -> ProxyResult<RemotingCommand> {
+        self.executor
+            .forward_remoting(broker_name, request, timeout_millis)
+            .await
+    }
+}
+
+#[async_trait]
+impl ClusterClient for RocketmqClusterClient {
+    fn transaction_producer_group(&self, context: &ProxyContext) -> Option<String> {
+        let prefix = sanitize_group_component(self.producer_group_prefix.as_str());
+        let identity = sanitize_group_component(context.client_id().unwrap_or(context.request_id()));
+        Some(format!("{prefix}-{identity}"))
+    }
+
+    async fn readiness_check(&self) -> ProxyResult<()> {
+        self.executor.readiness_check().await
+    }
+
+    async fn sync_lite_subscription(&self, client_id: &str, request: &LiteSubscriptionSyncRequest) -> ProxyResult<()> {
+        self.executor
+            .sync_lite_subscription(client_id.to_owned(), request.clone())
+            .await
+    }
+
+    async fn query_route(&self, topic: &ResourceIdentity) -> ProxyResult<TopicRouteData> {
+        self.executor.query_route(topic.clone()).await
+    }
+
+    async fn query_assignment(
+        &self,
+        topic: &ResourceIdentity,
+        group: &ResourceIdentity,
+        client_id: &str,
+    ) -> ProxyResult<Option<Vec<MessageQueueAssignment>>> {
+        self.executor
+            .query_assignment(topic.clone(), group.clone(), client_id.to_owned())
+            .await
+    }
+
+    async fn query_topic_message_type(&self, topic: &ResourceIdentity) -> ProxyResult<ProxyTopicMessageType> {
+        self.executor.query_topic_message_type(topic.clone()).await
+    }
+
+    async fn query_subscription_group(
+        &self,
+        topic: &ResourceIdentity,
+        group: &ResourceIdentity,
+    ) -> ProxyResult<Option<SubscriptionGroupMetadata>> {
+        self.executor
+            .query_subscription_group(topic.clone(), group.clone())
+            .await
+    }
+
+    async fn query_user(&self, username: &str) -> ProxyResult<Option<UserInfo>> {
+        self.executor.query_user(username.to_owned()).await
+    }
+
+    async fn query_acl(&self, subject: &str) -> ProxyResult<Option<AclInfo>> {
+        self.executor.query_acl(subject.to_owned()).await
+    }
+
+    async fn send_message(
+        &self,
+        context: &ProxyContext,
+        request: &SendMessageRequest,
+    ) -> ProxyResult<Vec<SendMessageResultEntry>> {
+        self.executor
+            .send_message(
+                request.clone(),
+                context.client_id().map(ToOwned::to_owned),
+                context.request_id().to_owned(),
+            )
+            .await
+    }
+
+    async fn recall_message(
+        &self,
+        context: &ProxyContext,
+        request: &RecallMessageRequest,
+    ) -> ProxyResult<RecallMessagePlan> {
+        self.executor
+            .recall_message(
+                request.clone(),
+                context.client_id().map(ToOwned::to_owned),
+                context.request_id().to_owned(),
+            )
+            .await
+    }
+
+    async fn receive_message(
+        &self,
+        context: &ProxyContext,
+        request: &ReceiveMessageRequest,
+    ) -> ProxyResult<ReceiveMessagePlan> {
+        self.executor.receive_message(request.clone(), context.deadline()).await
+    }
+
+    async fn pull_message(&self, context: &ProxyContext, request: &PullMessageRequest) -> ProxyResult<PullMessagePlan> {
+        self.executor.pull_message(request.clone(), context.deadline()).await
+    }
+
+    async fn ack_message(
+        &self,
+        context: &ProxyContext,
+        request: &AckMessageRequest,
+    ) -> ProxyResult<Vec<AckMessageResultEntry>> {
+        self.executor.ack_message(request.clone(), context.deadline()).await
+    }
+
+    async fn forward_message_to_dead_letter_queue(
+        &self,
+        context: &ProxyContext,
+        request: &ForwardMessageToDeadLetterQueueRequest,
+    ) -> ProxyResult<ForwardMessageToDeadLetterQueuePlan> {
+        self.executor
+            .forward_message_to_dead_letter_queue(request.clone(), context.deadline())
+            .await
+    }
+
+    async fn change_invisible_duration(
+        &self,
+        context: &ProxyContext,
+        request: &ChangeInvisibleDurationRequest,
+    ) -> ProxyResult<ChangeInvisibleDurationPlan> {
+        self.executor
+            .change_invisible_duration(request.clone(), context.deadline())
+            .await
+    }
+
+    async fn update_offset(
+        &self,
+        context: &ProxyContext,
+        request: &UpdateOffsetRequest,
+    ) -> ProxyResult<UpdateOffsetPlan> {
+        self.executor.update_offset(request.clone(), context.deadline()).await
+    }
+
+    async fn get_offset(&self, context: &ProxyContext, request: &GetOffsetRequest) -> ProxyResult<GetOffsetPlan> {
+        self.executor.get_offset(request.clone(), context.deadline()).await
+    }
+
+    async fn query_offset(&self, context: &ProxyContext, request: &QueryOffsetRequest) -> ProxyResult<QueryOffsetPlan> {
+        self.executor.query_offset(request.clone(), context.deadline()).await
+    }
+
+    async fn end_transaction(
+        &self,
+        context: &ProxyContext,
+        request: &EndTransactionRequest,
+    ) -> ProxyResult<EndTransactionPlan> {
+        self.executor
+            .end_transaction(
+                request.clone(),
+                context.client_id().map(ToOwned::to_owned),
+                context.request_id().to_owned(),
+                context.deadline(),
+            )
+            .await
+    }
+}
+
+#[path = "cluster_execution.rs"]
+mod cluster_execution;
+
+#[cfg(test)]
+use cluster_admission::ClusterExecutionLanes;
+#[cfg(test)]
+use cluster_admission::ClusterExecutionPolicy;
+#[cfg(test)]
+use cluster_execution::run_cluster_lane;
+use cluster_execution::ClusterCommand;
+use cluster_execution::ClusterTaskExecutor;
+
+#[derive(Clone)]
+struct CachedValue<T> {
+    value: T,
+    expires_at: Instant,
+}
+
+impl<T> CachedValue<T> {
+    fn new(value: T, ttl: Duration) -> Self {
+        Self {
+            value,
+            expires_at: Instant::now() + ttl,
+        }
+    }
+
+    fn is_expired(&self) -> bool {
+        Instant::now() >= self.expires_at
+    }
+}
+
+#[cfg(test)]
+mod cluster_test_runtime {
+    use super::*;
+
+    static TEST_RUNTIME_OWNER: std::sync::LazyLock<rocketmq_runtime::RuntimeOwner> = std::sync::LazyLock::new(|| {
+        rocketmq_runtime::RuntimeOwner::plan(rocketmq_runtime::RuntimeConfig {
+            thread_name: "rocketmq-proxy-cluster-test".to_string(),
+            ..Default::default()
+        })
+        .expect("runtime configuration is valid")
+        .build()
+        .expect("proxy cluster test runtime should start")
+    });
+
+    pub(super) fn client_runtime() -> Arc<ClientRuntime> {
+        ClientRuntime::try_new(
+            TEST_RUNTIME_OWNER.root_context().component("client"),
+            ClientRuntimeConfig::default(),
+            TelemetryHandle::noop(),
+        )
+        .expect("proxy cluster test client runtime should be valid")
+    }
+
+    pub(super) fn service_context(scope: &'static str) -> ChildServiceContext {
+        TEST_RUNTIME_OWNER.root_context().component(scope)
+    }
+}
+
+#[cfg(test)]
+use cluster_test_runtime::client_runtime as test_client_runtime;
+#[cfg(test)]
+use cluster_test_runtime::service_context as test_service_context;
+
+struct ClusterWorkerState {
+    client_runtime: Arc<ClientRuntime>,
+    domain_id: u64,
+    rpc_hook: Option<Arc<ClientRpcHook>>,
+    client: Option<Arc<dyn ClusterClientIo>>,
+    client_factory: Arc<dyn ClusterClientFactory>,
+    producer_factory: Arc<dyn ClusterProducerFactory>,
+    send_producers: HashMap<String, Box<dyn ClusterProducerIo>>,
+    route_cache: HashMap<String, CachedValue<TopicRouteData>>,
+    topic_message_type_cache: HashMap<String, CachedValue<ProxyTopicMessageType>>,
+    subscription_group_cache: HashMap<(String, String), CachedValue<Option<SubscriptionGroupMetadata>>>,
+    user_cache: HashMap<String, CachedValue<Option<UserInfo>>>,
+    acl_cache: HashMap<String, CachedValue<Option<AclInfo>>>,
+}
+
+impl ClusterWorkerState {
+    #[cfg(test)]
+    fn new() -> Self {
+        Self::with_rpc_hook(test_client_runtime(), 0, None)
+    }
+
+    #[cfg(test)]
+    fn with_rpc_hook(client_runtime: Arc<ClientRuntime>, domain_id: u64, rpc_hook: Option<Arc<ClientRpcHook>>) -> Self {
+        Self::with_factories(
+            client_runtime,
+            domain_id,
+            rpc_hook,
+            Arc::new(DefaultClusterClientFactory),
+            Arc::new(DefaultClusterProducerFactory),
+        )
+    }
+
+    fn with_factories(
+        client_runtime: Arc<ClientRuntime>,
+        domain_id: u64,
+        rpc_hook: Option<Arc<ClientRpcHook>>,
+        client_factory: Arc<dyn ClusterClientFactory>,
+        producer_factory: Arc<dyn ClusterProducerFactory>,
+    ) -> Self {
+        Self {
+            client_runtime,
+            domain_id,
+            rpc_hook,
+            client: None,
+            client_factory,
+            producer_factory,
+            send_producers: HashMap::new(),
+            route_cache: HashMap::new(),
+            topic_message_type_cache: HashMap::new(),
+            subscription_group_cache: HashMap::new(),
+            user_cache: HashMap::new(),
+            acl_cache: HashMap::new(),
+        }
+    }
+
+    #[cfg(test)]
+    fn with_test_runtime(client: Arc<dyn ClusterClientIo>, producer_factory: Arc<dyn ClusterProducerFactory>) -> Self {
+        Self::with_test_factories(
+            test_client_runtime(),
+            0,
+            None,
+            Arc::new(StaticClusterClientFactory { client }),
+            producer_factory,
+        )
+    }
+
+    #[cfg(test)]
+    fn with_test_factories(
+        client_runtime: Arc<ClientRuntime>,
+        domain_id: u64,
+        rpc_hook: Option<Arc<ClientRpcHook>>,
+        client_factory: Arc<dyn ClusterClientFactory>,
+        producer_factory: Arc<dyn ClusterProducerFactory>,
+    ) -> Self {
+        Self::with_factories(client_runtime, domain_id, rpc_hook, client_factory, producer_factory)
+    }
+
+    fn rpc_hook(&self) -> Option<Arc<ClientRpcHook>> {
+        self.rpc_hook.clone()
+    }
+
+    async fn client(&mut self, config: &ClusterConfig) -> ProxyResult<Arc<dyn ClusterClientIo>> {
+        if self.client.is_none() {
+            let client_config = cluster_client_config(config);
+            let client = self.client_factory.get_or_create(
+                &self.client_runtime,
+                self.domain_id,
+                client_config,
+                self.rpc_hook(),
+            )?;
+            self.client = Some(client.clone());
+            let start_result = self
+                .client
+                .as_ref()
+                .ok_or_else(|| ProxyError::Transport {
+                    message: "proxy cluster client ownership was lost during initialization".to_owned(),
+                })?
+                .start()
+                .await;
+            if let Err(error) = start_result {
+                if let Some(client) = self.client.as_ref() {
+                    client.shutdown().await;
+                }
+                self.client.take();
+                return Err(error.into());
+            }
+        }
+        self.client.as_ref().cloned().ok_or_else(|| ProxyError::Transport {
+            message: "proxy cluster client was not initialized".to_owned(),
+        })
+    }
+
+    fn cached_route(&mut self, topic: &str) -> Option<TopicRouteData> {
+        cached_value(&mut self.route_cache, &topic.to_owned())
+    }
+
+    fn cache_route(&mut self, topic: impl Into<String>, route: TopicRouteData, ttl: Duration) {
+        cache_value(&mut self.route_cache, topic.into(), route, ttl);
+    }
+
+    fn cached_topic_message_type(&mut self, topic: &str) -> Option<ProxyTopicMessageType> {
+        cached_value(&mut self.topic_message_type_cache, &topic.to_owned())
+    }
+
+    fn cache_topic_message_type(
+        &mut self,
+        topic: impl Into<String>,
+        message_type: ProxyTopicMessageType,
+        ttl: Duration,
+    ) {
+        cache_value(&mut self.topic_message_type_cache, topic.into(), message_type, ttl);
+    }
+
+    fn cached_subscription_group(&mut self, topic: &str, group: &str) -> Option<Option<SubscriptionGroupMetadata>> {
+        cached_value(
+            &mut self.subscription_group_cache,
+            &(topic.to_owned(), group.to_owned()),
+        )
+    }
+
+    fn cache_subscription_group(
+        &mut self,
+        topic: impl Into<String>,
+        group: impl Into<String>,
+        metadata: Option<SubscriptionGroupMetadata>,
+        ttl: Duration,
+    ) {
+        cache_value(
+            &mut self.subscription_group_cache,
+            (topic.into(), group.into()),
+            metadata,
+            ttl,
+        );
+    }
+
+    fn cached_user(&mut self, username: &str) -> Option<Option<UserInfo>> {
+        cached_value(&mut self.user_cache, &username.to_owned())
+    }
+
+    fn cache_user(&mut self, username: impl Into<String>, user: Option<UserInfo>, ttl: Duration) {
+        cache_value(&mut self.user_cache, username.into(), user, ttl);
+    }
+
+    fn cached_acl(&mut self, subject: &str) -> Option<Option<AclInfo>> {
+        cached_value(&mut self.acl_cache, &subject.to_owned())
+    }
+
+    fn cache_acl(&mut self, subject: impl Into<String>, acl: Option<AclInfo>, ttl: Duration) {
+        cache_value(&mut self.acl_cache, subject.into(), acl, ttl);
+    }
+}
+
+fn cluster_client_config(config: &ClusterConfig) -> RocketmqClientConfig {
+    let mut client_config = RocketmqClientConfig::default();
+    client_config.set_instance_name(CheetahString::from(config.instance_name.as_str()));
+    client_config.set_mq_client_api_timeout(config.mq_client_api_timeout_ms);
+    if let Some(namesrv_addr) = config.namesrv_addr.as_deref() {
+        client_config.set_namesrv_addr(CheetahString::from(namesrv_addr));
+    }
+    client_config
+}
+
+async fn handle_cluster_command(config: &ClusterConfig, state: &mut ClusterWorkerState, command: ClusterCommand) {
+    match command {
+        ClusterCommand::ReadinessCheck { reply } => {
+            let _ = reply.send(cluster_readiness_inner(config, state).await);
+        }
+        ClusterCommand::SyncLiteSubscription {
+            client_id,
+            request,
+            reply,
+        } => {
+            let _ = reply.send(sync_lite_subscription_inner(config, state, client_id, request).await);
+        }
+        ClusterCommand::QueryRoute { topic, reply } => {
+            let _ = reply.send(query_route_inner(config, state, topic).await);
+        }
+        ClusterCommand::QueryAssignment {
+            topic,
+            group,
+            client_id,
+            reply,
+        } => {
+            let _ = reply.send(query_assignment_inner(config, state, topic, group, client_id).await);
+        }
+        ClusterCommand::QueryTopicMessageType { topic, reply } => {
+            let _ = reply.send(query_topic_message_type_inner(config, state, topic).await);
+        }
+        ClusterCommand::QuerySubscriptionGroup { topic, group, reply } => {
+            let _ = reply.send(query_subscription_group_inner(config, state, topic, group).await);
+        }
+        ClusterCommand::QueryUser { username, reply } => {
+            let _ = reply.send(query_user_inner(config, state, username).await);
+        }
+        ClusterCommand::QueryAcl { subject, reply } => {
+            let _ = reply.send(query_acl_inner(config, state, subject).await);
+        }
+        ClusterCommand::SendMessage {
+            request,
+            client_id,
+            request_id,
+            reply,
+        } => {
+            let _ = reply.send(send_message_inner(config, state, request, client_id, request_id).await);
+        }
+        ClusterCommand::RecallMessage {
+            request,
+            client_id,
+            request_id,
+            reply,
+        } => {
+            let _ = reply.send(recall_message_inner(config, state, request, client_id, request_id).await);
+        }
+        ClusterCommand::ReceiveMessage {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(receive_message_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::PullMessage {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(pull_message_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::AckMessage {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(ack_message_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::ForwardMessageToDeadLetterQueue {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(forward_message_to_dead_letter_queue_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::ChangeInvisibleDuration {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(change_invisible_duration_request_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::UpdateOffset {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(update_offset_request_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::GetOffset {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(get_offset_request_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::QueryOffset {
+            request,
+            deadline,
+            reply,
+        } => {
+            let _ = reply.send(query_offset_request_inner(config, state, request, deadline).await);
+        }
+        ClusterCommand::EndTransaction {
+            request,
+            client_id,
+            request_id,
+            deadline,
+            reply,
+        } => {
+            let _ = reply
+                .send(end_transaction_request_inner(config, state, request, client_id, request_id, deadline).await);
+        }
+        ClusterCommand::LockBatchMq { request, reply } => {
+            let _ = reply.send(lock_batch_mq_inner(config, state, request).await);
+        }
+        ClusterCommand::UnlockBatchMq { request, reply } => {
+            let _ = reply.send(unlock_batch_mq_inner(config, state, request).await);
+        }
+        ClusterCommand::ForwardRemoting {
+            broker_name,
+            request,
+            timeout_millis,
+            reply,
+        } => {
+            let _ = reply.send(forward_remoting_inner(config, state, broker_name, request, timeout_millis).await);
+        }
+    }
+}
+
+fn proxy_client_result<T>(result: Result<T, CanonicalError>) -> ProxyResult<T> {
+    result.map_err(ProxyError::from_client_error)
+}
+
+async fn forward_remoting_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    broker_name: String,
+    request: RemotingCommand,
+    timeout_millis: u64,
+) -> ProxyResult<RemotingCommand> {
+    let client = state.client(config).await?;
+    let broker_name = CheetahString::from(broker_name);
+    let broker_addr = client
+        .find_subscribe_broker_addr(&broker_name, MASTER_ID, true)
+        .await
+        .ok_or_else(|| canonical::broker_not_found(&broker_name))?;
+    proxy_client_result(
+        client
+            .invoke_remoting(&broker_addr, request, timeout_millis.max(1))
+            .await,
+    )
+}
+
+async fn cluster_readiness_inner(config: &ClusterConfig, state: &mut ClusterWorkerState) -> ProxyResult<()> {
+    // Both reads share one deadline and bypass the route cache. This never sends a message.
+    let deadline = tokio::time::Instant::now()
+        .checked_add(Duration::from_millis(config.mq_client_api_timeout_ms.max(1)))
+        .ok_or_else(|| {
+            canonical::configuration_invalid("cluster.mqClientApiTimeoutMs", "timeout exceeds clock range")
+        })?;
+    tokio::time::timeout_at(deadline, cluster_readiness_reads(config, state, deadline))
+        .await
+        .map_err(|_| ProxyError::Transport {
+            message: "Proxy Cluster readiness timed out".into(),
+        })?
+}
+
+async fn cluster_readiness_reads(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    deadline: tokio::time::Instant,
+) -> ProxyResult<()> {
+    use rocketmq_protocol::code::request_code::RequestCode;
+    use rocketmq_protocol::code::response_code::ResponseCode;
+    use rocketmq_protocol::protocol::body::kv_table::KVTable;
+    use rocketmq_protocol::protocol::header::empty_header::EmptyHeader;
+    use rocketmq_protocol::protocol::RemotingDeserializable;
+
+    let client = state.client(config).await?;
+    let cluster_info = client.broker_cluster_info(config.mq_client_api_timeout_ms).await?;
+    let broker_addr = select_auth_metadata_broker_addr(&cluster_info, &config.broker_cluster_name)
+        .ok_or_else(|| canonical::broker_not_found(&config.broker_cluster_name))?;
+    let remaining = deadline
+        .saturating_duration_since(tokio::time::Instant::now())
+        .as_millis() as u64;
+    if remaining == 0 {
+        return Err(ProxyError::Transport {
+            message: "Proxy Cluster readiness timed out".into(),
+        });
+    }
+    let request = RemotingCommand::create_request_command(RequestCode::GetBrokerRuntimeInfo, EmptyHeader {});
+    let response = proxy_client_result(client.invoke_remoting(&broker_addr, request, remaining).await)?;
+    if response.code() != ResponseCode::Success.to_i32() {
+        return Err(canonical::broker_response(
+            "proxy.readiness",
+            response.code(),
+            Some(broker_addr.as_str()),
+            "Broker metadata probe was rejected",
+        )
+        .into());
+    }
+    let body = response
+        .get_body()
+        .ok_or_else(|| CanonicalError::new(&rocketmq_error::PROTOCOL_BODY_INVALID))?;
+    KVTable::decode(body.as_ref())
+        .map_err(|error| CanonicalError::caused_by(&rocketmq_error::PROTOCOL_BODY_INVALID, error))?;
+    Ok(())
+}
+
+async fn lock_batch_mq_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: LockBatchRequestBody,
+) -> ProxyResult<LockBatchResponseBody> {
+    let mut response = LockBatchResponseBody::default();
+    if request.mq_set.is_empty() {
+        return Ok(response);
+    }
+    let (broker_name, topic_name) = single_broker_and_topic(&request.mq_set)?;
+    let client = state.client(config).await?;
+    let broker_addr = resolve_remoting_broker_addr(
+        client.as_ref(),
+        broker_name.as_str(),
+        topic_name.as_str(),
+        request.only_this_broker,
+    )
+    .await?;
+    response.lock_ok_mq_set = client
+        .lock_batch_mq(broker_addr.as_str(), request, config.mq_client_api_timeout_ms)
+        .await?;
+    Ok(response)
+}
+
+async fn unlock_batch_mq_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: UnlockBatchRequestBody,
+) -> ProxyResult<()> {
+    if request.mq_set.is_empty() {
+        return Ok(());
+    }
+    let (broker_name, topic_name) = single_broker_and_topic(&request.mq_set)?;
+    let client = state.client(config).await?;
+    let broker_addr = resolve_remoting_broker_addr(
+        client.as_ref(),
+        broker_name.as_str(),
+        topic_name.as_str(),
+        request.only_this_broker,
+    )
+    .await?;
+    client
+        .unlock_batch_mq(&broker_addr, request, config.mq_client_api_timeout_ms)
+        .await?;
+    Ok(())
+}
+
+fn single_broker_and_topic(
+    mq_set: &std::collections::HashSet<MessageQueue>,
+) -> ProxyResult<(CheetahString, CheetahString)> {
+    let mut broker_name: Option<CheetahString> = None;
+    let mut topic_name: Option<CheetahString> = None;
+    for queue in mq_set {
+        if broker_name
+            .as_deref()
+            .is_some_and(|existing| existing != queue.broker_name())
+        {
+            return Err(ProxyError::invalid_metadata(
+                "lock/unlock batch request must target a single broker",
+            ));
+        }
+        if topic_name.as_deref().is_some_and(|existing| existing != queue.topic()) {
+            return Err(ProxyError::invalid_metadata(
+                "lock/unlock batch request must target a single topic",
+            ));
+        }
+        broker_name.get_or_insert_with(|| CheetahString::from(queue.broker_name()));
+        topic_name.get_or_insert_with(|| CheetahString::from(queue.topic()));
+    }
+    Ok((
+        broker_name.ok_or_else(|| ProxyError::invalid_metadata("message queue set must not be empty"))?,
+        topic_name.ok_or_else(|| ProxyError::invalid_metadata("message queue set must not be empty"))?,
+    ))
+}
+
+async fn resolve_remoting_broker_addr(
+    client: &dyn ClusterClientIo,
+    broker_name: &str,
+    topic: &str,
+    only_this_broker: bool,
+) -> ProxyResult<CheetahString> {
+    let broker_name = CheetahString::from(broker_name);
+    let mut result = client
+        .find_subscribe_broker_addr(&broker_name, 0, only_this_broker)
+        .await;
+    if result.is_none() {
+        client.refresh_topic_route(&CheetahString::from(topic)).await;
+        result = client
+            .find_subscribe_broker_addr(&broker_name, 0, only_this_broker)
+            .await;
+    }
+    result
+        .ok_or_else(|| canonical::broker_not_found(&broker_name))
+        .map_err(Into::into)
+}
+
+async fn query_route_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    topic: ResourceIdentity,
+) -> ProxyResult<TopicRouteData> {
+    let topic_name = topic.to_string();
+    let client = state.client(config).await?;
+    fetch_topic_route(client.as_ref(), config, state, topic_name.as_str()).await
+}
+
+async fn query_assignment_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    topic: ResourceIdentity,
+    group: ResourceIdentity,
+    client_id: String,
+) -> ProxyResult<Option<Vec<MessageQueueAssignment>>> {
+    let topic_name = topic.to_string();
+    let group_name = group.to_string();
+    let client = state.client(config).await?;
+    let route = fetch_topic_route(client.as_ref(), config, state, topic_name.as_str()).await?;
+    let broker_addr =
+        select_master_broker_addr(&route).ok_or_else(|| canonical::broker_not_found(topic_name.clone()))?;
+    client
+        .query_assignment(
+            &broker_addr,
+            CheetahString::from(topic_name),
+            CheetahString::from(group_name),
+            CheetahString::from(client_id),
+            CheetahString::from(config.query_assignment_strategy_name.as_str()),
+            MessageModel::Clustering,
+            config.mq_client_api_timeout_ms,
+        )
+        .await
+        .map_err(Into::into)
+}
+
+async fn query_topic_message_type_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    topic: ResourceIdentity,
+) -> ProxyResult<ProxyTopicMessageType> {
+    let topic_name = topic.to_string();
+    if let Some(message_type) = state.cached_topic_message_type(topic_name.as_str()) {
+        return Ok(message_type);
+    }
+
+    let client = state.client(config).await?;
+    let route = fetch_topic_route(client.as_ref(), config, state, topic_name.as_str()).await?;
+    let broker_addr =
+        select_master_broker_addr(&route).ok_or_else(|| canonical::broker_not_found(topic_name.clone()))?;
+    let topic_config = client
+        .topic_config(
+            &broker_addr,
+            CheetahString::from(topic_name.as_str()),
+            config.mq_client_api_timeout_ms,
+        )
+        .await?;
+
+    let message_type = convert_topic_message_type(topic_config.get_topic_message_type());
+    state.cache_topic_message_type(topic_name, message_type, config.metadata_cache_ttl());
+    Ok(message_type)
+}
+
+async fn query_subscription_group_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    topic: ResourceIdentity,
+    group: ResourceIdentity,
+) -> ProxyResult<Option<SubscriptionGroupMetadata>> {
+    let topic_name = topic.to_string();
+    let group_name = group.to_string();
+    if let Some(metadata) = state.cached_subscription_group(topic_name.as_str(), group_name.as_str()) {
+        return Ok(metadata);
+    }
+
+    let client = state.client(config).await?;
+    let route = fetch_topic_route(client.as_ref(), config, state, topic_name.as_str()).await?;
+    let Some(broker_addr) = select_master_broker_addr(&route) else {
+        state.cache_subscription_group(topic_name, group_name, None, config.metadata_cache_ttl());
+        return Ok(None);
+    };
+    let group_config = client
+        .subscription_group_config(
+            &broker_addr,
+            CheetahString::from(group_name.as_str()),
+            config.mq_client_api_timeout_ms,
+        )
+        .await?;
+
+    let metadata = Some(convert_subscription_group(group_config));
+    state.cache_subscription_group(topic_name, group_name, metadata.clone(), config.metadata_cache_ttl());
+    Ok(metadata)
+}
+
+async fn query_user_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    username: String,
+) -> ProxyResult<Option<UserInfo>> {
+    if let Some(user) = state.cached_user(username.as_str()) {
+        return Ok(user);
+    }
+
+    let client = state.client(config).await?;
+    let broker_addr = fetch_auth_metadata_broker_addr(client.as_ref(), config).await?;
+    let user = client
+        .user(
+            broker_addr,
+            CheetahString::from(username.as_str()),
+            config.mq_client_api_timeout_ms,
+        )
+        .await?;
+
+    state.cache_user(username, user.clone(), config.metadata_cache_ttl());
+    Ok(user)
+}
+
+async fn query_acl_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    subject: String,
+) -> ProxyResult<Option<AclInfo>> {
+    if let Some(acl) = state.cached_acl(subject.as_str()) {
+        return Ok(acl);
+    }
+
+    let client = state.client(config).await?;
+    let broker_addr = fetch_auth_metadata_broker_addr(client.as_ref(), config).await?;
+    let acl = client
+        .acl(
+            broker_addr,
+            CheetahString::from(subject.as_str()),
+            config.mq_client_api_timeout_ms,
+        )
+        .await?;
+
+    state.cache_acl(subject, acl.clone(), config.metadata_cache_ttl());
+    Ok(acl)
+}
+
+async fn send_message_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: SendMessageRequest,
+    client_id: Option<String>,
+    request_id: String,
+) -> ProxyResult<Vec<SendMessageResultEntry>> {
+    let timeout = effective_send_timeout_ms(config, request.timeout);
+    let producer_group = build_proxy_producer_group(config, client_id.as_deref(), request_id.as_str());
+    let topics = collect_send_topics(&request);
+    let producer = match acquire_send_producer(config, state, producer_group.as_str(), topics, timeout).await {
+        Ok(producer) => producer,
+        Err(error) => {
+            return Ok(request
+                .messages
+                .iter()
+                .map(|_| failure_send_result_entry(&error))
+                .collect());
+        }
+    };
+    let entries = request.messages;
+    if compatible_batch_entries(&entries) {
+        return Ok(send_compatible_batch(producer, entries, timeout).await);
+    }
+    let mut results = Vec::with_capacity(entries.len());
+    for entry in entries {
+        results.push(send_message_entry(producer, entry, timeout).await);
+    }
+    Ok(results)
+}
+
+async fn sync_lite_subscription_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    client_id: String,
+    request: LiteSubscriptionSyncRequest,
+) -> ProxyResult<()> {
+    let topic = request.topic.to_string();
+    let client = state.client(config).await?;
+    let route = fetch_topic_route(client.as_ref(), config, state, topic.as_str()).await?;
+    let broker_addrs = master_broker_addrs(&route);
+    if broker_addrs.is_empty() {
+        return Err(canonical::broker_not_found(topic).into());
+    }
+    for broker_addr in broker_addrs {
+        client
+            .sync_lite_subscription(
+                &broker_addr,
+                request.broker_dto(client_id.as_str())?,
+                config.mq_client_api_timeout_ms,
+            )
+            .await?;
+    }
+    Ok(())
+}
+
+fn compatible_batch_entries(entries: &[SendMessageEntry]) -> bool {
+    let Some(first) = entries.first() else {
+        return false;
+    };
+    entries.len() > 1
+        && entries.iter().all(|entry| {
+            entry.topic == first.topic
+                && entry.queue_id == first.queue_id
+                && !entry.message.properties().keys().any(|key| {
+                    matches!(
+                        key.as_str(),
+                        MessageConst::PROPERTY_SHARDING_KEY
+                            | MessageConst::PROPERTY_TIMER_DELIVER_MS
+                            | MessageConst::PROPERTY_TRANSACTION_PREPARED
+                            | MessageConst::PROPERTY_LITE_TOPIC
+                            | MessageConst::PROPERTY_PRIORITY
+                    )
+                })
+        })
+}
+
+async fn send_compatible_batch(
+    producer: &mut dyn ClusterProducerIo,
+    entries: Vec<SendMessageEntry>,
+    timeout: u64,
+) -> Vec<SendMessageResultEntry> {
+    let queue = match resolve_target_queue(producer, &entries[0]).await {
+        Ok(queue) => queue,
+        Err(error) => return entries.iter().map(|_| failure_send_result_entry(&error)).collect(),
+    };
+    let messages = entries
+        .iter()
+        .map(|entry| message_from_core(&entry.message))
+        .collect::<Vec<_>>();
+    let result = match queue {
+        Some(queue) => producer.send_batch_to_queue(messages, queue, timeout).await,
+        None => producer.send_batch(messages, timeout).await,
+    };
+    match result {
+        Ok(result) => split_batch_send_result(result, &entries),
+        Err(error) => {
+            let error = ProxyError::from_client_error(error);
+            entries.iter().map(|_| failure_send_result_entry(&error)).collect()
+        }
+    }
+}
+
+fn split_batch_send_result(result: SendResult, entries: &[SendMessageEntry]) -> Vec<SendMessageResultEntry> {
+    let broker_ids = result
+        .msg_id
+        .as_ref()
+        .map(|value| value.split_char(',').map(str::to_owned).collect::<Vec<_>>())
+        .filter(|ids| ids.len() == entries.len());
+    entries
+        .iter()
+        .enumerate()
+        .map(|(index, entry)| {
+            let mut item = result.clone();
+            item.queue_offset = result.queue_offset.saturating_add(index as u64);
+            item.msg_id = Some(CheetahString::from(
+                broker_ids
+                    .as_ref()
+                    .and_then(|ids| ids.get(index))
+                    .map(String::as_str)
+                    .unwrap_or(entry.client_message_id.as_str()),
+            ));
+            SendMessageResultEntry {
+                status: ProxyStatusMapper::from_send_result_payload(&item),
+                send_result: Some(item),
+            }
+        })
+        .collect()
+}
+
+async fn recall_message_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: RecallMessageRequest,
+    client_id: Option<String>,
+    request_id: String,
+) -> ProxyResult<RecallMessagePlan> {
+    let producer_group = build_proxy_producer_group(config, client_id.as_deref(), request_id.as_str());
+    let topic = CheetahString::from(request.topic.to_string());
+    let producer = acquire_send_producer(
+        config,
+        state,
+        producer_group.as_str(),
+        vec![topic.clone()],
+        config.send_message_timeout_ms.max(1),
+    )
+    .await?;
+    let message_id = producer
+        .recall_message(topic, CheetahString::from(request.recall_handle))
+        .await
+        .map_err(ProxyError::from_client_error)?;
+
+    Ok(RecallMessagePlan {
+        status: ProxyStatusMapper::ok_payload(),
+        message_id,
+    })
+}
+
+async fn acquire_send_producer<'a>(
+    config: &ClusterConfig,
+    state: &'a mut ClusterWorkerState,
+    producer_group: &str,
+    topics: Vec<CheetahString>,
+    timeout_ms: u64,
+) -> Result<&'a mut dyn ClusterProducerIo, ProxyError> {
+    if !state.send_producers.contains_key(producer_group) {
+        // Every producer is registered with the worker-owned Client instance so
+        // shutdown has one factory owner and one manager entry to remove.
+        let _ = state.client(config).await?;
+        let mut producer = state.producer_factory.create(
+            state.client_runtime.clone(),
+            state.domain_id,
+            config,
+            producer_group,
+            timeout_ms,
+            state.rpc_hook(),
+        );
+        producer.set_topics(topics.clone());
+        state.send_producers.insert(producer_group.to_owned(), producer);
+        let start_result = state
+            .send_producers
+            .get_mut(producer_group)
+            .ok_or_else(|| ProxyError::Transport {
+                message: "send producer was not retained before initialization".to_owned(),
+            })?
+            .start()
+            .await;
+        if let Err(error) = start_result {
+            if let Some(producer) = state.send_producers.get_mut(producer_group) {
+                producer.shutdown().await;
+            }
+            state.send_producers.remove(producer_group);
+            return Err(ProxyError::from_client_error(error));
+        }
+    }
+
+    let producer = state
+        .send_producers
+        .get_mut(producer_group)
+        .ok_or_else(|| ProxyError::Transport {
+            message: "send producer was not retained after initialization".to_owned(),
+        })?;
+    refresh_send_producer(producer.as_mut(), topics, timeout_ms);
+    Ok(producer.as_mut())
+}
+
+fn refresh_send_producer(producer: &mut dyn ClusterProducerIo, topics: Vec<CheetahString>, timeout_ms: u64) {
+    producer.set_topics(merge_topics(producer.topics(), topics));
+    producer.set_send_timeout(timeout_ms.clamp(1, u64::from(u32::MAX)) as u32);
+}
+
+fn merge_topics(existing: Vec<CheetahString>, incoming: Vec<CheetahString>) -> Vec<CheetahString> {
+    existing
+        .into_iter()
+        .chain(incoming)
+        .map(|topic| topic.to_string())
+        .collect::<BTreeSet<_>>()
+        .into_iter()
+        .map(CheetahString::from)
+        .collect()
+}
+
+fn collect_send_topics(request: &SendMessageRequest) -> Vec<CheetahString> {
+    request
+        .messages
+        .iter()
+        .map(|message| message.topic.to_string())
+        .collect::<BTreeSet<_>>()
+        .into_iter()
+        .map(CheetahString::from)
+        .collect()
+}
+
+async fn receive_message_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: ReceiveMessageRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<ReceiveMessagePlan> {
+    let client = state.client(config).await?;
+    let broker_target = resolve_broker_target(
+        client.as_ref(),
+        config,
+        state,
+        &request.target.topic,
+        request.target.queue_id,
+        request.target.broker_name.as_deref(),
+        request.target.broker_addr.as_deref(),
+    )
+    .await?;
+    let timeout_ms = effective_pop_timeout_ms(config, deadline, request.long_polling_timeout);
+    let request_header = build_pop_request_header(&broker_target.broker_name, &request);
+    let pop_result = client
+        .pop_message(
+            &broker_target.broker_name,
+            &broker_target.broker_addr,
+            request_header,
+            timeout_ms,
+        )
+        .await?;
+
+    Ok(build_receive_plan(pop_result))
+}
+
+async fn pull_message_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: PullMessageRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<PullMessagePlan> {
+    let client = state.client(config).await?;
+    let broker_target = resolve_broker_target(
+        client.as_ref(),
+        config,
+        state,
+        &request.target.topic,
+        request.target.queue_id,
+        request.target.broker_name.as_deref(),
+        request.target.broker_addr.as_deref(),
+    )
+    .await?;
+    let timeout_ms = effective_request_timeout_ms(
+        config
+            .mq_client_api_timeout_ms
+            .max(request.long_polling_timeout.as_millis().clamp(0, u128::from(u64::MAX)) as u64 + 500),
+        deadline,
+    );
+    let request_header = build_pull_request_header(&broker_target.broker_name, &request);
+    let pull_result = client
+        .pull_outcome_from_broker(broker_target.broker_addr.as_str(), request_header, timeout_ms)
+        .await?;
+    Ok(build_pull_plan(pull_result))
+}
+
+async fn ack_message_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: AckMessageRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<Vec<AckMessageResultEntry>> {
+    let timeout_ms = effective_request_timeout_ms(config.mq_client_api_timeout_ms, deadline);
+    let client = state.client(config).await?;
+    let group_name = request.group.to_string();
+    let topics = request
+        .entries
+        .iter()
+        .map(|entry| entry.lite_topic.clone().unwrap_or_else(|| request.topic.to_string()))
+        .collect::<Vec<_>>();
+    let batch_inputs = request
+        .entries
+        .iter()
+        .zip(&topics)
+        .enumerate()
+        .filter(|(_, (entry, _))| entry.lite_topic.is_none())
+        .map(|(entry_index, (entry, topic))| BatchAckInput {
+            entry_index,
+            consumer_group: group_name.as_str(),
+            topic,
+            receipt_handle: entry.receipt_handle.as_str(),
+        })
+        .collect::<Vec<_>>();
+    let built = build_batch_ack_requests(&batch_inputs);
+    let mut statuses = std::iter::repeat_with(|| None)
+        .take(request.entries.len())
+        .collect::<Vec<Option<ProxyPayloadStatus>>>();
+    let mut fallback_indexes = request
+        .entries
+        .iter()
+        .enumerate()
+        .filter_map(|(index, entry)| entry.lite_topic.is_some().then_some(index))
+        .chain(built.failures.into_iter().map(|failure| failure.entry_index))
+        .collect::<Vec<_>>();
+
+    for batch_request in built.requests {
+        let Some(first_ack) = batch_request.body.acks.first() else {
+            continue;
+        };
+        let topic = first_ack.topic.clone();
+        let ack_consumer_group = first_ack.consumer_group.clone();
+        let retry = first_ack.retry.clone();
+        let queue_id = first_ack.queue_id;
+        let batch_result = async {
+            let route_topic = CheetahString::from_string(ExtraInfoUtil::get_real_topic_with_retry(
+                &topic,
+                &ack_consumer_group,
+                &retry,
+            )?);
+            let actual_broker_name =
+                resolve_subscription_broker_name(client.as_ref(), &route_topic, &batch_request.broker_name, queue_id)
+                    .await;
+            let broker_addr = find_subscribe_broker_addr(client.as_ref(), &actual_broker_name, &route_topic)
+                .await
+                .ok_or_else(|| canonical::broker_not_found(&actual_broker_name))?;
+            client
+                .batch_ack_message(&broker_addr, batch_request.body, timeout_ms)
+                .await
+        }
+        .await;
+
+        match batch_result {
+            Ok(ack_result) => {
+                let status = ack_status_to_payload(&ack_result);
+                for index in batch_request.entry_indexes {
+                    statuses[index] = Some(status.clone());
+                }
+            }
+            Err(error) => {
+                tracing::warn!(
+                    broker = %batch_request.broker_name,
+                    entries = batch_request.entry_indexes.len(),
+                    error = %error,
+                    "cluster BatchAck failed; falling back to single ACK"
+                );
+                fallback_indexes.extend(batch_request.entry_indexes);
+            }
+        }
+    }
+
+    fallback_indexes.sort_unstable();
+    fallback_indexes.dedup();
+    for index in fallback_indexes {
+        statuses[index] = Some(
+            ack_message_entry_inner(
+                client.as_ref(),
+                &request.group,
+                &request.topic,
+                &request.entries[index],
+                timeout_ms,
+            )
+            .await
+            .unwrap_or_else(|error| ProxyStatusMapper::from_error_payload(&error)),
+        );
+    }
+
+    Ok(request
+        .entries
+        .iter()
+        .enumerate()
+        .map(|(index, entry)| AckMessageResultEntry {
+            message_id: entry.message_id.clone(),
+            receipt_handle: entry.receipt_handle.clone(),
+            status: statuses[index].take().unwrap_or_else(|| {
+                ProxyStatusMapper::from_payload_code(v2::Code::InternalError, "ACK result was not produced")
+            }),
+        })
+        .collect())
+}
+
+async fn forward_message_to_dead_letter_queue_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: ForwardMessageToDeadLetterQueueRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<ForwardMessageToDeadLetterQueuePlan> {
+    let timeout_ms = effective_request_timeout_ms(config.mq_client_api_timeout_ms, deadline);
+    let client = state.client(config).await?;
+    let topic_name = request.lite_topic.clone().unwrap_or_else(|| request.topic.to_string());
+    let group_name = request.group.to_string();
+    let parsed = parse_receipt_handle(
+        request.receipt_handle.as_str(),
+        topic_name.as_str(),
+        group_name.as_str(),
+    )?;
+    let actual_broker_name =
+        resolve_subscription_broker_name(client.as_ref(), &parsed.topic, &parsed.broker_name, parsed.queue_id).await;
+    let broker_addr = find_subscribe_broker_addr(client.as_ref(), &actual_broker_name, &parsed.topic)
+        .await
+        .ok_or_else(|| canonical::broker_not_found(&actual_broker_name))?;
+    let message = build_dead_letter_message(&request, &parsed, &actual_broker_name)?;
+
+    client
+        .consumer_send_message_back(
+            broker_addr.as_str(),
+            Some(actual_broker_name.as_str()),
+            &message,
+            group_name.as_str(),
+            -1,
+            timeout_ms,
+            request.max_delivery_attempts,
+        )
+        .await?;
+
+    Ok(ForwardMessageToDeadLetterQueuePlan {
+        status: ProxyStatusMapper::ok_payload(),
+    })
+}
+
+async fn change_invisible_duration_request_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: ChangeInvisibleDurationRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<ChangeInvisibleDurationPlan> {
+    let timeout_ms = effective_request_timeout_ms(config.mq_client_api_timeout_ms, deadline);
+    let client = state.client(config).await?;
+    change_invisible_duration_inner(client.as_ref(), config, &request, timeout_ms).await
+}
+
+async fn update_offset_request_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: UpdateOffsetRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<UpdateOffsetPlan> {
+    let timeout_ms = effective_request_timeout_ms(config.mq_client_api_timeout_ms, deadline);
+    let client = state.client(config).await?;
+    let broker_target = resolve_broker_target(
+        client.as_ref(),
+        config,
+        state,
+        &request.target.topic,
+        request.target.queue_id,
+        request.target.broker_name.as_deref(),
+        request.target.broker_addr.as_deref(),
+    )
+    .await?;
+    let request_header = build_update_offset_request_header(&broker_target.broker_name, &request);
+    client
+        .update_consumer_offset(&broker_target.broker_addr, request_header, timeout_ms)
+        .await?;
+
+    Ok(UpdateOffsetPlan {
+        status: ProxyStatusMapper::ok_payload(),
+    })
+}
+
+async fn get_offset_request_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: GetOffsetRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<GetOffsetPlan> {
+    let timeout_ms = effective_request_timeout_ms(config.mq_client_api_timeout_ms, deadline);
+    let client = state.client(config).await?;
+    let broker_target = resolve_broker_target(
+        client.as_ref(),
+        config,
+        state,
+        &request.target.topic,
+        request.target.queue_id,
+        request.target.broker_name.as_deref(),
+        request.target.broker_addr.as_deref(),
+    )
+    .await?;
+    let request_header = build_query_consumer_offset_request_header(&broker_target.broker_name, &request);
+    let offset = client
+        .query_consumer_offset(broker_target.broker_addr.as_str(), request_header, timeout_ms)
+        .await?;
+
+    Ok(GetOffsetPlan {
+        status: ProxyStatusMapper::ok_payload(),
+        offset,
+    })
+}
+
+async fn query_offset_request_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: QueryOffsetRequest,
+    deadline: Option<Duration>,
+) -> ProxyResult<QueryOffsetPlan> {
+    let timeout_ms = effective_request_timeout_ms(config.mq_client_api_timeout_ms, deadline);
+    let client = state.client(config).await?;
+    let broker_target = resolve_broker_target(
+        client.as_ref(),
+        config,
+        state,
+        &request.target.topic,
+        request.target.queue_id,
+        request.target.broker_name.as_deref(),
+        request.target.broker_addr.as_deref(),
+    )
+    .await?;
+    let message_queue = build_message_queue(&request.target, &broker_target.broker_name);
+    let offset = match request.policy {
+        QueryOffsetPolicy::Beginning => {
+            client
+                .min_offset(broker_target.broker_addr.as_str(), &message_queue, timeout_ms)
+                .await?
+        }
+        QueryOffsetPolicy::End => {
+            client
+                .max_offset(broker_target.broker_addr.as_str(), &message_queue, timeout_ms)
+                .await?
+        }
+        QueryOffsetPolicy::Timestamp => {
+            client
+                .search_offset(
+                    broker_target.broker_addr.as_str(),
+                    &message_queue,
+                    request.timestamp_ms.ok_or_else(|| {
+                        ProxyError::illegal_offset("timestamp policy requires timestamp to be present")
+                    })?,
+                    BoundaryType::Lower,
+                    timeout_ms,
+                )
+                .await?
+        }
+    };
+
+    Ok(QueryOffsetPlan {
+        status: ProxyStatusMapper::ok_payload(),
+        offset,
+    })
+}
+
+async fn end_transaction_request_inner(
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: EndTransactionRequest,
+    client_id: Option<String>,
+    request_id: String,
+    deadline: Option<Duration>,
+) -> ProxyResult<EndTransactionPlan> {
+    let timeout_ms = effective_request_timeout_ms(config.mq_client_api_timeout_ms, deadline);
+    let client = state.client(config).await?;
+    end_transaction_inner(
+        client.as_ref(),
+        config,
+        state,
+        &request,
+        client_id.as_deref(),
+        request_id.as_str(),
+        timeout_ms,
+    )
+    .await
+}
+
+async fn fetch_topic_route(
+    client: &dyn ClusterClientIo,
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    topic_name: &str,
+) -> ProxyResult<TopicRouteData> {
+    if let Some(route) = state.cached_route(topic_name) {
+        return Ok(route);
+    }
+
+    let route = proxy_client_result(client.topic_route(topic_name, config.mq_client_api_timeout_ms).await)?
+        .ok_or_else(|| canonical::route_not_found(topic_name))?;
+    state.cache_route(topic_name.to_owned(), route.clone(), config.route_cache_ttl());
+    Ok(route)
+}
+
+async fn fetch_auth_metadata_broker_addr(
+    client: &dyn ClusterClientIo,
+    config: &ClusterConfig,
+) -> ProxyResult<CheetahString> {
+    let cluster_info = client.broker_cluster_info(config.mq_client_api_timeout_ms).await?;
+    select_auth_metadata_broker_addr(&cluster_info, config.broker_cluster_name.as_str())
+        .ok_or_else(|| canonical::broker_not_found(config.broker_cluster_name.clone()).into())
+}
+
+fn select_auth_metadata_broker_addr(cluster_info: &ClusterInfo, cluster_name: &str) -> Option<CheetahString> {
+    let broker_addr_table = cluster_info.broker_addr_table.as_ref()?;
+    let broker_names = cluster_info.cluster_addr_table.as_ref()?.get(cluster_name)?;
+    broker_names
+        .iter()
+        .filter_map(|broker_name| broker_addr_table.get(broker_name))
+        .find_map(|broker_data| {
+            broker_data
+                .broker_addrs()
+                .get(&MASTER_ID)
+                .cloned()
+                .or_else(|| broker_data.select_broker_addr())
+        })
+}
+
+fn cached_value<K, T>(cache: &mut HashMap<K, CachedValue<T>>, key: &K) -> Option<T>
+where
+    K: Clone + Eq + std::hash::Hash,
+    T: Clone,
+{
+    match cache.get(key) {
+        Some(entry) if !entry.is_expired() => Some(entry.value.clone()),
+        Some(_) => {
+            cache.remove(key);
+            None
+        }
+        None => None,
+    }
+}
+
+fn cache_value<K, T>(cache: &mut HashMap<K, CachedValue<T>>, key: K, value: T, ttl: Duration)
+where
+    K: Eq + std::hash::Hash,
+{
+    if ttl.is_zero() {
+        return;
+    }
+    cache.insert(key, CachedValue::new(value, ttl));
+}
+
+#[derive(Debug, Clone)]
+struct BrokerTarget {
+    broker_name: CheetahString,
+    broker_addr: CheetahString,
+}
+
+#[derive(Debug, Clone)]
+struct ParsedReceiptHandle {
+    raw: CheetahString,
+    broker_name: CheetahString,
+    topic: CheetahString,
+    queue_id: i32,
+    queue_offset: i64,
+}
+
+async fn resolve_broker_target(
+    client: &dyn ClusterClientIo,
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    topic: &ResourceIdentity,
+    queue_id: i32,
+    broker_name: Option<&str>,
+    broker_addr: Option<&str>,
+) -> ProxyResult<BrokerTarget> {
+    if let (Some(broker_name), Some(broker_addr)) = (broker_name, broker_addr) {
+        return Ok(BrokerTarget {
+            broker_name: CheetahString::from(broker_name),
+            broker_addr: CheetahString::from(broker_addr),
+        });
+    }
+
+    let topic_name = CheetahString::from(topic.to_string());
+    if let Some(broker_name) = broker_name {
+        let broker_name = CheetahString::from(broker_name);
+        let actual_broker_name = resolve_subscription_broker_name(client, &topic_name, &broker_name, queue_id).await;
+        if let Some(broker_addr) = find_subscribe_broker_addr(client, &actual_broker_name, &topic_name).await {
+            return Ok(BrokerTarget {
+                broker_name: actual_broker_name,
+                broker_addr,
+            });
+        }
+    }
+
+    let route = fetch_topic_route(client, config, state, topic_name.as_str()).await?;
+    let broker_addr = select_master_broker_addr(&route).ok_or_else(|| canonical::broker_not_found(&topic_name))?;
+    let broker_name = route
+        .broker_datas
+        .iter()
+        .find_map(|broker| {
+            broker
+                .broker_addrs()
+                .iter()
+                .find(|(_, addr)| *addr == &broker_addr)
+                .map(|_| broker.broker_name().clone())
+        })
+        .unwrap_or_default();
+
+    Ok(BrokerTarget {
+        broker_name,
+        broker_addr,
+    })
+}
+
+async fn ack_message_entry_inner(
+    client: &dyn ClusterClientIo,
+    group: &ResourceIdentity,
+    topic: &ResourceIdentity,
+    entry: &AckMessageEntry,
+    timeout_ms: u64,
+) -> ProxyResult<ProxyPayloadStatus> {
+    let topic_name = entry.lite_topic.clone().unwrap_or_else(|| topic.to_string());
+    let group_name = group.to_string();
+    let parsed = parse_receipt_handle(entry.receipt_handle.as_str(), topic_name.as_str(), group_name.as_str())?;
+    let actual_broker_name =
+        resolve_subscription_broker_name(client, &parsed.topic, &parsed.broker_name, parsed.queue_id).await;
+    let broker_addr = find_subscribe_broker_addr(client, &actual_broker_name, &parsed.topic)
+        .await
+        .ok_or_else(|| canonical::broker_not_found(&actual_broker_name))?;
+    let request_header = AckMessageRequestHeader {
+        consumer_group: CheetahString::from(group.to_string()),
+        topic: parsed.topic.clone(),
+        queue_id: parsed.queue_id,
+        extra_info: parsed.raw.clone(),
+        offset: parsed.queue_offset,
+        lite_topic: entry
+            .lite_topic
+            .as_ref()
+            .map(|topic| CheetahString::from(topic.as_str())),
+        topic_request_header: Some(TopicRequestHeader {
+            rpc_request_header: Some(RpcRequestHeader {
+                broker_name: Some(parsed.broker_name.clone()),
+                ..Default::default()
+            }),
+            lo: None,
+        }),
+    };
+    let ack_result = client.ack_message(&broker_addr, request_header, timeout_ms).await?;
+    Ok(ack_status_to_payload(&ack_result))
+}
+
+async fn change_invisible_duration_inner(
+    client: &dyn ClusterClientIo,
+    _config: &ClusterConfig,
+    request: &ChangeInvisibleDurationRequest,
+    timeout_ms: u64,
+) -> ProxyResult<ChangeInvisibleDurationPlan> {
+    let topic_name = request.lite_topic.clone().unwrap_or_else(|| request.topic.to_string());
+    let group_name = request.group.to_string();
+    let parsed = parse_receipt_handle(
+        request.receipt_handle.as_str(),
+        topic_name.as_str(),
+        group_name.as_str(),
+    )?;
+    let actual_broker_name =
+        resolve_subscription_broker_name(client, &parsed.topic, &parsed.broker_name, parsed.queue_id).await;
+    let broker_addr = find_subscribe_broker_addr(client, &actual_broker_name, &parsed.topic)
+        .await
+        .ok_or_else(|| canonical::broker_not_found(&actual_broker_name))?;
+    let request_header = ChangeInvisibleTimeRequestHeader {
+        consumer_group: CheetahString::from(request.group.to_string()),
+        topic: parsed.topic.clone(),
+        queue_id: parsed.queue_id,
+        extra_info: parsed.raw.clone(),
+        offset: parsed.queue_offset,
+        invisible_time: request.invisible_duration.as_millis().clamp(1, i64::MAX as u128) as i64,
+        lite_topic: request
+            .lite_topic
+            .as_ref()
+            .map(|topic| CheetahString::from(topic.as_str())),
+        suspend: request.suspend.unwrap_or(false),
+        topic_request_header: Some(TopicRequestHeader {
+            rpc_request_header: Some(RpcRequestHeader {
+                broker_name: Some(parsed.broker_name.clone()),
+                ..Default::default()
+            }),
+            lo: None,
+        }),
+    };
+    let ack_result =
+        change_invisible_time(client, &parsed.broker_name, &broker_addr, request_header, timeout_ms).await?;
+
+    Ok(ChangeInvisibleDurationPlan {
+        status: ack_status_to_payload(&ack_result),
+        receipt_handle: ack_result.extra_info().to_string(),
+    })
+}
+
+async fn change_invisible_time(
+    client: &dyn ClusterClientIo,
+    broker_name: &CheetahString,
+    broker_addr: &CheetahString,
+    request_header: ChangeInvisibleTimeRequestHeader,
+    timeout_ms: u64,
+) -> ProxyResult<AckResult> {
+    client
+        .change_invisible_time(broker_name, broker_addr, request_header, timeout_ms)
+        .await
+        .map_err(Into::into)
+}
+
+async fn end_transaction_inner(
+    client: &dyn ClusterClientIo,
+    config: &ClusterConfig,
+    state: &mut ClusterWorkerState,
+    request: &EndTransactionRequest,
+    client_id: Option<&str>,
+    request_id: &str,
+    timeout_ms: u64,
+) -> ProxyResult<EndTransactionPlan> {
+    let topic_name = request.topic.to_string();
+    let route = fetch_topic_route(client, config, state, topic_name.as_str()).await?;
+    let broker_addr =
+        select_master_broker_addr(&route).ok_or_else(|| canonical::broker_not_found(topic_name.clone()))?;
+    let producer_group = request
+        .producer_group
+        .clone()
+        .unwrap_or_else(|| build_proxy_producer_group(config, client_id, request_id));
+    let transaction_state_table_offset = request
+        .transaction_state_table_offset
+        .ok_or_else(|| ProxyError::invalid_transaction_id("missing transactional message offset for endTransaction"))?;
+    let transaction_state_table_offset = i64::try_from(transaction_state_table_offset)
+        .map_err(|_| ProxyError::invalid_transaction_id("transaction state table offset exceeds Java long range"))?;
+    let broker_message_id = decode_end_transaction_message_id(
+        request
+            .commit_log_message_id
+            .as_deref()
+            .unwrap_or(request.message_id.as_str()),
+    )?;
+    let request_header = EndTransactionRequestHeader {
+        topic: CheetahString::from(topic_name),
+        producer_group: CheetahString::from(producer_group),
+        tran_state_table_offset: transaction_state_table_offset,
+        commit_log_offset: broker_message_id.offset,
+        commit_or_rollback: transaction_resolution_flag(request.resolution),
+        from_transaction_check: matches!(request.source, TransactionSource::ServerCheck),
+        msg_id: CheetahString::from(request.message_id.as_str()),
+        transaction_id: Some(CheetahString::from(request.transaction_id.as_str())),
+        rpc_request_header: RpcRequestHeader::default(),
+    };
+
+    client
+        .end_transaction(
+            &broker_addr,
+            request_header,
+            CheetahString::from(request.trace_context.as_deref().unwrap_or("")),
+            timeout_ms,
+        )
+        .await?;
+
+    Ok(EndTransactionPlan {
+        status: ProxyStatusMapper::ok_payload(),
+    })
+}
+
+fn build_pop_request_header(broker_name: &CheetahString, request: &ReceiveMessageRequest) -> PopMessageRequestHeader {
+    PopMessageRequestHeader {
+        consumer_group: CheetahString::from(request.group.to_string()),
+        topic: CheetahString::from(request.target.topic.to_string()),
+        queue_id: request.target.queue_id,
+        max_msg_nums: request.batch_size,
+        invisible_time: request.invisible_duration.as_millis().clamp(1, u128::from(u64::MAX)) as u64,
+        poll_time: request.long_polling_timeout.as_millis().clamp(0, u128::from(u64::MAX)) as u64,
+        born_time: current_millis(),
+        init_mode: 0,
+        exp_type: Some(CheetahString::from(request.filter_expression.expression_type.as_str())),
+        exp: Some(CheetahString::from(request.filter_expression.expression.as_str())),
+        order: Some(request.target.fifo),
+        attempt_id: request.attempt_id.as_deref().map(CheetahString::from),
+        topic_request_header: Some(PopTopicRequestHeader {
+            lo: None,
+            rpc: Some(RpcRequestHeader {
+                broker_name: Some(broker_name.clone()),
+                ..Default::default()
+            }),
+        }),
+    }
+}
+
+fn build_pull_request_header(broker_name: &CheetahString, request: &PullMessageRequest) -> PullMessageRequestHeader {
+    PullMessageRequestHeader {
+        consumer_group: CheetahString::from(request.group.to_string()),
+        topic: CheetahString::from(request.target.topic.to_string()),
+        lite_topic: None,
+        queue_id: request.target.queue_id,
+        queue_offset: request.offset,
+        max_msg_nums: request.batch_size.min(i32::MAX as u32) as i32,
+        sys_flag: PullSysFlag::build_sys_flag(
+            false,
+            !request.long_polling_timeout.is_zero(),
+            true,
+            request.filter_expression.expression_type != ExpressionType::TAG,
+        ) as i32,
+        commit_offset: 0,
+        suspend_timeout_millis: request.long_polling_timeout.as_millis().clamp(0, u128::from(u64::MAX)) as u64,
+        sub_version: 0,
+        subscription: Some(CheetahString::from(request.filter_expression.expression.as_str())),
+        expression_type: Some(CheetahString::from(request.filter_expression.expression_type.as_str())),
+        max_msg_bytes: None,
+        request_source: None,
+        proxy_forward_client_id: None,
+        topic_request: Some(PopTopicRequestHeader {
+            lo: None,
+            rpc: Some(RpcRequestHeader {
+                broker_name: Some(broker_name.clone()),
+                ..Default::default()
+            }),
+        }),
+    }
+}
+
+fn build_update_offset_request_header(
+    broker_name: &CheetahString,
+    request: &UpdateOffsetRequest,
+) -> UpdateConsumerOffsetRequestHeader {
+    UpdateConsumerOffsetRequestHeader {
+        consumer_group: CheetahString::from(request.group.to_string()),
+        topic: CheetahString::from(request.target.topic.to_string()),
+        queue_id: request.target.queue_id,
+        commit_offset: request.offset,
+        topic_request_header: Some(PopTopicRequestHeader {
+            rpc: Some(RpcRequestHeader {
+                broker_name: Some(broker_name.clone()),
+                ..Default::default()
+            }),
+            lo: None,
+        }),
+    }
+}
+
+fn build_query_consumer_offset_request_header(
+    broker_name: &CheetahString,
+    request: &GetOffsetRequest,
+) -> QueryConsumerOffsetRequestHeader {
+    QueryConsumerOffsetRequestHeader {
+        consumer_group: CheetahString::from(request.group.to_string()),
+        topic: CheetahString::from(request.target.topic.to_string()),
+        queue_id: request.target.queue_id,
+        set_zero_if_not_found: Some(false),
+        topic_request_header: Some(PopTopicRequestHeader {
+            rpc: Some(RpcRequestHeader {
+                broker_name: Some(broker_name.clone()),
+                ..Default::default()
+            }),
+            lo: None,
+        }),
+    }
+}
+
+fn build_message_queue(target: &MessageQueueTarget, broker_name: &CheetahString) -> MessageQueue {
+    MessageQueue::from_parts(target.topic.to_string(), broker_name.clone(), target.queue_id)
+}
+
+fn build_receive_plan(pop_result: PopResult) -> ReceiveMessagePlan {
+    let delivery_timestamp_ms = (pop_result.pop_time > 0).then_some(pop_result.pop_time as i64);
+    let invisible_duration = Duration::from_millis(pop_result.invisible_time.max(1));
+    match pop_result.pop_status {
+        PopStatus::Found => {
+            let messages = pop_result
+                .msg_found_list
+                .unwrap_or_default()
+                .into_iter()
+                .map(|message| ReceivedMessage {
+                    message: message_ext_to_core(&message),
+                    invisible_duration,
+                })
+                .collect::<Vec<_>>();
+            let status = if messages.is_empty() {
+                ProxyStatusMapper::from_payload_code(v2::Code::MessageNotFound, "no message available")
+            } else {
+                ProxyStatusMapper::ok_payload()
+            };
+            ReceiveMessagePlan {
+                status,
+                delivery_timestamp_ms,
+                messages,
+            }
+        }
+        PopStatus::NoNewMsg | PopStatus::PollingNotFound => ReceiveMessagePlan {
+            status: ProxyStatusMapper::from_payload_code(v2::Code::MessageNotFound, "no message available"),
+            delivery_timestamp_ms,
+            messages: Vec::new(),
+        },
+        PopStatus::PollingFull => ReceiveMessagePlan {
+            status: ProxyStatusMapper::from_payload_code(v2::Code::TooManyRequests, "broker polling queue is full"),
+            delivery_timestamp_ms,
+            messages: Vec::new(),
+        },
+    }
+}
+
+fn build_pull_plan(pull_result: rocketmq_model::result::PullOutcome<MessageExt>) -> PullMessagePlan {
+    let next_offset = pull_result.next_begin_offset() as i64;
+    let min_offset = pull_result.min_offset() as i64;
+    let max_offset = pull_result.max_offset() as i64;
+    match pull_result.pull_status() {
+        PullStatus::Found => PullMessagePlan {
+            status: ProxyStatusMapper::ok_payload(),
+            next_offset,
+            min_offset,
+            max_offset,
+            messages: pull_result
+                .into_messages()
+                .unwrap_or_default()
+                .into_iter()
+                .map(|message| message_ext_to_core(&message))
+                .collect(),
+        },
+        PullStatus::NoNewMsg | PullStatus::NoMatchedMsg => PullMessagePlan {
+            status: ProxyStatusMapper::from_payload_code(v2::Code::MessageNotFound, "no message available"),
+            next_offset,
+            min_offset,
+            max_offset,
+            messages: Vec::new(),
+        },
+        PullStatus::OffsetIllegal => PullMessagePlan {
+            status: ProxyStatusMapper::from_payload_code(v2::Code::IllegalOffset, "pull offset is illegal"),
+            next_offset,
+            min_offset,
+            max_offset,
+            messages: Vec::new(),
+        },
+    }
+}
+
+fn ack_status_to_payload(ack_result: &AckResult) -> ProxyPayloadStatus {
+    match ack_result.status() {
+        AckStatus::Ok => ProxyStatusMapper::ok_payload(),
+        AckStatus::NotExist => ProxyStatusMapper::from_payload_code(
+            v2::Code::InvalidReceiptHandle,
+            "receipt handle has expired or message no longer exists",
+        ),
+    }
+}
+
+fn build_dead_letter_message(
+    request: &ForwardMessageToDeadLetterQueueRequest,
+    parsed: &ParsedReceiptHandle,
+    broker_name: &CheetahString,
+) -> ProxyResult<MessageExt> {
+    let broker_message_id = decode_broker_message_id(request.message_id.as_str())?;
+    let mut message = MessageExt::default();
+    message.set_topic(parsed.topic.clone());
+    message.set_msg_id(CheetahString::from(request.message_id.as_str()));
+    message.set_broker_name(broker_name.clone());
+    message.set_queue_id(parsed.queue_id);
+    message.set_queue_offset(parsed.queue_offset);
+    message.set_commit_log_offset(broker_message_id.offset);
+    message.set_reconsume_times(request.delivery_attempt.saturating_sub(1));
+    Ok(message)
+}
+
+fn parse_receipt_handle(receipt_handle: &str, topic: &str, consumer_group: &str) -> ProxyResult<ParsedReceiptHandle> {
+    let trimmed = receipt_handle.trim();
+    if trimmed.is_empty() {
+        return Err(ProxyError::invalid_receipt_handle("receipt handle must not be empty"));
+    }
+
+    let parts = ExtraInfoUtil::split(trimmed);
+    let broker_name = ExtraInfoUtil::get_broker_name(parts.as_slice())
+        .map(CheetahString::from_string)
+        .map_err(|error| ProxyError::from(canonical::receipt_handle_invalid_with_source(error)))?;
+    let queue_id = ExtraInfoUtil::get_queue_id(parts.as_slice())
+        .map_err(|error| ProxyError::from(canonical::receipt_handle_invalid_with_source(error)))?;
+    let queue_offset = ExtraInfoUtil::get_queue_offset(parts.as_slice())
+        .map_err(|error| ProxyError::from(canonical::receipt_handle_invalid_with_source(error)))?;
+    let real_topic = ExtraInfoUtil::get_real_topic(parts.as_slice(), topic, consumer_group)
+        .map(CheetahString::from_string)
+        .map_err(|error| ProxyError::from(canonical::receipt_handle_invalid_with_source(error)))?;
+
+    Ok(ParsedReceiptHandle {
+        raw: CheetahString::from(trimmed),
+        broker_name,
+        topic: real_topic,
+        queue_id,
+        queue_offset,
+    })
+}
+
+async fn find_subscribe_broker_addr(
+    client: &dyn ClusterClientIo,
+    broker_name: &CheetahString,
+    topic: &CheetahString,
+) -> Option<CheetahString> {
+    let mut result = client.find_subscribe_broker_addr(broker_name, MASTER_ID, true).await;
+    if result.is_none() {
+        client.refresh_topic_route(topic).await;
+        result = client.find_subscribe_broker_addr(broker_name, MASTER_ID, true).await;
+    }
+    result
+}
+
+async fn resolve_subscription_broker_name(
+    client: &dyn ClusterClientIo,
+    topic: &CheetahString,
+    broker_name: &CheetahString,
+    queue_id: i32,
+) -> CheetahString {
+    if !broker_name.is_empty() && broker_name.starts_with(LOGICAL_QUEUE_MOCK_BROKER_PREFIX) {
+        let queue = MessageQueue::from_parts(topic.clone(), broker_name.clone(), queue_id);
+        client.broker_name_for_queue(&queue).await
+    } else {
+        broker_name.clone()
+    }
+}
+
+fn build_send_producer(
+    client_runtime: Arc<ClientRuntime>,
+    domain_id: u64,
+    config: &ClusterConfig,
+    producer_group: &str,
+    timeout_ms: u64,
+    rpc_hook: Option<Arc<ClientRpcHook>>,
+) -> DefaultMQProducer {
+    let client_config = client_config_for_managed_domain(domain_id, cluster_client_config(config));
+
+    let mut builder = DefaultMQProducer::builder(client_runtime)
+        .client_config(client_config)
+        .producer_group(producer_group)
+        .send_msg_timeout(timeout_ms as u32);
+    if let Some(rpc_hook) = rpc_hook {
+        builder = builder.rpc_hook(rpc_hook);
+    }
+    builder.build()
+}
+
+async fn send_message_entry(
+    producer: &mut dyn ClusterProducerIo,
+    entry: SendMessageEntry,
+    timeout: u64,
+) -> SendMessageResultEntry {
+    match send_message_entry_inner(producer, entry, timeout).await {
+        Ok(send_result) => SendMessageResultEntry {
+            status: ProxyStatusMapper::from_send_result_payload(&send_result),
+            send_result: Some(send_result),
+        },
+        Err(error) => failure_send_result_entry(&error),
+    }
+}
+
+async fn send_message_entry_inner(
+    producer: &mut dyn ClusterProducerIo,
+    entry: SendMessageEntry,
+    timeout: u64,
+) -> ProxyResult<SendResult> {
+    let mut message = message_from_core(&entry.message);
+    let producer_group = producer.producer_group();
+    attach_transaction_producer_group(&mut message, producer_group.as_str());
+    let queue = resolve_target_queue(producer, &entry).await?;
+    let result = if let Some(queue) = queue {
+        producer.send_to_queue(message, queue, timeout).await?
+    } else {
+        producer.send(message, timeout).await?
+    };
+
+    result.ok_or_else(|| ProxyError::Transport {
+        message: format!("send result was empty for topic '{}'", entry.topic),
+    })
+}
+
+async fn resolve_target_queue(
+    producer: &mut dyn ClusterProducerIo,
+    entry: &SendMessageEntry,
+) -> ProxyResult<Option<MessageQueue>> {
+    let Some(queue_id) = entry.queue_id else {
+        return Ok(None);
+    };
+
+    let queues = producer
+        .fetch_publish_message_queues(entry.topic.to_string().as_str())
+        .await?;
+    let max_queue_id = queues.iter().map(MessageQueue::queue_id).max().unwrap_or(-1);
+
+    queues
+        .into_iter()
+        .find(|queue| queue.queue_id() == queue_id)
+        .map(Some)
+        .ok_or_else(|| {
+            if max_queue_id >= 0 {
+                canonical::queue_id_out_of_range(entry.topic.to_string(), queue_id, max_queue_id).into()
+            } else {
+                canonical::queue_not_found(entry.topic.to_string(), queue_id).into()
+            }
+        })
+}
+
+fn failure_send_result_entry(error: &ProxyError) -> SendMessageResultEntry {
+    SendMessageResultEntry {
+        status: ProxyStatusMapper::from_error_payload(error),
+        send_result: None,
+    }
+}
+
+fn attach_transaction_producer_group(message: &mut Message, producer_group: &str) {
+    if !is_transaction_prepared(message) {
+        return;
+    }
+
+    message.put_property(
+        CheetahString::from_static_str(MessageConst::PROPERTY_PRODUCER_GROUP),
+        CheetahString::from(producer_group),
+    );
+}
+
+fn is_transaction_prepared(message: &Message) -> bool {
+    message
+        .property_ref(&CheetahString::from_static_str(
+            MessageConst::PROPERTY_TRANSACTION_PREPARED,
+        ))
+        .and_then(|value| value.parse().ok())
+        .unwrap_or(false)
+}
+
+fn sanitize_group_component(value: &str) -> String {
+    let sanitized: String = value
+        .chars()
+        .filter(|character| character.is_ascii_alphanumeric() || matches!(character, '_' | '-' | '%' | '|'))
+        .collect();
+
+    if sanitized.is_empty() {
+        "proxy".to_owned()
+    } else {
+        sanitized
+    }
+}
+
+pub(crate) fn build_proxy_producer_group(config: &ClusterConfig, client_id: Option<&str>, request_id: &str) -> String {
+    let prefix = sanitize_group_component(config.producer_group_prefix.as_str());
+    let identity = sanitize_group_component(client_id.unwrap_or(request_id));
+    format!("{prefix}-{identity}")
+}
+
+fn transaction_resolution_flag(resolution: TransactionResolution) -> i32 {
+    match resolution {
+        TransactionResolution::Commit => MessageSysFlag::TRANSACTION_COMMIT_TYPE,
+        TransactionResolution::Rollback => MessageSysFlag::TRANSACTION_ROLLBACK_TYPE,
+    }
+}
+
+fn decode_end_transaction_message_id(message_id: &str) -> ProxyResult<MessageId> {
+    MessageDecoder::decode_message_id(&CheetahString::from(message_id)).map_err(|error| {
+        ProxyError::from(canonical::transaction_id_invalid_with_source(MessageIdDecodeError(
+            error,
+        )))
+    })
+}
+
+fn decode_broker_message_id(message_id: &str) -> ProxyResult<MessageId> {
+    MessageDecoder::decode_message_id(&CheetahString::from(message_id))
+        .map_err(|error| ProxyError::from(canonical::message_id_invalid_with_source(MessageIdDecodeError(error))))
+}
+
+#[derive(Debug)]
+struct MessageIdDecodeError(String);
+
+impl fmt::Display for MessageIdDecodeError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.write_str(&self.0)
+    }
+}
+
+impl std::error::Error for MessageIdDecodeError {}
+
+fn effective_send_timeout_ms(config: &ClusterConfig, deadline: Option<Duration>) -> u64 {
+    effective_request_timeout_ms(config.send_message_timeout_ms, deadline)
+}
+
+fn effective_request_timeout_ms(configured: u64, deadline: Option<Duration>) -> u64 {
+    let configured = configured.max(1);
+    let Some(deadline) = deadline else {
+        return configured;
+    };
+
+    let deadline_ms = deadline.as_millis().clamp(1, u128::from(u64::MAX)) as u64;
+    configured.min(deadline_ms).max(1)
+}
+
+fn effective_pop_timeout_ms(config: &ClusterConfig, deadline: Option<Duration>, poll_timeout: Duration) -> u64 {
+    let minimum = poll_timeout
+        .as_millis()
+        .saturating_add(500)
+        .clamp(1, u128::from(u64::MAX)) as u64;
+    effective_request_timeout_ms(config.mq_client_api_timeout_ms.max(minimum), deadline)
+}
+
+fn select_master_broker_addr(route: &TopicRouteData) -> Option<CheetahString> {
+    route.broker_datas.iter().find_map(|broker| {
+        broker
+            .broker_addrs()
+            .get(&MASTER_ID)
+            .cloned()
+            .or_else(|| broker.select_broker_addr())
+    })
+}
+
+fn master_broker_addrs(route: &TopicRouteData) -> Vec<CheetahString> {
+    route
+        .broker_datas
+        .iter()
+        .filter_map(|broker| {
+            broker
+                .broker_addrs()
+                .get(&MASTER_ID)
+                .cloned()
+                .or_else(|| broker.select_broker_addr())
+        })
+        .collect::<BTreeSet<_>>()
+        .into_iter()
+        .collect()
+}
+
+fn convert_topic_message_type(message_type: TopicMessageType) -> ProxyTopicMessageType {
+    match message_type {
+        TopicMessageType::Unspecified => ProxyTopicMessageType::Unspecified,
+        TopicMessageType::Normal => ProxyTopicMessageType::Normal,
+        TopicMessageType::Fifo => ProxyTopicMessageType::Fifo,
+        TopicMessageType::Delay => ProxyTopicMessageType::Delay,
+        TopicMessageType::Transaction => ProxyTopicMessageType::Transaction,
+        TopicMessageType::Mixed => ProxyTopicMessageType::Mixed,
+        TopicMessageType::Lite => ProxyTopicMessageType::Lite,
+        TopicMessageType::Priority => ProxyTopicMessageType::Priority,
+    }
+}
+
+fn convert_subscription_group(group_config: SubscriptionGroupConfig) -> SubscriptionGroupMetadata {
+    SubscriptionGroupMetadata::from(&group_config)
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::HashMap;
+    use std::collections::HashSet;
+    use std::mem::size_of;
+    use std::sync::Arc;
+    use std::time::Duration;
+    use std::time::Instant;
+
+    use cheetah_string::CheetahString;
+    use rocketmq_error::Error as CanonicalError;
+    use rocketmq_model::common::attribute::topic_message_type::TopicMessageType;
+    use rocketmq_model::common::message::MessageConst;
+    use rocketmq_model::result::SendResult;
+    use rocketmq_model::result::SendStatus;
+    use rocketmq_protocol::protocol::body::broker_body::cluster_info::ClusterInfo;
+    use rocketmq_protocol::protocol::route::route_data_view::BrokerData;
+    use rocketmq_protocol::protocol::route::route_data_view::QueueData;
+    use rocketmq_protocol::protocol::route::topic_route_data::TopicRouteData;
+    use rocketmq_protocol::protocol::subscription::subscription_group_config::SubscriptionGroupConfig;
+    use rocketmq_proxy_core::error::canonical;
+    use rocketmq_proxy_core::AckMessageRequest;
+    use rocketmq_proxy_core::MessageQueueTarget;
+    use rocketmq_proxy_core::ProxyMessage;
+    use rocketmq_proxy_core::PullMessageRequest;
+    use rocketmq_proxy_core::ResourceIdentity;
+    use rocketmq_proxy_core::SendMessageEntry;
+    use rocketmq_proxy_core::SendMessageRequest;
+    use rocketmq_proxy_core::UpdateOffsetRequest;
+    use tokio::sync::oneshot;
+    use tokio_util::sync::CancellationToken;
+
+    use super::build_send_producer;
+    use super::cluster_client_config;
+    use super::compatible_batch_entries;
+    use super::convert_subscription_group;
+    use super::convert_topic_message_type;
+    use super::decode_broker_message_id;
+    use super::decode_end_transaction_message_id;
+    use super::master_broker_addrs;
+    use super::run_cluster_lane;
+    use super::select_auth_metadata_broker_addr;
+    use super::select_master_broker_addr;
+    use super::single_broker_and_topic;
+    use super::split_batch_send_result;
+    use super::test_client_runtime;
+    use super::CachedValue;
+    use super::ClusterCommand;
+    use super::ClusterExecutionLanes;
+    use super::ClusterExecutionPolicy;
+    use super::ClusterTaskExecutor;
+    use super::ClusterWorkerState;
+    use super::MessageIdDecodeError;
+    use super::RocketmqClusterClient;
+    use super::TelemetryHandle;
+    use crate::cluster::cluster_admission::ClusterCommandClass;
+    use crate::config::ClusterConfig;
+    use rocketmq_model::common::message::message_queue::MessageQueue;
+    use rocketmq_proxy_core::ProxyError;
+    use rocketmq_proxy_core::ProxyTopicMessageType;
+
+    fn batch_entry(id: &str) -> SendMessageEntry {
+        SendMessageEntry {
+            topic: ResourceIdentity::new("", "TopicA"),
+            client_message_id: id.to_owned(),
+            message: ProxyMessage::new("TopicA", id.as_bytes().to_vec()),
+            queue_id: None,
+        }
+    }
+
+    #[test]
+    fn message_id_decode_failures_keep_typed_sources() {
+        let cases = [
+            (
+                decode_broker_message_id("not-a-message-id"),
+                &rocketmq_error::PROXY_MESSAGE_ID_INVALID,
+            ),
+            (
+                decode_end_transaction_message_id("not-a-message-id"),
+                &rocketmq_error::PROXY_TRANSACTION_ID_INVALID,
+            ),
+        ];
+
+        for (result, descriptor) in cases {
+            let error = result.expect_err("invalid message id must fail");
+            assert_eq!(error.descriptor(), descriptor);
+            let canonical = std::error::Error::source(&error).expect("Proxy error keeps canonical source");
+            let decoder = canonical.source().expect("canonical error keeps decoder source");
+            assert!(decoder.downcast_ref::<MessageIdDecodeError>().is_some());
+        }
+    }
+
+    #[test]
+    fn compatible_normal_entries_form_one_broker_batch() {
+        let entries = vec![batch_entry("a"), batch_entry("b")];
+        assert!(compatible_batch_entries(&entries));
+
+        let mut fifo = entries.clone();
+        fifo[0]
+            .message
+            .put_property(MessageConst::PROPERTY_SHARDING_KEY, "group");
+        assert!(!compatible_batch_entries(&fifo));
+    }
+
+    #[test]
+    fn cluster_result_conversion_normalizes_failures_and_preserves_forwarded_commands() {
+        let error = super::proxy_client_result::<()>(Err(canonical::broker_operation(
+            "cluster broker request",
+            rocketmq_protocol::code::response_code::ResponseCode::TopicNotExist.to_i32(),
+            None,
+            "token=secret\r\nC:\\private\\broker.log",
+        )))
+        .expect_err("Broker failure must enter the Proxy normalizer");
+        let ProxyError::BrokerResponse(error) = error else {
+            panic!("cluster Broker failure must use the canonical response carrier");
+        };
+        assert_eq!(error.descriptor(), &rocketmq_error::PROXY_BROKER_TOPIC_NOT_FOUND);
+        assert!(std::error::Error::source(&error)
+            .and_then(|source| source.downcast_ref::<CanonicalError>())
+            .is_some());
+        assert_eq!(
+            error.public_view().expect("public view").message(),
+            "Broker topic was not found"
+        );
+
+        let mut command =
+            rocketmq_protocol::protocol::remoting_command::RemotingCommand::create_response_command_with_code_remark(
+                rocketmq_protocol::code::response_code::ResponseCode::PolicyNotExist,
+                "upstream remark",
+            )
+            .set_opaque(47)
+            .set_version(513)
+            .set_serialize_type(rocketmq_protocol::protocol::SerializeType::ROCKETMQ)
+            .set_flag(3)
+            .set_suspended(true)
+            .set_body(vec![1_u8, 2, 3]);
+        command.add_ext_field("owner", "broker-a");
+
+        let forwarded = super::proxy_client_result(Ok::<_, CanonicalError>(command)).expect("forwarded command");
+        assert_eq!(
+            rocketmq_protocol::code::response_code::ResponseCode::from(forwarded.code()),
+            rocketmq_protocol::code::response_code::ResponseCode::PolicyNotExist
+        );
+        assert_eq!(forwarded.opaque(), 47);
+        assert_eq!(forwarded.version(), 513);
+        assert_eq!(
+            forwarded.serialize_type(),
+            rocketmq_protocol::protocol::SerializeType::ROCKETMQ
+        );
+        assert_eq!(forwarded.flag(), 3);
+        assert!(forwarded.suspended());
+        assert_eq!(forwarded.remark().map(CheetahString::as_str), Some("upstream remark"));
+        assert_eq!(forwarded.body().map(|body| body.as_ref()), Some(&[1_u8, 2, 3][..]));
+        assert_eq!(
+            forwarded
+                .ext_fields()
+                .and_then(|fields| fields.get("owner"))
+                .map(CheetahString::as_str),
+            Some("broker-a")
+        );
+    }
+
+    #[test]
+    fn batch_result_is_split_into_stable_per_entry_results() {
+        let entries = vec![batch_entry("client-a"), batch_entry("client-b")];
+        let result = SendResult::new(
+            SendStatus::SendOk,
+            Some(CheetahString::from("broker-a,broker-b")),
+            None,
+            None,
+            41,
+        );
+
+        let split = split_batch_send_result(result, &entries);
+
+        assert_eq!(split.len(), 2);
+        assert_eq!(
+            split[0].send_result.as_ref().expect("first result").msg_id.as_deref(),
+            Some("broker-a")
+        );
+        assert_eq!(
+            split[1].send_result.as_ref().expect("second result").msg_id.as_deref(),
+            Some("broker-b")
+        );
+        assert_eq!(split[1].send_result.as_ref().expect("second result").queue_offset, 42);
+    }
+
+    #[test]
+    fn cluster_client_prefers_master_broker_address() {
+        let mut broker_addrs = HashMap::new();
+        broker_addrs.insert(1_u64, CheetahString::from("127.0.0.2:10911"));
+        broker_addrs.insert(0_u64, CheetahString::from("127.0.0.1:10911"));
+        let route = TopicRouteData {
+            queue_datas: vec![QueueData::new(CheetahString::from("broker-a"), 1, 1, 6, 0)],
+            broker_datas: vec![BrokerData::new(
+                CheetahString::from("cluster-a"),
+                CheetahString::from("broker-a"),
+                broker_addrs,
+                None,
+            )],
+            ..Default::default()
+        };
+
+        assert_eq!(select_master_broker_addr(&route).unwrap().as_str(), "127.0.0.1:10911");
+    }
+
+    #[test]
+    fn lite_subscription_sync_targets_every_topic_master() {
+        let broker = |name: &str, addr: &str| {
+            BrokerData::new(
+                CheetahString::from("cluster-a"),
+                CheetahString::from(name),
+                HashMap::from([(0_u64, CheetahString::from(addr))]),
+                None,
+            )
+        };
+        let route = TopicRouteData {
+            broker_datas: vec![
+                broker("broker-b", "127.0.0.2:10911"),
+                broker("broker-a", "127.0.0.1:10911"),
+            ],
+            ..Default::default()
+        };
+
+        assert_eq!(
+            master_broker_addrs(&route),
+            vec![
+                CheetahString::from("127.0.0.1:10911"),
+                CheetahString::from("127.0.0.2:10911"),
+            ]
+        );
+    }
+
+    #[test]
+    fn producer_uses_the_same_isolated_client_domain_as_its_worker() {
+        let config = ClusterConfig::default();
+        let domain_id = 71_011;
+        let producer = build_send_producer(test_client_runtime(), domain_id, &config, "GroupA", 3_000, None);
+        let expected =
+            rocketmq_client_rust::client_config_for_managed_domain(domain_id, cluster_client_config(&config));
+        let other_domain =
+            rocketmq_client_rust::client_config_for_managed_domain(domain_id + 1, cluster_client_config(&config));
+
+        assert_eq!(
+            producer.client_config_snapshot().build_mq_client_id(),
+            expected.build_mq_client_id()
+        );
+        assert_ne!(
+            producer.client_config_snapshot().build_mq_client_id(),
+            other_domain.build_mq_client_id()
+        );
+    }
+
+    #[test]
+    fn auth_metadata_broker_selection_uses_configured_cluster_master() {
+        let mut broker_addrs = HashMap::new();
+        broker_addrs.insert(1_u64, CheetahString::from("127.0.0.2:10911"));
+        broker_addrs.insert(0_u64, CheetahString::from("127.0.0.1:10911"));
+
+        let mut broker_addr_table = HashMap::new();
+        broker_addr_table.insert(
+            CheetahString::from("broker-a"),
+            BrokerData::new(
+                CheetahString::from("cluster-a"),
+                CheetahString::from("broker-a"),
+                broker_addrs,
+                None,
+            ),
+        );
+
+        let mut broker_names = HashSet::new();
+        broker_names.insert(CheetahString::from("broker-a"));
+        let mut cluster_addr_table = HashMap::new();
+        cluster_addr_table.insert(CheetahString::from("cluster-a"), broker_names);
+
+        let cluster_info = ClusterInfo::new(Some(broker_addr_table), Some(cluster_addr_table));
+
+        assert_eq!(
+            select_auth_metadata_broker_addr(&cluster_info, "cluster-a")
+                .unwrap()
+                .as_str(),
+            "127.0.0.1:10911"
+        );
+        assert!(select_auth_metadata_broker_addr(&cluster_info, "missing").is_none());
+        assert!(select_auth_metadata_broker_addr(&ClusterInfo::default(), "cluster-a").is_none());
+    }
+
+    #[test]
+    fn topic_message_type_conversion_matches_proxy_model() {
+        assert_eq!(
+            convert_topic_message_type(TopicMessageType::Fifo),
+            ProxyTopicMessageType::Fifo
+        );
+        assert_eq!(
+            convert_topic_message_type(TopicMessageType::Lite),
+            ProxyTopicMessageType::Lite
+        );
+        assert_eq!(
+            convert_topic_message_type(TopicMessageType::Priority),
+            ProxyTopicMessageType::Priority
+        );
+    }
+
+    #[test]
+    fn subscription_group_conversion_preserves_order_flag() {
+        let mut config = SubscriptionGroupConfig::default();
+        config.set_consume_message_orderly(true);
+
+        let converted = convert_subscription_group(config);
+        assert!(converted.consume_message_orderly);
+    }
+
+    #[test]
+    fn cluster_worker_state_discards_expired_route_cache_entries() {
+        let mut state = ClusterWorkerState::new();
+        state.route_cache.insert(
+            "TopicA".to_owned(),
+            CachedValue {
+                value: TopicRouteData::default(),
+                expires_at: Instant::now() - Duration::from_millis(1),
+            },
+        );
+
+        assert!(state.cached_route("TopicA").is_none());
+        assert!(!state.route_cache.contains_key("TopicA"));
+    }
+
+    #[test]
+    fn cluster_worker_state_returns_live_metadata_cache_entries() {
+        let mut state = ClusterWorkerState::new();
+        state.topic_message_type_cache.insert(
+            "TopicA".to_owned(),
+            CachedValue {
+                value: ProxyTopicMessageType::Fifo,
+                expires_at: Instant::now() + Duration::from_secs(1),
+            },
+        );
+
+        assert_eq!(
+            state.cached_topic_message_type("TopicA"),
+            Some(ProxyTopicMessageType::Fifo)
+        );
+    }
+
+    #[test]
+    fn lock_batch_scope_rejects_cross_broker_and_cross_topic_sets() {
+        let cross_broker = HashSet::from([
+            MessageQueue::from_parts("TopicA", "broker-a", 0),
+            MessageQueue::from_parts("TopicA", "broker-b", 1),
+        ]);
+        let error = single_broker_and_topic(&cross_broker).expect_err("cross-broker set must fail");
+        assert!(matches!(error, ProxyError::InvalidMetadata { message } if message.contains("single broker")));
+
+        let cross_topic = HashSet::from([
+            MessageQueue::from_parts("TopicA", "broker-a", 0),
+            MessageQueue::from_parts("TopicB", "broker-a", 1),
+        ]);
+        let error = single_broker_and_topic(&cross_topic).expect_err("cross-topic set must fail");
+        assert!(matches!(error, ProxyError::InvalidMetadata { message } if message.contains("single topic")));
+    }
+
+    #[test]
+    fn cluster_command_admission_rejects_count_and_byte_saturation() {
+        let config = ClusterConfig::default();
+        let count_lanes = ClusterExecutionLanes::new(ClusterExecutionPolicy {
+            capacity_count: 2,
+            capacity_bytes: 4 * 1024,
+            max_queue_age: Duration::from_secs(1),
+            io_max_inflight: 2,
+            control_reserve: 1,
+            long_poll_max_inflight: 2,
+            lane_idle_timeout: Duration::from_secs(1),
+        })
+        .expect("count budget");
+        let (first_reply, _first_receiver) = oneshot::channel();
+        count_lanes
+            .enqueue(
+                ClusterCommand::QueryRoute {
+                    topic: ResourceIdentity::new("", "TopicA"),
+                    reply: first_reply,
+                },
+                CancellationToken::new(),
+                &config,
+            )
+            .expect("first command is admitted");
+        assert!(
+            count_lanes.snapshot().oldest_queued_age_ms.is_some(),
+            "diagnostics expose the oldest retained command age"
+        );
+        let (second_reply, _second_receiver) = oneshot::channel();
+        let count_error = count_lanes
+            .enqueue(
+                ClusterCommand::QueryRoute {
+                    topic: ResourceIdentity::new("", "TopicA"),
+                    reply: second_reply,
+                },
+                CancellationToken::new(),
+                &config,
+            )
+            .expect_err("second command exceeds the global count budget");
+        assert!(matches!(
+            count_error,
+            ProxyError::TooManyRequests {
+                resource: "proxy-cluster-command-queue"
+            }
+        ));
+        assert_eq!(count_lanes.root_budget.snapshot().current_count, 1);
+
+        let byte_lanes = ClusterExecutionLanes::new(ClusterExecutionPolicy {
+            capacity_count: 2,
+            capacity_bytes: size_of::<ClusterCommand>() + 8,
+            max_queue_age: Duration::from_secs(1),
+            io_max_inflight: 2,
+            control_reserve: 1,
+            long_poll_max_inflight: 2,
+            lane_idle_timeout: Duration::from_secs(1),
+        })
+        .expect("byte budget");
+        let (reply, _receiver) = oneshot::channel();
+        let byte_error = byte_lanes
+            .enqueue(
+                ClusterCommand::SendMessage {
+                    request: SendMessageRequest {
+                        messages: vec![SendMessageEntry {
+                            topic: ResourceIdentity::new("", "TopicA"),
+                            client_message_id: "message-a".to_owned(),
+                            message: ProxyMessage::new("TopicA", vec![7_u8; 32]),
+                            queue_id: None,
+                        }],
+                        timeout: None,
+                        validate_message_type: true,
+                    },
+                    client_id: Some("client-a".to_owned()),
+                    request_id: "request-a".to_owned(),
+                    reply,
+                },
+                CancellationToken::new(),
+                &config,
+            )
+            .expect_err("retained payload exceeds the global byte budget");
+        assert!(matches!(
+            byte_error,
+            ProxyError::TooManyRequests {
+                resource: "proxy-cluster-command-queue"
+            }
+        ));
+        assert_eq!(byte_lanes.root_budget.snapshot().current_bytes, 0);
+
+        let long_poll_lanes = ClusterExecutionLanes::new(ClusterExecutionPolicy {
+            capacity_count: 2,
+            capacity_bytes: 4 * 1024,
+            max_queue_age: Duration::from_secs(1),
+            io_max_inflight: 2,
+            control_reserve: 1,
+            long_poll_max_inflight: 2,
+            lane_idle_timeout: Duration::from_secs(1),
+        })
+        .expect("long-poll budget");
+        for _ in 0..2 {
+            let (reply, _receiver) = oneshot::channel();
+            long_poll_lanes
+                .enqueue(
+                    ClusterCommand::PullMessage {
+                        request: PullMessageRequest {
+                            group: ResourceIdentity::new("", "GroupA"),
+                            target: MessageQueueTarget {
+                                topic: ResourceIdentity::new("", "TopicA"),
+                                queue_id: 0,
+                                broker_name: Some("broker-a".to_owned()),
+                                broker_addr: Some("127.0.0.1:10911".to_owned()),
+                            },
+                            offset: 0,
+                            batch_size: 1,
+                            filter_expression: rocketmq_proxy_core::ConsumerFilterExpression {
+                                expression_type: "TAG".to_owned(),
+                                expression: "*".to_owned(),
+                            },
+                            long_polling_timeout: Duration::from_secs(1),
+                        },
+                        deadline: Some(Duration::from_secs(2)),
+                        reply,
+                    },
+                    CancellationToken::new(),
+                    &config,
+                )
+                .expect("long poll is admitted");
+        }
+        let (reply, _receiver) = oneshot::channel();
+        let long_poll_error = long_poll_lanes
+            .enqueue(
+                ClusterCommand::PullMessage {
+                    request: PullMessageRequest {
+                        group: ResourceIdentity::new("", "GroupA"),
+                        target: MessageQueueTarget {
+                            topic: ResourceIdentity::new("", "TopicA"),
+                            queue_id: 0,
+                            broker_name: Some("broker-a".to_owned()),
+                            broker_addr: Some("127.0.0.1:10911".to_owned()),
+                        },
+                        offset: 0,
+                        batch_size: 1,
+                        filter_expression: rocketmq_proxy_core::ConsumerFilterExpression {
+                            expression_type: "TAG".to_owned(),
+                            expression: "*".to_owned(),
+                        },
+                        long_polling_timeout: Duration::from_secs(1),
+                    },
+                    deadline: Some(Duration::from_secs(2)),
+                    reply,
+                },
+                CancellationToken::new(),
+                &config,
+            )
+            .expect_err("third long poll exceeds the independent count budget");
+        assert!(matches!(
+            long_poll_error,
+            ProxyError::TooManyRequests {
+                resource: "proxy-cluster-command-queue"
+            }
+        ));
+        assert_eq!(long_poll_lanes.root_budget.snapshot().current_count, 0);
+        assert_eq!(long_poll_lanes.long_poll_budget.snapshot().current_count, 2);
+        assert_eq!(long_poll_lanes.snapshot().long_poll_queued_and_active, 2);
+    }
+
+    #[test]
+    fn cluster_execution_config_rejects_invalid_capacity_reserve_and_timeouts() {
+        let cases = [
+            ClusterConfig {
+                command_queue_capacity: 1,
+                control_reserve: 1,
+                ..Default::default()
+            },
+            ClusterConfig {
+                io_max_inflight: 1,
+                control_reserve: 1,
+                ..Default::default()
+            },
+            ClusterConfig {
+                control_reserve: 0,
+                ..Default::default()
+            },
+            ClusterConfig {
+                long_poll_max_inflight: 0,
+                ..Default::default()
+            },
+            ClusterConfig {
+                command_queue_max_age_ms: 0,
+                ..Default::default()
+            },
+            ClusterConfig {
+                execution_lane_idle_timeout_ms: 0,
+                ..Default::default()
+            },
+        ];
+
+        for config in cases {
+            let result = ClusterExecutionLanes::new(ClusterExecutionPolicy::from_config(&config));
+            assert!(result.is_err(), "invalid execution config must fail closed");
+            let error = result.err().expect("invalid config returns an error");
+            assert!(matches!(error, ProxyError::Transport { .. }));
+        }
+    }
+
+    #[test]
+    fn consumer_poll_control_and_offset_commands_use_separate_lanes() {
+        let group = ResourceIdentity::new("tenant-a", "GroupA");
+        let topic = ResourceIdentity::new("tenant-a", "TopicA");
+        let target = MessageQueueTarget {
+            topic: topic.clone(),
+            queue_id: 0,
+            broker_name: Some("broker-a".to_owned()),
+            broker_addr: Some("127.0.0.1:10911".to_owned()),
+        };
+        let (pull_reply, _pull_receiver) = oneshot::channel();
+        let pull = ClusterCommand::PullMessage {
+            request: PullMessageRequest {
+                group: group.clone(),
+                target: target.clone(),
+                offset: 0,
+                batch_size: 1,
+                filter_expression: rocketmq_proxy_core::ConsumerFilterExpression {
+                    expression_type: "TAG".to_owned(),
+                    expression: "*".to_owned(),
+                },
+                long_polling_timeout: Duration::from_secs(1),
+            },
+            deadline: Some(Duration::from_secs(2)),
+            reply: pull_reply,
+        };
+        let (ack_reply, _ack_receiver) = oneshot::channel();
+        let ack = ClusterCommand::AckMessage {
+            request: AckMessageRequest {
+                group: group.clone(),
+                topic,
+                entries: Vec::new(),
+            },
+            deadline: Some(Duration::from_secs(2)),
+            reply: ack_reply,
+        };
+        let (offset_reply, _offset_receiver) = oneshot::channel();
+        let update_offset = ClusterCommand::UpdateOffset {
+            request: UpdateOffsetRequest {
+                group,
+                target,
+                offset: 1,
+            },
+            deadline: Some(Duration::from_secs(2)),
+            reply: offset_reply,
+        };
+
+        let config = ClusterConfig::default();
+        assert_eq!(pull.class(), ClusterCommandClass::LongPoll);
+        assert_eq!(ack.class(), ClusterCommandClass::Control);
+        assert_eq!(update_offset.class(), ClusterCommandClass::Control);
+        assert_ne!(pull.ordering_key(&config), ack.ordering_key(&config));
+        assert_ne!(pull.ordering_key(&config), update_offset.ordering_key(&config));
+        assert_ne!(ack.ordering_key(&config), update_offset.ordering_key(&config));
+    }
+
+    #[tokio::test]
+    async fn expired_queued_command_is_rejected_before_client_io() {
+        let service = super::test_service_context("proxy-cluster-expiry");
+        let config = ClusterConfig::default();
+        let lanes = Arc::new(
+            ClusterExecutionLanes::new(ClusterExecutionPolicy {
+                capacity_count: 2,
+                capacity_bytes: 4 * 1024,
+                max_queue_age: Duration::from_millis(1),
+                io_max_inflight: 2,
+                control_reserve: 1,
+                long_poll_max_inflight: 2,
+                lane_idle_timeout: Duration::from_secs(1),
+            })
+            .expect("expiry lanes"),
+        );
+        let (reply, receiver) = oneshot::channel();
+        let registration = lanes
+            .enqueue(
+                ClusterCommand::ReadinessCheck { reply },
+                CancellationToken::new(),
+                &config,
+            )
+            .expect("expired command admission")
+            .expect("first key creates a lane");
+        let mut queued = registration.queue.try_pop().expect("admitted command");
+        queued.enqueued_at = Instant::now()
+            .checked_sub(Duration::from_millis(10))
+            .expect("test instant supports subtraction");
+        queued.queue_deadline = Duration::from_millis(1);
+        assert!(matches!(
+            registration.queue.try_push_control(queued, size_of::<ClusterCommand>()),
+            rocketmq_runtime::QueuePushOutcome::Enqueued
+        ));
+        registration.queue.close();
+
+        run_cluster_lane(
+            config,
+            ClusterWorkerState::new(),
+            registration,
+            CancellationToken::new(),
+            service,
+            lanes,
+        )
+        .await;
+        let error = receiver
+            .await
+            .expect("expiry response")
+            .expect_err("expired command must not execute");
+        assert_eq!(error.descriptor(), &rocketmq_error::CORE_OPERATION_TIMED_OUT);
+    }
+
+    #[tokio::test]
+    async fn cluster_command_queue_is_bounded() {
+        let runtime =
+            rocketmq_runtime::RuntimeContext::try_from_current("proxy-cluster-test").expect("test runtime context");
+        let service = runtime.service_context("proxy-cluster-test.queue");
+        let executor = ClusterTaskExecutor::new(ClusterConfig::default(), None, &service, TelemetryHandle::noop())
+            .expect("managed executor builds");
+        let config = ClusterConfig::default();
+        assert_eq!(
+            executor.lanes.root_budget.limit().capacity.count,
+            config.command_queue_capacity
+        );
+        assert_eq!(
+            executor.lanes.root_budget.limit().capacity.bytes,
+            config.command_queue_max_bytes
+        );
+        assert_eq!(
+            executor.lanes.root_budget.limit().control_reserve.count,
+            config.control_reserve
+        );
+        assert_eq!(executor.lanes.snapshot().active_keys, 0);
+        let report = service.task_group().shutdown(Duration::from_secs(1)).await;
+        assert!(report.is_healthy(), "{}", report.to_json());
+    }
+
+    #[tokio::test]
+    async fn managed_worker_stops_cleanly_with_its_task_group() {
+        let runtime =
+            rocketmq_runtime::RuntimeContext::try_from_current("proxy-cluster-test").expect("test runtime context");
+        let service = runtime.service_context("proxy-cluster-test.service");
+        let client = RocketmqClusterClient::new(ClusterConfig::default(), None, &service, TelemetryHandle::noop())
+            .expect("managed client builds");
+        assert_eq!(service.task_group().task_count(), 0);
+        assert_eq!(service.task_group().component_count(), 1);
+
+        drop(client);
+        let report = service.task_group().shutdown(Duration::from_secs(1)).await;
+        assert!(report.is_healthy(), "{}", report.to_json());
+        assert_eq!(service.task_group().task_count(), 0);
+    }
+}
+
+#[cfg(test)]
+#[path = "cluster_behavior_tests.rs"]
+mod behavior_tests;

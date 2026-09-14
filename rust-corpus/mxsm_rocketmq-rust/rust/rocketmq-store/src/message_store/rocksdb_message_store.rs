@@ -1,0 +1,1182 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::any::Any;
+use std::collections::HashMap;
+use std::collections::HashSet;
+use std::fmt;
+use std::ops::Deref;
+use std::ops::DerefMut;
+use std::sync::Arc;
+use std::time::Duration;
+
+use crate::config::store_runtime_config::StoreRuntimeConfig;
+use crate::config::timer_store_config::ValidatedTimerStoreConfig;
+use bytes::Bytes;
+use bytes::BytesMut;
+use cheetah_string::CheetahString;
+use dashmap::DashMap;
+use rocketmq_model::common::boundary_type::BoundaryType;
+use rocketmq_model::common::broker::broker_role::BrokerRole;
+use rocketmq_model::common::config::TopicConfig;
+use rocketmq_model::common::message::message_batch::MessageExtBatch;
+use rocketmq_model::common::message::message_ext::MessageExt;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_protocol::protocol::body::ha_runtime_info::HARuntimeInfo;
+use rocketmq_runtime::common::system_clock::SystemClock;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_store_api::GetStatus as ApiGetStatus;
+use rocketmq_store_api::WalPort;
+use rocketmq_store_api::WriteLeaseToken;
+use rocketmq_store_rocksdb::message_store::RocksDbDerivedStore;
+use rocketmq_store_rocksdb::message_store::RocksDbMessageStoreOptions;
+use rocketmq_store_rocksdb::message_store::RocksDbMessageStoreRoot;
+use rocketmq_store_rocksdb::message_store::RocksDbOpenPlan;
+use rocketmq_store_rocksdb::message_store::RocksDbReadRequest;
+use rocketmq_store_rocksdb::message_store::RocksDbTimeBoundary;
+use tracing::warn;
+
+use crate::base::allocate_mapped_file_service::AllocateMappedFileService;
+use crate::base::backend_ops::BackendOps;
+use crate::base::backend_ops::MessageStoreShutdownReport;
+use crate::base::backend_ops::PutMessagePreflight;
+use crate::base::backend_ops::StateMachineVersionView;
+use crate::base::backend_read_ops::BackendReadOps;
+use crate::base::commit_log_dispatcher::CommitLogDispatcher;
+use crate::base::dispatch_request::DispatchRequest;
+use crate::base::get_message_result::GetMessageResult;
+use crate::base::message_result::AppendMessageResult;
+use crate::base::message_result::PutMessageResult;
+use crate::base::message_status_enum::GetMessageStatus;
+use crate::base::query_message_request::QueryMessageRequest;
+use crate::base::query_message_result::QueryMessageResult;
+use crate::base::select_result::SelectMappedBufferResult;
+use crate::base::store_checkpoint::StoreCheckpoint;
+use crate::base::store_stats_service::StoreStatsService;
+use crate::base::transient_store_pool::TransientStorePool;
+use crate::capability::ConsumeQueueStatistics;
+use crate::config::message_store_config::MessageStoreConfig;
+use crate::filter::ArcMessageFilter;
+use crate::filter::MessageFilter;
+use crate::ha::general_ha_service::GeneralHAService;
+use crate::hook::put_message_hook::BoxedPutMessageHook;
+use crate::hook::put_message_hook::PutMessageHook;
+use crate::hook::send_message_back_hook::SendMessageBackHook;
+use crate::log_file::commit_log::CommitLog;
+use crate::log_file::mapped_file::MappedFile;
+use crate::log_file::MAX_PULL_MSG_SIZE;
+use crate::message_store::local_file_message_store::LocalFileMessageStore;
+use crate::queue::ArcConsumeQueue;
+use crate::rocksdb::config::RocksDbConfig;
+use crate::rocksdb::consume_queue::CommitLogDispatcherBuildRocksDbConsumeQueue;
+use crate::rocksdb::consume_queue::RocksDbConsumeQueueStore;
+use crate::rocksdb::index::CommitLogDispatcherBuildRocksDbIndex;
+use crate::rocksdb::index::RocksDbIndexBuildService;
+use crate::rocksdb::message::MessageRocksDbStorage;
+use crate::rocksdb::store::RocksDbStore;
+use crate::rocksdb::timer::CommitLogDispatcherBuildRocksDbTimer;
+use crate::rocksdb::timer::RocksDbTimerBuildService;
+use crate::rocksdb::transaction::CommitLogDispatcherBuildRocksDbTrans;
+use crate::rocksdb::transaction::RocksDbTransBuildService;
+use crate::rocksdb::value::ConsumeQueueValue;
+use crate::stats::broker_stats_manager::BrokerStatsManager;
+use crate::store::running_flags::RunningFlags;
+use crate::store_error::StoreError;
+use crate::timer::timer_message_store::TimerMessageStore;
+
+/// RocksDB-backed message store boundary.
+///
+/// The current implementation still reuses the local-file commit log path, but
+/// consume queue metadata is opened through the RocksDB foundation layer instead
+/// of being a type alias to `LocalFileMessageStore`. This keeps the later broker
+/// wiring and commit-log dispatcher migration anchored to a concrete RocksDB
+/// owner.
+pub struct RocksDBMessageStore {
+    local_file_store: Box<LocalFileMessageStore>,
+    root: RocksDbMessageStoreRoot,
+}
+
+struct StoreLocalWalAdapter<'a> {
+    commit_log: &'a CommitLog,
+    correct_to_new_offset: bool,
+}
+
+impl WalPort for StoreLocalWalAdapter<'_> {
+    type Selection = SelectMappedBufferResult;
+
+    fn read_message(&self, offset: i64, size: i32) -> Result<Option<Self::Selection>, rocketmq_store_api::StoreError> {
+        Ok(self.commit_log.get_message(offset, size))
+    }
+
+    fn read_from(&self, offset: i64) -> Result<Option<Self::Selection>, rocketmq_store_api::StoreError> {
+        Ok(self.commit_log.get_data_with_option(offset, false))
+    }
+
+    fn selection_bytes<'a>(&self, selection: &'a Self::Selection) -> &'a [u8] {
+        selection.get_buffer()
+    }
+
+    fn correct_queue_offset(&self, old_offset: i64, new_offset: i64) -> i64 {
+        if self.correct_to_new_offset {
+            new_offset
+        } else {
+            old_offset
+        }
+    }
+}
+
+impl fmt::Debug for RocksDBMessageStore {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write_redacted_debug(formatter)
+    }
+}
+
+fn write_redacted_debug(formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+    formatter.write_str("RocksDBMessageStore { configuration_present: true, redacted: true }")
+}
+
+impl RocksDBMessageStore {
+    /// Creates a RocksDB Store after validating caller-owned Timer, RocksDB,
+    /// and, when enabled, Tiered Store configuration.
+    ///
+    /// Returns `Ok(None)` before any RocksDB or Store-root I/O when any of those
+    /// raw configuration capabilities cannot be formed.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`StoreError`] only when operational Store composition fails.
+    pub fn try_new(
+        message_store_config: Arc<MessageStoreConfig>,
+        micro_batch_policy: rocketmq_store_local::commit_log::append::micro_batch::MicroBatchPolicy,
+        broker_config: Arc<StoreRuntimeConfig>,
+        topic_config_table: Arc<DashMap<CheetahString, Arc<TopicConfig>>>,
+        broker_stats_manager: Option<Arc<BrokerStatsManager>>,
+        notify_message_arrive_in_batch: bool,
+        service_context: ChildServiceContext,
+    ) -> Result<Option<Self>, StoreError> {
+        Self::try_new_with_telemetry(
+            message_store_config,
+            micro_batch_policy,
+            broker_config,
+            topic_config_table,
+            broker_stats_manager,
+            notify_message_arrive_in_batch,
+            service_context,
+            crate::telemetry::StoreTelemetry::noop(),
+        )
+    }
+
+    /// Creates a RocksDB Store with telemetry after validating caller-owned
+    /// Timer, RocksDB, and, when enabled, Tiered Store configuration.
+    ///
+    /// Returns `Ok(None)` before any RocksDB or Store-root I/O when any of those
+    /// raw configuration capabilities cannot be formed.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`StoreError`] only when operational Store composition fails.
+    pub fn try_new_with_telemetry(
+        message_store_config: Arc<MessageStoreConfig>,
+        micro_batch_policy: rocketmq_store_local::commit_log::append::micro_batch::MicroBatchPolicy,
+        broker_config: Arc<StoreRuntimeConfig>,
+        topic_config_table: Arc<DashMap<CheetahString, Arc<TopicConfig>>>,
+        broker_stats_manager: Option<Arc<BrokerStatsManager>>,
+        notify_message_arrive_in_batch: bool,
+        service_context: ChildServiceContext,
+        telemetry: crate::telemetry::StoreTelemetry,
+    ) -> Result<Option<Self>, StoreError> {
+        let Some(timer_store_config) = message_store_config.timer_store_config.validated() else {
+            return Ok(None);
+        };
+        let Some((rocksdb_open_plan, message_rocksdb_open_plan)) =
+            RocksDbOpenPlan::from_message_store(message_store_config.as_ref())
+        else {
+            return Ok(None);
+        };
+        #[cfg(feature = "tieredstore")]
+        let Some(tiered_store_open_plan) = LocalFileMessageStore::tiered_store_open_plan(message_store_config.as_ref()) else {
+            return Ok(None);
+        };
+        Self::try_new_with_telemetry_validated(
+            message_store_config,
+            micro_batch_policy,
+            timer_store_config,
+            rocksdb_open_plan,
+            message_rocksdb_open_plan,
+            #[cfg(feature = "tieredstore")]
+            tiered_store_open_plan,
+            broker_config,
+            topic_config_table,
+            broker_stats_manager,
+            notify_message_arrive_in_batch,
+            service_context,
+            telemetry,
+        )
+        .map(Some)
+    }
+
+    pub(crate) fn try_new_with_telemetry_validated(
+        message_store_config: Arc<MessageStoreConfig>,
+        micro_batch_policy: rocketmq_store_local::commit_log::append::micro_batch::MicroBatchPolicy,
+        timer_store_config: ValidatedTimerStoreConfig,
+        rocksdb_open_plan: RocksDbOpenPlan,
+        message_rocksdb_open_plan: RocksDbOpenPlan,
+        #[cfg(feature = "tieredstore")] tiered_store_open_plan: Option<
+            rocketmq_tieredstore::TieredProviderOpenPlan<
+                rocketmq_tieredstore::provider::BuiltinTieredStoreProviderFactory,
+            >,
+        >,
+        broker_config: Arc<StoreRuntimeConfig>,
+        topic_config_table: Arc<DashMap<CheetahString, Arc<TopicConfig>>>,
+        broker_stats_manager: Option<Arc<BrokerStatsManager>>,
+        notify_message_arrive_in_batch: bool,
+        service_context: ChildServiceContext,
+        telemetry: crate::telemetry::StoreTelemetry,
+    ) -> Result<Self, StoreError> {
+        let message_store_config_for_timer = Arc::clone(&message_store_config);
+        let message_store_config_for_trans = Arc::clone(&message_store_config);
+        let derived = RocksDbDerivedStore::open_planned_with_metrics(
+            rocksdb_open_plan,
+            message_rocksdb_open_plan,
+            RocksDbMessageStoreOptions {
+                timer_enabled: message_store_config.timer_rocksdb_enable,
+                transaction_enabled: message_store_config.trans_rocksdb_enable,
+            },
+            service_context.component("rocksdb-derived"),
+            telemetry.rocksdb().clone(),
+        )?;
+        let consume_queue_store = derived.consume_queue_store().clone();
+        let rocksdb_index_service = derived.rocksdb_index_service();
+        let rocksdb_timer_service = derived.rocksdb_timer_service();
+        let rocksdb_trans_service = derived.rocksdb_trans_service();
+        let mut local_file_store = Box::new(LocalFileMessageStore::try_new_with_telemetry_validated(
+            Arc::clone(&message_store_config),
+            micro_batch_policy,
+            timer_store_config,
+            #[cfg(feature = "tieredstore")]
+            tiered_store_open_plan,
+            broker_config,
+            topic_config_table,
+            broker_stats_manager,
+            notify_message_arrive_in_batch,
+            service_context.component("local-file"),
+            telemetry,
+        )?);
+        local_file_store.wire_owned_root_dependencies()?;
+        let local_queue_offsets = local_file_store.consume_queue_store_mut().clone();
+        local_file_store.add_dispatcher(Arc::new(
+            CommitLogDispatcherBuildRocksDbConsumeQueue::new_with_local_queue_offsets(
+                consume_queue_store.clone(),
+                local_queue_offsets,
+            ),
+        ));
+        local_file_store.add_dispatcher(Arc::new(CommitLogDispatcherBuildRocksDbIndex::new_with_runtime(
+            Arc::clone(&rocksdb_index_service),
+            local_file_store.message_index_runtime_handle(),
+        )));
+        if let Some(rocksdb_timer_service) = rocksdb_timer_service.as_ref() {
+            local_file_store.add_dispatcher(Arc::new(CommitLogDispatcherBuildRocksDbTimer::new(
+                Arc::clone(rocksdb_timer_service),
+                message_store_config_for_timer,
+            )));
+        }
+        if let Some(rocksdb_trans_service) = rocksdb_trans_service.as_ref() {
+            local_file_store.add_dispatcher(Arc::new(CommitLogDispatcherBuildRocksDbTrans::new(
+                Arc::clone(rocksdb_trans_service),
+                message_store_config_for_trans,
+            )));
+        }
+
+        let root = RocksDbMessageStoreRoot::new(derived);
+        Ok(Self { local_file_store, root })
+    }
+
+    pub fn local_file_store(&self) -> &LocalFileMessageStore {
+        self.local_file_store.as_ref()
+    }
+
+    pub fn local_file_store_mut(&mut self) -> &mut LocalFileMessageStore {
+        self.local_file_store.as_mut()
+    }
+
+    fn local_wal_adapter(&self) -> StoreLocalWalAdapter<'_> {
+        StoreLocalWalAdapter {
+            commit_log: self.local_file_store.get_commit_log(),
+            correct_to_new_offset: self.local_file_store.next_offset_correction(0, 1) == 1,
+        }
+    }
+
+    pub fn rocksdb_config(&self) -> &RocksDbConfig {
+        self.root.derived().rocksdb_config()
+    }
+
+    pub fn message_rocksdb_config(&self) -> &RocksDbConfig {
+        self.root.derived().message_rocksdb_config()
+    }
+
+    pub fn rocksdb_store(&self) -> Arc<RocksDbStore> {
+        self.root.derived().rocksdb_store()
+    }
+
+    pub fn message_rocksdb_storage(&self) -> Arc<MessageRocksDbStorage> {
+        self.root.derived().message_rocksdb_storage()
+    }
+
+    pub fn rocksdb_index_service(&self) -> Arc<RocksDbIndexBuildService> {
+        self.root.derived().rocksdb_index_service()
+    }
+
+    pub fn rocksdb_timer_service(&self) -> Option<Arc<RocksDbTimerBuildService>> {
+        self.root.derived().rocksdb_timer_service()
+    }
+
+    pub fn rocksdb_trans_service(&self) -> Option<Arc<RocksDbTransBuildService>> {
+        self.root.derived().rocksdb_trans_service()
+    }
+
+    pub fn is_rocksdb_maintenance_running(&self) -> bool {
+        self.root.derived().is_rocksdb_maintenance_running()
+    }
+
+    pub fn is_message_rocksdb_maintenance_running(&self) -> bool {
+        self.root.derived().is_message_rocksdb_maintenance_running()
+    }
+
+    pub fn close_rocksdb(&self) {
+        self.root.derived().close();
+    }
+
+    pub fn consume_queue_store(&self) -> &RocksDbConsumeQueueStore {
+        self.root.derived().consume_queue_store()
+    }
+
+    pub fn try_get_max_offset_in_queue(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, StoreError> {
+        self.root.derived().max_offset(topic.as_str(), queue_id)
+    }
+
+    pub fn get_max_offset_in_queue(&self, topic: &CheetahString, queue_id: i32) -> i64 {
+        match self.try_get_max_offset_in_queue(topic, queue_id) {
+            Ok(offset) => offset,
+            Err(error) => {
+                warn!(topic = %topic, queue_id, error = %error, "failed to read RocksDB max consume queue offset");
+                0
+            }
+        }
+    }
+
+    pub fn try_get_min_offset_in_queue(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, StoreError> {
+        self.root.derived().min_offset(topic.as_str(), queue_id)
+    }
+
+    pub fn get_min_offset_in_queue(&self, topic: &CheetahString, queue_id: i32) -> i64 {
+        match self.try_get_min_offset_in_queue(topic, queue_id) {
+            Ok(offset) => offset,
+            Err(error) => {
+                warn!(topic = %topic, queue_id, error = %error, "failed to read RocksDB min consume queue offset");
+                0
+            }
+        }
+    }
+
+    pub fn try_get_commit_log_offset_in_queue(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+        consume_queue_offset: i64,
+    ) -> Result<i64, StoreError> {
+        Ok(self
+            .rocksdb_cq_value(topic, queue_id, consume_queue_offset)?
+            .map_or(-1, |value| value.commit_log_physical_offset))
+    }
+
+    pub fn get_commit_log_offset_in_queue(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+        consume_queue_offset: i64,
+    ) -> i64 {
+        match self.try_get_commit_log_offset_in_queue(topic, queue_id, consume_queue_offset) {
+            Ok(offset) => offset,
+            Err(error) => {
+                warn!(
+                    topic = %topic,
+                    queue_id,
+                    consume_queue_offset,
+                    error = %error,
+                    "failed to read RocksDB consume queue physical offset"
+                );
+                -1
+            }
+        }
+    }
+
+    pub fn try_get_message_store_timestamp(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+        consume_queue_offset: i64,
+    ) -> Result<i64, StoreError> {
+        Ok(self
+            .rocksdb_cq_value(topic, queue_id, consume_queue_offset)?
+            .map_or(-1, |value| value.msg_store_time))
+    }
+
+    pub fn get_message_store_timestamp(&self, topic: &CheetahString, queue_id: i32, consume_queue_offset: i64) -> i64 {
+        match self.try_get_message_store_timestamp(topic, queue_id, consume_queue_offset) {
+            Ok(timestamp) => timestamp,
+            Err(error) => {
+                warn!(
+                    topic = %topic,
+                    queue_id,
+                    consume_queue_offset,
+                    error = %error,
+                    "failed to read RocksDB consume queue store timestamp"
+                );
+                -1
+            }
+        }
+    }
+
+    pub async fn get_message(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+        max_msg_nums: i32,
+        message_filter: Option<ArcMessageFilter>,
+    ) -> Option<GetMessageResult> {
+        self.get_message_with_size_limit(
+            group,
+            topic,
+            queue_id,
+            offset,
+            max_msg_nums,
+            MAX_PULL_MSG_SIZE,
+            message_filter,
+        )
+        .await
+    }
+
+    pub async fn get_message_with_size_limit(
+        &self,
+        _group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+        max_msg_nums: i32,
+        max_total_msg_size: i32,
+        message_filter: Option<ArcMessageFilter>,
+    ) -> Option<GetMessageResult> {
+        let local_wal = self.local_wal_adapter();
+        let read_result = self.root.read(
+            &local_wal,
+            RocksDbReadRequest {
+                topic: topic.as_str(),
+                queue_id,
+                offset,
+                max_message_count: max_msg_nums,
+                max_total_message_size: max_total_msg_size,
+                max_pull_message_size: MAX_PULL_MSG_SIZE,
+            },
+            |tags_code| {
+                message_filter
+                    .as_ref()
+                    .is_none_or(|filter| filter.is_matched_by_consume_queue(Some(tags_code), None))
+            },
+            |bytes| {
+                message_filter
+                    .as_ref()
+                    .is_none_or(|filter| filter.is_matched_by_commit_log(Some(bytes), None))
+            },
+        );
+        let read_result = match read_result {
+            Ok(result) => result,
+            Err(error) => {
+                warn!(topic = %topic, queue_id, error = %error, "failed to read message through RocksDB adapter");
+                return None;
+            }
+        };
+        let mut result = GetMessageResult::new_result_size(read_result.records.len());
+        for record in read_result.records {
+            result.add_message(record.selection, record.queue_offset, record.batch_count);
+        }
+        result.set_status(Some(legacy_get_status(read_result.status)));
+        result.set_next_begin_offset(read_result.next_begin_offset);
+        result.set_min_offset(read_result.min_offset);
+        result.set_max_offset(read_result.max_offset);
+        Some(result)
+    }
+
+    fn query_message_by_rocksdb_index(
+        &self,
+        topic: &CheetahString,
+        key: &CheetahString,
+        index_type: Option<&str>,
+        max_num: i32,
+        begin: i64,
+        end: i64,
+        last_key: Option<&str>,
+    ) -> Result<QueryMessageResult, StoreError> {
+        let max_num = max_num
+            .max(0)
+            .min(self.get_message_store_config().max_msgs_num_batch as i32);
+        if max_num == 0 {
+            return Ok(QueryMessageResult::default());
+        }
+        let local_wal = self.local_wal_adapter();
+        let lookup = self.root.query_index(
+            &local_wal,
+            topic.as_str(),
+            key.as_str(),
+            index_type,
+            max_num as usize,
+            begin,
+            end,
+            last_key,
+            self.get_message_store_config().max_rocksdb_index_query_days,
+        )?;
+        let mut result = QueryMessageResult {
+            index_last_update_timestamp: lookup.last_update_timestamp,
+            index_last_update_phyoffset: lookup.last_update_physical_offset,
+            ..QueryMessageResult::default()
+        };
+        for record in lookup.records {
+            result.add_message(record);
+        }
+        Ok(result)
+    }
+
+    fn apply_rocksdb_runtime_index_safety(&self, result: &mut QueryMessageResult) {
+        let safe_offset = self
+            .rocksdb_index_service()
+            .get_safe_dispatch_offset()
+            .unwrap_or_else(|error| {
+                warn!(error = %error, "failed to read RocksDB index safe offset");
+                0
+            });
+        self.local_file_store.apply_runtime_index_safety_at(result, safe_offset);
+    }
+
+    fn rocksdb_cq_value(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+        consume_queue_offset: i64,
+    ) -> Result<Option<ConsumeQueueValue>, StoreError> {
+        self.root
+            .derived()
+            .consume_queue_value(topic.as_str(), queue_id, consume_queue_offset)
+    }
+
+    fn sync_local_topic_queue_offsets(&self) -> Result<(), StoreError> {
+        let topic_queue_table = self
+            .root
+            .derived()
+            .topic_queue_offsets()?
+            .into_iter()
+            .map(|((topic, queue_id), offset)| (CheetahString::from_string(format!("{topic}-{queue_id}")), offset))
+            .collect();
+        self.local_file_store.replace_topic_queue_table(topic_queue_table);
+        Ok(())
+    }
+}
+
+fn legacy_get_status(status: ApiGetStatus) -> GetMessageStatus {
+    match status {
+        ApiGetStatus::Found => GetMessageStatus::Found,
+        ApiGetStatus::NoMatchedMessage => GetMessageStatus::NoMatchedMessage,
+        ApiGetStatus::MessageWasRemoving => GetMessageStatus::MessageWasRemoving,
+        ApiGetStatus::OffsetFoundNull => GetMessageStatus::OffsetFoundNull,
+        ApiGetStatus::OffsetOverflowBadly => GetMessageStatus::OffsetOverflowBadly,
+        ApiGetStatus::OffsetOverflowOne => GetMessageStatus::OffsetOverflowOne,
+        ApiGetStatus::OffsetTooSmall => GetMessageStatus::OffsetTooSmall,
+        ApiGetStatus::NoMatchedLogicQueue => GetMessageStatus::NoMatchedLogicQueue,
+        ApiGetStatus::NoMessageInQueue => GetMessageStatus::NoMessageInQueue,
+        ApiGetStatus::OffsetReset => GetMessageStatus::OffsetReset,
+    }
+}
+
+mod read;
+
+impl BackendOps for RocksDBMessageStore {
+    async fn load(&mut self) -> bool {
+        if !self.local_file_store.load().await {
+            return false;
+        }
+        if let Err(error) = self.sync_local_topic_queue_offsets() {
+            warn!(error = %error, "failed to restore Local queue-offset table from RocksDB");
+            return false;
+        }
+        true
+    }
+
+    async fn start(&mut self) -> Result<(), StoreError> {
+        self.local_file_store.start().await?;
+        self.root.derived_mut().start_maintenance();
+        Ok(())
+    }
+
+    async fn init(&mut self) -> Result<(), StoreError> {
+        self.local_file_store.init().await
+    }
+
+    async fn shutdown_gracefully(&mut self) -> Result<MessageStoreShutdownReport, StoreError> {
+        let derived_maintenance_result = self.root.derived_mut().shutdown_maintenance().await;
+        let local_file_result = self.local_file_store.shutdown_gracefully().await;
+        self.close_rocksdb();
+
+        let report = local_file_result?;
+        derived_maintenance_result?;
+        Ok(report)
+    }
+
+    async fn shutdown(&mut self) {
+        if let Err(error) = self.shutdown_gracefully().await {
+            warn!(error = %error, "RocksDB message store shutdown failed");
+        }
+    }
+
+    async fn destroy_gracefully(&mut self) -> Result<bool, StoreError> {
+        let destroyed = self.local_file_store.destroy_gracefully().await?;
+        self.close_rocksdb();
+        Ok(destroyed)
+    }
+
+    fn destroy(&mut self) {
+        self.local_file_store.destroy();
+        self.close_rocksdb();
+    }
+
+    async fn put_message(&mut self, msg: MessageExtBrokerInner) -> PutMessageResult {
+        self.local_file_store.put_message(msg).await
+    }
+
+    async fn put_messages(&mut self, message_ext_batch: MessageExtBatch) -> PutMessageResult {
+        self.local_file_store.put_messages(message_ext_batch).await
+    }
+
+    fn get_timer_message_store(&self) -> Option<&Arc<TimerMessageStore>> {
+        self.local_file_store.get_timer_message_store()
+    }
+
+    fn set_timer_message_store(&mut self, timer_message_store: Arc<TimerMessageStore>) {
+        self.local_file_store.set_timer_message_store(timer_message_store);
+    }
+
+    fn get_running_data_info(&self) -> String {
+        self.local_file_store.get_running_data_info()
+    }
+
+    fn get_runtime_info(&self) -> HashMap<String, String> {
+        let mut runtime = self.local_file_store.get_runtime_info();
+        runtime.insert("storeType".to_string(), "rocksdb".to_string());
+        runtime.insert("rocksdbMaintenanceSupported".to_string(), "true".to_string());
+        runtime.insert(
+            "rocksdbMaintenanceRunning".to_string(),
+            self.is_rocksdb_maintenance_running().to_string(),
+        );
+        runtime.insert(
+            "messageRocksdbMaintenanceRunning".to_string(),
+            self.is_message_rocksdb_maintenance_running().to_string(),
+        );
+        runtime
+    }
+
+    fn get_max_phy_offset(&self) -> i64 {
+        self.local_file_store.get_max_phy_offset()
+    }
+
+    fn get_min_phy_offset(&self) -> i64 {
+        self.local_file_store.get_min_phy_offset()
+    }
+
+    fn get_commit_log_data(&self, offset: i64) -> Option<SelectMappedBufferResult> {
+        self.local_file_store.get_commit_log_data(offset)
+    }
+
+    fn get_bulk_commit_log_data(&self, offset: i64, size: i32) -> Option<Vec<SelectMappedBufferResult>> {
+        self.local_file_store.get_bulk_commit_log_data(offset, size)
+    }
+
+    async fn append_to_commit_log(
+        &mut self,
+        start_offset: i64,
+        data: &[u8],
+        data_start: i32,
+        data_length: i32,
+    ) -> Result<bool, StoreError> {
+        self.local_file_store
+            .append_to_commit_log(start_offset, data, data_start, data_length)
+            .await
+    }
+
+    fn execute_delete_files_manually(&self) {
+        self.local_file_store.execute_delete_files_manually();
+    }
+
+    async fn update_ha_master_address(&self, new_addr: &str) {
+        self.local_file_store.update_ha_master_address(new_addr).await;
+    }
+
+    fn update_master_address(&self, new_addr: &CheetahString) {
+        self.local_file_store.update_master_address(new_addr);
+    }
+
+    fn slave_fall_behind_much(&self) -> i64 {
+        self.local_file_store.slave_fall_behind_much()
+    }
+
+    fn delete_topics(&self, delete_topics: Vec<&CheetahString>) -> i32 {
+        for topic in &delete_topics {
+            if let Err(error) = self.root.derived().delete_topic(topic.as_str()) {
+                warn!(topic = %topic, error = %error, "failed to delete RocksDB consume queue topic state");
+            }
+        }
+        self.local_file_store.delete_topics(delete_topics)
+    }
+
+    fn clean_unused_topic(&self, retain_topics: &HashSet<String>) -> i32 {
+        self.local_file_store.clean_unused_topic(retain_topics)
+    }
+
+    fn clean_expired_consumer_queue(&self) {
+        let min_phy_offset = self.local_file_store.get_min_phy_offset();
+        if let Err(error) = self.root.derived().clean_expired(min_phy_offset) {
+            warn!(
+                min_phy_offset,
+                error = %error,
+                "failed to schedule RocksDB consume queue manual compaction"
+            );
+        }
+        self.local_file_store.clean_expired_consumer_queue();
+    }
+
+    fn dispatch_behind_bytes(&self) -> i64 {
+        self.local_file_store.dispatch_behind_bytes()
+    }
+
+    fn flush(&self) -> i64 {
+        match self.try_flush() {
+            Ok(progress) => progress.durable,
+            Err(error) => {
+                warn!(error = %error, "RocksDB message store flush failed; returning last durable watermark");
+                self.local_file_store.get_flushed_where()
+            }
+        }
+    }
+
+    fn try_flush(&self) -> Result<crate::consume_queue::mapped_file_queue::FlushProgress, StoreError> {
+        if let Err(error) = self.root.derived().flush_derived() {
+            self.local_file_store.record_flush_failure(&error);
+            return Err(error);
+        }
+        self.local_file_store.try_flush()
+    }
+
+    fn get_flushed_where(&self) -> i64 {
+        self.local_file_store.get_flushed_where()
+    }
+
+    fn reset_write_offset(&self, phy_offset: i64) -> bool {
+        self.local_file_store.reset_write_offset(phy_offset)
+    }
+
+    fn get_confirm_offset(&self) -> i64 {
+        self.local_file_store.get_confirm_offset()
+    }
+
+    fn set_confirm_offset(&mut self, phy_offset: i64) {
+        self.local_file_store.set_confirm_offset(phy_offset);
+    }
+
+    fn is_os_page_cache_busy(&self) -> bool {
+        self.local_file_store.is_os_page_cache_busy()
+    }
+
+    fn put_message_preflight(&self) -> PutMessagePreflight {
+        self.local_file_store.put_message_preflight()
+    }
+
+    fn sync_flush_runtime_info(&self) -> crate::base::flush_manager::SyncFlushRuntimeInfo {
+        self.local_file_store.sync_flush_runtime_info()
+    }
+
+    fn health_snapshot(&self) -> rocketmq_store_api::StoreHealthSnapshot {
+        self.local_file_store.health_snapshot()
+    }
+
+    fn lock_time_millis(&self) -> i64 {
+        self.local_file_store.lock_time_millis()
+    }
+
+    fn is_transient_store_pool_deficient(&self) -> bool {
+        self.local_file_store.is_transient_store_pool_deficient()
+    }
+
+    fn get_dispatcher_list(&self) -> &[Arc<dyn CommitLogDispatcher>] {
+        self.local_file_store.get_dispatcher_list()
+    }
+
+    fn add_dispatcher(&mut self, dispatcher: Arc<dyn CommitLogDispatcher>) {
+        self.local_file_store.add_dispatcher(dispatcher);
+    }
+
+    fn add_first_dispatcher(&mut self, dispatcher: Arc<dyn CommitLogDispatcher>) {
+        self.local_file_store.add_first_dispatcher(dispatcher);
+    }
+
+    fn get_consume_queue(&self, topic: &CheetahString, queue_id: i32) -> Option<ArcConsumeQueue> {
+        self.local_file_store.get_consume_queue(topic, queue_id)
+    }
+
+    fn find_consume_queue(&self, topic: &CheetahString, queue_id: i32) -> Option<ArcConsumeQueue> {
+        self.local_file_store.find_consume_queue(topic, queue_id)
+    }
+
+    fn get_broker_stats_manager(&self) -> Option<&Arc<BrokerStatsManager>> {
+        self.local_file_store.get_broker_stats_manager()
+    }
+
+    fn on_commit_log_append<MF: MappedFile>(
+        &self,
+        msg: &MessageExtBrokerInner,
+        result: &AppendMessageResult,
+        commit_log_file: &MF,
+    ) {
+        self.local_file_store.on_commit_log_append(msg, result, commit_log_file);
+    }
+
+    fn on_commit_log_dispatch<MF: MappedFile>(
+        &self,
+        dispatch_request: &DispatchRequest,
+        do_dispatch: bool,
+        commit_log_file: &MF,
+        is_recover: bool,
+        is_file_end: bool,
+    ) -> Result<(), StoreError> {
+        self.local_file_store.on_commit_log_dispatch(
+            dispatch_request,
+            do_dispatch,
+            commit_log_file,
+            is_recover,
+            is_file_end,
+        )
+    }
+
+    fn finish_commit_log_dispatch(&self) {
+        self.local_file_store.finish_commit_log_dispatch();
+    }
+
+    fn get_message_store_config(&self) -> &MessageStoreConfig {
+        self.local_file_store.message_store_config_ref()
+    }
+
+    fn current_broker_role(&self) -> BrokerRole {
+        self.local_file_store.current_broker_role()
+    }
+
+    fn data_read_ahead_enabled(&self) -> bool {
+        self.local_file_store.data_read_ahead_enabled()
+    }
+
+    fn get_store_stats_service(&self) -> Arc<StoreStatsService> {
+        self.local_file_store.get_store_stats_service()
+    }
+
+    fn get_store_checkpoint(&self) -> &StoreCheckpoint {
+        self.local_file_store.get_store_checkpoint()
+    }
+
+    fn get_store_checkpoint_arc(&self) -> Arc<StoreCheckpoint> {
+        self.local_file_store.get_store_checkpoint_arc()
+    }
+
+    fn get_system_clock(&self) -> Arc<SystemClock> {
+        self.local_file_store.get_system_clock()
+    }
+
+    fn get_commit_log(&self) -> &CommitLog {
+        self.local_file_store.get_commit_log()
+    }
+
+    fn get_commit_log_mut(&mut self) -> &mut CommitLog {
+        self.local_file_store.get_commit_log_mut()
+    }
+
+    fn set_commitlog_read_mode(&self, read_ahead_mode: crate::capability::CommitLogReadMode) -> Result<(), StoreError> {
+        self.local_file_store.set_commitlog_read_mode(read_ahead_mode)
+    }
+
+    fn get_running_flags(&self) -> &RunningFlags {
+        self.local_file_store.get_running_flags()
+    }
+
+    fn get_running_flags_arc(&self) -> Arc<RunningFlags> {
+        self.local_file_store.get_running_flags_arc()
+    }
+
+    fn get_transient_store_pool(&self) -> Arc<TransientStorePool> {
+        self.local_file_store.get_transient_store_pool()
+    }
+
+    fn get_allocate_mapped_file_service(&self) -> Arc<AllocateMappedFileService> {
+        self.local_file_store.get_allocate_mapped_file_service()
+    }
+
+    fn truncate_dirty_logic_files(&self, phy_offset: i64) {
+        let truncate_result = self.root.derived().truncate_dirty(phy_offset);
+        if let Err(error) = truncate_result {
+            warn!(
+                phy_offset,
+                error = %error,
+                "failed to truncate RocksDB consume queue dirty offsets"
+            );
+        } else if let Err(error) = self.sync_local_topic_queue_offsets() {
+            warn!(phy_offset, error = %error, "failed to restore queue offsets after RocksDB truncation");
+        }
+        self.local_file_store.truncate_dirty_logic_files(phy_offset);
+    }
+
+    fn unlock_mapped_file<MF: MappedFile>(&self, unlock_mapped_file: &MF) {
+        self.local_file_store.unlock_mapped_file(unlock_mapped_file);
+    }
+
+    fn get_queue_store(&self) -> &dyn Any {
+        self.local_file_store.get_queue_store()
+    }
+
+    fn is_sync_disk_flush(&self) -> bool {
+        self.local_file_store.is_sync_disk_flush()
+    }
+
+    fn is_sync_master(&self) -> bool {
+        self.local_file_store.is_sync_master()
+    }
+
+    fn assign_offset(&self, msg: &mut MessageExtBrokerInner) -> Result<(), StoreError> {
+        self.local_file_store.assign_offset(msg)
+    }
+
+    fn increase_offset(&self, msg: &MessageExtBrokerInner, message_num: i16) {
+        self.local_file_store.increase_offset(msg, message_num);
+    }
+
+    fn get_master_store_in_process<M: BackendOps + Send + Sync + 'static>(&self) -> Option<Arc<M>> {
+        self.local_file_store.get_master_store_in_process::<M>()
+    }
+
+    fn set_master_store_in_process<M: BackendOps + Send + Sync + 'static>(&self, master_store_in_process: Arc<M>) {
+        self.local_file_store
+            .set_master_store_in_process(master_store_in_process);
+    }
+
+    fn get_data(&self, offset: i64, size: i32, byte_buffer: &mut BytesMut) -> bool {
+        self.local_file_store.get_data(offset, size, byte_buffer)
+    }
+
+    fn set_alive_replica_num_in_group(&self, alive_replica_nums: i32) {
+        self.local_file_store.set_alive_replica_num_in_group(alive_replica_nums);
+    }
+
+    fn get_alive_replica_num_in_group(&self) -> i32 {
+        self.local_file_store.get_alive_replica_num_in_group()
+    }
+
+    fn sync_controller_sync_state_set(&self, local_broker_id: i64, sync_state_set: &HashSet<i64>) {
+        self.local_file_store
+            .sync_controller_sync_state_set(local_broker_id, sync_state_set);
+    }
+
+    fn wakeup_ha_client(&self) {
+        self.local_file_store.wakeup_ha_client();
+    }
+
+    fn get_master_flushed_offset(&self) -> i64 {
+        self.local_file_store.get_master_flushed_offset()
+    }
+
+    fn get_broker_init_max_offset(&self) -> i64 {
+        self.local_file_store.get_broker_init_max_offset()
+    }
+
+    fn set_master_flushed_offset(&self, master_flushed_offset: i64) {
+        self.local_file_store.set_master_flushed_offset(master_flushed_offset);
+    }
+
+    fn set_broker_init_max_offset(&mut self, broker_init_max_offset: i64) {
+        self.local_file_store.set_broker_init_max_offset(broker_init_max_offset);
+    }
+
+    fn sync_broker_role(&self, broker_role: BrokerRole) {
+        self.local_file_store.sync_broker_role(broker_role);
+    }
+
+    fn install_controller_write_lease(&self, token: WriteLeaseToken, valid_for: Duration) -> bool {
+        self.local_file_store.install_controller_write_lease(token, valid_for)
+    }
+
+    fn fence_controller_writes(&self) {
+        self.local_file_store.fence_controller_writes();
+    }
+
+    fn calc_delta_checksum(&self, from: i64, to: i64) -> Vec<u8> {
+        self.local_file_store.calc_delta_checksum(from, to)
+    }
+
+    fn truncate_files(&self, offset_to_truncate: i64) -> Result<bool, StoreError> {
+        self.local_file_store.truncate_files(offset_to_truncate)
+    }
+
+    fn is_offset_aligned(&self, offset: i64) -> bool {
+        self.local_file_store.is_offset_aligned(offset)
+    }
+
+    fn get_put_message_hook_list(&self) -> Vec<Arc<dyn PutMessageHook>> {
+        self.local_file_store.get_put_message_hook_list()
+    }
+
+    fn set_send_message_back_hook(&self, send_message_back_hook: Arc<dyn SendMessageBackHook>) {
+        self.local_file_store.set_send_message_back_hook(send_message_back_hook);
+    }
+
+    fn get_send_message_back_hook(&self) -> Option<Arc<dyn SendMessageBackHook>> {
+        self.local_file_store.get_send_message_back_hook()
+    }
+
+    fn get_last_file_from_offset(&self) -> i64 {
+        self.local_file_store.get_last_file_from_offset()
+    }
+
+    fn get_last_mapped_file(&self, start_offset: i64) -> bool {
+        self.local_file_store.get_last_mapped_file(start_offset)
+    }
+
+    fn set_physical_offset(&self, phy_offset: i64) {
+        self.local_file_store.set_physical_offset(phy_offset);
+    }
+
+    fn is_mapped_files_empty(&self) -> bool {
+        self.local_file_store.is_mapped_files_empty()
+    }
+
+    fn get_state_machine_version(&self) -> i64 {
+        self.local_file_store.get_state_machine_version()
+    }
+
+    fn state_machine_version_view(&self) -> StateMachineVersionView {
+        self.local_file_store.state_machine_version_view()
+    }
+
+    fn check_message_and_return_size(
+        &self,
+        bytes: &mut Bytes,
+        check_crc: bool,
+        check_dup_info: bool,
+        read_body: bool,
+    ) -> DispatchRequest {
+        self.local_file_store
+            .check_message_and_return_size(bytes, check_crc, check_dup_info, read_body)
+    }
+
+    fn remain_transient_store_buffer_numbs(&self) -> i32 {
+        self.local_file_store.remain_transient_store_buffer_numbs()
+    }
+
+    fn remain_how_many_data_to_commit(&self) -> i64 {
+        self.local_file_store.remain_how_many_data_to_commit()
+    }
+
+    fn remain_how_many_data_to_flush(&self) -> i64 {
+        self.local_file_store.remain_how_many_data_to_flush()
+    }
+
+    fn is_shutdown(&self) -> bool {
+        self.local_file_store.is_shutdown()
+    }
+
+    fn estimate_message_count(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+        from: i64,
+        to: i64,
+        filter: &dyn MessageFilter,
+    ) -> i64 {
+        self.local_file_store
+            .estimate_message_count(topic, queue_id, from, to, filter)
+    }
+
+    fn recover_topic_queue_table(&mut self) {
+        self.local_file_store.recover_topic_queue_table();
+    }
+
+    fn notify_message_arrive_if_necessary(&self, dispatch_request: &mut DispatchRequest) {
+        self.local_file_store
+            .notify_message_arrive_if_necessary(dispatch_request);
+    }
+
+    fn set_put_message_hook(&mut self, put_message_hook: BoxedPutMessageHook) {
+        self.local_file_store.set_put_message_hook(put_message_hook);
+    }
+
+    fn get_ha_service(&self) -> Option<&GeneralHAService> {
+        self.local_file_store.get_ha_service()
+    }
+
+    fn get_ha_runtime_info(&self) -> Option<HARuntimeInfo> {
+        self.local_file_store.get_ha_runtime_info()
+    }
+}
+
+impl Deref for RocksDBMessageStore {
+    type Target = LocalFileMessageStore;
+
+    fn deref(&self) -> &Self::Target {
+        self.local_file_store.as_ref()
+    }
+}
+
+impl DerefMut for RocksDBMessageStore {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        self.local_file_store.as_mut()
+    }
+}
+
+#[cfg(test)]
+mod redaction_tests {
+    use std::fmt;
+
+    struct RocksDbStoreDebugProbe;
+
+    impl fmt::Debug for RocksDbStoreDebugProbe {
+        fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+            super::write_redacted_debug(formatter)
+        }
+    }
+
+    #[test]
+    fn rocksdb_message_store_debug_redacts_path_and_configuration_values() {
+        let sensitive_path = "sensitive-rocksdb-root-canary";
+        let sensitive_value = "sensitive-rocksdb-config-canary";
+        let rendered = format!("{:?}", RocksDbStoreDebugProbe);
+
+        assert_eq!(
+            rendered,
+            "RocksDBMessageStore { configuration_present: true, redacted: true }"
+        );
+        assert!(!rendered.contains(sensitive_path));
+        assert!(!rendered.contains(sensitive_value));
+    }
+}

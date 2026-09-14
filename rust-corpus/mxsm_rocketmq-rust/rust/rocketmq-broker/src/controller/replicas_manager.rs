@@ -1,0 +1,1269 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashSet;
+use std::fs;
+use std::path::Path;
+use std::path::PathBuf;
+
+use crate::broker_error::BrokerResult as Result;
+use crate::config::broker_config::BrokerConfig;
+use cheetah_string::CheetahString;
+use rocketmq_model::common::broker::broker_role::BrokerRole;
+use rocketmq_model::common::mix_all::MASTER_ID;
+use rocketmq_protocol::protocol::body::epoch_entry_cache::EpochEntry;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_store::MessageStoreConfig;
+use rocketmq_store_api::MasterEpoch;
+use rocketmq_store_api::SyncStateSet as HaSyncStateSet;
+use rocketmq_store_api::SyncStateSetEpoch;
+use rocketmq_store_api::WriteAuthority;
+use serde::Deserialize;
+use serde::Serialize;
+use tracing::info;
+use tracing::warn;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum BrokerReplicaRole {
+    Master,
+    Slave,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum RegisterState {
+    Initial,
+    CreateTempMetadataFileDone,
+    CreateMetadataFileDone,
+    Registered,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct RoleChangeOutcome {
+    pub role: Option<BrokerReplicaRole>,
+    pub sync_state_set_changed: bool,
+    pub master_broker_id: Option<u64>,
+    pub master_address: Option<CheetahString>,
+    pub master_epoch: i32,
+    pub sync_state_set_epoch: i32,
+    pub sync_state_set: HashSet<i64>,
+    pub local_broker_id: u64,
+    pub should_start_special_service: bool,
+    pub should_register_to_namesrv: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ControllerBrokerIdAction {
+    UseCurrent(u64),
+    ApplyBrokerId {
+        broker_id: u64,
+        register_check_code: CheetahString,
+    },
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ControllerRegisterFollowup {
+    ApplyRoleChange,
+    HeartbeatThenQueryReplicaInfo,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ControllerReplicaInfoFollowup {
+    ApplyRoleChange,
+    ElectMaster,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ControllerReplicaSyncFollowup {
+    ApplyRoleChange,
+    Bootstrap,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ControllerHeartbeatState {
+    pub controller_targets: Vec<CheetahString>,
+    pub broker_id: i64,
+    pub epoch: Option<i32>,
+}
+
+impl RoleChangeOutcome {
+    pub fn target_broker_role(&self) -> Option<BrokerRole> {
+        match self.role {
+            Some(BrokerReplicaRole::Master) => Some(BrokerRole::SyncMaster),
+            Some(BrokerReplicaRole::Slave) => Some(BrokerRole::Slave),
+            None => None,
+        }
+    }
+
+    pub fn should_clear_slave_master_address(&self) -> bool {
+        matches!(self.role, Some(BrokerReplicaRole::Master))
+    }
+
+    pub fn slave_master_address(&self) -> Option<&CheetahString> {
+        matches!(self.role, Some(BrokerReplicaRole::Slave))
+            .then_some(self.master_address.as_ref())
+            .flatten()
+    }
+
+    pub fn should_sync_master_online(&self) -> bool {
+        self.slave_master_address().is_some()
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub(crate) struct BrokerMetadataRecord {
+    cluster_name: String,
+    broker_name: String,
+    broker_id: u64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub(crate) struct TempBrokerMetadataRecord {
+    cluster_name: String,
+    broker_name: String,
+    broker_id: u64,
+    register_check_code: String,
+}
+
+#[derive(Debug, Clone)]
+pub(crate) enum ControllerBrokerIdPersistencePlan {
+    UseCurrent(u64),
+    ReusePending {
+        broker_id: u64,
+        register_check_code: CheetahString,
+        temporary: PathBuf,
+    },
+    PersistPending {
+        target: PathBuf,
+        content: Vec<u8>,
+        record: TempBrokerMetadataRecord,
+    },
+}
+
+#[derive(Debug, Clone)]
+pub(crate) struct ControllerBrokerIdCommitSnapshot {
+    pub(crate) target: PathBuf,
+    pub(crate) content: Vec<u8>,
+    pub(crate) record: BrokerMetadataRecord,
+    pub(crate) temporary: PathBuf,
+}
+
+/// Controller replica state.
+///
+/// Clones are detached, point-in-time read snapshots. Live mutations remain
+/// serialized by the broker controller owner.
+#[derive(Clone)]
+pub struct ReplicasManager {
+    broker_controller_id: u64,
+    broker_address: CheetahString,
+    controller_addresses: Vec<CheetahString>,
+    controller_leader_address: Option<CheetahString>,
+    master_broker_id: Option<u64>,
+    master_address: Option<CheetahString>,
+    write_authority: Option<WriteAuthority>,
+    sync_state_set_epoch: Option<SyncStateSetEpoch>,
+    sync_state_set: HashSet<i64>,
+    metadata_path: PathBuf,
+    temp_metadata_path: PathBuf,
+    metadata: Option<BrokerMetadataRecord>,
+    temp_metadata: Option<TempBrokerMetadataRecord>,
+    register_state: RegisterState,
+    started: bool,
+}
+
+impl ReplicasManager {
+    pub fn new(
+        config: &BrokerConfig,
+        message_store_config: &MessageStoreConfig,
+        broker_address: CheetahString,
+    ) -> Self {
+        let metadata_path = metadata_path_from_config(message_store_config);
+        let temp_metadata_path = temp_metadata_path_from_metadata_path(&metadata_path);
+        let mut manager = Self {
+            broker_controller_id: config.broker_identity.broker_id,
+            broker_address,
+            controller_addresses: parse_controller_addresses(&config.controller_addr),
+            controller_leader_address: None,
+            master_broker_id: None,
+            master_address: None,
+            write_authority: None,
+            sync_state_set_epoch: None,
+            sync_state_set: HashSet::new(),
+            metadata_path,
+            temp_metadata_path,
+            metadata: None,
+            temp_metadata: None,
+            register_state: RegisterState::Initial,
+            started: false,
+        };
+        manager.recover_registration_state();
+        manager
+    }
+
+    pub fn start(&mut self) {
+        self.started = true;
+        info!(
+            "ReplicasManager started, broker_controller_id={}, register_state={:?}, controller_addresses={:?}",
+            self.broker_controller_id, self.register_state, self.controller_addresses
+        );
+    }
+
+    pub fn shutdown(&mut self) {
+        self.started = false;
+        info!(
+            "ReplicasManager shutdown, broker_controller_id={}, register_state={:?}",
+            self.broker_controller_id, self.register_state
+        );
+    }
+
+    pub fn get_epoch_entries(&self) -> Vec<EpochEntry> {
+        self.write_authority
+            .map(|authority| vec![EpochEntry::new(authority.master_epoch().get(), 0)])
+            .unwrap_or_default()
+    }
+
+    pub fn broker_controller_id(&self) -> u64 {
+        self.broker_controller_id
+    }
+
+    pub fn broker_address(&self) -> &CheetahString {
+        &self.broker_address
+    }
+
+    pub fn register_state(&self) -> RegisterState {
+        self.register_state
+    }
+
+    pub fn controller_addresses(&self) -> &[CheetahString] {
+        &self.controller_addresses
+    }
+
+    pub fn heartbeat_targets(&self) -> Vec<CheetahString> {
+        let mut targets = Vec::new();
+        if let Some(leader) = &self.controller_leader_address {
+            targets.push(leader.clone());
+        }
+        for address in &self.controller_addresses {
+            if !targets.contains(address) {
+                targets.push(address.clone());
+            }
+        }
+        targets
+    }
+
+    pub fn set_controller_leader_address(&mut self, controller_leader_address: CheetahString) {
+        if controller_leader_address.is_empty() {
+            return;
+        }
+        self.controller_leader_address = Some(controller_leader_address);
+    }
+
+    pub fn controller_leader_address(&self) -> Option<&CheetahString> {
+        self.controller_leader_address.as_ref()
+    }
+
+    pub fn master_broker_id(&self) -> Option<u64> {
+        self.master_broker_id
+    }
+
+    pub fn master_address(&self) -> Option<&CheetahString> {
+        self.master_address.as_ref()
+    }
+
+    pub fn master_epoch(&self) -> i32 {
+        self.write_authority
+            .map(|authority| authority.master_epoch().get())
+            .unwrap_or_default()
+    }
+
+    pub fn sync_state_set_epoch(&self) -> i32 {
+        self.sync_state_set_epoch
+            .map(SyncStateSetEpoch::get)
+            .unwrap_or_default()
+    }
+
+    pub fn write_authority(&self) -> Option<WriteAuthority> {
+        self.write_authority
+    }
+
+    pub fn sync_state_set(&self) -> &HashSet<i64> {
+        &self.sync_state_set
+    }
+
+    pub fn controller_heartbeat_state(&self) -> ControllerHeartbeatState {
+        ControllerHeartbeatState {
+            controller_targets: self.heartbeat_targets(),
+            broker_id: self.broker_controller_id as i64,
+            epoch: self.write_authority.map(|authority| authority.master_epoch().get()),
+        }
+    }
+
+    pub fn needs_broker_id_application(&self) -> bool {
+        self.metadata.is_none()
+    }
+
+    pub fn pending_registration(&self) -> Option<(u64, CheetahString)> {
+        self.temp_metadata.as_ref().map(|metadata| {
+            (
+                metadata.broker_id,
+                CheetahString::from(metadata.register_check_code.clone()),
+            )
+        })
+    }
+
+    pub fn validate_registration_state(&self, config: &BrokerConfig) -> Result<()> {
+        validate_metadata_record(self.metadata.as_ref(), config, "broker metadata")?;
+        validate_temp_metadata_record(self.temp_metadata.as_ref(), config)?;
+        Ok(())
+    }
+
+    pub(crate) fn plan_controller_broker_id_persistence(
+        &self,
+        config: &BrokerConfig,
+        next_broker_id: Option<u64>,
+    ) -> Result<ControllerBrokerIdPersistencePlan> {
+        if !self.needs_broker_id_application() {
+            return Ok(ControllerBrokerIdPersistencePlan::UseCurrent(self.broker_controller_id));
+        }
+        if let Some((broker_id, register_check_code)) = self.pending_registration() {
+            return Ok(ControllerBrokerIdPersistencePlan::ReusePending {
+                broker_id,
+                register_check_code,
+                temporary: self.temp_metadata_path.clone(),
+            });
+        }
+
+        let broker_id = next_broker_id.ok_or_else(|| {
+            crate::broker_error::invalid_argument(
+                "controller broker id preparation requires next broker id when no pending registration exists",
+            )
+        })?;
+        let record = TempBrokerMetadataRecord {
+            cluster_name: config.broker_identity.broker_cluster_name.to_string(),
+            broker_name: config.broker_identity.broker_name.to_string(),
+            broker_id,
+            register_check_code: format!("{};{}", self.broker_address, current_millis()),
+        };
+        let content = serde_json::to_vec(&record)
+            .map_err(|error| crate::broker_error::serialization_failed("serialize", "JSON", error))?;
+        Ok(ControllerBrokerIdPersistencePlan::PersistPending {
+            target: self.temp_metadata_path.clone(),
+            content,
+            record,
+        })
+    }
+
+    pub(crate) fn publish_pending_broker_id(
+        &mut self,
+        record: TempBrokerMetadataRecord,
+    ) -> Result<ControllerBrokerIdAction> {
+        if let Some(existing) = self.temp_metadata.as_ref() {
+            if existing != &record {
+                return Err(crate::broker_error::invalid_argument(
+                    "controller broker id pending metadata changed during durable persistence",
+                ));
+            }
+        }
+        self.broker_controller_id = record.broker_id;
+        self.register_state = RegisterState::CreateTempMetadataFileDone;
+        let action = ControllerBrokerIdAction::ApplyBrokerId {
+            broker_id: record.broker_id,
+            register_check_code: CheetahString::from(record.register_check_code.clone()),
+        };
+        self.temp_metadata = Some(record);
+        Ok(action)
+    }
+
+    pub(crate) fn plan_controller_broker_id_commit(
+        &self,
+        config: &BrokerConfig,
+    ) -> Result<Option<ControllerBrokerIdCommitSnapshot>> {
+        let Some(temp_metadata) = self.temp_metadata.as_ref() else {
+            return Ok(None);
+        };
+        let record = BrokerMetadataRecord {
+            cluster_name: config.broker_identity.broker_cluster_name.to_string(),
+            broker_name: config.broker_identity.broker_name.to_string(),
+            broker_id: temp_metadata.broker_id,
+        };
+        Ok(Some(ControllerBrokerIdCommitSnapshot {
+            target: self.metadata_path.clone(),
+            content: serde_json::to_vec(&record)
+                .map_err(|error| crate::broker_error::serialization_failed("serialize", "JSON", error))?,
+            record,
+            temporary: self.temp_metadata_path.clone(),
+        }))
+    }
+
+    pub(crate) fn publish_committed_broker_id(&mut self, record: BrokerMetadataRecord) -> Result<u64> {
+        if self
+            .temp_metadata
+            .as_ref()
+            .is_some_and(|temporary| temporary.broker_id != record.broker_id)
+        {
+            return Err(crate::broker_error::invalid_argument(
+                "controller broker id changed during durable commit",
+            ));
+        }
+        self.broker_controller_id = record.broker_id;
+        self.metadata = Some(record);
+        self.temp_metadata = None;
+        self.register_state = RegisterState::CreateMetadataFileDone;
+        Ok(self.broker_controller_id)
+    }
+
+    pub(crate) fn clear_temp_metadata_state(&mut self) {
+        self.temp_metadata = None;
+        self.register_state = if self.metadata.is_some() {
+            RegisterState::CreateMetadataFileDone
+        } else {
+            RegisterState::Initial
+        };
+    }
+
+    pub fn create_temp_metadata(&mut self, config: &BrokerConfig, broker_id: u64) -> Result<()> {
+        let temp_metadata = TempBrokerMetadataRecord {
+            cluster_name: config.broker_identity.broker_cluster_name.to_string(),
+            broker_name: config.broker_identity.broker_name.to_string(),
+            broker_id,
+            register_check_code: format!("{};{}", self.broker_address, current_millis()),
+        };
+        write_metadata_file(&self.temp_metadata_path, &temp_metadata)?;
+        self.temp_metadata = Some(temp_metadata);
+        self.broker_controller_id = broker_id;
+        self.register_state = RegisterState::CreateTempMetadataFileDone;
+        Ok(())
+    }
+
+    pub fn clear_temp_metadata(&mut self) -> Result<()> {
+        delete_metadata_file(&self.temp_metadata_path)?;
+        self.temp_metadata = None;
+        self.register_state = if self.metadata.is_some() {
+            RegisterState::CreateMetadataFileDone
+        } else {
+            RegisterState::Initial
+        };
+        Ok(())
+    }
+
+    pub fn commit_temp_metadata(&mut self, config: &BrokerConfig) -> Result<u64> {
+        let Some(temp_metadata) = self.temp_metadata.as_ref() else {
+            return Err(crate::broker_error::invalid_argument(
+                "commit_temp_metadata called without temp metadata",
+            ));
+        };
+
+        let metadata = BrokerMetadataRecord {
+            cluster_name: config.broker_identity.broker_cluster_name.to_string(),
+            broker_name: config.broker_identity.broker_name.to_string(),
+            broker_id: temp_metadata.broker_id,
+        };
+        write_metadata_file(&self.metadata_path, &metadata)?;
+        self.metadata = Some(metadata);
+        self.broker_controller_id = temp_metadata.broker_id;
+        self.clear_temp_metadata()?;
+        self.register_state = RegisterState::CreateMetadataFileDone;
+        Ok(self.broker_controller_id)
+    }
+
+    pub fn mark_registered(&mut self) {
+        self.register_state = RegisterState::Registered;
+    }
+
+    pub fn prepare_controller_broker_id_action(
+        &mut self,
+        config: &BrokerConfig,
+        next_broker_id: Option<u64>,
+    ) -> Result<ControllerBrokerIdAction> {
+        if !self.needs_broker_id_application() {
+            return Ok(ControllerBrokerIdAction::UseCurrent(self.broker_controller_id));
+        }
+
+        if self.pending_registration().is_none() {
+            let next_broker_id = next_broker_id.ok_or_else(|| {
+                crate::broker_error::invalid_argument(
+                    "controller broker id preparation requires next broker id when no pending registration exists",
+                )
+            })?;
+            self.create_temp_metadata(config, next_broker_id)?;
+        }
+
+        let (broker_id, register_check_code) = self.pending_registration().ok_or_else(|| {
+            crate::broker_error::invalid_argument(
+                "replicas manager did not retain pending controller registration metadata",
+            )
+        })?;
+        Ok(ControllerBrokerIdAction::ApplyBrokerId {
+            broker_id,
+            register_check_code,
+        })
+    }
+
+    pub fn complete_controller_broker_id_application(&mut self, config: &BrokerConfig) -> Result<u64> {
+        if self.temp_metadata.is_some() {
+            self.commit_temp_metadata(config)
+        } else {
+            Ok(self.broker_controller_id)
+        }
+    }
+
+    pub fn register_followup(
+        &self,
+        master_broker_id: Option<u64>,
+        master_epoch: Option<i32>,
+    ) -> ControllerRegisterFollowup {
+        if master_broker_id.is_some() && master_epoch.is_some() {
+            ControllerRegisterFollowup::ApplyRoleChange
+        } else {
+            ControllerRegisterFollowup::HeartbeatThenQueryReplicaInfo
+        }
+    }
+
+    pub fn replica_info_followup(
+        &self,
+        master_broker_id: Option<u64>,
+        master_epoch: Option<i32>,
+    ) -> ControllerReplicaInfoFollowup {
+        if master_broker_id.is_some() && master_epoch.is_some() {
+            ControllerReplicaInfoFollowup::ApplyRoleChange
+        } else {
+            ControllerReplicaInfoFollowup::ElectMaster
+        }
+    }
+
+    pub fn replica_sync_followup(
+        &self,
+        master_broker_id: Option<u64>,
+        master_epoch: Option<i32>,
+    ) -> ControllerReplicaSyncFollowup {
+        if master_broker_id.is_some() && master_epoch.is_some() {
+            ControllerReplicaSyncFollowup::ApplyRoleChange
+        } else {
+            ControllerReplicaSyncFollowup::Bootstrap
+        }
+    }
+
+    pub fn replica_sync_error_followup(&self, response_code: Option<i32>) -> ControllerReplicaSyncFollowup {
+        if matches!(
+            response_code,
+            Some(code) if code == rocketmq_protocol::code::response_code::ResponseCode::ControllerBrokerMetadataNotExist.to_i32()
+        ) {
+            ControllerReplicaSyncFollowup::Bootstrap
+        } else {
+            ControllerReplicaSyncFollowup::ApplyRoleChange
+        }
+    }
+
+    pub fn change_broker_role(
+        &mut self,
+        controller_leader_address: Option<CheetahString>,
+        new_master_broker_id: Option<u64>,
+        new_master_address: Option<CheetahString>,
+        new_master_epoch: Option<i32>,
+        sync_state_set_epoch: Option<i32>,
+        sync_state_set: Option<&HashSet<i64>>,
+    ) -> Result<RoleChangeOutcome> {
+        if let Some(controller_leader_address) = controller_leader_address {
+            self.set_controller_leader_address(controller_leader_address);
+        }
+
+        let Some(new_master_epoch_value) = new_master_epoch else {
+            return Err(crate::broker_error::invalid_argument(
+                "notify broker role change missing master epoch",
+            ));
+        };
+        let Some(master_broker_id) = new_master_broker_id else {
+            return Err(crate::broker_error::invalid_argument(
+                "notify broker role change missing master broker id",
+            ));
+        };
+        let new_master_epoch = MasterEpoch::try_from(new_master_epoch_value).map_err(|_| {
+            crate::broker_error::invalid_argument("notify broker role change carries an invalid master epoch")
+        })?;
+        let requested_authority = WriteAuthority::try_from_u64(master_broker_id, new_master_epoch).map_err(|_| {
+            crate::broker_error::invalid_argument("notify broker role change carries an invalid master broker id")
+        })?;
+
+        if let Some(current_authority) = self.write_authority {
+            if requested_authority.master_epoch() < current_authority.master_epoch() {
+                return Ok(self.outcome(None, false));
+            }
+            if requested_authority.master_epoch() == current_authority.master_epoch()
+                && requested_authority != current_authority
+            {
+                return Err(crate::broker_error::invalid_argument(
+                    "notify broker role change conflicts with the installed authority at the same epoch",
+                ));
+            }
+        }
+
+        let next_sync_state_set_epoch = match sync_state_set_epoch {
+            Some(epoch) => Some(SyncStateSetEpoch::try_from(epoch).map_err(|_| {
+                crate::broker_error::invalid_argument(
+                    "notify broker role change carries an invalid sync-state-set epoch",
+                )
+            })?),
+            None => self.sync_state_set_epoch,
+        };
+        if self
+            .sync_state_set_epoch
+            .zip(next_sync_state_set_epoch)
+            .is_some_and(|(current, next)| next < current)
+        {
+            return Err(crate::broker_error::invalid_argument(
+                "notify broker role change carries a stale sync-state-set epoch",
+            ));
+        }
+        let sync_state_set_changed = next_sync_state_set_epoch > self.sync_state_set_epoch;
+        let next_sync_state_set = if sync_state_set_changed {
+            let members = sync_state_set.ok_or_else(|| {
+                crate::broker_error::invalid_argument(
+                    "notify broker role change advances sync-state-set epoch without membership",
+                )
+            })?;
+            let validated = HaSyncStateSet::try_new(members.iter().copied()).map_err(|_| {
+                crate::broker_error::invalid_argument("notify broker role change carries an invalid sync-state set")
+            })?;
+            if !validated.contains(requested_authority.broker_id()) {
+                return Err(crate::broker_error::invalid_argument(
+                    "notify broker role change sync-state set does not contain the authorized master",
+                ));
+            }
+            Some(members.clone())
+        } else {
+            None
+        };
+
+        if self.write_authority == Some(requested_authority) {
+            if let Some(next_sync_state_set) = next_sync_state_set {
+                self.sync_state_set_epoch = next_sync_state_set_epoch;
+                self.sync_state_set = next_sync_state_set;
+            }
+            return Ok(self.outcome(None, sync_state_set_changed));
+        }
+
+        let (role, master_address) = if master_broker_id == self.broker_controller_id {
+            (BrokerReplicaRole::Master, self.broker_address.clone())
+        } else {
+            let master_address = new_master_address.ok_or_else(|| {
+                crate::broker_error::invalid_argument(
+                    "notify broker role change missing master address for slave transition",
+                )
+            })?;
+            (BrokerReplicaRole::Slave, master_address)
+        };
+
+        self.write_authority = Some(requested_authority);
+        self.master_broker_id = Some(master_broker_id);
+        self.master_address = Some(master_address);
+        if let Some(next_sync_state_set) = next_sync_state_set {
+            self.sync_state_set_epoch = next_sync_state_set_epoch;
+            self.sync_state_set = next_sync_state_set;
+        }
+
+        info!(
+            "Apply controller role change, broker_controller_id={}, new_role={:?}, master_broker_id={:?}, \
+             master_address={:?}, master_epoch={}, sync_state_set_epoch={}",
+            self.broker_controller_id,
+            role,
+            self.master_broker_id,
+            self.master_address,
+            new_master_epoch.get(),
+            self.sync_state_set_epoch()
+        );
+
+        Ok(self.outcome(Some(role), sync_state_set_changed))
+    }
+
+    fn outcome(&self, role: Option<BrokerReplicaRole>, sync_state_set_changed: bool) -> RoleChangeOutcome {
+        let should_start_special_service = self.master_broker_id == Some(self.broker_controller_id);
+        RoleChangeOutcome {
+            role,
+            sync_state_set_changed,
+            master_broker_id: self.master_broker_id,
+            master_address: self.master_address.clone(),
+            master_epoch: self.master_epoch(),
+            sync_state_set_epoch: self.sync_state_set_epoch(),
+            sync_state_set: self.sync_state_set.clone(),
+            local_broker_id: if should_start_special_service {
+                MASTER_ID
+            } else {
+                self.broker_controller_id
+            },
+            should_start_special_service,
+            should_register_to_namesrv: role.is_some(),
+        }
+    }
+
+    fn recover_registration_state(&mut self) {
+        self.metadata = match read_metadata_file::<BrokerMetadataRecord>(&self.metadata_path) {
+            Ok(metadata) => metadata,
+            Err(error) => {
+                warn!(
+                    "Failed to read broker metadata from {}: {}",
+                    self.metadata_path.display(),
+                    error
+                );
+                None
+            }
+        };
+        self.temp_metadata = match read_metadata_file::<TempBrokerMetadataRecord>(&self.temp_metadata_path) {
+            Ok(metadata) => metadata,
+            Err(error) => {
+                warn!(
+                    "Failed to read temp broker metadata from {}: {}",
+                    self.temp_metadata_path.display(),
+                    error
+                );
+                None
+            }
+        };
+
+        if let Some(metadata) = self.metadata.as_ref() {
+            self.broker_controller_id = metadata.broker_id;
+            self.register_state = RegisterState::CreateMetadataFileDone;
+            return;
+        }
+        if let Some(metadata) = self.temp_metadata.as_ref() {
+            self.broker_controller_id = metadata.broker_id;
+            self.register_state = RegisterState::CreateTempMetadataFileDone;
+            return;
+        }
+        self.register_state = RegisterState::Initial;
+    }
+}
+
+fn validate_metadata_record(metadata: Option<&BrokerMetadataRecord>, config: &BrokerConfig, label: &str) -> Result<()> {
+    if let Some(metadata) = metadata {
+        if metadata.cluster_name != config.broker_identity.broker_cluster_name.as_str() {
+            return Err(crate::broker_error::invalid_argument(format!(
+                "{} cluster mismatch: persisted={}, config={}",
+                label, metadata.cluster_name, config.broker_identity.broker_cluster_name
+            )));
+        }
+        if metadata.broker_name != config.broker_identity.broker_name.as_str() {
+            return Err(crate::broker_error::invalid_argument(format!(
+                "{} broker name mismatch: persisted={}, config={}",
+                label, metadata.broker_name, config.broker_identity.broker_name
+            )));
+        }
+    }
+    Ok(())
+}
+
+fn validate_temp_metadata_record(metadata: Option<&TempBrokerMetadataRecord>, config: &BrokerConfig) -> Result<()> {
+    if let Some(metadata) = metadata {
+        if metadata.cluster_name != config.broker_identity.broker_cluster_name.as_str() {
+            return Err(crate::broker_error::invalid_argument(format!(
+                "temp broker metadata cluster mismatch: persisted={}, config={}",
+                metadata.cluster_name, config.broker_identity.broker_cluster_name
+            )));
+        }
+        if metadata.broker_name != config.broker_identity.broker_name.as_str() {
+            return Err(crate::broker_error::invalid_argument(format!(
+                "temp broker metadata broker name mismatch: persisted={}, config={}",
+                metadata.broker_name, config.broker_identity.broker_name
+            )));
+        }
+    }
+    Ok(())
+}
+
+fn metadata_path_from_config(message_store_config: &MessageStoreConfig) -> PathBuf {
+    if let Some(path) = message_store_config.store_path_broker_identity.as_ref() {
+        return PathBuf::from(path.as_str());
+    }
+    PathBuf::from(message_store_config.store_path_root_dir.as_str()).join("brokerIdentity.json")
+}
+
+fn temp_metadata_path_from_metadata_path(metadata_path: &Path) -> PathBuf {
+    PathBuf::from(format!("{}-temp", metadata_path.display()))
+}
+
+fn parse_controller_addresses(controller_addr: &CheetahString) -> Vec<CheetahString> {
+    if controller_addr.is_empty() {
+        return Vec::new();
+    }
+
+    controller_addr
+        .split_char(';')
+        .map(str::trim)
+        .filter(|item| !item.is_empty())
+        .map(CheetahString::from)
+        .collect()
+}
+
+fn read_metadata_file<T>(path: &Path) -> Result<Option<T>>
+where
+    T: for<'de> Deserialize<'de>,
+{
+    match fs::read_to_string(path) {
+        Ok(content) if content.trim().is_empty() => Ok(None),
+        Ok(content) => serde_json::from_str(&content)
+            .map(Some)
+            .map_err(crate::broker_error::invalid_argument_source),
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => Ok(None),
+        Err(error) => Err(crate::broker_error::invalid_argument_source(error)),
+    }
+}
+
+fn write_metadata_file<T>(path: &Path, value: &T) -> Result<()>
+where
+    T: Serialize,
+{
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent).map_err(crate::broker_error::invalid_argument_source)?;
+    }
+    let content = serde_json::to_string(value).map_err(crate::broker_error::invalid_argument_source)?;
+    fs::write(path, content).map_err(crate::broker_error::invalid_argument_source)?;
+    Ok(())
+}
+
+fn delete_metadata_file(path: &Path) -> Result<()> {
+    match fs::remove_file(path) {
+        Ok(_) => Ok(()),
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => Ok(()),
+        Err(error) => Err(crate::broker_error::invalid_argument_source(error)),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::time::Duration;
+
+    use super::*;
+    use rocketmq_runtime::MetadataDeadline;
+    use rocketmq_runtime::MetadataIoConfig;
+    use rocketmq_runtime::RuntimeContext;
+
+    fn broker_config_with_controller_addr(controller_addr: &str, broker_id: u64) -> BrokerConfig {
+        let mut config = BrokerConfig {
+            controller_addr: controller_addr.into(),
+            ..BrokerConfig::default()
+        };
+        config.broker_identity.broker_id = broker_id;
+        config
+    }
+
+    fn message_store_config_with_identity_path(suffix: &str) -> MessageStoreConfig {
+        let mut config = MessageStoreConfig::default();
+        let path = std::env::temp_dir().join(format!("rocketmq-rust-controller-mode-{}-{}", suffix, current_millis()));
+        config.store_path_broker_identity = Some(path.to_string_lossy().into_owned().into());
+        config
+    }
+
+    #[test]
+    fn new_manager_parses_controller_addresses() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878;127.0.0.2:9878;", 2);
+        let message_store_config = message_store_config_with_identity_path("parse");
+        let manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        assert_eq!(manager.broker_controller_id(), 2);
+        assert_eq!(
+            manager.controller_addresses(),
+            &[
+                CheetahString::from("127.0.0.1:9878"),
+                CheetahString::from("127.0.0.2:9878"),
+            ]
+        );
+    }
+
+    #[test]
+    fn create_and_commit_temp_metadata_round_trip() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 7);
+        let message_store_config = message_store_config_with_identity_path("metadata");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        manager
+            .create_temp_metadata(&config, 9)
+            .expect("temp metadata should be created");
+        assert_eq!(manager.register_state(), RegisterState::CreateTempMetadataFileDone);
+        assert_eq!(manager.pending_registration().map(|(broker_id, _)| broker_id), Some(9));
+
+        manager
+            .commit_temp_metadata(&config)
+            .expect("metadata should be committed");
+        assert_eq!(manager.register_state(), RegisterState::CreateMetadataFileDone);
+        assert_eq!(manager.broker_controller_id(), 9);
+        assert!(manager.pending_registration().is_none());
+
+        let recovered = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+        assert_eq!(recovered.broker_controller_id(), 9);
+        assert_eq!(recovered.register_state(), RegisterState::CreateMetadataFileDone);
+    }
+
+    #[tokio::test]
+    async fn controller_broker_id_persistence_is_published_after_actor_durability() {
+        let directory = tempfile::tempdir().expect("broker identity test directory");
+        let identity_path = directory.path().join("brokerIdentity.json");
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 0);
+        let message_store_config = MessageStoreConfig {
+            store_path_broker_identity: Some(identity_path.to_string_lossy().into_owned().into()),
+            ..MessageStoreConfig::default()
+        };
+        let mut manager = ReplicasManager::new(
+            &config,
+            &message_store_config,
+            CheetahString::from_static_str("127.0.0.1:10911"),
+        );
+        let runtime = RuntimeContext::try_from_current("broker-id-persistence-test").unwrap();
+        let actor = MetadataIoConfig::default()
+            .into_plan()
+            .expect("default metadata I/O config is valid")
+            .start(&runtime.service_context("broker-id-persistence"))
+            .unwrap();
+        let deadline = MetadataDeadline::after(Duration::from_secs(5));
+
+        let plan = manager
+            .plan_controller_broker_id_persistence(&config, Some(11))
+            .unwrap();
+        let ControllerBrokerIdPersistencePlan::PersistPending {
+            target,
+            content,
+            record,
+        } = plan
+        else {
+            panic!("new broker id should require a durable pending snapshot");
+        };
+        assert!(manager.pending_registration().is_none());
+        actor
+            .submit_next_durable("broker.identity.pending", target.clone(), content, deadline)
+            .await
+            .unwrap();
+        let action = manager.publish_pending_broker_id(record).unwrap();
+        assert!(matches!(
+            action,
+            ControllerBrokerIdAction::ApplyBrokerId { broker_id: 11, .. }
+        ));
+        assert!(target.is_file());
+
+        let snapshot = manager
+            .plan_controller_broker_id_commit(&config)
+            .unwrap()
+            .expect("pending broker id should produce a commit snapshot");
+        actor
+            .submit_next_durable(
+                "broker.identity.committed",
+                snapshot.target.clone(),
+                snapshot.content,
+                deadline,
+            )
+            .await
+            .unwrap();
+        std::fs::remove_file(snapshot.temporary).unwrap();
+        assert_eq!(manager.publish_committed_broker_id(snapshot.record).unwrap(), 11);
+        assert!(snapshot.target.is_file());
+        assert!(!actor.shutdown_until(deadline).await.timed_out);
+    }
+
+    #[test]
+    fn change_broker_role_promotes_local_broker_to_master() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 2);
+        let message_store_config = message_store_config_with_identity_path("master");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+        let sync_state_set = HashSet::from([2_i64, 3_i64]);
+
+        let outcome = manager
+            .change_broker_role(
+                Some("127.0.0.2:9878".into()),
+                Some(2),
+                None,
+                Some(3),
+                Some(4),
+                Some(&sync_state_set),
+            )
+            .expect("role change should succeed");
+
+        assert_eq!(outcome.role, Some(BrokerReplicaRole::Master));
+        assert_eq!(outcome.master_broker_id, Some(2));
+        assert_eq!(outcome.master_address, Some(CheetahString::from("127.0.0.1:10911")));
+        assert_eq!(outcome.master_epoch, 3);
+        assert_eq!(outcome.sync_state_set_epoch, 4);
+        assert_eq!(outcome.sync_state_set, sync_state_set);
+        assert_eq!(outcome.local_broker_id, MASTER_ID);
+        assert!(outcome.should_start_special_service);
+        assert!(outcome.should_register_to_namesrv);
+        assert_eq!(outcome.target_broker_role(), Some(BrokerRole::SyncMaster));
+        assert!(outcome.should_clear_slave_master_address());
+        assert!(!outcome.should_sync_master_online());
+        assert_eq!(
+            manager.controller_leader_address(),
+            Some(&CheetahString::from("127.0.0.2:9878"))
+        );
+    }
+
+    #[test]
+    fn change_broker_role_demotes_local_broker_to_slave() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 2);
+        let message_store_config = message_store_config_with_identity_path("slave");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+        let sync_state_set = HashSet::from([1_i64, 2_i64]);
+
+        let outcome = manager
+            .change_broker_role(
+                Some("127.0.0.3:9878".into()),
+                Some(1),
+                Some("127.0.0.9:10911".into()),
+                Some(5),
+                Some(6),
+                Some(&sync_state_set),
+            )
+            .expect("role change should succeed");
+
+        assert_eq!(outcome.role, Some(BrokerReplicaRole::Slave));
+        assert_eq!(outcome.master_broker_id, Some(1));
+        assert_eq!(outcome.master_address, Some(CheetahString::from("127.0.0.9:10911")));
+        assert_eq!(outcome.master_epoch, 5);
+        assert_eq!(outcome.sync_state_set_epoch, 6);
+        assert_eq!(outcome.sync_state_set, sync_state_set);
+        assert_eq!(outcome.local_broker_id, 2);
+        assert!(!outcome.should_start_special_service);
+        assert!(outcome.should_register_to_namesrv);
+        assert_eq!(outcome.target_broker_role(), Some(BrokerRole::Slave));
+        assert_eq!(
+            outcome.slave_master_address(),
+            Some(&CheetahString::from("127.0.0.9:10911"))
+        );
+        assert!(outcome.should_sync_master_online());
+        assert_eq!(
+            manager.controller_leader_address(),
+            Some(&CheetahString::from("127.0.0.3:9878"))
+        );
+    }
+
+    #[test]
+    fn change_broker_role_ignores_stale_epoch() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 2);
+        let message_store_config = message_store_config_with_identity_path("stale");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+        let sync_state_set = HashSet::from([2_i64]);
+
+        manager
+            .change_broker_role(None, Some(2), None, Some(3), Some(3), Some(&sync_state_set))
+            .expect("initial role change should succeed");
+
+        let stale = manager
+            .change_broker_role(
+                Some("127.0.0.4:9878".into()),
+                Some(1),
+                Some("127.0.0.9:10911".into()),
+                Some(2),
+                Some(4),
+                Some(&HashSet::from([1_i64])),
+            )
+            .expect("stale role change should be ignored");
+
+        assert_eq!(stale.role, None);
+        assert_eq!(stale.master_broker_id, Some(2));
+        assert_eq!(stale.master_address, Some(CheetahString::from("127.0.0.1:10911")));
+        assert_eq!(stale.master_epoch, 3);
+        assert_eq!(stale.local_broker_id, MASTER_ID);
+        assert!(stale.should_start_special_service);
+        assert!(!stale.should_register_to_namesrv);
+        assert_eq!(stale.target_broker_role(), None);
+        assert!(!stale.should_clear_slave_master_address());
+        assert!(!stale.should_sync_master_online());
+        assert_eq!(
+            manager.controller_leader_address(),
+            Some(&CheetahString::from("127.0.0.4:9878"))
+        );
+    }
+
+    #[test]
+    fn change_broker_role_rejects_conflicting_authority_at_same_epoch() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 2);
+        let message_store_config = message_store_config_with_identity_path("conflicting-authority");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        manager
+            .change_broker_role(None, Some(2), None, Some(3), Some(3), Some(&HashSet::from([2_i64])))
+            .expect("initial authority should be installed");
+        let installed = manager.write_authority().expect("installed authority");
+
+        let error = manager
+            .change_broker_role(
+                None,
+                Some(1),
+                Some("127.0.0.9:10911".into()),
+                Some(3),
+                Some(4),
+                Some(&HashSet::from([1_i64])),
+            )
+            .expect_err("same epoch must not authorize a different master");
+
+        assert_eq!(error.descriptor(), &rocketmq_error::CORE_ARGUMENT_INVALID);
+        assert_eq!(manager.write_authority(), Some(installed));
+        assert_eq!(manager.master_broker_id(), Some(2));
+        assert_eq!(manager.sync_state_set(), &HashSet::from([2_i64]));
+    }
+
+    #[test]
+    fn change_broker_role_rejects_non_positive_epochs_without_mutation() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 2);
+        let message_store_config = message_store_config_with_identity_path("invalid-epoch");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        for epoch in [-1, 0] {
+            manager
+                .change_broker_role(None, Some(2), None, Some(epoch), Some(1), Some(&HashSet::from([2_i64])))
+                .expect_err("non-positive epoch must fail closed");
+        }
+
+        assert_eq!(manager.write_authority(), None);
+        assert_eq!(manager.master_broker_id(), None);
+        assert!(manager.sync_state_set().is_empty());
+    }
+
+    #[test]
+    fn heartbeat_targets_prefer_known_leader() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878;127.0.0.2:9878", 2);
+        let message_store_config = message_store_config_with_identity_path("heartbeat");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+        manager.set_controller_leader_address("127.0.0.2:9878".into());
+
+        let targets = manager.heartbeat_targets();
+        assert_eq!(
+            targets,
+            vec![
+                CheetahString::from("127.0.0.2:9878"),
+                CheetahString::from("127.0.0.1:9878"),
+            ]
+        );
+    }
+
+    #[test]
+    fn controller_heartbeat_state_is_derived_by_replicas_manager() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878;127.0.0.2:9878", 2);
+        let message_store_config = message_store_config_with_identity_path("heartbeat-state");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        let initial_state = manager.controller_heartbeat_state();
+        assert_eq!(initial_state.broker_id, 2);
+        assert_eq!(initial_state.epoch, None);
+        assert_eq!(
+            initial_state.controller_targets,
+            vec![
+                CheetahString::from("127.0.0.1:9878"),
+                CheetahString::from("127.0.0.2:9878"),
+            ]
+        );
+
+        manager.set_controller_leader_address("127.0.0.2:9878".into());
+        manager
+            .change_broker_role(None, Some(2), None, Some(5), Some(6), Some(&HashSet::from([2_i64])))
+            .expect("promote to master");
+
+        let next_state = manager.controller_heartbeat_state();
+        assert_eq!(next_state.broker_id, 2);
+        assert_eq!(next_state.epoch, Some(5));
+        assert_eq!(
+            next_state.controller_targets,
+            vec![
+                CheetahString::from("127.0.0.2:9878"),
+                CheetahString::from("127.0.0.1:9878"),
+            ]
+        );
+    }
+
+    #[test]
+    fn prepare_controller_broker_id_action_reuses_pending_and_existing_metadata() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 7);
+        let message_store_config = message_store_config_with_identity_path("broker-id-action");
+        let mut manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        let action = manager
+            .prepare_controller_broker_id_action(&config, Some(11))
+            .expect("prepare controller broker id action");
+        let (pending_broker_id, pending_check_code) =
+            manager.pending_registration().expect("pending controller registration");
+        assert_eq!(
+            action,
+            ControllerBrokerIdAction::ApplyBrokerId {
+                broker_id: 11,
+                register_check_code: pending_check_code.clone(),
+            }
+        );
+        assert_eq!(pending_broker_id, 11);
+
+        let reused_action = manager
+            .prepare_controller_broker_id_action(&config, None)
+            .expect("reuse pending registration");
+        assert_eq!(
+            reused_action,
+            ControllerBrokerIdAction::ApplyBrokerId {
+                broker_id: 11,
+                register_check_code: pending_check_code,
+            }
+        );
+
+        manager
+            .complete_controller_broker_id_application(&config)
+            .expect("commit controller broker id");
+        let existing_action = manager
+            .prepare_controller_broker_id_action(&config, None)
+            .expect("reuse committed broker id");
+        assert_eq!(existing_action, ControllerBrokerIdAction::UseCurrent(11));
+    }
+
+    #[test]
+    fn controller_bootstrap_followups_are_derived_by_replicas_manager() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 7);
+        let message_store_config = message_store_config_with_identity_path("bootstrap-followup");
+        let manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        assert_eq!(
+            manager.register_followup(None, None),
+            ControllerRegisterFollowup::HeartbeatThenQueryReplicaInfo
+        );
+        assert_eq!(
+            manager.register_followup(Some(7), Some(3)),
+            ControllerRegisterFollowup::ApplyRoleChange
+        );
+        assert_eq!(
+            manager.replica_info_followup(None, None),
+            ControllerReplicaInfoFollowup::ElectMaster
+        );
+        assert_eq!(
+            manager.replica_info_followup(Some(9), Some(4)),
+            ControllerReplicaInfoFollowup::ApplyRoleChange
+        );
+    }
+
+    #[test]
+    fn controller_periodic_sync_followups_are_derived_by_replicas_manager() {
+        let config = broker_config_with_controller_addr("127.0.0.1:9878", 7);
+        let message_store_config = message_store_config_with_identity_path("sync-followup");
+        let manager = ReplicasManager::new(&config, &message_store_config, "127.0.0.1:10911".into());
+
+        assert_eq!(
+            manager.replica_sync_followup(Some(7), Some(3)),
+            ControllerReplicaSyncFollowup::ApplyRoleChange
+        );
+        assert_eq!(
+            manager.replica_sync_followup(None, None),
+            ControllerReplicaSyncFollowup::Bootstrap
+        );
+        assert_eq!(
+            manager.replica_sync_error_followup(Some(
+                rocketmq_protocol::code::response_code::ResponseCode::ControllerBrokerMetadataNotExist.to_i32()
+            )),
+            ControllerReplicaSyncFollowup::Bootstrap
+        );
+        assert_eq!(
+            manager.replica_sync_error_followup(Some(
+                rocketmq_protocol::code::response_code::ResponseCode::SystemError.to_i32()
+            )),
+            ControllerReplicaSyncFollowup::ApplyRoleChange
+        );
+    }
+}

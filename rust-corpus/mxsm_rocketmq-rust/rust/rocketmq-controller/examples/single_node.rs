@@ -1,0 +1,104 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//! Example: single-node OpenRaft controller cluster.
+
+use std::collections::BTreeMap;
+use std::collections::HashSet;
+
+use rocketmq_controller::ControllerConfig;
+use rocketmq_controller::ControllerConfigReader;
+use rocketmq_controller::ControllerRequest;
+use rocketmq_controller::Node;
+use rocketmq_controller::RaftNodeManager;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let config = rocketmq_observability::TelemetryBootstrapConfig::default();
+    let telemetry_guard = rocketmq_observability::install_global(&config)?;
+
+    let run_result = run().await;
+    let shutdown_result = telemetry_guard.shutdown().into_result();
+
+    run_result?;
+    shutdown_result?;
+    Ok(())
+}
+
+async fn run() -> Result<(), Box<dyn std::error::Error>> {
+    println!("=== OpenRaft Single Node Example ===\n");
+
+    let node_id = 1;
+    let listen_addr = "127.0.0.1:60109".parse()?;
+    let config = ControllerConfigReader::new(
+        ControllerConfig::new_node(node_id, listen_addr)
+            .with_election_timeout_ms(1000)
+            .with_heartbeat_interval_ms(300),
+    );
+
+    let runtime = rocketmq_runtime::RuntimeContext::from_current("controller-single-node-example");
+    let node = RaftNodeManager::new(
+        config,
+        runtime.service_context("controller-single-node").storage_io().clone(),
+    )
+    .await?;
+
+    let mut nodes = BTreeMap::new();
+    nodes.insert(
+        node_id,
+        Node {
+            node_id,
+            rpc_addr: listen_addr.to_string(),
+        },
+    );
+    node.initialize_cluster(nodes).await?;
+
+    tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
+    println!("Leader elected: {}", node.is_leader().await?);
+
+    let apply_response = node
+        .client_write(ControllerRequest::ApplyBrokerId {
+            cluster_name: "DefaultCluster".to_string(),
+            broker_name: "broker-a".to_string(),
+            broker_address: "127.0.0.1:10911".to_string(),
+            applied_broker_id: 1,
+            register_check_code: "broker-a-check-code".to_string(),
+        })
+        .await?;
+    println!("ApplyBrokerId response: {:?}", apply_response.data);
+
+    let register_response = node
+        .client_write(ControllerRequest::RegisterBroker {
+            cluster_name: "DefaultCluster".to_string(),
+            broker_name: "broker-a".to_string(),
+            broker_address: "127.0.0.1:10911".to_string(),
+            broker_id: 1,
+            alive_broker_ids: HashSet::from([1]),
+        })
+        .await?;
+    println!("RegisterBroker response: {:?}", register_response.data);
+
+    let next_broker_id = node
+        .store()
+        .state_machine
+        .read_view()
+        .get_next_broker_id("DefaultCluster", "broker-a")
+        .response()
+        .and_then(|header| header.next_broker_id)
+        .unwrap_or_default();
+    println!("Next broker id for broker-a: {}", next_broker_id);
+
+    node.shutdown().await?;
+    Ok(())
+}

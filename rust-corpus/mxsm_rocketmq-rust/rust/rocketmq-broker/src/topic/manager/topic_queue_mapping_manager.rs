@@ -1,0 +1,797 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashMap;
+use std::sync::Arc;
+use std::time::Duration;
+
+use crate::broker_error::BrokerResult as Result;
+use crate::config::broker_config::BrokerConfig;
+use crate::config::config_manager::ConfigManager;
+use cheetah_string::CheetahString;
+use dashmap::DashMap;
+use rocketmq_error::SharedError;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::body::topic_info_wrapper::topic_queue_wrapper::TopicQueueMappingSerializeWrapper;
+use rocketmq_protocol::protocol::data_version_facade::DataVersionExt;
+use rocketmq_protocol::protocol::header::message_operation_header::TopicRequestHeaderTrait;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::remoting_command_defaults::RemotingCommandFactory;
+use rocketmq_protocol::protocol::static_topic::logic_queue_mapping_item::LogicQueueMappingItem;
+use rocketmq_protocol::protocol::static_topic::topic_queue_mapping_context::TopicQueueMappingContext;
+use rocketmq_protocol::protocol::static_topic::topic_queue_mapping_detail::TopicQueueMappingDetail;
+use rocketmq_protocol::protocol::DataVersion;
+use rocketmq_protocol::protocol::RemotingSerializable;
+use rocketmq_runtime::BlockingExecutor;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::MetadataDeadline;
+use rocketmq_runtime::MetadataIoActor;
+use rocketmq_runtime::MetadataIoAdmissionOutcome;
+use tracing::error;
+use tracing::info;
+use tracing::warn;
+
+use crate::broker_path_config_helper::get_topic_queue_mapping_path;
+
+pub(crate) struct TopicQueueMappingManager {
+    pub(crate) data_version: Arc<parking_lot::Mutex<DataVersion>>,
+    pub(crate) topic_queue_mapping_table: DashMap<CheetahString /* topic */, Arc<TopicQueueMappingDetail>>,
+    pub(crate) broker_config: Arc<BrokerConfig>,
+    blocking_executor: BlockingExecutor,
+    metadata_io: Option<MetadataIoActor>,
+}
+
+impl TopicQueueMappingManager {
+    #[cfg(test)]
+    pub(crate) fn new(broker_config: Arc<BrokerConfig>) -> Self {
+        Self::new_with_service_context(broker_config, crate::test_service_context("topic-queue-mapping"))
+    }
+
+    pub(crate) fn new_with_service_context(
+        broker_config: Arc<BrokerConfig>,
+        service_context: ChildServiceContext,
+    ) -> Self {
+        Self {
+            data_version: Arc::new(parking_lot::Mutex::new(DataVersion::default())),
+            topic_queue_mapping_table: DashMap::new(),
+            broker_config,
+            blocking_executor: service_context.metadata_io().clone(),
+            metadata_io: None,
+        }
+    }
+
+    pub(crate) fn set_metadata_io_actor(&mut self, metadata_io: MetadataIoActor) {
+        self.metadata_io = Some(metadata_io);
+    }
+
+    fn persist_after_mutation(&self, operation: &'static str) {
+        let Some(metadata_io) = self.metadata_io.as_ref() else {
+            if let Err(error) = self.persist() {
+                error!(%error, operation, "Failed to persist topic queue mapping mutation");
+            }
+            return;
+        };
+        let content = self.encode_pretty(true);
+        if content.is_empty() {
+            return;
+        }
+        match metadata_io.submit_next(
+            "broker.topic-queue-mapping",
+            self.config_file_path(),
+            content.into_bytes(),
+            MetadataDeadline::after(Duration::from_secs(5)),
+        ) {
+            Ok(MetadataIoAdmissionOutcome::Accepted(_)) => {}
+            Ok(MetadataIoAdmissionOutcome::TargetConflict(_request)) => {
+                warn!(
+                    operation,
+                    "Metadata target conflict rejected topic queue mapping snapshot"
+                );
+            }
+            Err(error) => {
+                error!(%error, operation, "Failed to admit topic queue mapping snapshot");
+            }
+        }
+    }
+
+    pub fn data_version(&self) -> DataVersion {
+        self.data_version.lock().clone()
+    }
+
+    pub fn data_version_clone(&self) -> Arc<parking_lot::Mutex<DataVersion>> {
+        self.data_version.clone()
+    }
+
+    pub(crate) fn rewrite_request_for_static_topic(
+        command_factory: &RemotingCommandFactory,
+        request_header: &mut impl TopicRequestHeaderTrait,
+        mapping_context: &TopicQueueMappingContext,
+    ) -> Option<RemotingCommand> {
+        let mapping_detail = mapping_context.mapping_detail.as_ref()?;
+
+        if !mapping_context.is_leader() {
+            return Some(command_factory.create_response_command_with_code_remark(
+                ResponseCode::NotLeaderForQueue,
+                format!(
+                    "{}-{:?} does not exit in request process of current broker {}",
+                    request_header.topic(),
+                    request_header.queue_id(),
+                    mapping_detail
+                        .topic_queue_mapping_info
+                        .bname
+                        .clone()
+                        .unwrap_or_default()
+                ),
+            ));
+        }
+        if let Some(mapping_item) = mapping_context.leader_item.as_ref() {
+            request_header.set_queue_id(mapping_item.queue_id);
+        }
+        None
+    }
+}
+
+impl TopicQueueMappingManager {
+    pub(crate) fn build_topic_queue_mapping_context(
+        &self,
+        request_header: &impl TopicRequestHeaderTrait,
+        select_one_when_miss: bool,
+    ) -> TopicQueueMappingContext {
+        if let Some(value) = request_header.lo() {
+            if !value {
+                return TopicQueueMappingContext::new(request_header.topic().clone(), None, None, vec![], None);
+            }
+            //do
+        }
+        let topic = request_header.topic();
+        let mut global_id = request_header.queue_id();
+        let tqmd = self.topic_queue_mapping_table.get(topic);
+        if tqmd.is_none() {
+            return TopicQueueMappingContext {
+                topic: topic.clone(),
+                global_id: None,
+                mapping_detail: None,
+                mapping_item_list: vec![],
+                leader_item: None,
+                current_item: None,
+            };
+        }
+        let mapping_detail = tqmd.unwrap();
+
+        assert_eq!(
+            mapping_detail.topic_queue_mapping_info.bname.clone().unwrap(),
+            self.broker_config.broker_name().clone()
+        );
+
+        // If not find mappingItem, it encounters some errors
+        if global_id < 0 && !select_one_when_miss {
+            return TopicQueueMappingContext {
+                topic: topic.clone(),
+                global_id: Some(global_id),
+                mapping_detail: Some(mapping_detail.as_ref().clone()),
+                mapping_item_list: vec![],
+                leader_item: None,
+                current_item: None,
+            };
+        }
+
+        if global_id < 0 {
+            if let Some(hosted_queues) = &mapping_detail.hosted_queues {
+                if !hosted_queues.is_empty() {
+                    // do not check
+                    global_id = *hosted_queues.keys().next().unwrap_or(&-1);
+                }
+            }
+        }
+        //}
+        // if let Some(global_id_value) = global_id {
+        if global_id < 0 {
+            return TopicQueueMappingContext {
+                topic: topic.clone(),
+                global_id: Some(global_id),
+                mapping_detail: Some(mapping_detail.as_ref().clone()),
+                mapping_item_list: vec![],
+                leader_item: None,
+                current_item: None,
+            };
+        }
+        // }
+        let (leader_item, mapping_item_list) = if let Some(mapping_item_list) =
+            TopicQueueMappingDetail::get_mapping_info(mapping_detail.as_ref(), global_id)
+        {
+            if !mapping_item_list.is_empty() {
+                (
+                    Some(mapping_item_list[mapping_item_list.len() - 1].clone()),
+                    mapping_item_list.clone(),
+                )
+            } else {
+                (None, vec![])
+            }
+        } else {
+            (None, vec![])
+        };
+        TopicQueueMappingContext {
+            topic: topic.clone(),
+            global_id: Some(global_id),
+            mapping_detail: Some(mapping_detail.as_ref().clone()),
+            mapping_item_list,
+            leader_item,
+            current_item: None,
+        }
+    }
+
+    pub fn get_topic_queue_mapping(&self, topic: &str) -> Option<Arc<TopicQueueMappingDetail>> {
+        self.topic_queue_mapping_table.get(topic).as_deref().cloned()
+    }
+
+    pub fn update_topic_queue_mapping(&self, mut topic_queue_mapping_detail: TopicQueueMappingDetail) {
+        let topic = topic_queue_mapping_detail
+            .topic_queue_mapping_info
+            .topic
+            .clone()
+            .unwrap_or_default();
+        if topic.is_empty() {
+            return;
+        }
+
+        if topic_queue_mapping_detail.topic_queue_mapping_info.bname.is_none() {
+            topic_queue_mapping_detail.topic_queue_mapping_info.bname = Some(self.broker_config.broker_name().clone());
+        }
+        if topic_queue_mapping_detail.hosted_queues.is_none() {
+            topic_queue_mapping_detail.hosted_queues = Some(std::collections::HashMap::new());
+        }
+
+        self.topic_queue_mapping_table
+            .insert(topic, Arc::new(topic_queue_mapping_detail));
+        self.data_version.lock().next_version();
+        self.persist_after_mutation("update");
+    }
+
+    pub(crate) fn snapshot_topic_queue_mapping_table(&self) -> Vec<(CheetahString, TopicQueueMappingDetail)> {
+        self.topic_queue_mapping_table
+            .iter()
+            .map(|entry| (entry.key().clone(), entry.value().as_ref().clone()))
+            .collect()
+    }
+
+    pub(crate) fn replace_cleaned_queue_items(
+        &self,
+        topic: &CheetahString,
+        expected_epoch: i64,
+        expected_bname: &CheetahString,
+        replacements: &HashMap<i32, (Vec<LogicQueueMappingItem>, Vec<LogicQueueMappingItem>)>,
+    ) -> bool {
+        if replacements.is_empty() {
+            return false;
+        }
+
+        let Some(current_ref) = self.topic_queue_mapping_table.get(topic) else {
+            return false;
+        };
+        let observed = Arc::clone(current_ref.value());
+        let current = observed.as_ref();
+        if current.topic_queue_mapping_info.epoch != expected_epoch
+            || current.topic_queue_mapping_info.bname.as_ref() != Some(expected_bname)
+        {
+            return false;
+        }
+
+        let Some(current_hosted_queues) = current.hosted_queues.as_ref() else {
+            return false;
+        };
+
+        let mut new_detail = current.clone();
+        let mut changed = false;
+        {
+            let new_hosted_queues = new_detail.hosted_queues.get_or_insert_with(HashMap::new);
+            for (qid, (expected_items, new_items)) in replacements {
+                if new_items.is_empty() {
+                    continue;
+                }
+                let Some(current_items) = current_hosted_queues.get(qid) else {
+                    continue;
+                };
+                if current_items != expected_items || current_items == new_items {
+                    continue;
+                }
+                new_hosted_queues.insert(*qid, new_items.clone());
+                changed = true;
+            }
+        }
+        drop(current_ref);
+
+        changed && self.publish_if_current(topic, &observed, new_detail)
+    }
+
+    pub(crate) fn remove_cleaned_hosted_queues(
+        &self,
+        topic: &CheetahString,
+        expected_epoch: i64,
+        expected_bname: &CheetahString,
+        expected_items_by_qid: &HashMap<i32, Vec<LogicQueueMappingItem>>,
+    ) -> bool {
+        if expected_items_by_qid.is_empty() {
+            return false;
+        }
+
+        let Some(current_ref) = self.topic_queue_mapping_table.get(topic) else {
+            return false;
+        };
+        let observed = Arc::clone(current_ref.value());
+        let current = observed.as_ref();
+        if current.topic_queue_mapping_info.epoch != expected_epoch
+            || current.topic_queue_mapping_info.bname.as_ref() != Some(expected_bname)
+        {
+            return false;
+        }
+
+        let Some(current_hosted_queues) = current.hosted_queues.as_ref() else {
+            return false;
+        };
+
+        let mut new_detail = current.clone();
+        let mut changed = false;
+        if let Some(new_hosted_queues) = new_detail.hosted_queues.as_mut() {
+            for (qid, expected_items) in expected_items_by_qid {
+                let Some(current_items) = current_hosted_queues.get(qid) else {
+                    continue;
+                };
+                if current_items != expected_items {
+                    continue;
+                }
+                if new_hosted_queues.remove(qid).is_some() {
+                    changed = true;
+                }
+            }
+        }
+        drop(current_ref);
+
+        changed && self.publish_if_current(topic, &observed, new_detail)
+    }
+
+    fn publish_if_current(
+        &self,
+        topic: &CheetahString,
+        observed: &Arc<TopicQueueMappingDetail>,
+        replacement: TopicQueueMappingDetail,
+    ) -> bool {
+        let Some(mut current) = self.topic_queue_mapping_table.get_mut(topic) else {
+            return false;
+        };
+        if !Arc::ptr_eq(current.value(), observed) {
+            return false;
+        }
+        *current.value_mut() = Arc::new(replacement);
+        true
+    }
+
+    pub(crate) async fn persist_clean_result(&self) -> Result<()> {
+        self.data_version.lock().next_version();
+        self.persist_current().await
+    }
+
+    pub(crate) async fn persist_current(&self) -> Result<()> {
+        let json = self.encode_pretty(true);
+        if json.is_empty() {
+            return Ok(());
+        }
+
+        let file_name = self.config_file_path();
+        if let Some(metadata_io) = self.metadata_io.as_ref() {
+            let observation = metadata_io
+                .submit_next_observed(
+                    "broker.topic-queue-mapping",
+                    file_name,
+                    json.into_bytes(),
+                    MetadataDeadline::after(Duration::from_secs(5)),
+                )
+                .await
+                .map_err(crate::runtime_to_rocketmq_error)?;
+            crate::require_metadata_conclusion("broker.topic-queue-mapping", observation)?;
+            return Ok(());
+        }
+        let error_path = file_name.clone();
+        self.blocking_executor
+            .spawn_io("broker.topic_queue_mapping.persist_clean_result", move || {
+                rocketmq_runtime::common::file_utils::string_to_file(json.as_str(), file_name.as_str())
+            })
+            .await
+            .map_err(|err| topic_queue_mapping_persist_failed(error_path.as_str(), err))?
+            .map_err(crate::runtime_to_rocketmq_error)
+    }
+
+    pub fn delete(&self, topic: &CheetahString) {
+        if self.delete_without_persist(topic) {
+            self.persist_after_mutation("delete");
+        }
+    }
+
+    pub(crate) fn delete_without_persist(&self, topic: &CheetahString) -> bool {
+        let old = self.topic_queue_mapping_table.remove(topic);
+        match old {
+            None => {
+                warn!("delete topic queue mapping failed, static topic: {} not exists", topic);
+                false
+            }
+            Some(value) => {
+                info!("delete topic queue mapping OK, static topic queue mapping: {:?}", value);
+                self.data_version.lock().next_version();
+                true
+            }
+        }
+    }
+}
+
+fn topic_queue_mapping_persist_failed(
+    _path: &str,
+    error: impl std::error::Error + Send + Sync + 'static,
+) -> SharedError {
+    crate::broker_error::storage_write_source(error)
+}
+
+//Fully implemented will be removed
+impl ConfigManager for TopicQueueMappingManager {
+    fn config_file_path(&self) -> String {
+        get_topic_queue_mapping_path(self.broker_config.store_path_root_dir.as_str())
+    }
+
+    fn encode_pretty(&self, pretty_format: bool) -> String {
+        let wrapper = TopicQueueMappingSerializeWrapper::new(
+            Some(
+                self.topic_queue_mapping_table
+                    .iter()
+                    .map(|entry| (entry.key().clone(), (**entry.value()).clone()))
+                    .collect(),
+            ),
+            Some(self.data_version.lock().clone()),
+        );
+        match pretty_format {
+            true => wrapper
+                .serialize_json_pretty()
+                .expect("encode topic queue mapping pretty failed"),
+            false => wrapper.serialize_json().expect("encode topic queue mapping failed"),
+        }
+    }
+
+    fn decode(&self, json_string: &str) {
+        if json_string.is_empty() {
+            return;
+        }
+        let mut wrapper = serde_json::from_str::<TopicQueueMappingSerializeWrapper>(json_string).unwrap_or_default();
+        if let Some(value) = wrapper.data_version() {
+            self.data_version.lock().assign_new_one(value);
+        }
+        if let Some(map) = wrapper.take_topic_queue_mapping_info_map() {
+            for (key, value) in map {
+                self.topic_queue_mapping_table.insert(key, Arc::new(value));
+            }
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+
+    use crate::config::broker_config::BrokerConfig;
+    use rocketmq_runtime::RuntimeContext;
+
+    use super::*;
+
+    #[test]
+    fn new_creates_default_manager() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let manager = TopicQueueMappingManager::new(broker_config.clone());
+
+        assert!(Arc::ptr_eq(&manager.broker_config, &broker_config));
+        assert_eq!(manager.data_version.lock().get_state_version(), 0);
+        assert_eq!(manager.topic_queue_mapping_table.len(), 0);
+    }
+
+    #[test]
+    fn topic_queue_mapping_persist_failed_uses_storage_write_error_kind() {
+        let error = topic_queue_mapping_persist_failed("topic_queue_mapping.json", std::io::Error::other("disk full"));
+
+        assert_eq!(error.descriptor(), &rocketmq_error::STORAGE_WRITE_FAILED);
+        assert!(std::error::Error::source(error.as_ref()).is_some());
+    }
+
+    #[tokio::test]
+    async fn new_with_service_context_uses_parent_metadata_io_lane() {
+        let context = RuntimeContext::from_current("broker-topic-queue-mapping-context-test");
+        let broker_service = context.service_context("broker-service");
+        let broker_config = Arc::new(BrokerConfig::default());
+        let manager = TopicQueueMappingManager::new_with_service_context(broker_config, broker_service.clone());
+
+        assert_eq!(
+            manager.blocking_executor.snapshot().name,
+            broker_service.metadata_io().snapshot().name
+        );
+        assert_eq!(
+            manager.blocking_executor.policy().max_concurrency,
+            broker_service.metadata_io().policy().max_concurrency
+        );
+
+        let broker_report = context.shutdown_tasks(std::time::Duration::from_secs(1)).await;
+        assert!(broker_report.is_healthy(), "{}", broker_report.to_json());
+    }
+
+    #[test]
+    fn get_topic_queue_mapping_returns_none_for_non_existent_topic() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let manager = TopicQueueMappingManager::new(broker_config);
+
+        assert!(manager.get_topic_queue_mapping("non_existent_topic").is_none());
+    }
+
+    #[test]
+    fn get_topic_queue_mapping_returns_mapping_for_existing_topic() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let manager = TopicQueueMappingManager::new(broker_config);
+        let detail = Arc::new(TopicQueueMappingDetail::default());
+        manager
+            .topic_queue_mapping_table
+            .insert(CheetahString::from_static_str("existing_topic"), detail);
+
+        assert!(manager.get_topic_queue_mapping("existing_topic").is_some());
+    }
+
+    #[test]
+    fn delete_removes_existing_topic() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let manager = TopicQueueMappingManager::new(broker_config);
+        let detail = Arc::new(TopicQueueMappingDetail::default());
+        manager
+            .topic_queue_mapping_table
+            .insert("existing_topic".into(), detail);
+
+        manager.delete(&CheetahString::from_static_str("existing_topic"));
+
+        assert!(manager.get_topic_queue_mapping("existing_topic").is_none());
+    }
+
+    #[test]
+    fn update_topic_queue_mapping_inserts_detail_and_defaults_broker_name() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let manager = TopicQueueMappingManager::new(broker_config.clone());
+        let mut detail = TopicQueueMappingDetail::default();
+        detail.topic_queue_mapping_info.topic = Some(CheetahString::from_static_str("static-topic"));
+
+        manager.update_topic_queue_mapping(detail);
+
+        let mapping = manager
+            .get_topic_queue_mapping("static-topic")
+            .expect("mapping should exist after update");
+        assert_eq!(
+            mapping.topic_queue_mapping_info.bname.as_deref(),
+            Some(broker_config.broker_name().as_str())
+        );
+        assert!(mapping.hosted_queues.is_some());
+    }
+
+    #[test]
+    fn replace_cleaned_queue_items_rechecks_expected_items() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let broker_name = broker_config.broker_name().clone();
+        let manager = TopicQueueMappingManager::new(broker_config);
+        let topic = CheetahString::from_static_str("static-topic");
+        let item0 = LogicQueueMappingItem {
+            gen: 0,
+            queue_id: 0,
+            bname: Some(broker_name.clone()),
+            end_offset: 10,
+            ..Default::default()
+        };
+        let item1 = LogicQueueMappingItem {
+            gen: 1,
+            queue_id: 1,
+            bname: Some(broker_name.clone()),
+            logic_offset: 10,
+            ..Default::default()
+        };
+        let mut hosted_queues = HashMap::new();
+        hosted_queues.insert(0, vec![item0.clone(), item1.clone()]);
+        manager.topic_queue_mapping_table.insert(
+            topic.clone(),
+            Arc::new(TopicQueueMappingDetail {
+                topic_queue_mapping_info:
+                    rocketmq_protocol::protocol::static_topic::topic_queue_mapping_info::TopicQueueMappingInfo {
+                        topic: Some(topic.clone()),
+                        bname: Some(broker_name.clone()),
+                        epoch: 1,
+                        ..Default::default()
+                    },
+                hosted_queues: Some(hosted_queues),
+            }),
+        );
+        let mut replacements = HashMap::new();
+        replacements.insert(0, (vec![item0, item1.clone()], vec![item1.clone()]));
+        let original = manager.get_topic_queue_mapping(topic.as_str()).unwrap();
+
+        assert!(manager.replace_cleaned_queue_items(&topic, 1, &broker_name, &replacements));
+
+        let mapping = manager.get_topic_queue_mapping(topic.as_str()).unwrap();
+        assert!(!Arc::ptr_eq(&original, &mapping));
+        assert_eq!(original.hosted_queues.as_ref().unwrap().get(&0).unwrap().len(), 2);
+        assert_eq!(mapping.hosted_queues.as_ref().unwrap().get(&0).unwrap(), &vec![item1]);
+        assert_eq!(manager.data_version.lock().get_state_version(), 0);
+    }
+
+    #[test]
+    fn stale_cleanup_cannot_overwrite_a_newer_mapping_generation() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let manager = TopicQueueMappingManager::new(broker_config);
+        let topic = CheetahString::from_static_str("static-topic");
+        let original = Arc::new(TopicQueueMappingDetail::default());
+        manager
+            .topic_queue_mapping_table
+            .insert(topic.clone(), original.clone());
+
+        let mut newer_detail = TopicQueueMappingDetail::default();
+        newer_detail.topic_queue_mapping_info.epoch = 2;
+        let newer = Arc::new(newer_detail);
+        manager.topic_queue_mapping_table.insert(topic.clone(), newer.clone());
+
+        let mut stale_replacement = TopicQueueMappingDetail::default();
+        stale_replacement.topic_queue_mapping_info.epoch = 1;
+        assert!(!manager.publish_if_current(&topic, &original, stale_replacement));
+
+        let current = manager.get_topic_queue_mapping(topic.as_str()).unwrap();
+        assert!(Arc::ptr_eq(&current, &newer));
+        assert_eq!(current.topic_queue_mapping_info.epoch, 2);
+    }
+
+    #[test]
+    fn remove_cleaned_hosted_queues_skips_when_current_items_changed() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let broker_name = broker_config.broker_name().clone();
+        let manager = TopicQueueMappingManager::new(broker_config);
+        let topic = CheetahString::from_static_str("static-topic");
+        let old_item = LogicQueueMappingItem {
+            gen: 0,
+            queue_id: 0,
+            bname: Some(CheetahString::from_static_str("old-broker")),
+            ..Default::default()
+        };
+        let current_item = LogicQueueMappingItem {
+            gen: 1,
+            queue_id: 1,
+            bname: Some(broker_name.clone()),
+            ..Default::default()
+        };
+        let mut hosted_queues = HashMap::new();
+        hosted_queues.insert(0, vec![current_item]);
+        manager.topic_queue_mapping_table.insert(
+            topic.clone(),
+            Arc::new(TopicQueueMappingDetail {
+                topic_queue_mapping_info:
+                    rocketmq_protocol::protocol::static_topic::topic_queue_mapping_info::TopicQueueMappingInfo {
+                        topic: Some(topic.clone()),
+                        bname: Some(broker_name.clone()),
+                        epoch: 1,
+                        ..Default::default()
+                    },
+                hosted_queues: Some(hosted_queues),
+            }),
+        );
+        let mut expected_items = HashMap::new();
+        expected_items.insert(0, vec![old_item]);
+
+        assert!(!manager.remove_cleaned_hosted_queues(&topic, 1, &broker_name, &expected_items));
+        assert!(manager
+            .get_topic_queue_mapping(topic.as_str())
+            .unwrap()
+            .hosted_queues
+            .as_ref()
+            .unwrap()
+            .contains_key(&0));
+    }
+
+    #[test]
+    fn clean_mutation_skips_when_epoch_or_broker_mismatch() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let broker_name = broker_config.broker_name().clone();
+        let manager = TopicQueueMappingManager::new(broker_config);
+        let topic = CheetahString::from_static_str("static-topic");
+        let item0 = LogicQueueMappingItem {
+            gen: 0,
+            queue_id: 0,
+            bname: Some(broker_name.clone()),
+            ..Default::default()
+        };
+        let item1 = LogicQueueMappingItem {
+            gen: 1,
+            queue_id: 1,
+            bname: Some(broker_name.clone()),
+            logic_offset: 10,
+            ..Default::default()
+        };
+        let mut hosted_queues = HashMap::new();
+        hosted_queues.insert(0, vec![item0.clone(), item1.clone()]);
+        manager.topic_queue_mapping_table.insert(
+            topic.clone(),
+            Arc::new(TopicQueueMappingDetail {
+                topic_queue_mapping_info:
+                    rocketmq_protocol::protocol::static_topic::topic_queue_mapping_info::TopicQueueMappingInfo {
+                        topic: Some(topic.clone()),
+                        bname: Some(broker_name.clone()),
+                        epoch: 7,
+                        ..Default::default()
+                    },
+                hosted_queues: Some(hosted_queues),
+            }),
+        );
+
+        let mut replacements = HashMap::new();
+        replacements.insert(0, (vec![item0.clone(), item1.clone()], vec![item1.clone()]));
+        assert!(!manager.replace_cleaned_queue_items(&topic, 8, &broker_name, &replacements));
+        assert!(!manager.replace_cleaned_queue_items(
+            &topic,
+            7,
+            &CheetahString::from_static_str("other-broker"),
+            &replacements
+        ));
+
+        let mut expected_items = HashMap::new();
+        expected_items.insert(0, vec![item0, item1]);
+        assert!(!manager.remove_cleaned_hosted_queues(&topic, 8, &broker_name, &expected_items));
+        assert!(!manager.remove_cleaned_hosted_queues(
+            &topic,
+            7,
+            &CheetahString::from_static_str("other-broker"),
+            &expected_items
+        ));
+
+        let mapping = manager.get_topic_queue_mapping(topic.as_str()).unwrap();
+        assert!(mapping.hosted_queues.as_ref().unwrap().contains_key(&0));
+        assert_eq!(manager.data_version.lock().get_state_version(), 0);
+    }
+
+    #[test]
+    fn remove_cleaned_hosted_queues_deletes_expected_qid_without_bumping_version() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let broker_name = broker_config.broker_name().clone();
+        let manager = TopicQueueMappingManager::new(broker_config);
+        let topic = CheetahString::from_static_str("static-topic");
+        let item = LogicQueueMappingItem {
+            gen: 0,
+            queue_id: 0,
+            bname: Some(CheetahString::from_static_str("old-broker")),
+            ..Default::default()
+        };
+        let mut hosted_queues = HashMap::new();
+        hosted_queues.insert(0, vec![item.clone()]);
+        manager.topic_queue_mapping_table.insert(
+            topic.clone(),
+            Arc::new(TopicQueueMappingDetail {
+                topic_queue_mapping_info:
+                    rocketmq_protocol::protocol::static_topic::topic_queue_mapping_info::TopicQueueMappingInfo {
+                        topic: Some(topic.clone()),
+                        bname: Some(broker_name.clone()),
+                        epoch: 1,
+                        ..Default::default()
+                    },
+                hosted_queues: Some(hosted_queues),
+            }),
+        );
+        let mut expected_items = HashMap::new();
+        expected_items.insert(0, vec![item]);
+
+        assert!(manager.remove_cleaned_hosted_queues(&topic, 1, &broker_name, &expected_items));
+
+        let mapping = manager.get_topic_queue_mapping(topic.as_str()).unwrap();
+        assert!(!mapping.hosted_queues.as_ref().unwrap().contains_key(&0));
+        assert_eq!(manager.data_version.lock().get_state_version(), 0);
+    }
+}

@@ -1,0 +1,602 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::panic::catch_unwind;
+use std::panic::AssertUnwindSafe;
+use std::sync::atomic::AtomicUsize;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+use std::sync::Barrier;
+use std::thread;
+
+use crate::mapped_file::kernel::plan_mapped_file_cache_residency;
+use crate::mapped_file::kernel::visit_mapped_file_warmup_schedule;
+use crate::mapped_file::kernel::MappedFileCacheResidencyPlan;
+use crate::mapped_file::kernel::MappedFileProgress;
+use crate::mapped_file::kernel::MappedFileWarmupOperation;
+use crate::mapped_file::kernel::ReferenceResource;
+use crate::mapped_file::kernel::ReferenceResourceBase;
+use crate::mapped_file::kernel::ReferenceResourceCounter;
+use crate::mapped_file::kernel::OS_PAGE_SIZE;
+use crate::mapped_file::MappedFileAdmissionState;
+use crate::mapped_file::MappedFileOperation;
+
+fn warmup_schedule(
+    file_size: usize,
+    page_size: usize,
+    flush_every_pages: usize,
+    sync_flush: bool,
+) -> Vec<MappedFileWarmupOperation> {
+    let mut operations = Vec::new();
+    visit_mapped_file_warmup_schedule(file_size, page_size, flush_every_pages, sync_flush, |operation| {
+        operations.push(operation)
+    });
+    operations
+}
+
+#[test]
+fn warmup_schedule_preserves_touch_then_periodic_and_final_flush_order() {
+    assert_eq!(
+        warmup_schedule(10, 4, 2, true),
+        vec![
+            MappedFileWarmupOperation::Touch { offset: 0 },
+            MappedFileWarmupOperation::Touch { offset: 4 },
+            MappedFileWarmupOperation::Flush {
+                offset: 0,
+                len: 5,
+                final_flush: false,
+            },
+            MappedFileWarmupOperation::Touch { offset: 8 },
+            MappedFileWarmupOperation::Flush {
+                offset: 5,
+                len: 5,
+                final_flush: true,
+            },
+        ]
+    );
+}
+
+#[test]
+fn async_warmup_schedule_only_touches_each_page_start() {
+    assert_eq!(
+        warmup_schedule(10, 4, 2, false),
+        vec![
+            MappedFileWarmupOperation::Touch { offset: 0 },
+            MappedFileWarmupOperation::Touch { offset: 4 },
+            MappedFileWarmupOperation::Touch { offset: 8 },
+        ]
+    );
+}
+
+#[test]
+fn warmup_schedule_normalizes_zero_page_and_flush_intervals() {
+    assert_eq!(
+        warmup_schedule(3, 0, 0, true),
+        vec![
+            MappedFileWarmupOperation::Touch { offset: 0 },
+            MappedFileWarmupOperation::Flush {
+                offset: 0,
+                len: 1,
+                final_flush: false,
+            },
+            MappedFileWarmupOperation::Touch { offset: 1 },
+            MappedFileWarmupOperation::Flush {
+                offset: 1,
+                len: 1,
+                final_flush: false,
+            },
+            MappedFileWarmupOperation::Touch { offset: 2 },
+            MappedFileWarmupOperation::Flush {
+                offset: 2,
+                len: 1,
+                final_flush: false,
+            },
+        ]
+    );
+}
+
+#[test]
+fn warmup_schedule_emits_no_operations_for_an_empty_file() {
+    assert!(warmup_schedule(0, 0, 0, true).is_empty());
+}
+
+#[test]
+fn progress_starts_with_legacy_defaults() {
+    let progress = MappedFileProgress::new(4096);
+
+    assert_eq!(progress.file_size(), 4096);
+    assert_eq!(progress.wrote_position(), 0);
+    assert_eq!(progress.committed_position(), 0);
+    assert_eq!(progress.flushed_position(), 0);
+    assert_eq!(progress.store_timestamp(), 0);
+    assert_eq!(progress.last_flush_time(), 0);
+    assert_eq!(progress.start_timestamp(), -1);
+    assert_eq!(progress.stop_timestamp(), -1);
+}
+
+#[test]
+fn progress_preserves_segment_full_boundary_and_readable_rules() {
+    let progress = MappedFileProgress::new(32);
+    progress.set_wrote_position(31);
+    progress.set_committed_position(17);
+
+    assert!(!progress.is_full());
+    assert_eq!(progress.read_position(false), 31);
+    assert_eq!(progress.read_position(true), 17);
+
+    progress.advance_wrote_position(1);
+    assert!(progress.is_full());
+}
+
+#[test]
+fn lock_region_range_preserves_legacy_empty_boundary_and_clipping_policy() {
+    let progress = MappedFileProgress::new(4096);
+
+    assert_eq!(progress.lock_region_range(0, 0), None);
+    assert_eq!(progress.lock_region_range(4096, 1), None);
+    assert_eq!(progress.lock_region_range(u64::MAX, usize::MAX), None);
+    assert_eq!(progress.lock_region_range(0, 1), Some((0, 1)));
+    assert_eq!(progress.lock_region_range(3072, 4096), Some((3072, 1024)));
+    assert_eq!(progress.lock_region_range(4095, usize::MAX), Some((4095, 1)));
+}
+
+#[test]
+fn cache_range_validation_preserves_legacy_bounds_and_checked_overflow_policy() {
+    let progress = MappedFileProgress::new(10);
+
+    assert!(!progress.is_valid_cache_range(-1, 1));
+    assert!(!progress.is_valid_cache_range(0, 0));
+    assert!(!progress.is_valid_cache_range(10, 1));
+    assert!(progress.is_valid_cache_range(0, 10));
+    assert!(progress.is_valid_cache_range(9, 1));
+    assert!(!progress.is_valid_cache_range(9, 2));
+    assert!(!progress.is_valid_cache_range(i64::MAX, usize::MAX));
+    assert!(!MappedFileProgress::new(0).is_valid_cache_range(0, 1));
+}
+
+#[test]
+fn cache_residency_planner_preserves_legacy_alignment_and_saturating_policy() {
+    let plan =
+        |base_addr, position, size, page_size| plan_mapped_file_cache_residency(base_addr, position, size, page_size);
+
+    assert_eq!(
+        plan(0x2000, 0, 1, 4096),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: 0x2000,
+            checked_len: 1,
+            page_count: 1,
+        })
+    );
+    assert_eq!(
+        plan(0x2000, 4095, 2, 4096),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: 0x2000,
+            checked_len: 4097,
+            page_count: 2,
+        })
+    );
+    assert_eq!(
+        plan(0x2003, 1, 4096, 4096),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: 0x2000,
+            checked_len: 4100,
+            page_count: 2,
+        })
+    );
+    assert_eq!(
+        plan(7, 0, 1, 0),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: 7,
+            checked_len: 1,
+            page_count: 1,
+        })
+    );
+    assert_eq!(
+        plan(usize::MAX - 2, 10, 1, 4),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: usize::MAX - 3,
+            checked_len: 4,
+            page_count: 1,
+        })
+    );
+    assert_eq!(
+        plan(usize::MAX, 0, usize::MAX, 4096),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: usize::MAX - 4095,
+            checked_len: usize::MAX,
+            page_count: usize::MAX.div_ceil(4096),
+        })
+    );
+    assert_eq!(
+        plan(usize::MAX - 1, 0, 2, usize::MAX),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: 0,
+            checked_len: usize::MAX,
+            page_count: 1,
+        })
+    );
+    assert_eq!(plan(0x2000, 0, 0, 4096), None);
+    assert_eq!(
+        plan(0x2001, 0, 0, 4096),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: 0x2000,
+            checked_len: 1,
+            page_count: 1,
+        })
+    );
+}
+
+#[cfg(target_pointer_width = "32")]
+#[test]
+fn cache_residency_planner_preserves_legacy_position_as_usize_conversion() {
+    assert_eq!(
+        plan_mapped_file_cache_residency(0, i64::from(u32::MAX) + 1, 1, 4096),
+        Some(MappedFileCacheResidencyPlan {
+            aligned_start: 0,
+            checked_len: 1,
+            page_count: 1,
+        })
+    );
+}
+
+#[cfg(target_pointer_width = "32")]
+#[test]
+fn cache_range_validation_preserves_legacy_position_as_usize_conversion() {
+    let progress = MappedFileProgress::new(16);
+
+    assert!(progress.is_valid_cache_range(i64::from(u32::MAX) + 1, 1));
+}
+
+#[cfg(target_pointer_width = "32")]
+#[test]
+fn lock_region_range_rejects_offsets_that_do_not_fit_usize_after_clipping() {
+    let progress = MappedFileProgress::new(u64::MAX);
+    let offset = usize::MAX as u64 + 1;
+
+    assert_eq!(progress.lock_region_range(offset, 1), None);
+}
+
+#[test]
+fn successful_flush_is_the_only_operation_that_advances_durable_progress() {
+    let progress = MappedFileProgress::new(64);
+    progress.set_wrote_position(24);
+    progress.set_committed_position(20);
+
+    assert_eq!(
+        progress.flushed_position(),
+        0,
+        "crash-before-flush must remain non-durable"
+    );
+    assert_eq!(progress.last_flush_time(), 0);
+
+    progress.record_flush_success(20);
+
+    assert_eq!(progress.flushed_position(), 20);
+    assert!(progress.last_flush_time() > 0);
+}
+
+#[test]
+fn append_commit_and_timestamps_keep_legacy_setter_semantics() {
+    let progress = MappedFileProgress::new(64);
+    progress.record_append(7, 1_700_000_000_123);
+    progress.commit_wrote_position();
+    progress.set_start_timestamp(101);
+    progress.set_stop_timestamp(202);
+
+    assert_eq!(progress.wrote_position(), 7);
+    assert_eq!(progress.committed_position(), 7);
+    assert_eq!(progress.store_timestamp(), 1_700_000_000_123);
+    assert_eq!(progress.start_timestamp(), 101);
+    assert_eq!(progress.stop_timestamp(), 202);
+}
+
+#[test]
+fn page_threshold_policy_preserves_exact_legacy_boundaries() {
+    assert_eq!(OS_PAGE_SIZE, 1024 * 4);
+
+    let progress = MappedFileProgress::new(OS_PAGE_SIZE * 4);
+    progress.set_flushed_position(0);
+
+    assert!(!progress.is_able_to_flush(4095, 1));
+    assert!(progress.is_able_to_flush(4096, 1));
+    assert!(!progress.is_able_to_flush(8191, 2));
+    assert!(progress.is_able_to_flush(8192, 2));
+    assert!(progress.is_able_to_flush(1, 0));
+    assert!(progress.is_able_to_flush(1, -1));
+    assert!(!progress.is_able_to_flush(0, 0));
+
+    progress.set_flushed_position(4096);
+    assert!(!progress.is_able_to_flush(4096, 0));
+    assert!(!progress.is_able_to_flush(4095, 0));
+    assert!(!progress.is_able_to_flush(4095, 1));
+
+    progress.set_wrote_position(4095);
+    progress.set_committed_position(0);
+    assert!(!progress.is_able_to_commit(1));
+    progress.set_wrote_position(4096);
+    assert!(progress.is_able_to_commit(1));
+    assert!(progress.is_able_to_commit(0));
+    progress.set_committed_position(4096);
+    assert!(!progress.is_able_to_commit(0));
+    assert!(!progress.is_able_to_commit(-1));
+}
+
+#[test]
+fn full_segment_short_circuits_flush_and_commit_thresholds() {
+    let progress = MappedFileProgress::new(OS_PAGE_SIZE);
+    progress.set_wrote_position(OS_PAGE_SIZE as i32);
+    progress.set_committed_position(OS_PAGE_SIZE as i32);
+    progress.set_flushed_position(OS_PAGE_SIZE as i32);
+
+    assert!(progress.is_able_to_flush(0, i32::MAX));
+    assert!(progress.is_able_to_commit(i32::MAX));
+}
+
+#[test]
+fn graceful_and_forced_shutdown_keep_explicit_lease_state() {
+    let graceful = ReferenceResourceCounter::new();
+    assert!(graceful.hold());
+    graceful.shutdown(0);
+    let closing = graceful.base().lifecycle_snapshot();
+    assert_eq!(closing.state, MappedFileAdmissionState::Closing);
+    assert_eq!(closing.active_leases, 1);
+    assert_eq!(closing.generation, 1);
+    assert!(closing.started_at.is_some());
+    assert!(!closing.force_observed);
+    assert!(!closing.logical_cleanup_marked);
+    assert_eq!(graceful.get_ref_count(), 1);
+    assert!(!graceful.hold());
+    graceful.release();
+    let drained = graceful.base().lifecycle_snapshot();
+    assert_eq!(drained.active_leases, 0);
+    assert!(drained.logical_cleanup_marked);
+    assert!(graceful.is_cleanup_over());
+
+    let forced = ReferenceResourceCounter::new();
+    assert!(forced.hold());
+    forced.shutdown(0);
+    forced.shutdown(0);
+    let forced_live = forced.base().lifecycle_snapshot();
+    assert_eq!(forced_live.state, MappedFileAdmissionState::Closing);
+    assert_eq!(forced_live.active_leases, 1);
+    assert_eq!(forced_live.generation, 1);
+    assert!(forced_live.force_observed);
+    assert!(!forced_live.logical_cleanup_marked);
+    assert_eq!(forced.get_ref_count(), 1);
+
+    forced.release();
+    let forced_drained = forced.base().lifecycle_snapshot();
+    assert_eq!(forced_drained.active_leases, 0);
+    assert!(forced_drained.logical_cleanup_marked);
+    assert!(forced.is_cleanup_over());
+}
+
+struct CountingResource {
+    base: ReferenceResourceBase,
+    cleanup_count: AtomicUsize,
+}
+
+impl ReferenceResource for CountingResource {
+    fn base(&self) -> &ReferenceResourceBase {
+        &self.base
+    }
+
+    fn cleanup(&self, _current_ref: i64) -> bool {
+        self.cleanup_count.fetch_add(1, Ordering::SeqCst);
+        true
+    }
+}
+
+#[test]
+fn concurrent_final_releases_cleanup_exactly_once() {
+    let resource = Arc::new(CountingResource {
+        base: ReferenceResourceBase::new(),
+        cleanup_count: AtomicUsize::new(0),
+    });
+    let holders = 16;
+    for _ in 0..holders {
+        assert!(resource.hold());
+    }
+    resource.shutdown(u64::MAX);
+    let pending = resource.base.lifecycle_snapshot();
+    assert_eq!(pending.state, MappedFileAdmissionState::Closing);
+    assert_eq!(pending.active_leases, holders);
+    assert!(!pending.logical_cleanup_marked);
+
+    let handles = (0..holders)
+        .map(|_| {
+            let resource = Arc::clone(&resource);
+            thread::spawn(move || resource.release())
+        })
+        .collect::<Vec<_>>();
+    for handle in handles {
+        handle.join().expect("release worker must finish");
+    }
+
+    let drained = resource.base.lifecycle_snapshot();
+    assert_eq!(drained.active_leases, 0);
+    assert!(drained.logical_cleanup_marked);
+    assert_eq!(resource.cleanup_count.load(Ordering::SeqCst), 1);
+    assert!(resource.is_cleanup_over());
+}
+
+#[derive(Clone, Copy)]
+enum ScriptedCleanup {
+    FailOnce,
+    PanicOnce,
+}
+
+struct ScriptedCleanupResource {
+    reference_resource: ReferenceResourceCounter,
+    cleanup_attempts: AtomicUsize,
+    behavior: ScriptedCleanup,
+}
+
+impl ScriptedCleanupResource {
+    fn new(behavior: ScriptedCleanup) -> Self {
+        Self {
+            reference_resource: ReferenceResourceCounter::new(),
+            cleanup_attempts: AtomicUsize::new(0),
+            behavior,
+        }
+    }
+}
+
+impl ReferenceResource for ScriptedCleanupResource {
+    fn base(&self) -> &ReferenceResourceBase {
+        self.reference_resource.base()
+    }
+
+    fn cleanup(&self, _current_ref: i64) -> bool {
+        let attempt = self.cleanup_attempts.fetch_add(1, Ordering::SeqCst);
+        match self.behavior {
+            ScriptedCleanup::FailOnce => attempt > 0,
+            ScriptedCleanup::PanicOnce if attempt == 0 => panic!("injected cleanup panic"),
+            ScriptedCleanup::PanicOnce => true,
+        }
+    }
+}
+
+#[test]
+fn typed_last_drop_completes_retryable_cleanup_lazily_exactly_once() {
+    let resource = ScriptedCleanupResource::new(ScriptedCleanup::FailOnce);
+    let lease = resource
+        .reference_resource
+        .try_acquire(MappedFileOperation::Read)
+        .into_result()
+        .expect("typed read lease");
+
+    resource.shutdown(u64::MAX);
+    drop(lease);
+
+    assert!(resource.base().lifecycle_snapshot().logical_cleanup_marked);
+    assert_eq!(resource.cleanup_attempts.load(Ordering::SeqCst), 0);
+    assert!(!resource.is_cleanup_over());
+    assert_eq!(resource.cleanup_attempts.load(Ordering::SeqCst), 1);
+    assert!(resource.is_cleanup_over());
+    assert_eq!(resource.cleanup_attempts.load(Ordering::SeqCst), 2);
+    assert!(resource.is_cleanup_over());
+    assert_eq!(resource.cleanup_attempts.load(Ordering::SeqCst), 2);
+}
+
+#[test]
+fn cleanup_panic_releases_claim_for_lazy_retry() {
+    let resource = ScriptedCleanupResource::new(ScriptedCleanup::PanicOnce);
+    let lease = resource
+        .reference_resource
+        .try_acquire(MappedFileOperation::Read)
+        .into_result()
+        .expect("typed read lease");
+
+    resource.shutdown(u64::MAX);
+    drop(lease);
+
+    let panic = catch_unwind(AssertUnwindSafe(|| resource.is_cleanup_over()));
+    assert!(panic.is_err());
+    assert_eq!(resource.cleanup_attempts.load(Ordering::SeqCst), 1);
+    assert!(resource.is_cleanup_over());
+    assert_eq!(resource.cleanup_attempts.load(Ordering::SeqCst), 2);
+    assert!(resource.is_cleanup_over());
+    assert_eq!(resource.cleanup_attempts.load(Ordering::SeqCst), 2);
+}
+
+#[test]
+fn concurrent_first_shutdown_releases_base_reference_once() {
+    const WORKERS: usize = 16;
+    const ROUNDS: usize = 64;
+
+    for _ in 0..ROUNDS {
+        let resource = Arc::new(CountingResource {
+            base: ReferenceResourceBase::new(),
+            cleanup_count: AtomicUsize::new(0),
+        });
+        assert!(resource.hold());
+        let barrier = Arc::new(Barrier::new(WORKERS + 1));
+        let handles = (0..WORKERS)
+            .map(|_| {
+                let resource = Arc::clone(&resource);
+                let barrier = Arc::clone(&barrier);
+                thread::spawn(move || {
+                    barrier.wait();
+                    resource.shutdown(u64::MAX);
+                })
+            })
+            .collect::<Vec<_>>();
+
+        barrier.wait();
+        for handle in handles {
+            handle.join().expect("shutdown worker must finish");
+        }
+
+        let pending = resource.base.lifecycle_snapshot();
+        assert_eq!(pending.state, MappedFileAdmissionState::Closing);
+        assert_eq!(pending.active_leases, 1);
+        assert_eq!(pending.generation, 1);
+        assert!(pending.started_at.is_some());
+        assert!(!pending.force_observed);
+        assert!(!pending.logical_cleanup_marked);
+        assert_eq!(resource.get_ref_count(), 1);
+        assert_eq!(resource.cleanup_count.load(Ordering::SeqCst), 0);
+        assert!(!resource.is_available());
+
+        resource.release();
+        let drained = resource.base.lifecycle_snapshot();
+        assert_eq!(drained.active_leases, 0);
+        assert!(drained.logical_cleanup_marked);
+        assert_eq!(resource.cleanup_count.load(Ordering::SeqCst), 1);
+    }
+}
+
+#[test]
+fn concurrent_forced_shutdown_claims_the_legacy_transition_once() {
+    const WORKERS: usize = 16;
+    let resource = Arc::new(CountingResource {
+        base: ReferenceResourceBase::new(),
+        cleanup_count: AtomicUsize::new(0),
+    });
+    assert!(resource.hold());
+    resource.shutdown(u64::MAX);
+    assert_eq!(resource.get_ref_count(), 1);
+
+    let barrier = Arc::new(Barrier::new(WORKERS + 1));
+    let handles = (0..WORKERS)
+        .map(|_| {
+            let resource = Arc::clone(&resource);
+            let barrier = Arc::clone(&barrier);
+            thread::spawn(move || {
+                barrier.wait();
+                resource.shutdown(0);
+            })
+        })
+        .collect::<Vec<_>>();
+    barrier.wait();
+    for handle in handles {
+        handle.join().expect("force worker must finish");
+    }
+
+    let forced = resource.base.lifecycle_snapshot();
+    assert_eq!(forced.state, MappedFileAdmissionState::Closing);
+    assert_eq!(forced.active_leases, 1);
+    assert_eq!(forced.generation, 1);
+    assert!(forced.force_observed);
+    assert!(!forced.logical_cleanup_marked);
+    assert_eq!(resource.get_ref_count(), 1);
+    assert_eq!(resource.cleanup_count.load(Ordering::SeqCst), 0);
+
+    resource.release();
+    let drained = resource.base.lifecycle_snapshot();
+    assert_eq!(drained.active_leases, 0);
+    assert!(drained.logical_cleanup_marked);
+    assert_eq!(resource.cleanup_count.load(Ordering::SeqCst), 1);
+}

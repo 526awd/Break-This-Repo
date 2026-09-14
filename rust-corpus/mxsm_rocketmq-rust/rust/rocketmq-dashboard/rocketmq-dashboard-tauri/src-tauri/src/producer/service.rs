@@ -1,0 +1,351 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::error::DashboardError as ProducerError;
+use crate::nameserver::NameServerRuntimeState;
+use crate::producer::admin::ManagedProducerAdmin;
+use crate::producer::types::ProducerConnectionItem;
+use crate::producer::types::ProducerConnectionView;
+use crate::producer::types::ProducerGroupItem;
+use crate::producer::types::ProducerResult;
+use crate::producer::types::ProducerTopicOptionsView;
+use rocketmq_admin_core::client_adapter::AdminSession;
+use rocketmq_admin_core::core::dashboard::DashboardAdmin;
+use rocketmq_admin_core::core::dashboard::DashboardProducerConnections;
+use rocketmq_dashboard_common::NameServerConfigSnapshot;
+use rocketmq_dashboard_common::ProducerConnectionQueryRequest;
+use rocketmq_dashboard_common::ProducerTopicOptionsRequest;
+use std::sync::Arc;
+use tokio::sync::Mutex;
+
+#[derive(Clone)]
+pub(crate) struct ProducerManager {
+    runtime: Arc<NameServerRuntimeState>,
+    admin_session: Arc<Mutex<Option<ManagedProducerAdmin>>>,
+}
+
+impl ProducerManager {
+    pub(crate) async fn workspace_inventory(
+        &self,
+    ) -> ProducerResult<rocketmq_admin_core::core::consumer_workspace::ProducerInventoryResult> {
+        use rocketmq_admin_core::core::consumer_workspace::ConsumerWorkspaceAdmin;
+        let mut session = self.admin_session.lock().await;
+        self.ensure_admin_session(&mut session).await?;
+        let admin = &session
+            .as_ref()
+            .ok_or_else(|| ProducerError::Validation("Producer connection unavailable.".into()))?
+            .admin;
+        admin.producer_inventory().await.map_err(Into::into)
+    }
+
+    pub(crate) fn new(runtime: Arc<NameServerRuntimeState>) -> Self {
+        Self {
+            runtime,
+            admin_session: Arc::new(Mutex::new(None)),
+        }
+    }
+
+    pub(crate) async fn shutdown(&self) {
+        let mut session = self.admin_session.lock().await;
+        if let Some(mut admin) = session.take() {
+            admin.shutdown().await;
+        }
+    }
+
+    pub(crate) async fn query_producer_connections(
+        &self,
+        request: ProducerConnectionQueryRequest,
+    ) -> ProducerResult<ProducerConnectionView> {
+        self.validate_query_request(&request)?;
+
+        let mut attempt = 0;
+        loop {
+            attempt += 1;
+            let mut session_guard = self.admin_session.lock().await;
+            self.ensure_admin_session(&mut session_guard).await?;
+
+            let result = {
+                let session = session_guard
+                    .as_mut()
+                    .expect("producer admin session should be initialized before use");
+                self.query_producer_connections_with_admin(&mut session.admin, request.clone())
+                    .await
+            };
+
+            let should_reset = Self::should_reset_session(&result);
+            if should_reset {
+                self.reset_admin_session(&mut session_guard, "query_producer_connections failed")
+                    .await;
+            }
+            drop(session_guard);
+
+            match result {
+                Ok(response) => return Ok(response),
+                Err(_error) if should_reset && attempt < 2 => {
+                    log::warn!("Retrying `query_producer_connections` after reconnect");
+                }
+                Err(error) => return Err(error),
+            }
+        }
+    }
+
+    pub(crate) async fn get_producer_topic_options(
+        &self,
+        _request: ProducerTopicOptionsRequest,
+    ) -> ProducerResult<ProducerTopicOptionsView> {
+        let mut attempt = 0;
+        loop {
+            attempt += 1;
+            let mut session_guard = self.admin_session.lock().await;
+            self.ensure_admin_session(&mut session_guard).await?;
+
+            let snapshot = session_guard
+                .as_ref()
+                .expect("producer admin session should be initialized before use")
+                .snapshot
+                .clone();
+            let result = {
+                let session = session_guard
+                    .as_mut()
+                    .expect("producer admin session should be initialized before use");
+                self.get_producer_topic_options_with_admin(&mut session.admin, &snapshot)
+                    .await
+            };
+
+            let should_reset = Self::should_reset_session(&result);
+            if should_reset {
+                self.reset_admin_session(&mut session_guard, "get_producer_topic_options failed")
+                    .await;
+            }
+            drop(session_guard);
+
+            match result {
+                Ok(response) => return Ok(response),
+                Err(_error) if should_reset && attempt < 2 => {
+                    log::warn!("Retrying `get_producer_topic_options` after reconnect");
+                }
+                Err(error) => return Err(error),
+            }
+        }
+    }
+
+    pub(crate) async fn list_producer_groups(&self) -> ProducerResult<Vec<ProducerGroupItem>> {
+        let mut session_guard = self.admin_session.lock().await;
+        self.ensure_admin_session(&mut session_guard).await?;
+        let session = session_guard
+            .as_ref()
+            .ok_or(ProducerError::Internal("Producer session was not initialized"))?;
+        let result = session
+            .admin
+            .dashboard_list_producers()
+            .await
+            .map(|items| items.into_iter().map(map_producer_group).collect())
+            .map_err(ProducerError::Admin);
+        if Self::should_reset_session(&result) {
+            self.reset_admin_session(&mut session_guard, "list_producer_groups failed")
+                .await;
+        }
+        result
+    }
+
+    fn validate_query_request(&self, request: &ProducerConnectionQueryRequest) -> ProducerResult<()> {
+        if request.topic.trim().is_empty() {
+            return Err(ProducerError::Validation("Topic is required.".into()));
+        }
+        if request.producer_group.trim().is_empty() {
+            return Err(ProducerError::Validation("Producer group is required.".into()));
+        }
+        Ok(())
+    }
+
+    async fn ensure_admin_session(&self, session_slot: &mut Option<ManagedProducerAdmin>) -> ProducerResult<()> {
+        let generation = self.runtime.generation();
+        let needs_reconnect = session_slot
+            .as_ref()
+            .is_none_or(|session| !session.matches_generation(generation));
+
+        if needs_reconnect {
+            self.reset_admin_session(session_slot, "refreshing producer admin session")
+                .await;
+            let session = ManagedProducerAdmin::connect(&self.runtime).await?;
+            log::info!(
+                "Connected producer admin session for namesrv `{}` at generation {}",
+                session.snapshot.current_namesrv.as_deref().unwrap_or_default(),
+                session.generation
+            );
+            *session_slot = Some(session);
+        }
+
+        Ok(())
+    }
+
+    async fn reset_admin_session(&self, session_slot: &mut Option<ManagedProducerAdmin>, reason: &str) {
+        if let Some(mut session) = session_slot.take() {
+            log::info!(
+                "Shutting down producer admin session for namesrv `{}`: {}",
+                session.snapshot.current_namesrv.as_deref().unwrap_or_default(),
+                reason
+            );
+            session.shutdown().await;
+        }
+    }
+
+    fn should_reset_session<T>(result: &ProducerResult<T>) -> bool {
+        matches!(
+            result,
+            Err(ProducerError::Admin(error)) if error.is_retryable()
+                || error.is_session_closed()
+        )
+    }
+
+    async fn query_producer_connections_with_admin(
+        &self,
+        admin: &mut AdminSession,
+        request: ProducerConnectionQueryRequest,
+    ) -> ProducerResult<ProducerConnectionView> {
+        let connection = admin
+            .dashboard_producer_connections(&request.topic, &request.producer_group)
+            .await
+            .map_err(ProducerError::Admin)?;
+
+        Ok(build_connection_view(request, connection))
+    }
+
+    async fn get_producer_topic_options_with_admin(
+        &self,
+        admin: &mut AdminSession,
+        snapshot: &NameServerConfigSnapshot,
+    ) -> ProducerResult<ProducerTopicOptionsView> {
+        let topic_list = admin.dashboard_list_topics().await.map_err(ProducerError::Admin)?;
+        let mut topics: Vec<String> = topic_list.items.into_iter().map(|item| item.topic).collect();
+        topics.sort();
+        topics.dedup();
+
+        Ok(ProducerTopicOptionsView {
+            topics,
+            current_namesrv: snapshot.current_namesrv.clone().unwrap_or_default(),
+            use_vip_channel: snapshot.use_vip_channel,
+            use_tls: snapshot.use_tls,
+        })
+    }
+}
+
+fn build_connection_view(
+    request: ProducerConnectionQueryRequest,
+    connection: DashboardProducerConnections,
+) -> ProducerConnectionView {
+    let mut connections: Vec<ProducerConnectionItem> = connection
+        .connections
+        .into_iter()
+        .map(|item| ProducerConnectionItem {
+            client_id: item.client_id,
+            client_addr: item.client_addr,
+            language: item.language,
+            version: item.version,
+            version_desc: item.version_desc,
+        })
+        .collect();
+    connections.sort_by(|left, right| left.client_id.cmp(&right.client_id));
+
+    ProducerConnectionView {
+        topic: request.topic,
+        producer_group: request.producer_group,
+        connection_count: connections.len(),
+        connections,
+    }
+}
+
+fn map_producer_group(item: rocketmq_admin_core::core::dashboard::DashboardProducerInfo) -> ProducerGroupItem {
+    ProducerGroupItem {
+        producer_group: item.producer_group,
+        reported_connection_count: item.connection_count,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn discovered_zero_connection_group_is_preserved_without_inventing_clients() {
+        let item = super::map_producer_group(rocketmq_admin_core::core::dashboard::DashboardProducerInfo {
+            topic: String::new(),
+            producer_group: "idle-group".into(),
+            connection_count: 0,
+        });
+        assert_eq!(item.producer_group, "idle-group");
+        assert_eq!(item.reported_connection_count, 0);
+        assert!(!serde_json::to_string(&item).unwrap().contains("clients"));
+    }
+
+    use super::ProducerTopicOptionsView;
+    use super::build_connection_view;
+    use rocketmq_admin_core::core::dashboard::DashboardProducerConnection;
+    use rocketmq_admin_core::core::dashboard::DashboardProducerConnections;
+    use rocketmq_dashboard_common::ProducerConnectionQueryRequest;
+
+    #[test]
+    fn build_connection_view_sorts_connections_and_maps_version_desc() {
+        let producer_connection = DashboardProducerConnections {
+            topic: "TopicTest".to_string(),
+            producer_group: "producer-group".to_string(),
+            connections: vec![
+                DashboardProducerConnection {
+                    client_id: "client-b".to_string(),
+                    client_addr: "127.0.0.1:10911".to_string(),
+                    language: "JAVA".to_string(),
+                    version: 433,
+                    version_desc: "V5_0_0".to_string(),
+                },
+                DashboardProducerConnection {
+                    client_id: "client-a".to_string(),
+                    client_addr: "127.0.0.1:10912".to_string(),
+                    language: "RUST".to_string(),
+                    version: 433,
+                    version_desc: "V5_0_0".to_string(),
+                },
+            ],
+        };
+
+        let view = build_connection_view(
+            ProducerConnectionQueryRequest {
+                topic: "TopicTest".to_string(),
+                producer_group: "producer-group".to_string(),
+            },
+            producer_connection,
+        );
+
+        assert_eq!(view.connection_count, 2);
+        assert_eq!(view.connections[0].client_id, "client-a");
+        assert_eq!(view.connections[1].client_id, "client-b");
+        assert_eq!(view.connections[0].version, 433);
+        assert_eq!(view.connections[0].version_desc, "V5_0_0");
+    }
+
+    #[test]
+    fn producer_topic_options_view_can_hold_unsuffixed_system_topics() {
+        let view = ProducerTopicOptionsView {
+            topics: vec![
+                "TBW102".to_string(),
+                "%RETRY%group-a".to_string(),
+                "TopicTest".to_string(),
+            ],
+            current_namesrv: "127.0.0.1:9876".to_string(),
+            use_vip_channel: true,
+            use_tls: false,
+        };
+
+        assert_eq!(view.topics[0], "TBW102");
+        assert_eq!(view.topics[1], "%RETRY%group-a");
+        assert_eq!(view.topics[2], "TopicTest");
+    }
+}
