@@ -1,0 +1,269 @@
+# rocketmq-namesrv
+
+[English](README.md) | [简体中文](README-zh_cn.md)
+
+[RocketMQ-Rust](../README-zh_cn.md) 的 RocketMQ NameServer 实现。
+
+`rocketmq-namesrv` 为 RocketMQ broker、client 和 admin tool 提供轻量级服务发现与路由能力。它负责 broker 存活状态、
+topic route metadata、broker member group、写权限、KV 配置、运行时配置以及可选的内嵌 controller 集成。规范路由管理器
+基于 DashMap 并发表和 segmented lock 实现。
+
+该 crate 既可以作为 `rocketmq-namesrv-rust` 二进制运行，也可以通过 `bootstrap::Builder` API 嵌入测试或上层服务。
+
+## 能力
+
+| 领域 | 提供能力 |
+| ---- | -------- |
+| 服务发现 | Broker 注册、注销、heartbeat 跟踪、inactive broker 扫描和 channel destroy 清理。 |
+| Topic 路由 | Topic route 查询、standard/legacy JSON route 编码、zone-aware route filtering、filter-server metadata 和 order-topic config 查询。 |
+| 路由存储 | `RouteInfoManager` 统一管理 DashMap 并发表及跨表 segmented lock。 |
+| Broker 与 topic 管理 | Cluster info、broker member group、topic 注册/删除、按 cluster 查询 topic list、unit-topic list 和写权限更新。 |
+| KV 配置 | 通过 `KVConfigManager` 支持 KV namespace 的 put/get/delete/list 和磁盘持久化。 |
+| 运行时配置 | `GetNamesrvConfig` 和 `UpdateNamesrvConfig` 支持 Java-properties payload，并对敏感路径和 home 设置保留固定黑名单。 |
+| Cluster test 模式 | 本地无 route data 时，可通过 `TransportClusterTestRouteLookup` 回查 product environment。 |
+| 内嵌 controller | 编译时启用 `embedded-controller` feature，并设置 `enableControllerInNamesrv=true`，才会初始化 `rocketmq-controller`；默认依赖图不包含 Controller，同时会检查监听地址冲突。 |
+| 可观测性 | 可选 `observability` feature 记录 route request 数量/延迟、broker registration 和 active broker gauge。 |
+
+## 架构
+
+![rocketmq-namesrv 架构](../resources/namesrv-architecture.svg)
+
+`KVConfigManager` 负责 namespace config 持久化，`BrokerHousekeepingService` 响应 channel event，定时任务扫描 inactive
+broker；只有同时启用 `embedded-controller` Cargo feature 和 `enableControllerInNamesrv` 运行时配置时，
+`ControllerManager` 才会随 NameServer 生命周期启动和关闭。默认构建若收到该运行时配置会返回明确配置错误。
+
+兼容性说明：调用 `Builder::set_controller_config` 或
+`Builder::set_controller_config_opt` 的应用必须启用 `embedded-controller`
+feature。这是有意的编译期选择：默认 NameServer 依赖图不再携带 Controller、OpenRaft 和 RocksDB，
+内嵌部署仍保留原有的类型化 Builder API。
+
+## 协议覆盖
+
+| 类别 | Request codes |
+| ---- | ------------- |
+| Client route 查询 | `GetRouteinfoByTopic` `105` |
+| Broker 生命周期 | `RegisterBroker` `103`、`UnregisterBroker` `104`、`BrokerHeartbeat` `904`、`GetBrokerMemberGroup` `901`、`QueryDataVersion` `322` |
+| Cluster 与 broker 管理 | `GetBrokerClusterInfo` `106`、`WipeWritePermOfBroker` `205`、`AddWritePermOfBroker` `327` |
+| Topic metadata | `GetAllTopicListFromNameserver` `206`、`DeleteTopicInNamesrv` `216`、`RegisterTopicInNamesrv` `217`、`GetTopicsByCluster` `224` |
+| System 与 unit topic | `GetSystemTopicListFromNs` `304`、`GetUnitTopicList` `311`、`GetHasUnitSubTopicList` `312`、`GetHasUnitSubUnunitTopicList` `313` |
+| KV config | `PutKvConfig` `100`、`GetKvConfig` `101`、`DeleteKvConfig` `102`、`GetKvlistByNamespace` `219` |
+| Runtime config | `UpdateNamesrvConfig` `318`、`GetNamesrvConfig` `319` |
+
+不支持的 request code 会由 default processor 返回 `RequestCodeNotSupported`。
+
+## 环境要求
+
+- Stable Rust `1.95.0`，使用仓库固定的工具链。
+- 使用仓库中的 [`../rust-toolchain.toml`](../rust-toolchain.toml) 工具链。
+- 正常启动二进制时必须设置 `ROCKETMQ_HOME` 或传入 `--rocketmqHome`。
+- 默认 NameServer 监听端口为 `9876`。
+- 启动 NameServer 不要求 broker 已运行，但 client route 查询需要 broker 注册后才能返回 topic metadata。
+
+## 安装
+
+在当前 workspace 内使用：
+
+```toml
+[dependencies]
+rocketmq-namesrv = { path = "../rocketmq-namesrv" }
+```
+
+外部项目使用：
+
+```toml
+[dependencies]
+rocketmq-namesrv = "1.0.0"
+```
+
+启用 NameServer metrics 集成：
+
+```toml
+[dependencies]
+rocketmq-namesrv = { version = "1.0.0", features = ["observability"] }
+```
+
+## 快速开始
+
+查看 CLI 选项：
+
+```bash
+cargo run -p rocketmq-namesrv --bin rocketmq-namesrv-rust -- --help
+```
+
+通过命令行参数启动：
+
+```bash
+cargo run -p rocketmq-namesrv --bin rocketmq-namesrv-rust -- \
+  --rocketmqHome /opt/rocketmq \
+  --listenPort 9876 \
+  --bindAddress 0.0.0.0
+```
+
+使用配置文件启动。`resource/` 下提供了三个示例，可按需选择
+（它们的区别请参见下方的[配置](#配置)）：
+
+```bash
+# 精简开发基线：只设置本地运行时通常需要覆盖的配置项。
+cargo run -p rocketmq-namesrv --bin rocketmq-namesrv-rust -- \
+  -c rocketmq-namesrv/resource/namesrv.toml
+
+# 包含所有可用配置项，并完整标注默认值。该文件仅供参考，
+# 未检查其路径设置前请勿直接使用。
+cargo run -p rocketmq-namesrv --bin rocketmq-namesrv-rust -- \
+  -c rocketmq-namesrv/resource/namesrv-example.toml
+
+# 面向生产的基线，使用更大的线程池和队列容量。
+cargo run -p rocketmq-namesrv --bin rocketmq-namesrv-rust -- \
+  -c rocketmq-namesrv/resource/namesrv-production.toml
+```
+
+打印合并后的配置并退出：
+
+```bash
+cargo run -p rocketmq-namesrv --bin rocketmq-namesrv-rust -- \
+  -c rocketmq-namesrv/resource/namesrv.toml \
+  -p
+```
+
+配置优先级：
+
+1. 内置默认值。
+2. `-c` / `--configFile` 指定的配置文件。
+3. 命令行覆盖项，例如 `--listenPort`、`--bindAddress`、`--rocketmqHome` 和 `--kvConfigPath`。
+
+## 配置
+
+`resource/` 下提供了三个用途各异的示例配置文件：
+
+| 文件 | 用途 |
+| ---- | ---- |
+| [`resource/namesrv.toml`](resource/namesrv.toml) | 精简开发基线，只设置本地运行时可能需要修改的配置项；其他配置项使用内置默认值。 |
+| [`resource/namesrv-example.toml`](resource/namesrv-example.toml) | 完整注释参考，记录每个受支持的配置项及其默认值。不应在未修改的情况下直接使用，请先检查其中的路径设置。 |
+| [`resource/namesrv-production.toml`](resource/namesrv-production.toml) | 面向生产的基线，线程池和队列容量高于默认值；部署前请根据自身容量规划进行检查。 |
+
+配置模型支持 Java 风格的 camelCase key；存在 serde alias 的字段也可使用
+Rust 风格字段名。
+
+| Key | 默认值 | 作用 |
+| --- | ------ | ---- |
+| `rocketmqHome` | `ROCKETMQ_HOME` / `ROCKETMQ_HOME_PROPERTY` | Runtime 使用的 RocketMQ home 目录。 |
+| `kvConfigPath` | `~/rocketmq-namesrv/kvConfig.json` | KV 配置持久化文件。 |
+| `configStorePath` | `~/rocketmq-namesrv/rocketmq-namesrv.properties` | Runtime 配置持久化路径。 |
+| `listenPort` | `9876` | Remoting server 端口，通过 `ServerConfig` 或 CLI 配置。 |
+| `bindAddress` | `0.0.0.0` | Remoting server 绑定地址，通过 `ServerConfig` 或 CLI 配置。 |
+| `scanNotActiveBrokerInterval` | `5000` | Broker inactive 扫描间隔，单位毫秒。 |
+| `enableControllerInNamesrv` | `false` | 在 NameServer 内运行 embedded controller。 |
+| `clusterTest` | `false` | 启用 product-environment route fallback。 |
+| `orderMessageEnable` | `false` | 在 route response 中附加 `ORDER_TOPIC_CONFIG`。 |
+| `configBlackList` | `configBlackList;configStorePath;kvConfigPath` | 远程运行时配置更新时禁止修改的额外 key。 |
+
+`UpdateNamesrvConfig` 还会拒绝固定保护集合，包括 `rocketmqHome`、`kvConfigPath`、`configStorePath` 和
+`configBlackList`。
+
+## 嵌入式使用
+
+在测试或上层服务中可以使用 `bootstrap::Builder` 嵌入 NameServer：
+
+```rust,no_run
+use rocketmq_namesrv::{bootstrap::Builder, NamesrvConfig};
+use rocketmq_observability::TelemetryHandle;
+use rocketmq_runtime::RuntimeOwner;
+use rocketmq_transport::api::ServerConfig;
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let owner = RuntimeOwner::new()?;
+    let context = owner.root_context().component("namesrv");
+    let result = owner.block_on(async {
+        Builder::new(context, TelemetryHandle::noop())
+            .set_name_server_config(NamesrvConfig {
+                rocketmq_home: "/opt/rocketmq".to_string(),
+                ..NamesrvConfig::default()
+            })
+            .set_server_config(ServerConfig {
+                listen_port: 9876,
+                bind_address: "0.0.0.0".to_string(),
+                ..ServerConfig::default()
+            })
+            .build()
+            .boot()
+            .await
+    });
+    let report = owner.shutdown_runtime_blocking()?;
+    result?;
+    if !report.is_healthy() {
+        return Err(std::io::Error::other("runtime shutdown incomplete").into());
+    }
+    Ok(())
+}
+```
+
+确定性测试可以使用 `boot_with_shutdown(...)` 传入显式 shutdown future。
+
+## Crate 结构
+
+| 路径 | 职责 |
+| ---- | ---- |
+| [`src/bin/namesrv_bootstrap_server.rs`](src/bin/namesrv_bootstrap_server.rs) | CLI 入口、配置合并、embedded-controller 配置加载和启动校验。 |
+| [`src/bootstrap.rs`](src/bootstrap.rs) | Runtime 生命周期、server 启动、processor 注册、定时 broker 扫描、remoting client 和优雅关闭。 |
+| [`src/processor.rs`](src/processor.rs) | Request processor dispatcher 和 route request metrics hook。 |
+| [`src/processor/default_request_processor.rs`](src/processor/default_request_processor.rs) | Broker、topic、KV、permission 和 runtime config 请求处理。 |
+| [`src/processor/client_request_processor.rs`](src/processor/client_request_processor.rs) | Client topic-route 查询路径。 |
+| [`src/processor/cluster_test_request_processor.rs`](src/processor/cluster_test_request_processor.rs) | 带 product environment fallback 的 cluster-test route 查询。 |
+| [`src/route`](src/route) | Route manager、segmented lock、route table、unregister service 和 zone route hook。 |
+| [`src/route/tables`](src/route/tables) | Topic queue、broker、cluster、live broker、filter server 和 topic queue mapping 的并发表。 |
+| [`src/kvconfig`](src/kvconfig) | KV config manager 和持久化。 |
+| [`../rocketmq-observability/src/metrics/namesrv.rs`](../rocketmq-observability/src/metrics/namesrv.rs) | OpenTelemetry 与 Prometheus 导出器共用的低基数 NameServer 指标。 |
+| [`tests`](tests) | 网络级和 route-table integration 覆盖。 |
+| [`benches`](benches) | Route manager、concurrency、lock 和 topic-table 热路径 benchmark。 |
+
+## Feature Flags
+
+| Feature | 作用 |
+| ------- | ---- |
+| `observability` | 启用 NameServer 指标和跟踪。 |
+
+
+默认 feature 为 `tls`。`embedded-controller` 为可选控制器集成；`otel-metrics`、`otel-traces`、`otel-logs` 可分别选择信号，`otlp-metrics`、`otlp-traces`、`otlp-logs` 选择对应导出器。导出器仍需运行时配置。Cluster-test 回退使用传输客户端和有界缓存，不依赖完整 Admin SDK。
+
+## 验证
+
+先运行与改动区域匹配的最小验证命令：
+
+| 改动区域 | 聚焦验证命令 |
+| -------- | ------------ |
+| `src/route/tables` 下的路由表实现 | `cargo test -p rocketmq-namesrv route::tables` |
+| 默认请求处理器行为 | `cargo test -p rocketmq-namesrv default_request_processor` |
+| NameServer 配置解析 | `cargo test -p rocketmq-namesrv namesrv_config_parse` |
+| 路由管理器集成 | `cargo test -p rocketmq-namesrv --test route_info_manager_integration` |
+| topic table 索引等价性 | `cargo test -p rocketmq-namesrv --test topic_table_index_equivalence` |
+| Benchmark 代码 | `cargo test -p rocketmq-namesrv --benches --no-run` |
+
+如果改动横跨多个 library 区域，请运行该 crate 的完整 library 测试：
+
+```bash
+cargo test -p rocketmq-namesrv --lib
+```
+
+如果修改 Rust 代码，需要在仓库根目录执行 workspace 级验证：
+
+```bash
+cargo fmt -p rocketmq-namesrv -- --check
+cargo clippy -p rocketmq-namesrv --no-deps -- -D warnings
+```
+
+## Benchmark
+
+在 workspace 根目录运行聚焦 benchmark：
+
+```bash
+cargo bench -p rocketmq-namesrv --bench route_manager_benchmark
+cargo bench -p rocketmq-namesrv --bench route_concurrency_bench
+cargo bench -p rocketmq-namesrv --bench async_segmented_lock_bench
+cargo bench -p rocketmq-namesrv --bench topic_table_hot_path_bench
+```
+
+对比 benchmark 时应保持相同工具链、硬件、route table size、broker count 和 topic distribution。
+
+## License
+
+RocketMQ-Rust 使用 Apache License 2.0。详见 [../LICENSE-APACHE](../LICENSE-APACHE)。

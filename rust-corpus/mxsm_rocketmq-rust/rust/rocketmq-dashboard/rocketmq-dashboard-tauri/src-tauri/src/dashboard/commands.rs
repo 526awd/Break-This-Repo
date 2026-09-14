@@ -1,0 +1,86 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::cluster::service::ClusterManager;
+use crate::connection::ConnectionManager;
+use crate::dashboard::service;
+use crate::dashboard::types::DashboardBrokerOverviewResponse;
+use crate::dashboard::types::DashboardTopicCurrentResponse;
+use crate::error::CommandResult;
+use crate::error::authorize_command;
+use crate::topic::service::TopicManager;
+use rocketmq_dashboard_common::DashboardBrokerOverviewRequest;
+use tauri::State;
+
+#[tauri::command]
+pub async fn get_dashboard_broker_overview(
+    session_id: String,
+    request: DashboardBrokerOverviewRequest,
+    cluster_manager: State<'_, ClusterManager>,
+    session_state: State<'_, SessionState>,
+    expected_revision: i64,
+    connection_manager: State<'_, ConnectionManager>,
+) -> CommandResult<DashboardBrokerOverviewResponse> {
+    authorize_command(&session_id, &session_state).await?;
+    connection_manager.check_revision(expected_revision)?;
+    let result = service::get_dashboard_broker_overview(&cluster_manager, request)
+        .await
+        .map_err(Into::into);
+    connection_manager.check_revision(expected_revision)?;
+    result
+}
+
+#[tauri::command]
+pub async fn query_dashboard_topic_current(
+    session_id: String,
+    topic_manager: State<'_, TopicManager>,
+    session_state: State<'_, SessionState>,
+    expected_revision: i64,
+    connection_manager: State<'_, ConnectionManager>,
+) -> CommandResult<DashboardTopicCurrentResponse> {
+    authorize_command(&session_id, &session_state).await?;
+    connection_manager.check_revision(expected_revision)?;
+    let result = service::query_dashboard_topic_current(&topic_manager)
+        .await
+        .map_err(Into::into);
+    connection_manager.check_revision(expected_revision)?;
+    result
+}
+use crate::auth::SessionState;
+
+#[tauri::command]
+pub async fn get_dashboard_overview(
+    session_id: String,
+    expected_revision: i64,
+    connection_manager: State<'_, ConnectionManager>,
+    session_state: State<'_, SessionState>,
+    cluster_manager: State<'_, ClusterManager>,
+    topic_manager: State<'_, TopicManager>,
+    consumer_manager: State<'_, crate::consumer::ConsumerManager>,
+    producer_manager: State<'_, crate::producer::service::ProducerManager>,
+) -> CommandResult<super::overview::Overview> {
+    authorize_command(&session_id, &session_state).await?;
+    connection_manager.check_revision(expected_revision)?;
+    let configured = connection_manager.snapshot()?.nameserver.current_namesrv.is_some();
+    let result = super::overview::query(
+        configured,
+        &cluster_manager,
+        &topic_manager,
+        &consumer_manager,
+        &producer_manager,
+    )
+    .await;
+    connection_manager.check_revision(expected_revision)?;
+    Ok(result)
+}

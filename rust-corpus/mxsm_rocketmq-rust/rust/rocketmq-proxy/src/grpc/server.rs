@@ -1,0 +1,655 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::future::Future;
+use std::sync::Arc;
+
+#[cfg(feature = "tls")]
+use futures::TryStreamExt;
+use tokio_stream::wrappers::TcpListenerStream;
+use tonic::service::interceptor::InterceptedService;
+use tonic::transport::Server;
+
+use rocketmq_runtime::BlockingExecutor;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::ShutdownDeadline;
+use rocketmq_runtime::TaskGroup;
+
+use crate::config::ProxyConfig;
+use crate::error::canonical;
+use crate::error::ProxyError;
+use crate::error::ProxyResult;
+use crate::grpc::middleware;
+use crate::grpc::service::ProxyGrpcService;
+use crate::processor::MessagingProcessor;
+use crate::proto::v2::messaging_service_server::MessagingServiceServer;
+
+#[doc(hidden)]
+pub type ProxyGrpcServerShutdownReport = crate::ingress::grpc::server::GrpcServerShutdownReport;
+
+pub async fn serve<P, F>(
+    config: Arc<ProxyConfig>,
+    service: ProxyGrpcService<P>,
+    shutdown: F,
+    parent_task_group: TaskGroup,
+) -> ProxyResult<()>
+where
+    P: MessagingProcessor + 'static,
+    F: Future<Output = ShutdownDeadline> + Send + 'static,
+{
+    serve_with_report(config, service, shutdown, parent_task_group)
+        .await
+        .map(|_| ())
+}
+
+#[doc(hidden)]
+pub async fn serve_with_ready<P, F, R>(
+    config: Arc<ProxyConfig>,
+    service: ProxyGrpcService<P>,
+    shutdown: F,
+    parent_task_group: TaskGroup,
+    ready: R,
+) -> ProxyResult<ProxyGrpcServerShutdownReport>
+where
+    P: MessagingProcessor + 'static,
+    F: Future<Output = ShutdownDeadline> + Send + 'static,
+    R: FnOnce() -> ProxyResult<()> + Send + 'static,
+{
+    serve_with_report_and_ready(
+        config,
+        service,
+        shutdown,
+        parent_task_group,
+        None,
+        Some(Box::new(ready)),
+    )
+    .await
+}
+
+#[doc(hidden)]
+pub async fn serve_with_report<P, F>(
+    config: Arc<ProxyConfig>,
+    service: ProxyGrpcService<P>,
+    shutdown: F,
+    parent_task_group: TaskGroup,
+) -> ProxyResult<ProxyGrpcServerShutdownReport>
+where
+    P: MessagingProcessor + 'static,
+    F: Future<Output = ShutdownDeadline> + Send + 'static,
+{
+    serve_with_report_and_ready(config, service, shutdown, parent_task_group, None, None).await
+}
+
+#[doc(hidden)]
+pub async fn serve_with_report_with_task_group<P, F>(
+    config: Arc<ProxyConfig>,
+    service: ProxyGrpcService<P>,
+    shutdown: F,
+    parent_task_group: TaskGroup,
+) -> ProxyResult<ProxyGrpcServerShutdownReport>
+where
+    P: MessagingProcessor + 'static,
+    F: Future<Output = ShutdownDeadline> + Send + 'static,
+{
+    serve_with_report_and_ready(config, service, shutdown, parent_task_group, None, None).await
+}
+
+#[doc(hidden)]
+pub async fn serve_with_report_with_task_group_and_ready<P, F, R>(
+    config: Arc<ProxyConfig>,
+    service: ProxyGrpcService<P>,
+    shutdown: F,
+    parent_task_group: TaskGroup,
+    ready: R,
+) -> ProxyResult<ProxyGrpcServerShutdownReport>
+where
+    P: MessagingProcessor + 'static,
+    F: Future<Output = ShutdownDeadline> + Send + 'static,
+    R: FnOnce() -> ProxyResult<()> + Send + 'static,
+{
+    serve_with_report_and_ready(
+        config,
+        service,
+        shutdown,
+        parent_task_group,
+        None,
+        Some(Box::new(ready)),
+    )
+    .await
+}
+
+pub(crate) async fn serve_with_report_with_service_context_and_ready<P, F, R>(
+    config: Arc<ProxyConfig>,
+    service: ProxyGrpcService<P>,
+    shutdown: F,
+    service_context: ChildServiceContext,
+    ready: R,
+) -> ProxyResult<ProxyGrpcServerShutdownReport>
+where
+    P: MessagingProcessor + 'static,
+    F: Future<Output = ShutdownDeadline> + Send + 'static,
+    R: FnOnce() -> ProxyResult<()> + Send + 'static,
+{
+    let blocking = service_context.metadata_io().clone();
+    let task_group = service_context.task_group().clone();
+    serve_with_report_and_ready(
+        config,
+        service,
+        shutdown,
+        task_group,
+        Some(blocking),
+        Some(Box::new(ready)),
+    )
+    .await
+}
+
+async fn serve_with_report_and_ready<P, F>(
+    config: Arc<ProxyConfig>,
+    service: ProxyGrpcService<P>,
+    shutdown: F,
+    parent_task_group: TaskGroup,
+    blocking: Option<BlockingExecutor>,
+    ready: Option<Box<dyn FnOnce() -> ProxyResult<()> + Send>>,
+) -> ProxyResult<ProxyGrpcServerShutdownReport>
+where
+    P: MessagingProcessor + 'static,
+    F: Future<Output = ShutdownDeadline> + Send + 'static,
+{
+    let task_group = parent_task_group;
+    let housekeeping_service = service.clone();
+    let grpc_config = config.grpc.clone();
+    let max_decoding_message_size = grpc_config.max_decoding_message_size;
+    let max_encoding_message_size = grpc_config.max_encoding_message_size;
+    let concurrency_limit_per_connection = grpc_config.concurrency_limit_per_connection;
+    grpc_config.tls.validate()?;
+    #[cfg(feature = "tls")]
+    let tls_acceptor = if grpc_config.tls.enabled {
+        let blocking = blocking.ok_or_else(|| ProxyError::Transport {
+            message: "Proxy gRPC TLS requires an injected service context".to_owned(),
+        })?;
+        Some(super::tls_acceptor::ReloadableGrpcTlsAcceptor::initialize(grpc_config.tls.clone(), blocking).await?)
+    } else {
+        None
+    };
+    #[cfg(not(feature = "tls"))]
+    if grpc_config.tls.enabled {
+        let _ = blocking;
+        return Err(ProxyError::Transport {
+            message: "Proxy gRPC TLS was configured, but rocketmq-proxy was compiled without the tls feature"
+                .to_owned(),
+        });
+    }
+    #[cfg(feature = "tls")]
+    let tls_task_group = task_group.clone();
+    let shutdown_report = crate::ingress::grpc::server::serve_with_lifecycle_and_ready(
+        &grpc_config,
+        shutdown,
+        task_group,
+        move || match ready {
+            Some(ready) => ready(),
+            None => Ok(()),
+        },
+        move |mut shutdown_rx, housekeeping_task_group| async move {
+            housekeeping_service
+                .run_housekeeping_until_with_task_group(
+                    async move {
+                        loop {
+                            if *shutdown_rx.borrow() || shutdown_rx.changed().await.is_err() {
+                                break;
+                            }
+                        }
+                    },
+                    housekeeping_task_group,
+                )
+                .await
+        },
+        move |listener, local_addr, mut shutdown_rx| async move {
+            let service = MessagingServiceServer::new(service)
+                .max_decoding_message_size(max_decoding_message_size)
+                .max_encoding_message_size(max_encoding_message_size);
+            let service = InterceptedService::new(service, middleware::ingress_context_interceptor(local_addr));
+            #[cfg(feature = "tls")]
+            if let Some(tls_acceptor) = tls_acceptor {
+                tls_acceptor.start_reload(&tls_task_group)?;
+                let handshakes = TcpListenerStream::new(listener)
+                    .map_ok(move |stream| {
+                        let tls_acceptor = tls_acceptor.clone();
+                        async move { tls_acceptor.accept(stream).await }
+                    })
+                    .try_buffer_unordered(concurrency_limit_per_connection.max(1));
+                return Server::builder()
+                    .concurrency_limit_per_connection(concurrency_limit_per_connection)
+                    .add_service(service)
+                    .serve_with_incoming_shutdown(handshakes, async move {
+                        loop {
+                            if *shutdown_rx.borrow() || shutdown_rx.changed().await.is_err() {
+                                break;
+                            }
+                        }
+                    })
+                    .await
+                    .map_err(|error| ProxyError::from(canonical::transport_unavailable_with_source(error)));
+            }
+            Server::builder()
+                .concurrency_limit_per_connection(concurrency_limit_per_connection)
+                .add_service(service)
+                .serve_with_incoming_shutdown(TcpListenerStream::new(listener), async move {
+                    loop {
+                        if *shutdown_rx.borrow() || shutdown_rx.changed().await.is_err() {
+                            break;
+                        }
+                    }
+                })
+                .await
+                .map_err(|error| ProxyError::from(canonical::transport_unavailable_with_source(error)))
+        },
+    )
+    .await?;
+    if !shutdown_report.is_healthy() {
+        tracing::warn!(
+            task_group = %shutdown_report.task_group.to_json(),
+            "Proxy gRPC server task shutdown report is unhealthy"
+        );
+    }
+
+    Ok(shutdown_report)
+}
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+    use std::sync::Mutex;
+    use std::time::Duration;
+
+    use hmac::digest::KeyInit;
+    use hmac::Hmac;
+    use hmac::Mac;
+    use rocketmq_auth::Acl;
+    use rocketmq_auth::Policy;
+    use rocketmq_auth::PolicyDecision;
+    use rocketmq_auth::PolicyResource;
+    use rocketmq_auth::User;
+    use rocketmq_auth::UserStatus;
+    use rocketmq_auth::UserType;
+    use rocketmq_protocol::protocol::route::topic_route_data::TopicRouteData;
+    use rocketmq_runtime::RuntimeContext;
+    use rocketmq_runtime::ShutdownDeadline;
+    use rocketmq_security_api::Action;
+    use sha1::Sha1;
+    use tokio::sync::oneshot;
+    use tonic::metadata::MetadataValue;
+    use tonic::Request;
+
+    use super::serve;
+    use super::serve_with_report;
+    use super::serve_with_report_with_task_group;
+    use crate::auth::ProxyAuthRuntime;
+    use crate::config::GrpcConfig;
+    use crate::config::ProxyAuthConfig;
+    use crate::config::ProxyConfig;
+    use crate::context::ResolvedEndpoint;
+    use crate::grpc::service::ProxyGrpcService;
+    use crate::processor::DefaultMessagingProcessor;
+    use crate::proto::v2;
+    use crate::proto::v2::messaging_service_client::MessagingServiceClient;
+    use crate::service::ClusterServiceManager;
+    use crate::service::DefaultAssignmentService;
+    use crate::service::DefaultConsumerService;
+    use crate::service::DefaultMessageService;
+    use crate::service::DefaultTransactionService;
+    use crate::service::MetadataService;
+    use crate::service::ProxyTopicMessageType;
+    use crate::service::ResourceIdentity;
+    use crate::service::RouteService;
+    use crate::service::SubscriptionGroupMetadata;
+    use crate::session::ClientSessionRegistry;
+    use rocketmq_proxy_core::ProxyContext as CoreProxyContext;
+
+    const AUTH_TEST_DATETIME: &str = "20260322T010203Z";
+
+    #[derive(Debug, Clone, PartialEq, Eq)]
+    struct ObservedRouteContext {
+        local_addr: Option<String>,
+        remote_addr: Option<String>,
+        principal: Option<String>,
+    }
+
+    #[derive(Default)]
+    struct RecordingRouteService {
+        observed: Mutex<Vec<ObservedRouteContext>>,
+    }
+
+    impl RecordingRouteService {
+        fn take_observed(&self) -> Vec<ObservedRouteContext> {
+            self.observed.lock().expect("route service mutex poisoned").clone()
+        }
+    }
+
+    impl RouteService for RecordingRouteService {
+        fn query_route<'a>(
+            &'a self,
+            context: &'a CoreProxyContext,
+            _topic: &'a ResourceIdentity,
+            _endpoints: &'a [ResolvedEndpoint],
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, TopicRouteData> {
+            Box::pin(async move {
+                self.observed
+                    .lock()
+                    .expect("route service mutex poisoned")
+                    .push(ObservedRouteContext {
+                        local_addr: context.local_addr().map(str::to_owned),
+                        remote_addr: context.remote_addr().map(str::to_owned),
+                        principal: None,
+                    });
+                Ok(TopicRouteData::default())
+            })
+        }
+    }
+
+    #[derive(Default)]
+    struct StaticMetadataService;
+
+    impl MetadataService for StaticMetadataService {
+        fn topic_message_type<'a>(
+            &'a self,
+            _context: &'a CoreProxyContext,
+            _topic: &'a ResourceIdentity,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, ProxyTopicMessageType> {
+            Box::pin(async { Ok(ProxyTopicMessageType::Normal) })
+        }
+
+        fn subscription_group<'a>(
+            &'a self,
+            _context: &'a CoreProxyContext,
+            _topic: &'a ResourceIdentity,
+            _group: &'a ResourceIdentity,
+        ) -> rocketmq_proxy_core::ProxyServiceFuture<'a, Option<SubscriptionGroupMetadata>> {
+            Box::pin(async { Ok(None) })
+        }
+    }
+
+    #[tokio::test]
+    async fn serve_with_report_includes_housekeeping_shutdown_report() {
+        let route_service = Arc::new(RecordingRouteService::default());
+        let metadata_service = Arc::new(StaticMetadataService);
+        let manager = Arc::new(ClusterServiceManager::with_services(
+            route_service,
+            metadata_service,
+            Arc::new(DefaultAssignmentService),
+            Arc::new(DefaultMessageService),
+            Arc::new(DefaultConsumerService),
+            Arc::new(DefaultTransactionService),
+        ));
+        let processor = Arc::new(DefaultMessagingProcessor::new(manager));
+        let config = Arc::new(ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: "127.0.0.1:0".to_string(),
+                ..GrpcConfig::default()
+            },
+            ..ProxyConfig::default()
+        });
+        let service = ProxyGrpcService::new(config.clone(), processor, ClientSessionRegistry::default());
+        let context = RuntimeContext::from_current("proxy-grpc-server-report-test");
+
+        let report = serve_with_report(
+            config,
+            service,
+            async {
+                tokio::time::sleep(Duration::from_millis(50)).await;
+                ShutdownDeadline::after(Duration::from_secs(1))
+            },
+            context.service_context("proxy").task_group().clone(),
+        )
+        .await
+        .expect("server should return a shutdown report");
+
+        assert!(report.is_healthy(), "{report:?}");
+        assert!(report.task_group.is_healthy(), "{}", report.task_group.to_json());
+        let housekeeping = report
+            .housekeeping
+            .as_ref()
+            .expect("server report should include housekeeping shutdown report");
+        assert!(
+            housekeeping.shutdown_report.is_healthy(),
+            "{}",
+            housekeeping.shutdown_report.to_json()
+        );
+    }
+
+    #[tokio::test]
+    async fn serve_with_report_with_task_group_parents_server_tasks() {
+        let route_service = Arc::new(RecordingRouteService::default());
+        let metadata_service = Arc::new(StaticMetadataService);
+        let manager = Arc::new(ClusterServiceManager::with_services(
+            route_service,
+            metadata_service,
+            Arc::new(DefaultAssignmentService),
+            Arc::new(DefaultMessageService),
+            Arc::new(DefaultConsumerService),
+            Arc::new(DefaultTransactionService),
+        ));
+        let processor = Arc::new(DefaultMessagingProcessor::new(manager));
+        let config = Arc::new(ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: "127.0.0.1:0".to_string(),
+                ..GrpcConfig::default()
+            },
+            ..ProxyConfig::default()
+        });
+        let service = ProxyGrpcService::new(config.clone(), processor, ClientSessionRegistry::default());
+        let context = RuntimeContext::from_current("proxy-grpc-server-parent-test");
+        let proxy_service = context.service_context("proxy-service");
+        let grpc_server = proxy_service.component("rocketmq-proxy.grpc-server");
+
+        let report = serve_with_report_with_task_group(
+            config,
+            service,
+            async { ShutdownDeadline::after(Duration::from_secs(1)) },
+            grpc_server.task_group().clone(),
+        )
+        .await
+        .expect("server should return a shutdown report");
+
+        assert!(report.is_healthy(), "{report:?}");
+        let parent_report = proxy_service.task_group().shutdown(Duration::from_secs(1)).await;
+        assert!(parent_report.is_healthy(), "{}", parent_report.to_json());
+        assert!(
+            parent_report
+                .children
+                .iter()
+                .any(|child| child.name == "rocketmq-proxy.grpc-server"),
+            "{}",
+            parent_report.to_json()
+        );
+    }
+
+    #[tokio::test]
+    async fn serve_injects_transport_and_auth_context_into_query_route() {
+        let route_service = Arc::new(RecordingRouteService::default());
+        let metadata_service = Arc::new(StaticMetadataService);
+        let manager = Arc::new(ClusterServiceManager::with_services(
+            route_service.clone(),
+            metadata_service,
+            Arc::new(DefaultAssignmentService),
+            Arc::new(DefaultMessageService),
+            Arc::new(DefaultConsumerService),
+            Arc::new(DefaultTransactionService),
+        ));
+        let processor = Arc::new(DefaultMessagingProcessor::new(manager));
+
+        let port_probe = std::net::TcpListener::bind("127.0.0.1:0").expect("bind free local port");
+        let listen_addr = port_probe.local_addr().expect("discover free local port");
+        drop(port_probe);
+
+        let auth_runtime = test_auth_runtime(true, true).await;
+        seed_normal_user(&auth_runtime, "alice", "secret").await;
+        allow_topic_actions(
+            &auth_runtime,
+            "alice",
+            "TopicA",
+            vec![Action::Pub, Action::Sub, Action::Get],
+        )
+        .await;
+
+        let config = Arc::new(ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: listen_addr.to_string(),
+                ..GrpcConfig::default()
+            },
+            ..ProxyConfig::default()
+        });
+        let service = ProxyGrpcService::new(config.clone(), processor, ClientSessionRegistry::default())
+            .with_auth_runtime(Some(auth_runtime));
+        let context = RuntimeContext::from_current("proxy-grpc-server-ingress-test");
+        let server_task_group = context.service_context("proxy").task_group().clone();
+
+        let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
+        let server_handle = tokio::spawn(async move {
+            serve(
+                config,
+                service,
+                async move {
+                    let _ = shutdown_rx.await;
+                    ShutdownDeadline::after(Duration::from_secs(1))
+                },
+                server_task_group,
+            )
+            .await
+        });
+
+        let endpoint = format!("http://{listen_addr}");
+        let mut client = connect_with_retry(endpoint.as_str()).await;
+        let mut request = Request::new(v2::QueryRouteRequest {
+            topic: Some(v2::Resource {
+                resource_namespace: String::new(),
+                name: "TopicA".to_owned(),
+            }),
+            endpoints: Some(v2::Endpoints {
+                scheme: v2::AddressScheme::IPv4 as i32,
+                addresses: vec![v2::Address {
+                    host: "127.0.0.1".to_owned(),
+                    port: 8081,
+                }],
+            }),
+        });
+        apply_auth_headers(&mut request, "client-a", "alice", "secret");
+
+        let response = client
+            .query_route(request)
+            .await
+            .expect("query route should succeed")
+            .into_inner();
+        assert_eq!(
+            response.status.as_ref().map(|status| status.code),
+            Some(v2::Code::Ok as i32)
+        );
+
+        let _ = shutdown_tx.send(());
+        let serve_result = server_handle.await.expect("server task should join");
+        assert!(
+            serve_result.is_ok(),
+            "server should shut down cleanly: {serve_result:?}"
+        );
+
+        let observed = route_service.take_observed();
+        assert_eq!(observed.len(), 1);
+        let expected_local_addr = listen_addr.to_string();
+        assert_eq!(observed[0].local_addr.as_deref(), Some(expected_local_addr.as_str()));
+        assert_eq!(observed[0].principal, None);
+        assert!(
+            observed[0]
+                .remote_addr
+                .as_deref()
+                .is_some_and(|remote| remote.starts_with("127.0.0.1:")),
+            "expected remote address to be recorded, got {:?}",
+            observed[0].remote_addr
+        );
+    }
+
+    async fn connect_with_retry(endpoint: &str) -> MessagingServiceClient<tonic::transport::Channel> {
+        let mut last_error = None;
+        for _ in 0..20 {
+            match MessagingServiceClient::connect(endpoint.to_owned()).await {
+                Ok(client) => return client,
+                Err(error) => {
+                    last_error = Some(error);
+                    tokio::time::sleep(Duration::from_millis(25)).await;
+                }
+            }
+        }
+        panic!("gRPC client failed to connect to {endpoint}: {last_error:?}");
+    }
+
+    async fn test_auth_runtime(authentication_enabled: bool, authorization_enabled: bool) -> ProxyAuthRuntime {
+        let runtime = RuntimeContext::from_current("proxy-grpc-server-auth-test");
+        ProxyAuthRuntime::from_proxy_config(
+            &ProxyAuthConfig {
+                authentication_enabled,
+                authorization_enabled,
+                auth_config_path: format!("target/proxy-server-auth-tests-{}", uuid::Uuid::new_v4()),
+                ..ProxyAuthConfig::default()
+            },
+            &runtime.service_context("proxy-grpc-server-auth"),
+        )
+        .await
+        .expect("auth runtime should build")
+        .expect("auth runtime should be enabled")
+    }
+
+    async fn seed_normal_user(auth_runtime: &ProxyAuthRuntime, username: &str, secret: &str) {
+        let mut user = User::of_with_type(username, secret, UserType::Normal);
+        user.set_user_status(UserStatus::Enable);
+        auth_runtime.create_user(user).await.expect("user should be created");
+    }
+
+    async fn allow_topic_actions(auth_runtime: &ProxyAuthRuntime, username: &str, topic: &str, actions: Vec<Action>) {
+        auth_runtime
+            .create_acl(Acl::of(
+                username,
+                rocketmq_auth::SubjectType::User,
+                Policy::of(
+                    vec![PolicyResource::of_topic(topic)],
+                    actions,
+                    None,
+                    PolicyDecision::Allow,
+                ),
+            ))
+            .await
+            .expect("topic acl should be created");
+    }
+
+    fn apply_auth_headers<T>(request: &mut Request<T>, client_id: &str, username: &str, secret: &str) {
+        type HmacSha1 = Hmac<Sha1>;
+
+        let mut mac = HmacSha1::new_from_slice(secret.as_bytes()).expect("test hmac should build");
+        mac.update(AUTH_TEST_DATETIME.as_bytes());
+        let signature = hex::encode(mac.finalize().into_bytes());
+        let authorization =
+            format!("MQv2-HMAC-SHA1 Credential={username}, SignedHeaders=x-mq-date-time, Signature={signature}");
+
+        request.metadata_mut().insert(
+            "x-mq-client-id",
+            MetadataValue::try_from(client_id).expect("client id metadata"),
+        );
+        request
+            .metadata_mut()
+            .insert("x-mq-date-time", MetadataValue::from_static(AUTH_TEST_DATETIME));
+        request.metadata_mut().insert(
+            "authorization",
+            MetadataValue::try_from(authorization.as_str()).expect("auth metadata"),
+        );
+        request
+            .metadata_mut()
+            .insert("channel-id", MetadataValue::from_static("auth-channel"));
+    }
+}

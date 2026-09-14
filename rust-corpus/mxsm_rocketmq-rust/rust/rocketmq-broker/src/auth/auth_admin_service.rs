@@ -1,0 +1,839 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::Arc;
+
+use crate::broker_error::BrokerResult as Result;
+use rocketmq_auth::Acl;
+use rocketmq_auth::AclMetadataHandle;
+use rocketmq_auth::AuthConfig;
+use rocketmq_auth::AuthFailureKind;
+#[cfg(test)]
+use rocketmq_auth::AuthOperation;
+use rocketmq_auth::AuthServiceError;
+use rocketmq_auth::FileAclConfigStore;
+use rocketmq_auth::PolicyResource;
+use rocketmq_auth::PolicyType;
+use rocketmq_auth::ProviderRegistry;
+use rocketmq_auth::Subject;
+use rocketmq_auth::SubjectType;
+use rocketmq_auth::User;
+use rocketmq_auth::UserMetadataHandle;
+use rocketmq_auth::UserStatus;
+use rocketmq_auth::UserType;
+use rocketmq_error::SharedError;
+use rocketmq_protocol::protocol::body::acl_info::AclInfo;
+use rocketmq_protocol::protocol::body::user_info::UserInfo;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::MetadataIoConfig;
+use rocketmq_security_api::Action;
+
+use crate::auth::acl_converter::AclConverter;
+use crate::auth::user_converter::UserConverter;
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct AuthAdminDiagnosticsSnapshot {
+    pub authentication_enabled: bool,
+    pub authorization_enabled: bool,
+    pub acl_file_watch_enabled: bool,
+    pub acl_generation: u64,
+    pub acl_reload_attempts: u64,
+    pub acl_reload_successes: u64,
+    pub acl_reload_failures: u64,
+    pub acl_reload_skipped: u64,
+}
+
+#[derive(Clone)]
+pub struct AuthAdminService {
+    auth_config: AuthConfig,
+    provider_registry: ProviderRegistry,
+    authentication_provider: Arc<UserMetadataHandle>,
+    authorization_provider: Arc<AclMetadataHandle>,
+}
+
+impl AuthAdminService {
+    pub async fn new(auth_config: AuthConfig, service_context: ChildServiceContext) -> Result<Self> {
+        let metadata_io = MetadataIoConfig::default()
+            .into_plan()
+            .expect("default metadata I/O config is valid")
+            .start(&service_context.component("auth-admin.metadata-io"))
+            .map_err(crate::runtime_to_rocketmq_error)?;
+        let provider_registry =
+            ProviderRegistry::load_with_metadata_io(&auth_config, metadata_io, service_context.metadata_io().clone())
+                .await
+                .map_err(crate::broker_error::auth_service_error)?;
+        Ok(Self::with_provider_registry_and_config(provider_registry, auth_config))
+    }
+
+    pub fn with_provider_registry(provider_registry: ProviderRegistry) -> Self {
+        Self::with_provider_registry_and_config(provider_registry, AuthConfig::default())
+    }
+
+    pub fn with_provider_registry_and_config(provider_registry: ProviderRegistry, auth_config: AuthConfig) -> Self {
+        Self {
+            auth_config,
+            provider_registry: provider_registry.clone(),
+            authentication_provider: provider_registry.authentication_metadata_provider(),
+            authorization_provider: provider_registry.authorization_metadata_provider(),
+        }
+    }
+
+    pub fn authentication_provider(&self) -> Arc<UserMetadataHandle> {
+        self.authentication_provider.clone()
+    }
+
+    pub fn authorization_provider(&self) -> Arc<AclMetadataHandle> {
+        self.authorization_provider.clone()
+    }
+
+    pub(crate) fn diagnostics_snapshot(&self) -> AuthAdminDiagnosticsSnapshot {
+        let metrics = self.provider_registry.metrics_snapshot();
+        AuthAdminDiagnosticsSnapshot {
+            authentication_enabled: self.auth_config.authentication_enabled,
+            authorization_enabled: self.auth_config.authorization_enabled,
+            acl_file_watch_enabled: self.auth_config.acl_file_watch_enabled,
+            acl_generation: self.provider_registry.acl_generation(),
+            acl_reload_attempts: metrics.acl_reload_attempts,
+            acl_reload_successes: metrics.acl_reload_successes,
+            acl_reload_failures: metrics.acl_reload_failures,
+            acl_reload_skipped: metrics.acl_reload_skipped,
+        }
+    }
+
+    pub async fn create_user(&self, user: User) -> Result<()> {
+        self.validate_username(user.username().as_str())?;
+        if user.password().is_none_or(|password| password.trim().is_empty()) {
+            return Err(crate::broker_error::authentication_failed("password can not be blank"));
+        }
+
+        if self
+            .authentication_provider
+            .get_user(user.username().as_str())
+            .await
+            .is_ok()
+        {
+            return Err(crate::broker_error::authentication_failed("The user is existed"));
+        }
+
+        let mut user = user;
+        if user.user_type().is_none() {
+            user.set_user_type(UserType::Normal);
+        }
+        if user.user_status().is_none() {
+            user.set_user_status(UserStatus::Enable);
+        }
+        self.authentication_provider
+            .create_user(user)
+            .await
+            .map_err(crate::broker_error::auth_service_error)
+    }
+
+    pub async fn update_user(&self, user: User) -> Result<()> {
+        self.validate_username(user.username().as_str())?;
+        let mut existing = match self.get_existing_user(user.username().as_str()).await {
+            Ok(existing) => existing,
+            Err(error) if error.kind() == AuthFailureKind::NotFound => {
+                return Err(crate::broker_error::auth_service_error(error));
+            }
+            Err(error) => return Err(crate::broker_error::auth_service_error(error)),
+        };
+        if let Some(password) = user.password().filter(|password| !password.trim().is_empty()) {
+            existing.set_password(password.clone());
+        }
+        if let Some(user_type) = user.user_type() {
+            existing.set_user_type(user_type);
+        }
+        if let Some(user_status) = user.user_status() {
+            existing.set_user_status(user_status);
+        }
+        self.authentication_provider
+            .update_user(existing)
+            .await
+            .map_err(crate::broker_error::auth_service_error)
+    }
+
+    pub async fn delete_user(&self, username: &str) -> Result<()> {
+        self.validate_username(username)?;
+        self.authentication_provider
+            .delete_user(username)
+            .await
+            .map_err(crate::broker_error::auth_service_error)?;
+
+        let subject = SubjectRef::parse(username)?;
+        self.authorization_provider
+            .delete_acl(&subject)
+            .await
+            .map_err(map_authz_error)
+    }
+
+    pub async fn get_user(&self, username: &str) -> Result<Option<UserInfo>> {
+        self.validate_username(username)?;
+
+        match self.authentication_provider.get_user(username).await {
+            Ok(user) => Ok(Some(UserConverter::convert_user_info(&user))),
+            Err(error) if error.kind() == AuthFailureKind::NotFound => Ok(None),
+            Err(error) => Err(crate::broker_error::auth_service_error(error)),
+        }
+    }
+
+    pub async fn list_users(&self, filter: Option<&str>) -> Result<Vec<UserInfo>> {
+        let users = self
+            .authentication_provider
+            .list_user(filter)
+            .await
+            .map_err(crate::broker_error::auth_service_error)?;
+        Ok(users.iter().map(UserConverter::convert_user_info).collect())
+    }
+
+    pub async fn list_acls(&self, subject_filter: Option<&str>, resource_filter: Option<&str>) -> Result<Vec<AclInfo>> {
+        let acls = self
+            .authorization_provider
+            .list_acl(subject_filter, resource_filter)
+            .await
+            .map_err(map_authz_error)?;
+        Ok(acls.iter().map(AclConverter::convert_acl).collect())
+    }
+
+    pub async fn create_acl(&self, acl: Acl) -> Result<()> {
+        self.upsert_acl(acl).await
+    }
+
+    pub async fn update_acl(&self, acl: Acl) -> Result<()> {
+        self.upsert_acl(acl).await
+    }
+
+    pub async fn get_acl(&self, subject: &str) -> Result<Option<AclInfo>> {
+        let subject = SubjectRef::parse(subject)?;
+        self.ensure_subject_exists(&subject).await?;
+
+        let acl = self
+            .authorization_provider
+            .get_acl(&subject)
+            .await
+            .map_err(map_authz_error)?;
+        Ok(acl.as_ref().map(AclConverter::convert_acl))
+    }
+
+    pub async fn delete_acl(&self, subject: &str, policy_type: Option<&str>, resource: Option<&str>) -> Result<()> {
+        let subject = SubjectRef::parse(subject)?;
+        self.ensure_subject_exists(&subject).await?;
+
+        let Some(resource_key) = resource.filter(|resource| !resource.trim().is_empty()) else {
+            self.ensure_acl_exists(&subject).await?;
+            return self
+                .authorization_provider
+                .delete_acl(&subject)
+                .await
+                .map_err(map_authz_error);
+        };
+
+        let policy_type = policy_type
+            .filter(|policy_type| !policy_type.trim().is_empty())
+            .map(|policy_type| {
+                PolicyType::get_by_name(policy_type).ok_or_else(|| {
+                    crate::broker_error::invalid_argument(format!("Invalid policy type '{policy_type}'"))
+                })
+            })
+            .transpose()?
+            .unwrap_or(PolicyType::Custom);
+        let resource = PolicyResource::of_str(resource_key)
+            .ok_or_else(|| crate::broker_error::invalid_argument(format!("Invalid resource '{resource_key}'")))?;
+
+        let Some(mut acl) = self
+            .authorization_provider
+            .get_acl(&subject)
+            .await
+            .map_err(map_authz_error)?
+        else {
+            return Err(permission_denied("The acl is not exist."));
+        };
+
+        acl.delete_policy(policy_type, &resource);
+
+        if acl.policies().is_empty() {
+            self.authorization_provider
+                .delete_acl(&subject)
+                .await
+                .map_err(map_authz_error)?;
+        } else {
+            self.authorization_provider
+                .update_acl(acl)
+                .await
+                .map_err(map_authz_error)?;
+        }
+
+        Ok(())
+    }
+
+    pub async fn is_super_user(&self, username: &str) -> Result<bool> {
+        let Some(user_info) = self.get_user(username).await? else {
+            return Ok(false);
+        };
+        Ok(user_info
+            .user_type
+            .as_deref()
+            .and_then(UserType::get_by_name)
+            .is_some_and(|user_type| user_type == UserType::Super))
+    }
+
+    pub async fn update_global_white_remote_addresses<I, S>(&self, addresses: I) -> Result<u64>
+    where
+        I: IntoIterator<Item = S>,
+        S: AsRef<str>,
+    {
+        let addresses: Vec<String> = addresses
+            .into_iter()
+            .map(|address| address.as_ref().trim().to_owned())
+            .filter(|address| !address.is_empty())
+            .collect();
+        if addresses.is_empty() {
+            return Err(crate::broker_error::invalid_argument("The globalWhiteAddrs is blank"));
+        }
+
+        let acl_file = self.auth_config.acl_file.as_str().trim();
+        if !acl_file.is_empty() {
+            FileAclConfigStore::new(acl_file)
+                .update_global_white_remote_addresses(&addresses)
+                .await
+                .map_err(crate::broker_error::auth_service_error)?;
+        }
+
+        self.provider_registry
+            .update_global_white_remote_addresses(addresses)
+            .map_err(crate::broker_error::auth_service_error)
+    }
+
+    async fn get_existing_user(&self, username: &str) -> rocketmq_auth::AuthServiceResult<User> {
+        self.authentication_provider.get_user(username).await
+    }
+
+    fn validate_username(&self, username: &str) -> Result<()> {
+        if username.trim().is_empty() {
+            return Err(crate::broker_error::invalid_argument("The username is blank"));
+        }
+        Ok(())
+    }
+
+    async fn upsert_acl(&self, acl: Acl) -> Result<()> {
+        validate_acl(&acl)?;
+        let subject = SubjectRef::parse(acl.subject_key())?;
+        self.ensure_subject_exists(&subject).await?;
+
+        let existing_acl = self
+            .authorization_provider
+            .get_acl(&subject)
+            .await
+            .map_err(map_authz_error)?;
+        match existing_acl {
+            Some(mut existing_acl) => {
+                existing_acl.update_policies(acl.policies().clone());
+                self.authorization_provider
+                    .update_acl(existing_acl)
+                    .await
+                    .map_err(map_authz_error)
+            }
+            None => self
+                .authorization_provider
+                .create_acl(acl)
+                .await
+                .map_err(map_authz_error),
+        }
+    }
+
+    async fn ensure_subject_exists(&self, subject: &SubjectRef) -> Result<()> {
+        match subject.subject_type() {
+            SubjectType::User => {
+                let username = subject.name();
+                if self.authentication_provider.get_user(username).await.is_err() {
+                    return Err(permission_denied(format!(
+                        "The subject of {} is not exist.",
+                        subject.subject_key()
+                    )));
+                }
+                Ok(())
+            }
+        }
+    }
+
+    async fn ensure_acl_exists(&self, subject: &SubjectRef) -> Result<()> {
+        if self
+            .authorization_provider
+            .get_acl(subject)
+            .await
+            .map_err(map_authz_error)?
+            .is_none()
+        {
+            return Err(permission_denied("The acl is not exist."));
+        }
+        Ok(())
+    }
+}
+
+fn map_authz_error(error: AuthServiceError) -> SharedError {
+    crate::broker_error::auth_service_error(error)
+}
+
+fn permission_denied(message: impl Into<String>) -> SharedError {
+    crate::broker_error::permission_denied(message.into())
+}
+
+#[derive(Clone)]
+struct SubjectRef {
+    subject_key: String,
+    subject_name: String,
+    subject_type: SubjectType,
+}
+
+impl SubjectRef {
+    fn parse(subject: &str) -> Result<Self> {
+        let trimmed = subject.trim();
+        if trimmed.is_empty() {
+            return Err(crate::broker_error::invalid_argument("The subject is blank"));
+        }
+
+        let (subject_type, subject_name) = match trimmed.split_once(':') {
+            Some((subject_type, subject_name)) => (
+                SubjectType::get_by_name(subject_type).ok_or_else(|| {
+                    crate::broker_error::invalid_argument(format!("Unsupported subject type '{subject_type}'"))
+                })?,
+                subject_name.trim(),
+            ),
+            None => (SubjectType::User, trimmed),
+        };
+
+        if subject_name.is_empty() {
+            return Err(crate::broker_error::invalid_argument("The subject name is blank"));
+        }
+
+        Ok(Self {
+            subject_key: format!("{}:{}", subject_type.name(), subject_name),
+            subject_name: subject_name.to_string(),
+            subject_type,
+        })
+    }
+
+    fn name(&self) -> &str {
+        &self.subject_name
+    }
+}
+
+impl Subject for SubjectRef {
+    fn subject_key(&self) -> &str {
+        &self.subject_key
+    }
+
+    fn subject_type(&self) -> SubjectType {
+        self.subject_type
+    }
+}
+
+fn validate_acl(acl: &Acl) -> Result<()> {
+    if acl.policies().is_empty() {
+        return Err(crate::broker_error::invalid_argument("The policies is empty."));
+    }
+
+    for policy in acl.policies() {
+        if policy.entries().is_empty() {
+            return Err(crate::broker_error::invalid_argument("The policy entries is empty."));
+        }
+
+        for entry in policy.entries() {
+            if entry.resource().resource_key().is_none() {
+                return Err(crate::broker_error::invalid_argument("The resource is null."));
+            }
+            if entry.actions().is_empty() {
+                return Err(crate::broker_error::invalid_argument("The actions is empty."));
+            }
+            if entry.actions().contains(&Action::Any) {
+                return Err(crate::broker_error::invalid_argument("The actions can not be Any."));
+            }
+            if let Some(environment) = entry.environment() {
+                if environment
+                    .source_ips()
+                    .iter()
+                    .any(|source_ip| source_ip.trim().is_empty())
+                {
+                    return Err(crate::broker_error::invalid_argument("The source ip is empty."));
+                }
+            }
+        }
+    }
+
+    Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use cheetah_string::CheetahString;
+    use rocketmq_auth::Acl;
+    use rocketmq_auth::Policy;
+    use rocketmq_auth::PolicyDecision;
+    use rocketmq_auth::UserStatus;
+    use rocketmq_security_api::Action;
+    use std::sync::atomic::AtomicU64;
+    use std::sync::atomic::Ordering;
+
+    use super::*;
+
+    static NEXT_TEST_ID: AtomicU64 = AtomicU64::new(0);
+
+    fn next_test_id() -> u64 {
+        NEXT_TEST_ID.fetch_add(1, Ordering::Relaxed)
+    }
+
+    fn test_auth_config() -> AuthConfig {
+        let path = std::env::temp_dir().join(format!(
+            "rocketmq-rust-auth-admin-service-{}-{}.json",
+            std::process::id(),
+            next_test_id()
+        ));
+        AuthConfig {
+            auth_config_path: CheetahString::from_string(path.to_string_lossy().into_owned()),
+            ..AuthConfig::default()
+        }
+    }
+
+    fn temp_test_root(label: &str) -> std::path::PathBuf {
+        std::env::temp_dir().join(format!(
+            "rocketmq-rust-auth-admin-service-{label}-{}-{}",
+            std::process::id(),
+            next_test_id()
+        ))
+    }
+
+    #[tokio::test]
+    async fn create_get_list_update_delete_user_round_trip() {
+        let service = AuthAdminService::new(test_auth_config(), crate::test_service_context("auth-admin"))
+            .await
+            .unwrap();
+
+        let mut user = User::of_with_type("alice", "secret", UserType::Normal);
+        user.set_user_status(UserStatus::Enable);
+        service.create_user(user.clone()).await.unwrap();
+
+        assert!(service.create_user(user.clone()).await.is_err());
+
+        let fetched = service.get_user("alice").await.unwrap().unwrap();
+        assert_eq!(fetched.username, Some(CheetahString::from_static_str("alice")));
+
+        let listed = service.list_users(Some("ali")).await.unwrap();
+        assert_eq!(listed.len(), 1);
+
+        user.set_password("updated");
+        service.update_user(user).await.unwrap();
+        service.delete_user("alice").await.unwrap();
+        assert!(service.get_user("alice").await.unwrap().is_none());
+    }
+
+    #[tokio::test]
+    async fn delete_acl_can_remove_single_resource() {
+        let service = AuthAdminService::new(test_auth_config(), crate::test_service_context("auth-admin"))
+            .await
+            .unwrap();
+        let mut user = User::of_with_type("alice", "secret", UserType::Normal);
+        user.set_user_status(UserStatus::Enable);
+        service.create_user(user).await.unwrap();
+        let subject = SubjectRef::parse("alice").unwrap();
+        let first = PolicyResource::of_topic("topic-a");
+        let second = PolicyResource::of_topic("topic-b");
+        let acl = Acl::of(
+            "alice",
+            SubjectType::User,
+            Policy::of(
+                vec![first.clone(), second.clone()],
+                vec![Action::Pub],
+                None,
+                PolicyDecision::Allow,
+            ),
+        );
+
+        service
+            .authorization_provider()
+            .create_acl(acl)
+            .await
+            .map_err(map_authz_error)
+            .unwrap();
+
+        service
+            .delete_acl("User:alice", None, Some("Topic:topic-a"))
+            .await
+            .unwrap();
+
+        let acl = service
+            .authorization_provider()
+            .get_acl(&subject)
+            .await
+            .map_err(map_authz_error)
+            .unwrap()
+            .unwrap();
+        assert_eq!(acl.policies()[0].entries().len(), 1);
+        assert_eq!(
+            acl.policies()[0].entries()[0].resource().resource_key().as_deref(),
+            Some("Topic:topic-b")
+        );
+    }
+
+    #[tokio::test]
+    async fn update_user_preserves_unset_fields_like_java() {
+        let service = AuthAdminService::new(test_auth_config(), crate::test_service_context("auth-admin"))
+            .await
+            .unwrap();
+        let mut user = User::of_with_type("alice", "secret", UserType::Normal);
+        user.set_user_status(UserStatus::Enable);
+        service.create_user(user).await.unwrap();
+
+        let mut patch = User::of("alice");
+        patch.set_user_status(UserStatus::Disable);
+        service.update_user(patch).await.unwrap();
+
+        let fetched = service.authentication_provider().get_user("alice").await.unwrap();
+        assert_eq!(fetched.password().map(CheetahString::as_str), Some("secret"));
+        assert_eq!(fetched.user_type(), Some(UserType::Normal));
+        assert_eq!(fetched.user_status(), Some(UserStatus::Disable));
+    }
+
+    #[tokio::test]
+    async fn delete_acl_uses_requested_policy_type_only() {
+        let service = AuthAdminService::new(test_auth_config(), crate::test_service_context("auth-admin"))
+            .await
+            .unwrap();
+        let mut user = User::of_with_type("alice", "secret", UserType::Normal);
+        user.set_user_status(UserStatus::Enable);
+        service.create_user(user).await.unwrap();
+
+        service
+            .create_acl(Acl::of_with_policies(
+                "alice",
+                SubjectType::User,
+                vec![
+                    Policy::of(
+                        vec![PolicyResource::of_topic("topic-a")],
+                        vec![Action::Pub],
+                        None,
+                        PolicyDecision::Allow,
+                    ),
+                    Policy::of_type(
+                        PolicyType::Default,
+                        vec![PolicyResource::of_topic("topic-a")],
+                        vec![Action::Sub],
+                        None,
+                        PolicyDecision::Allow,
+                    ),
+                ],
+            ))
+            .await
+            .unwrap();
+
+        service
+            .delete_acl("User:alice", Some("Default"), Some("Topic:topic-a"))
+            .await
+            .unwrap();
+
+        let acl = service.get_acl("User:alice").await.unwrap().unwrap();
+        let policies = acl.policies.expect("custom policy should remain");
+        assert_eq!(policies.len(), 1);
+        assert_eq!(policies[0].policy_type.as_deref(), Some("Custom"));
+    }
+
+    #[tokio::test]
+    async fn list_acl_reads_live_provider_state() {
+        let service = AuthAdminService::new(test_auth_config(), crate::test_service_context("auth-admin"))
+            .await
+            .unwrap();
+        let acl = Acl::of(
+            "alice",
+            SubjectType::User,
+            Policy::of(
+                vec![PolicyResource::of_topic("topic-a")],
+                vec![Action::Pub],
+                None,
+                PolicyDecision::Allow,
+            ),
+        );
+        service
+            .authorization_provider()
+            .create_acl(acl)
+            .await
+            .map_err(map_authz_error)
+            .unwrap();
+
+        let listed = service
+            .list_acls(Some("User:alice"), Some("Topic:topic-a"))
+            .await
+            .unwrap();
+        assert_eq!(listed.len(), 1);
+        assert_eq!(listed[0].subject, Some(CheetahString::from_static_str("User:alice")));
+    }
+
+    #[test]
+    fn map_authz_error_preserves_admin_error_category() {
+        let invalid = map_authz_error(AuthServiceError::new(
+            AuthOperation::BuildContext,
+            AuthFailureKind::InvalidInput,
+        ));
+        assert_eq!(invalid.descriptor(), &rocketmq_error::CORE_ARGUMENT_INVALID);
+
+        let config = map_authz_error(AuthServiceError::new(
+            AuthOperation::Initialize,
+            AuthFailureKind::InvalidConfiguration,
+        ));
+        assert_eq!(config.descriptor(), &rocketmq_error::AUTH_CONFIGURATION_INVALID);
+
+        let storage = map_authz_error(AuthServiceError::with_source(
+            AuthOperation::ReadMetadata,
+            AuthFailureKind::Unavailable,
+            std::io::Error::other("storage failed"),
+        ));
+        assert_eq!(storage.descriptor(), &rocketmq_error::STORAGE_READ_FAILED);
+        let auth = std::error::Error::source(storage.as_ref()).expect("auth facade source");
+        assert!(auth.downcast_ref::<AuthServiceError>().is_some());
+    }
+
+    #[tokio::test]
+    async fn create_update_and_get_acl_round_trip() {
+        let service = AuthAdminService::new(test_auth_config(), crate::test_service_context("auth-admin"))
+            .await
+            .unwrap();
+        let mut user = User::of_with_type("alice", "secret", UserType::Normal);
+        user.set_user_status(UserStatus::Enable);
+        service.create_user(user).await.unwrap();
+
+        service
+            .create_acl(Acl::of(
+                "alice",
+                SubjectType::User,
+                Policy::of(
+                    vec![PolicyResource::of_topic("topic-a")],
+                    vec![Action::Pub],
+                    None,
+                    PolicyDecision::Allow,
+                ),
+            ))
+            .await
+            .unwrap();
+        service
+            .update_acl(Acl::of(
+                "alice",
+                SubjectType::User,
+                Policy::of(
+                    vec![PolicyResource::of_topic("topic-b")],
+                    vec![Action::Sub],
+                    None,
+                    PolicyDecision::Allow,
+                ),
+            ))
+            .await
+            .unwrap();
+
+        let acl = service.get_acl("User:alice").await.unwrap().unwrap();
+        assert_eq!(acl.subject, Some(CheetahString::from_static_str("User:alice")));
+        let policies = acl.policies.expect("policies should exist");
+        assert_eq!(policies.len(), 1);
+        let entries = policies[0].entries.as_ref().expect("entries should exist");
+        assert_eq!(entries.len(), 2);
+    }
+
+    #[tokio::test]
+    async fn update_global_white_remote_addresses_updates_shared_provider_registry() {
+        let registry = ProviderRegistry::local(&test_auth_config()).unwrap();
+        let service = AuthAdminService::with_provider_registry(registry.clone());
+        let generation = registry.acl_generation();
+
+        service
+            .update_global_white_remote_addresses(["10.10.*.*", "192.168.0.*"])
+            .await
+            .unwrap();
+
+        assert!(registry.acl_generation() > generation);
+        assert!(registry.is_acl_white_remote_address(None, Some("10.10.1.2")).unwrap());
+        assert!(registry.is_acl_white_remote_address(None, Some("192.168.0.7")).unwrap());
+        assert!(!registry.is_acl_white_remote_address(None, Some("172.16.0.7")).unwrap());
+    }
+
+    #[tokio::test]
+    async fn update_global_white_remote_addresses_rejects_empty_values() {
+        let service = AuthAdminService::new(test_auth_config(), crate::test_service_context("auth-admin"))
+            .await
+            .unwrap();
+
+        let error = service
+            .update_global_white_remote_addresses([" ", ""])
+            .await
+            .unwrap_err();
+
+        assert_eq!(error.descriptor(), &rocketmq_error::CORE_ARGUMENT_INVALID);
+    }
+
+    #[tokio::test]
+    async fn update_global_white_remote_addresses_persists_configured_acl_file_before_snapshot() {
+        let temp_root = temp_test_root("global-white-persist");
+        std::fs::create_dir_all(&temp_root).unwrap();
+        let acl_file = temp_root.join("plain_acl.yml");
+        std::fs::write(
+            &acl_file,
+            r#"
+globalWhiteRemoteAddresses:
+  - 10.10.*.*
+accounts:
+  - accessKey: alice
+    secretKey: secret
+"#,
+        )
+        .unwrap();
+        let auth_config = AuthConfig {
+            auth_config_path: CheetahString::from_string(temp_root.join("auth.json").to_string_lossy().into_owned()),
+            acl_file: CheetahString::from_string(acl_file.to_string_lossy().into_owned()),
+            ..AuthConfig::default()
+        };
+        let registry = ProviderRegistry::local(&auth_config).unwrap();
+        let service = AuthAdminService::with_provider_registry_and_config(registry.clone(), auth_config);
+
+        service
+            .update_global_white_remote_addresses(["172.16.*.*"])
+            .await
+            .unwrap();
+
+        let content = std::fs::read_to_string(&acl_file).unwrap();
+        assert!(content.contains("globalWhiteRemoteAddresses"));
+        assert!(content.contains("172.16.*.*"));
+        assert!(content.contains("accessKey"));
+        assert!(content.contains("dataVersion"));
+        assert!(content.contains("counter: 1"));
+        assert!(registry.is_acl_white_remote_address(None, Some("172.16.1.2")).unwrap());
+        let _ = std::fs::remove_dir_all(temp_root);
+    }
+
+    #[tokio::test]
+    async fn update_global_white_remote_addresses_keeps_snapshot_when_acl_file_persist_fails() {
+        let temp_root = temp_test_root("global-white-persist-fails");
+        std::fs::create_dir_all(&temp_root).unwrap();
+        let auth_config = AuthConfig {
+            auth_config_path: CheetahString::from_string(temp_root.join("auth.json").to_string_lossy().into_owned()),
+            acl_file: CheetahString::from_string(temp_root.to_string_lossy().into_owned()),
+            ..AuthConfig::default()
+        };
+        let registry = ProviderRegistry::local(&auth_config).unwrap();
+        let service = AuthAdminService::with_provider_registry_and_config(registry.clone(), auth_config);
+        let generation = registry.acl_generation();
+
+        service
+            .update_global_white_remote_addresses(["172.16.*.*"])
+            .await
+            .expect_err("directory acl_file path should fail persistence");
+
+        assert_eq!(registry.acl_generation(), generation);
+        assert!(!registry.is_acl_white_remote_address(None, Some("172.16.1.2")).unwrap());
+        let _ = std::fs::remove_dir_all(temp_root);
+    }
+}

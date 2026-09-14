@@ -1,0 +1,139 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//! Broadcast push consumer example.
+
+#![recursion_limit = "512"]
+
+use std::path::PathBuf;
+
+use cheetah_string::CheetahString;
+use rocketmq_client_rust::ClientConfig;
+use rocketmq_client_rust::ClientError;
+use rocketmq_client_rust::ClientResult;
+use rocketmq_client_rust::ConsumeConcurrentlyContext;
+use rocketmq_client_rust::ConsumeConcurrentlyStatus;
+use rocketmq_client_rust::DefaultMQPushConsumer;
+use rocketmq_client_rust::MQPushConsumer;
+use rocketmq_client_rust::MessageListenerConcurrently;
+use rocketmq_model::common::consumer::consume_from_where::ConsumeFromWhere;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_model::common::message::message_ext::MessageExt;
+use rocketmq_protocol::protocol::heartbeat::message_model::MessageModel;
+use rocketmq_runtime::wait_for_signal;
+use tracing::info;
+
+pub const CONSUMER_GROUP: &str = "consumer_broadcast_group";
+pub const DEFAULT_NAMESRVADDR: &str = "127.0.0.1:9876";
+pub const TOPIC: &str = "BroadcastConsumerTestTopic";
+pub const TAG: &str = "*";
+
+#[path = "../support/mod.rs"]
+mod support;
+
+pub fn main() -> ClientResult<()> {
+    support::run(run)
+}
+
+async fn run(client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>) -> ClientResult<()> {
+    let client_config = broadcast_client_config()?;
+
+    let mut consumer = DefaultMQPushConsumer::builder(client_runtime.clone())
+        .client_config(client_config)
+        .consumer_group(CONSUMER_GROUP)
+        .message_model(MessageModel::Broadcasting)
+        .consume_from_where(ConsumeFromWhere::ConsumeFromFirstOffset)
+        .consume_message_batch_max_size(1)
+        .build();
+
+    consumer.subscribe(TOPIC, TAG).await?;
+    consumer.register_message_listener_concurrently(BroadcastListener);
+    consumer.start().await?;
+
+    info!("broadcast consumer started. group={}, topic={}", CONSUMER_GROUP, TOPIC);
+    let _ = wait_for_signal().await;
+    consumer.shutdown().await;
+
+    Ok(())
+}
+
+fn broadcast_client_config() -> ClientResult<ClientConfig> {
+    let mut client_config = ClientConfig::new();
+    client_config.set_namesrv_addr(CheetahString::from_static_str(DEFAULT_NAMESRVADDR));
+    client_config.client_ip = Some(CheetahString::from_static_str("127.0.0.1"));
+    client_config.set_instance_name(CheetahString::from_static_str("broadcast_example"));
+
+    let offset_dir = local_offset_store_dir()
+        .join(client_config.build_mq_client_id())
+        .join(CONSUMER_GROUP);
+    std::fs::create_dir_all(&offset_dir)
+        .map_err(|error| ClientError::internal("create broadcast offset directory", error))?;
+    let offset_file = offset_dir.join("offsets.json");
+    if !offset_file.exists() {
+        std::fs::write(offset_file, r#"{"offsetTable":{}}"#)
+            .map_err(|error| ClientError::internal("initialize broadcast offset file", error))?;
+    }
+
+    Ok(client_config)
+}
+
+fn local_offset_store_dir() -> PathBuf {
+    if let Some(dir) = std::env::var_os("rocketmq.client.localOffsetStoreDir") {
+        return PathBuf::from(dir);
+    }
+
+    #[cfg(target_os = "windows")]
+    {
+        std::env::var_os("USERPROFILE")
+            .map(PathBuf::from)
+            .unwrap_or_else(|| PathBuf::from("C:\\tmp"))
+            .join(".rocketmq_offsets")
+    }
+
+    #[cfg(not(target_os = "windows"))]
+    {
+        std::env::var_os("HOME")
+            .map(PathBuf::from)
+            .unwrap_or_else(|| PathBuf::from("/tmp"))
+            .join(".rocketmq_offsets")
+    }
+}
+
+struct BroadcastListener;
+
+impl MessageListenerConcurrently for BroadcastListener {
+    fn consume_message(
+        &self,
+        messages: &[&MessageExt],
+        _context: &ConsumeConcurrentlyContext,
+    ) -> ClientResult<ConsumeConcurrentlyStatus> {
+        for message in messages {
+            info!(
+                "broadcast receive msg_id={}, topic={}, tags={}, body={}",
+                message.msg_id(),
+                message.topic(),
+                message.tags().unwrap_or_default(),
+                message_body(message)
+            );
+        }
+        Ok(ConsumeConcurrentlyStatus::ConsumeSuccess)
+    }
+}
+
+fn message_body(message: &MessageExt) -> String {
+    message
+        .get_body()
+        .map(|body| String::from_utf8_lossy(body.as_ref()).into_owned())
+        .unwrap_or_default()
+}

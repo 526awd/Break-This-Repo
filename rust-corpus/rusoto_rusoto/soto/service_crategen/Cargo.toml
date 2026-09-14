@@ -1,0 +1,34 @@
+[package]
+authors = [
+    "Matt Jones <mthjones@gmail.com>",
+    "Anthony DiMarco <ocramida@gmail.com>",
+    "Jimmy Cuadra <jimmy@jimmycuadra.com>",
+    "Matthew Mayer <matthewkmayer@gmail.com>",
+    "Nikita Pekin <contact@nikitapek.in>"
+]
+description = "Generates crates for AWS services for the rusoto project"
+name = "service_crategen"
+license = "MIT"
+version = "0.48.0"
+edition = "2018"
+
+[dependencies]
+clap = "2"
+Inflector = "0.11"
+hoedown = "6"
+lazy_static = "1"
+rayon = "1"
+regex = "1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.5"
+
+[profile.dev]
+opt-level = 1
+codegen-units = 2
+debug = false
+debug-assertions = false
+
+[features]
+nightly-testing = []
+unstable = []

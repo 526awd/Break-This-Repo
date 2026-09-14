@@ -1,0 +1,73 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#![recursion_limit = "256"]
+
+#[path = "../support/mod.rs"]
+mod support;
+
+use rocketmq_client_rust::ClientResult;
+use rocketmq_client_rust::DefaultMQProducer;
+use rocketmq_model::common::message::message_single::Message;
+
+pub const MESSAGE_COUNT: usize = 1;
+pub const PRODUCER_GROUP: &str = "please_rename_unique_group_name";
+pub const DEFAULT_NAMESRVADDR: &str = "127.0.0.1:9876";
+pub const TOPIC: &str = "TopicTest";
+
+#[tokio::main]
+pub async fn main() -> ClientResult<()> {
+    let example_runtime = support::ExampleClientRuntime::try_new("ordermessage-producer")?;
+    let client_runtime = example_runtime.client_runtime();
+    // create a producer builder with default configuration
+    let builder = DefaultMQProducer::builder(client_runtime.clone());
+
+    let mut producer = builder
+        .producer_group(PRODUCER_GROUP.to_string())
+        .name_server_addr(DEFAULT_NAMESRVADDR.to_string())
+        .build();
+
+    producer.start().await?;
+
+    let tags = ["TagA", "TagB", "TagC", "TagD", "TagE"];
+
+    for i in 0..100 {
+        let message = Message::builder()
+            .topic(TOPIC)
+            .tags(tags[i % tags.len()])
+            .key(format!("KEY{}", i))
+            .body_slice(format!("Hello RocketMQ {}", i).as_bytes())
+            .build_unchecked();
+        let order_id = i % 10;
+        let send_result = producer
+            .send_with_selector(
+                message,
+                |mqs, _msg, arg: &usize| {
+                    let index = arg % mqs.len();
+                    Some(mqs[index].clone())
+                },
+                order_id,
+            )
+            .await?;
+        println!(
+            "send result: {}",
+            send_result.expect("send_with_selector should return a result for synchronous sends")
+        );
+    }
+    producer.shutdown().await;
+
+    example_runtime.shutdown().await;
+
+    Ok(())
+}

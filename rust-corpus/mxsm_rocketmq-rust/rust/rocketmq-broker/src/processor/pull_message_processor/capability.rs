@@ -1,0 +1,608 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::future::Future;
+use std::pin::Pin;
+use std::sync::Arc;
+#[cfg(test)]
+use std::sync::OnceLock;
+use std::sync::Weak;
+
+#[cfg(test)]
+use std::any::Any;
+#[cfg(test)]
+use tokio::sync::Notify;
+
+use crate::config::broker_config::BrokerConfig;
+use arc_swap::ArcSwap;
+use cheetah_string::CheetahString;
+use rocketmq_model::common::broker::broker_role::BrokerRole;
+#[cfg(test)]
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_protocol::protocol::remoting_command_defaults::application_remoting_command_factory;
+use rocketmq_protocol::protocol::remoting_command_defaults::RemotingCommandFactory;
+use rocketmq_store::ArcMessageFilter;
+use rocketmq_store::BrokerReadStore;
+use rocketmq_store::BrokerStatsManager;
+use rocketmq_store::GetMessageResult;
+use rocketmq_store::MessageStoreConfig;
+#[cfg(test)]
+use rocketmq_store::PutMessageResult;
+#[cfg(test)]
+use rocketmq_store::StorePorts;
+use rocketmq_transport::api::RpcClientImpl;
+
+use crate::broker::broker_pre_online_capability::BrokerOnlineRoleState;
+use crate::broker::broker_runtime_config_state::BrokerPermissionState;
+use crate::client::manager::consumer_manager::ConsumerManager;
+use crate::coldctr::cold_data_cg_ctr_service::ColdDataCgCtrService;
+use crate::failover::escape_bridge::EscapeBridge;
+use crate::failover::escape_bridge::MessageStoreUnavailable;
+use crate::filter::manager::consumer_filter_manager::ConsumerFilterManager;
+use crate::offset::manager::broadcast_offset_manager::BroadcastOffsetCapability;
+use crate::offset::manager::consumer_offset_manager::ConsumerOffsetManager;
+use crate::subscription::manager::subscription_group_manager::SubscriptionGroupConfigLookup;
+use crate::topic::manager::topic_config_manager::TopicConfigManager;
+use crate::topic::manager::topic_queue_mapping_manager::TopicQueueMappingManager;
+
+/// Request-path projection of the Broker and Store configuration used by pull.
+/// Broker permission is read through the one shared runtime permission view.
+#[derive(Clone, Debug)]
+pub(crate) struct PullMessagePolicy {
+    pub(crate) broker_name: CheetahString,
+    pub(crate) broker_id: u64,
+    pub(crate) broker_ip: CheetahString,
+    pub(crate) broker_permission: BrokerPermissionState,
+    pub(crate) is_in_broker_container: bool,
+    pub(crate) slave_read_enable: bool,
+    pub(crate) forward_timeout: u64,
+    pub(crate) filter_support_retry: bool,
+    pub(crate) lite_pull_message_enable: bool,
+    pub(crate) enable_property_filter: bool,
+    pub(crate) use_server_side_reset_offset: bool,
+    pub(crate) enable_broadcast_offset_store: bool,
+    pub(crate) long_polling_enable: bool,
+    pub(crate) short_polling_time_millis: u64,
+    pub(crate) transfer_msg_by_heap: bool,
+    pub(crate) commercial_base_count: i32,
+    pub(crate) broker_role: BrokerRole,
+    pub(crate) offset_check_in_slave: bool,
+}
+
+impl PullMessagePolicy {
+    pub(crate) fn from_configs(
+        broker_config: &BrokerConfig,
+        store_config: &MessageStoreConfig,
+        broker_permission: BrokerPermissionState,
+    ) -> Self {
+        let mut policy = Self {
+            broker_name: CheetahString::new(),
+            broker_id: 0,
+            broker_ip: CheetahString::new(),
+            broker_permission,
+            is_in_broker_container: false,
+            slave_read_enable: false,
+            forward_timeout: 0,
+            filter_support_retry: false,
+            lite_pull_message_enable: false,
+            enable_property_filter: false,
+            use_server_side_reset_offset: false,
+            enable_broadcast_offset_store: false,
+            long_polling_enable: false,
+            short_polling_time_millis: 0,
+            transfer_msg_by_heap: false,
+            commercial_base_count: 0,
+            broker_role: store_config.broker_role,
+            offset_check_in_slave: store_config.offset_check_in_slave,
+        };
+        policy.apply_broker_config(broker_config);
+        policy
+    }
+
+    fn apply_broker_config(&mut self, config: &BrokerConfig) {
+        self.broker_name = config.broker_name().clone();
+        self.broker_id = config.broker_identity.broker_id;
+        self.broker_ip = config.broker_ip1.clone();
+        self.is_in_broker_container = config.broker_identity.is_in_broker_container;
+        self.slave_read_enable = config.slave_read_enable;
+        self.forward_timeout = config.forward_timeout;
+        self.filter_support_retry = config.filter_support_retry;
+        self.lite_pull_message_enable = config.lite_pull_message_enable;
+        self.enable_property_filter = config.enable_property_filter;
+        self.use_server_side_reset_offset = config.use_server_side_reset_offset;
+        self.enable_broadcast_offset_store = config.enable_broadcast_offset_store;
+        self.long_polling_enable = config.long_polling_enable;
+        self.short_polling_time_millis = config.short_polling_time_mills;
+        self.transfer_msg_by_heap = config.transfer_msg_by_heap;
+        self.commercial_base_count = config.commercial_base_count;
+    }
+
+    fn apply_store_config(&mut self, config: &MessageStoreConfig) {
+        self.broker_role = config.broker_role;
+        self.offset_check_in_slave = config.offset_check_in_slave;
+    }
+}
+
+/// Atomically publishes complete pull-policy generations.
+#[derive(Clone)]
+pub(crate) struct PullMessagePolicyState {
+    current: Arc<ArcSwap<PullMessagePolicy>>,
+}
+
+impl PullMessagePolicyState {
+    pub(crate) fn from_configs(
+        broker_config: &BrokerConfig,
+        store_config: &MessageStoreConfig,
+        broker_permission: BrokerPermissionState,
+    ) -> Self {
+        Self {
+            current: Arc::new(ArcSwap::from_pointee(PullMessagePolicy::from_configs(
+                broker_config,
+                store_config,
+                broker_permission,
+            ))),
+        }
+    }
+
+    pub(crate) fn snapshot(&self) -> Arc<PullMessagePolicy> {
+        self.current.load_full()
+    }
+
+    pub(crate) fn update_broker_config(&self, broker_config: &BrokerConfig) {
+        self.current.rcu(|current| {
+            let mut replacement = current.as_ref().clone();
+            replacement.apply_broker_config(broker_config);
+            Arc::new(replacement)
+        });
+    }
+
+    pub(crate) fn update_store_config(&self, store_config: &MessageStoreConfig) {
+        self.current.rcu(|current| {
+            let mut replacement = current.as_ref().clone();
+            replacement.apply_store_config(store_config);
+            Arc::new(replacement)
+        });
+    }
+}
+
+trait PullMessageStorePort: Send + Sync {
+    fn min_offset(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, MessageStoreUnavailable>;
+    fn max_offset(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, MessageStoreUnavailable>;
+    fn now(&self) -> Result<u64, MessageStoreUnavailable>;
+    fn get_message<'a>(
+        &'a self,
+        group: &'a CheetahString,
+        topic: &'a CheetahString,
+        queue_id: i32,
+        offset: i64,
+        max_msg_nums: i32,
+        max_msg_bytes: i32,
+        message_filter: ArcMessageFilter,
+    ) -> Pin<Box<dyn Future<Output = Result<Option<GetMessageResult>, MessageStoreUnavailable>> + Send + 'a>>;
+    #[cfg(test)]
+    fn as_any(&self) -> &dyn Any;
+    #[cfg(feature = "local_file_store")]
+    fn is_message_in_cold_area(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        queue_offset: i64,
+    ) -> Result<bool, MessageStoreUnavailable>;
+}
+
+impl<MS: BrokerReadStore> PullMessageStorePort for EscapeBridge<MS> {
+    fn min_offset(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, MessageStoreUnavailable> {
+        self.get_min_offset_from_local_store(topic, queue_id)
+    }
+
+    fn max_offset(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, MessageStoreUnavailable> {
+        self.get_max_offset_from_local_store(topic, queue_id)
+    }
+
+    fn now(&self) -> Result<u64, MessageStoreUnavailable> {
+        self.local_store_now()
+    }
+
+    fn get_message<'a>(
+        &'a self,
+        group: &'a CheetahString,
+        topic: &'a CheetahString,
+        queue_id: i32,
+        offset: i64,
+        max_msg_nums: i32,
+        max_msg_bytes: i32,
+        message_filter: ArcMessageFilter,
+    ) -> Pin<Box<dyn Future<Output = Result<Option<GetMessageResult>, MessageStoreUnavailable>> + Send + 'a>> {
+        Box::pin(self.get_message_with_size_limit_from_local_store(
+            group,
+            topic,
+            queue_id,
+            offset,
+            max_msg_nums,
+            max_msg_bytes,
+            message_filter,
+        ))
+    }
+
+    #[cfg(test)]
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
+    #[cfg(feature = "local_file_store")]
+    fn is_message_in_cold_area(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        queue_offset: i64,
+    ) -> Result<bool, MessageStoreUnavailable> {
+        EscapeBridge::is_message_in_cold_area(self, group, topic, queue_id, queue_offset)
+    }
+}
+
+/// Non-owning access to the local Store operations used by pull paths.
+pub(crate) struct PullMessageStoreCapability {
+    provider: Weak<dyn PullMessageStorePort>,
+    #[cfg(test)]
+    read_barrier: OnceLock<Arc<PullStoreReadBarrier>>,
+}
+
+#[cfg(test)]
+pub(crate) struct PullStoreReadBarrier {
+    entered: Notify,
+    release: Notify,
+}
+
+#[cfg(test)]
+impl PullStoreReadBarrier {
+    pub(crate) fn new() -> Self {
+        Self {
+            entered: Notify::new(),
+            release: Notify::new(),
+        }
+    }
+
+    pub(crate) async fn wait_until_entered(&self) {
+        self.entered.notified().await;
+    }
+
+    pub(crate) fn release(&self) {
+        self.release.notify_one();
+    }
+}
+
+impl PullMessageStoreCapability {
+    pub(crate) fn new<MS: BrokerReadStore>(provider: &Arc<EscapeBridge<MS>>) -> Self {
+        let provider: Arc<dyn PullMessageStorePort> = provider.clone();
+        Self {
+            provider: Arc::downgrade(&provider),
+            #[cfg(test)]
+            read_barrier: std::sync::OnceLock::new(),
+        }
+    }
+
+    fn provider(&self) -> Result<Arc<dyn PullMessageStorePort>, MessageStoreUnavailable> {
+        self.provider.upgrade().ok_or(MessageStoreUnavailable)
+    }
+
+    pub(crate) fn min_offset(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, MessageStoreUnavailable> {
+        self.provider()?.min_offset(topic, queue_id)
+    }
+
+    pub(crate) fn max_offset(&self, topic: &CheetahString, queue_id: i32) -> Result<i64, MessageStoreUnavailable> {
+        self.provider()?.max_offset(topic, queue_id)
+    }
+
+    pub(crate) fn now(&self) -> Result<u64, MessageStoreUnavailable> {
+        self.provider()?.now()
+    }
+
+    pub(crate) async fn get_message(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+        max_msg_nums: i32,
+        max_msg_bytes: i32,
+        message_filter: ArcMessageFilter,
+    ) -> Result<Option<GetMessageResult>, MessageStoreUnavailable> {
+        #[cfg(test)]
+        if let Some(barrier) = self.read_barrier.get() {
+            barrier.entered.notify_one();
+            barrier.release.notified().await;
+        }
+        self.provider()?
+            .get_message(
+                group,
+                topic,
+                queue_id,
+                offset,
+                max_msg_nums,
+                max_msg_bytes,
+                message_filter,
+            )
+            .await
+    }
+
+    #[cfg(test)]
+    pub(crate) fn install_read_barrier_for_test(&self, barrier: Arc<PullStoreReadBarrier>) -> bool {
+        self.read_barrier.set(barrier).is_ok()
+    }
+
+    #[cfg(test)]
+    pub(crate) async fn put_message_for_test(
+        &self,
+        message: MessageExtBrokerInner,
+    ) -> Result<PutMessageResult, MessageStoreUnavailable> {
+        let provider = self.provider()?;
+        let bridge = provider
+            .as_any()
+            .downcast_ref::<EscapeBridge<StorePorts>>()
+            .ok_or(MessageStoreUnavailable)?;
+        bridge.put_message_to_local_store(message).await
+    }
+
+    #[cfg(feature = "local_file_store")]
+    pub(crate) fn is_message_in_cold_area(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        queue_offset: i64,
+    ) -> Result<bool, MessageStoreUnavailable> {
+        self.provider()?
+            .is_message_in_cold_area(group, topic, queue_id, queue_offset)
+    }
+}
+
+/// Complete dependency set shared by pull processing and result handling.
+pub(crate) struct PullMessageProcessorContext<MS: BrokerReadStore> {
+    pub(crate) command_factory: RemotingCommandFactory,
+    policy: PullMessagePolicyState,
+    rpc_client: RpcClientImpl,
+    consumer_manager: ConsumerManager,
+    consumer_filter_manager: Arc<ConsumerFilterManager>,
+    subscription_groups: SubscriptionGroupConfigLookup,
+    topics: Arc<TopicConfigManager>,
+    topic_mappings: Arc<TopicQueueMappingManager>,
+    consumer_offsets: Weak<ConsumerOffsetManager<MS>>,
+    broadcast_offsets: BroadcastOffsetCapability,
+    broker_stats: Arc<BrokerStatsManager>,
+    online_role_state: Arc<BrokerOnlineRoleState>,
+    store: PullMessageStoreCapability,
+    cold_data_flow: Option<Arc<ColdDataCgCtrService>>,
+}
+
+impl<MS: BrokerReadStore> PullMessageProcessorContext<MS> {
+    #[allow(
+        clippy::too_many_arguments,
+        reason = "composition root enumerates the complete pull processor capability boundary"
+    )]
+    pub(crate) fn new(
+        policy: PullMessagePolicyState,
+        rpc_client: RpcClientImpl,
+        consumer_manager: ConsumerManager,
+        consumer_filter_manager: Arc<ConsumerFilterManager>,
+        subscription_groups: SubscriptionGroupConfigLookup,
+        topics: Arc<TopicConfigManager>,
+        topic_mappings: Arc<TopicQueueMappingManager>,
+        consumer_offsets: &Arc<ConsumerOffsetManager<MS>>,
+        broadcast_offsets: BroadcastOffsetCapability,
+        broker_stats: Arc<BrokerStatsManager>,
+        online_role_state: Arc<BrokerOnlineRoleState>,
+        store: PullMessageStoreCapability,
+        cold_data_flow: Option<Arc<ColdDataCgCtrService>>,
+    ) -> Self {
+        Self {
+            command_factory: application_remoting_command_factory(),
+            policy,
+            rpc_client,
+            consumer_manager,
+            consumer_filter_manager,
+            subscription_groups,
+            topics,
+            topic_mappings,
+            consumer_offsets: Arc::downgrade(consumer_offsets),
+            broadcast_offsets,
+            broker_stats,
+            online_role_state,
+            store,
+            cold_data_flow,
+        }
+    }
+
+    pub(crate) fn with_command_factory(mut self, command_factory: RemotingCommandFactory) -> Self {
+        self.command_factory = command_factory;
+        self
+    }
+
+    pub(crate) const fn command_factory(&self) -> &RemotingCommandFactory {
+        &self.command_factory
+    }
+
+    pub(crate) fn policy(&self) -> Arc<PullMessagePolicy> {
+        self.policy.snapshot()
+    }
+
+    pub(crate) fn rpc_client(&self) -> &RpcClientImpl {
+        &self.rpc_client
+    }
+
+    pub(crate) fn consumers(&self) -> &ConsumerManager {
+        &self.consumer_manager
+    }
+
+    pub(crate) fn filters(&self) -> &Arc<ConsumerFilterManager> {
+        &self.consumer_filter_manager
+    }
+
+    pub(crate) fn subscription_groups(&self) -> &SubscriptionGroupConfigLookup {
+        &self.subscription_groups
+    }
+
+    pub(crate) fn topics(&self) -> &TopicConfigManager {
+        &self.topics
+    }
+
+    pub(crate) fn topic_mappings(&self) -> &TopicQueueMappingManager {
+        &self.topic_mappings
+    }
+
+    pub(crate) fn broker_stats(&self) -> &BrokerStatsManager {
+        &self.broker_stats
+    }
+
+    pub(crate) fn min_broker_id(&self) -> u64 {
+        self.online_role_state.min_broker_id()
+    }
+
+    pub(crate) fn store(&self) -> &PullMessageStoreCapability {
+        &self.store
+    }
+
+    pub(crate) fn cold_data_flow(&self) -> Option<&ColdDataCgCtrService> {
+        self.cold_data_flow.as_deref()
+    }
+
+    pub(crate) fn query_reset_offset(
+        &self,
+        topic: &CheetahString,
+        group: &CheetahString,
+        queue_id: i32,
+    ) -> Option<i64> {
+        self.consumer_offsets
+            .upgrade()
+            .and_then(|manager| manager.query_then_erase_reset_offset(topic, group, queue_id))
+    }
+
+    pub(crate) fn commit_pull_offset(
+        &self,
+        client_address: std::net::SocketAddr,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+    ) {
+        if let Some(manager) = self.consumer_offsets.upgrade() {
+            manager.commit_pull_offset(client_address, group, topic, queue_id, offset);
+        }
+    }
+
+    pub(crate) fn commit_offset(
+        &self,
+        client_address: CheetahString,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+    ) {
+        if let Some(manager) = self.consumer_offsets.upgrade() {
+            manager.commit_offset(client_address, group, topic, queue_id, offset);
+        }
+    }
+
+    pub(crate) fn query_broadcast_offset(
+        &self,
+        topic: &str,
+        group: &str,
+        queue_id: i32,
+        client_id: &str,
+        request_offset: i64,
+        from_proxy: bool,
+    ) -> i64 {
+        self.broadcast_offsets
+            .query_init_offset(topic, group, queue_id, client_id, request_offset, from_proxy)
+    }
+
+    pub(crate) fn update_broadcast_offset(
+        &self,
+        topic: &str,
+        group: &str,
+        queue_id: i32,
+        offset: i64,
+        client_id: &str,
+        from_proxy: bool,
+    ) {
+        self.broadcast_offsets
+            .update_offset(topic, group, queue_id, offset, client_id, from_proxy);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Weak;
+
+    use crate::broker::broker_runtime_config_state::BrokerPermissionState;
+    use crate::config::broker_config::BrokerConfig;
+    use cheetah_string::CheetahString;
+    use rocketmq_model::common::broker::broker_role::BrokerRole;
+    use rocketmq_store::MessageStoreConfig;
+    use rocketmq_store::StorePorts;
+
+    use super::EscapeBridge;
+    use super::PullMessagePolicyState;
+    use super::PullMessageStoreCapability;
+    use super::PullMessageStorePort;
+
+    #[test]
+    fn pull_policy_state_publishes_complete_updated_generations() {
+        let mut broker_config = BrokerConfig::default();
+        let mut store_config = MessageStoreConfig::default();
+        let broker_permission = BrokerPermissionState::new(broker_config.broker_permission);
+        let state = PullMessagePolicyState::from_configs(&broker_config, &store_config, broker_permission.clone());
+
+        broker_config.enable_property_filter = true;
+        broker_config.broker_identity.broker_id = 7;
+        broker_permission.update(4);
+        state.update_broker_config(&broker_config);
+        store_config.broker_role = BrokerRole::Slave;
+        store_config.offset_check_in_slave = true;
+        state.update_store_config(&store_config);
+
+        let policy = state.snapshot();
+        assert!(policy.enable_property_filter);
+        assert_eq!(policy.broker_id, 7);
+        assert_eq!(policy.broker_permission.get(), 4);
+        assert_eq!(policy.broker_role, BrokerRole::Slave);
+        assert!(policy.offset_check_in_slave);
+        broker_permission.update(6);
+        assert_eq!(state.snapshot().broker_permission.get(), 6);
+    }
+
+    #[test]
+    fn capability_source_has_no_complete_runtime_or_shared_mutation_owner() {
+        let source = include_str!("capability.rs");
+
+        assert!(!source.contains(concat!("Broker", "RuntimeInner")));
+        assert!(!source.contains(concat!("Arc", "Mut")));
+        assert!(!source.contains(concat!("Weak", "Arc", "Mut")));
+    }
+
+    #[test]
+    fn pull_store_capability_fails_closed_without_provider() {
+        let provider: Weak<dyn PullMessageStorePort> = Weak::<EscapeBridge<StorePorts>>::new();
+        let capability = PullMessageStoreCapability {
+            provider,
+            read_barrier: std::sync::OnceLock::new(),
+        };
+
+        assert!(capability
+            .max_offset(&CheetahString::from_static_str("topic"), 0)
+            .is_err());
+        assert!(capability.now().is_err());
+    }
+}
