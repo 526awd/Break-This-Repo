@@ -1,0 +1,135 @@
+use dora_arrow_convert::DoraArray;
+use dora_core::config::{DataId, NodeId, OperatorId};
+use dora_message::metadata::Metadata;
+
+/// Represents an incoming Dora event.
+///
+/// Events might be triggered by other nodes, by Dora itself, or by some external user input.
+///
+/// It's safe to ignore event types that are not relevant to the node.
+///
+/// This enum is marked as `non_exhaustive` because we might add additional
+/// variants in the future. Please ignore unknown event types instead of throwing an
+/// error to avoid breakage when updating Dora.
+#[derive(Debug)]
+#[non_exhaustive]
+#[allow(clippy::large_enum_variant)]
+pub enum Event {
+    /// An input was received from another node.
+    ///
+    /// This event corresponds to one of the `inputs` of the node as specified
+    /// in the dataflow YAML file.
+    Input {
+        /// The input ID, as specified in the YAML file.
+        ///
+        /// Note that this is not the output ID of the sender, but the ID
+        /// assigned to the input in the YAML file.
+        id: DataId,
+        /// Meta information about this input, e.g. the timestamp.
+        metadata: Metadata,
+        /// The actual data in the Apache Arrow data format.
+        data: DoraArray,
+    },
+    /// An input was closed by the sender.
+    ///
+    /// The sending node mapped to an input exited, so this input will receive
+    /// no more data.
+    InputClosed {
+        /// The ID of the input that was closed, as specified in the YAML file.
+        ///
+        /// Note that this is not the output ID of the sender, but the ID
+        /// assigned to the input in the YAML file.
+        id: DataId,
+    },
+    /// A previously closed input has recovered and will receive data again.
+    ///
+    /// This happens when an upstream node that timed out (via `input_timeout`)
+    /// starts producing data again. The circuit breaker automatically re-opens
+    /// the input.
+    InputRecovered {
+        /// The ID of the recovered input, as specified in the YAML file.
+        id: DataId,
+    },
+    /// An upstream node has restarted.
+    ///
+    /// Sent to downstream nodes when a node with a restart policy successfully
+    /// restarts after a failure. Nodes can use this to reset state, clear caches,
+    /// or log the recovery.
+    NodeRestarted {
+        /// The ID of the upstream node that restarted.
+        id: NodeId,
+    },
+    /// Notification that the event stream is about to close.
+    ///
+    /// The [`StopCause`] field contains the reason for the event stream closure.
+    ///
+    /// Nodes should exit once the event stream closes.
+    Stop(StopCause),
+    /// Instructs the node to reload itself or one of its operators.
+    ///
+    /// This event is currently only used for reloading Python operators that are
+    /// started by a `dora runtime` process. So this event should not be sent to normal
+    /// nodes yet.
+    Reload {
+        /// The ID of the operator that should be reloaded.
+        ///
+        /// `Some(id)` targets a single operator (the Python-operator reload
+        /// path always sets this). `None` requests reloading the whole runtime
+        /// node, which the runtime currently rejects with a warning rather than
+        /// acting on ("Reloading runtime nodes is not supported").
+        operator_id: Option<OperatorId>,
+    },
+    /// A runtime parameter has been updated via `dora param set`.
+    ///
+    /// Nodes can use this to dynamically adjust behavior (e.g., thresholds,
+    /// rates) without restarting.
+    ParamUpdate {
+        /// The parameter key that was set.
+        key: String,
+        /// The new JSON value.
+        value: serde_json::Value,
+    },
+    /// A runtime parameter has been deleted via `dora param delete`.
+    ///
+    /// Nodes can use this to remove local overrides and fall back to defaults.
+    ParamDeleted {
+        /// The parameter key that was deleted.
+        key: String,
+    },
+    /// An upstream node has failed.
+    ///
+    /// Sent to downstream nodes when an upstream node exits with a
+    /// non-zero exit code. Downstream nodes can use this to handle
+    /// the failure gracefully (e.g. switch to cached data, log, retry).
+    NodeFailed {
+        /// The IDs of the inputs affected by the failure.
+        affected_input_ids: Vec<DataId>,
+        /// Human-readable error message from the failed node.
+        error: String,
+        /// The ID of the node that failed.
+        source_node_id: NodeId,
+    },
+    /// Notifies the node about an unexpected error that happened inside Dora.
+    ///
+    /// It's a good idea to output or log this error for debugging.
+    Error(String),
+}
+
+/// The reason for closing the event stream.
+///
+/// This enum is marked as `non_exhaustive` because we might add additional
+/// variants in the future.
+#[derive(Debug, Clone)]
+#[non_exhaustive]
+pub enum StopCause {
+    /// The dataflow is stopped early after a `dora stop` command (or on `ctrl-c`).
+    ///
+    /// Nodes should exit as soon as possible if they receive a stop event of
+    /// this type. Dora will kill nodes that keep running for too long after
+    /// receiving such a stop event.
+    Manual,
+    /// The event stream is closed because all of the node's inputs were closed.
+    ///
+    /// This stop event type is only sent for nodes that have at least one input.
+    AllInputsClosed,
+}

@@ -1,0 +1,339 @@
+use std::{
+    ffi::CString,
+    ops::{Deref, DerefMut},
+    os::raw::c_char,
+};
+
+use widestring::U16CString;
+
+use super::traits::{FFIFromRust, FFIToRust};
+
+#[derive(
+    Debug,
+    Default,
+    Clone,
+    PartialEq,
+    Eq,
+    PartialOrd,
+    Ord,
+    Hash,
+    serde::Serialize,
+    serde::Deserialize,
+)]
+#[serde(from = "Vec<u16>", into = "Vec<u16>")]
+#[repr(transparent)]
+pub struct U16String(widestring::U16String);
+
+impl U16String {
+    pub fn new() -> Self {
+        Self(widestring::U16String::new())
+    }
+
+    #[allow(clippy::should_implement_trait)]
+    pub fn from_str(arg: &str) -> U16String {
+        Self(widestring::U16String::from_str(arg))
+    }
+}
+
+impl Deref for U16String {
+    type Target = widestring::U16String;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl DerefMut for U16String {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+
+impl AsRef<widestring::U16Str> for U16String {
+    fn as_ref(&self) -> &widestring::U16Str {
+        self.0.as_ref()
+    }
+}
+
+impl From<U16String> for Vec<u16> {
+    fn from(value: U16String) -> Self {
+        value.0.into_vec()
+    }
+}
+
+impl From<Vec<u16>> for U16String {
+    fn from(value: Vec<u16>) -> Self {
+        Self(value.into())
+    }
+}
+
+/// An array of 8-bit characters terminated by a null character.
+#[repr(C)]
+#[derive(Debug)]
+pub struct FFIString {
+    data: *mut c_char,
+    size: usize,
+    capacity: usize,
+}
+
+impl FFIString {
+    /// Returns the length of the string (excluding the null byte)
+    pub const fn len(&self) -> usize {
+        self.size
+    }
+
+    /// Returns `true` if the string has a length of 0.
+    pub const fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+
+    pub unsafe fn to_str(&self) -> Result<&str, std::str::Utf8Error> {
+        if self.is_empty() {
+            Ok("")
+        } else {
+            // Use `size` to bound the read instead of `CStr::from_ptr` which
+            // scans for null and can read past the buffer.
+            let bytes = unsafe { std::slice::from_raw_parts(self.data as *const u8, self.size) };
+            std::str::from_utf8(bytes)
+        }
+    }
+}
+
+impl FFIToRust for FFIString {
+    type Target = String;
+
+    unsafe fn to_rust(&self) -> Self::Target {
+        // `to_str` already bounds the read by `size` and returns the borrowed
+        // `&str` for valid UTF-8 (and `""` when empty). A ROS2 `string` field
+        // is nominally UTF-8, but the bytes come off the wire / out of the C
+        // typesupport layer, so a buggy or hostile peer can deliver arbitrary
+        // bytes. `to_str` was deliberately made fallible precisely to handle
+        // that; discarding its `Err` with `expect` re-introduced a whole-process
+        // abort on a single malformed field. Fall back to lossy decoding
+        // instead, so an invalid field degrades to replacement characters —
+        // matching the sibling `FFIWString::to_rust`, which likewise never
+        // panics.
+        match unsafe { self.to_str() } {
+            Ok(s) => s.to_string(),
+            Err(_) => {
+                let bytes =
+                    unsafe { std::slice::from_raw_parts(self.data as *const u8, self.size) };
+                String::from_utf8_lossy(bytes).into_owned()
+            }
+        }
+    }
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct OwnedFFIString {
+    data: *mut c_char,
+    size: usize,
+    capacity: usize,
+}
+
+impl OwnedFFIString {
+    /// Returns the length of the string (excluding the null byte)
+    pub const fn len(&self) -> usize {
+        self.size
+    }
+
+    /// Returns `true` if the string has a length of 0.
+    pub const fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+}
+
+impl FFIFromRust for OwnedFFIString {
+    type From = String;
+
+    unsafe fn from_rust(string: &Self::From) -> Self {
+        let cstring = CString::new(string.clone()).expect("CString::new failed");
+        let len = cstring.as_bytes().len();
+        Self {
+            data: cstring.into_raw(),
+            size: len,
+            capacity: len + 1,
+        }
+    }
+}
+
+impl Drop for OwnedFFIString {
+    fn drop(&mut self) {
+        unsafe {
+            std::mem::drop(CString::from_raw(self.data));
+        }
+    }
+}
+
+/// An array of 16-bit characters terminated by a null character.
+#[repr(C)]
+#[derive(Debug)]
+pub struct FFIWString {
+    data: *mut u16,
+    size: usize,
+    capacity: usize,
+}
+
+impl FFIWString {
+    /// Returns the length of the string (excluding the null byte)
+    pub const fn len(&self) -> usize {
+        self.size
+    }
+
+    /// Returns `true` if the sequence has a length of 0.
+    pub const fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+}
+
+impl FFIToRust for FFIWString {
+    type Target = U16String;
+
+    unsafe fn to_rust(&self) -> Self::Target {
+        if self.is_empty() {
+            Self::Target::new()
+        } else {
+            // Use `size` to bound the read instead of `U16CStr::from_ptr_str`,
+            // which scans for a NUL terminator. Scanning would truncate
+            // wstrings that contain an embedded U+0000 and could read past the
+            // buffer if it is not NUL-terminated. This mirrors the hardened
+            // 8-bit `FFIString::to_str` path.
+            let slice = unsafe { std::slice::from_raw_parts(self.data, self.size) };
+            U16String(widestring::U16String::from_vec(slice))
+        }
+    }
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct OwnedFFIWString {
+    data: *mut u16,
+    size: usize,
+    capacity: usize,
+}
+
+impl OwnedFFIWString {
+    /// Returns the length of the string (excluding the null byte)
+    pub const fn len(&self) -> usize {
+        self.size
+    }
+
+    /// Returns `true` if the sequence has a length of 0.
+    pub const fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+}
+
+impl FFIFromRust for OwnedFFIWString {
+    type From = U16String;
+
+    unsafe fn from_rust(string: &Self::From) -> Self {
+        let cstring = U16CString::from_ustr(string).expect("U16CString::new failed");
+        let len = cstring.len();
+        Self {
+            data: cstring.into_raw(),
+            size: len,
+            capacity: len + 1,
+        }
+    }
+}
+
+impl Drop for OwnedFFIWString {
+    fn drop(&mut self) {
+        unsafe {
+            std::mem::drop(U16CString::from_raw(self.data));
+        }
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn owned_ffi_string_new() {
+        let string = "abcde".into();
+        let cstring = unsafe { OwnedFFIString::from_rust(&string) };
+        let native_string = FFIString {
+            data: cstring.data,
+            size: cstring.size,
+            capacity: cstring.capacity,
+        };
+
+        assert_eq!(string, unsafe { native_string.to_rust() });
+    }
+
+    #[test]
+    fn owned_ffi_wstring_new() {
+        let wstring = U16String::from_str("あいうえお");
+        let cwstring = unsafe { OwnedFFIWString::from_rust(&wstring) };
+        let native_wstring = FFIWString {
+            data: cwstring.data,
+            size: cwstring.size,
+            capacity: cwstring.capacity,
+        };
+
+        assert_eq!(wstring, unsafe { native_wstring.to_rust() });
+    }
+
+    #[test]
+    fn ffi_wstring_preserves_embedded_nul() {
+        // A `wstring` payload may legitimately contain an embedded U+0000.
+        // `to_rust` must bound the read by `size`, not scan for a NUL
+        // terminator, so the bytes after the embedded NUL are preserved.
+        // (We construct the `FFIWString` by hand because `OwnedFFIWString`
+        // round-trips through a NUL-terminated `U16CString`, which cannot hold
+        // an interior NUL.)
+        let mut data: Vec<u16> = vec![b'a'.into(), 0, b'b'.into()];
+        let native_wstring = FFIWString {
+            data: data.as_mut_ptr(),
+            size: data.len(),
+            capacity: data.len(),
+        };
+
+        let result = unsafe { native_wstring.to_rust() };
+
+        assert_eq!(result, U16String::from(vec![b'a'.into(), 0, b'b'.into()]));
+        // Keep `data` alive until after the read above; `FFIWString` borrows it.
+        drop(data);
+    }
+
+    #[test]
+    fn ffi_string_to_rust_is_lossy_on_invalid_utf8() {
+        // A `string` field is nominally UTF-8, but the bytes come off the wire
+        // / out of the C typesupport layer, so `to_rust` must degrade on
+        // invalid UTF-8 rather than abort the whole process. We construct the
+        // `FFIString` by hand to inject non-UTF-8 bytes (a Rust `String` could
+        // not hold them).
+        let mut data: Vec<u8> = vec![b'a', 0xFF, 0xFE, b'b'];
+        let native_string = FFIString {
+            data: data.as_mut_ptr() as *mut c_char,
+            size: data.len(),
+            capacity: data.len(),
+        };
+
+        // Must not panic; the invalid bytes become replacement chars while the
+        // surrounding valid ASCII survives.
+        let result = unsafe { native_string.to_rust() };
+        assert!(result.starts_with('a'), "unexpected result: {result:?}");
+        assert!(result.ends_with('b'), "unexpected result: {result:?}");
+        assert!(
+            result.contains('\u{FFFD}'),
+            "expected a replacement char: {result:?}"
+        );
+
+        // Keep `data` alive until after the read above; `FFIString` borrows it.
+        drop(data);
+    }
+
+    #[test]
+    fn ffi_string_to_rust_empty() {
+        let native_string = FFIString {
+            data: std::ptr::null_mut(),
+            size: 0,
+            capacity: 0,
+        };
+        assert_eq!(unsafe { native_string.to_rust() }, "");
+    }
+}

@@ -1,0 +1,198 @@
+[workspace]
+resolver = "2"
+members = [
+  "cargo-nextest",
+  "fixture-data",
+  "integration-tests",
+  "internal-test",
+  "internal-tools/zstd-dict",
+  "nextest-filtering",
+  "nextest-metadata",
+  "nextest-runner",
+  "workspace-hack",
+]
+
+[workspace.package]
+rust-version = "1.91"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+exclude = ["src/**/AGENTS.md", "src/**/CLAUDE.md"]
+
+[workspace.dependencies]
+aho-corasick = "1.1.5"
+anstyle-progress = "0.1.4"
+async-scoped = { version = "0.9.0", features = ["use-tokio"] }
+atomicwrites = "0.4.4"
+bitflags = "2.13.1"
+bstr = { version = "1.13.0", default-features = false, features = ["std"] }
+bytesize = { version = "2.4.2", features = ["serde"] }
+bytes = "1.12.1"
+camino = "1.2.5"
+camino-tempfile = "1.4.1"
+camino-tempfile-ext = "0.3.3"
+# We specify default-no-update here because if users just run:
+#
+# cargo build --no-default-features --features default-no-update
+#
+# then cargo will unify features for cargo-nextest, and it will be built with self-update enabled.
+# We could ask distributors to always include `--package cargo-nextest` instead, but they're likely
+# to forget. None of our current tests depend on self-update, so just don't include it by default.
+cargo-nextest = { path = "cargo-nextest", default-features = false, features = [
+    "default-no-update",
+] }
+cargo_metadata = "0.23.1"
+cfg-if = "1.0.4"
+chrono = { version = "0.4.45", features = ["serde"] }
+clap = { version = "4.6.6", features = ["derive", "unstable-markdown"] }
+color-eyre = "0.6.5"
+# config's "preserve_order" feature is needed for preserving the order of
+# setup scripts in .config/nextest.toml.
+config = { version = "0.15.25", default-features = false, features = [
+    "toml",
+    "preserve_order",
+] }
+console-subscriber = "0.5.0"
+countio = "0.2.19"
+cp_r = "0.5.2"
+crossterm = { version = "0.29.0", features = ["event-stream"] }
+datatest-stable = { version = "0.3.3", features = ["include-dir"] }
+debug-ignore = "1.0.5"
+derive-where = "1.6.1"
+dialoguer = "0.12.0"
+duct = "1.1.1"
+dunce = "1.0.5"
+eazip = { version = "0.2.5", default-features = false, features = ["deflate", "std", "zstd"] }
+enable-ansi-support = "0.3.1"
+etcetera = "0.11.0"
+fixture-data = { path = "fixture-data" }
+fs-err = "3.3.1"
+future-queue = "0.4.0"
+futures = "0.3.33"
+globset = "0.4.20"
+guppy = "0.17.26"
+hex = "0.4.3"
+home = "0.5.12"
+http = "1.4.2"
+humantime = "2.3.0"
+humantime-serde = "1.1.1"
+iddqd = { version = "0.5.0", features = ["serde"] }
+# Disable punycode parsing since we only access well-known domains.
+idna_adapter = "=1.0.0"
+indexmap = "2.14.0"
+indicatif = "0.18.6"
+indoc = "2.0.7"
+insta = { version = "1.48.0", default-features = false }
+is_ci = "1.2.0"
+itertools = "0.15.0"
+jsonschema = "0.49.9"
+libc = "0.2.189"
+libtest-mimic = "0.8.2"
+locked-tripwire = { version = "0.1.0", features = ["nextest"] }
+log = "0.4.33"
+maplit = "1.0.2"
+miette = "7.6.0"
+mukti-metadata = "0.3.0"
+newtype-uuid = { version = "1.4.0", features = ["v4"] }
+nextest-filtering = { version = "0.22.0", path = "nextest-filtering" }
+nextest-metadata = { version = "0.15.0", path = "nextest-metadata" }
+nextest-runner = { path = "nextest-runner" }
+nextest-workspace-hack = "0.1.0"
+nix = { version = "0.31.3", default-features = false, features = ["signal"] }
+num_threads = "0.1.7"
+# Note: we don't use owo-colors' if_supports_color support for now, instead preferring to use our
+# own supports-color + stylesheets everywhere.
+owo-colors = "4.3.0"
+pathdiff = { version = "0.2.3", features = ["camino"] }
+petgraph = "0.8.3"
+pin-project-lite = "0.2.17"
+pretty_assertions = "1.4.1"
+proptest = "1.11.0"
+pulldown-cmark = { version = "0.13.4", default-features = false }
+quick-junit = "0.8.0"
+rand = "0.10.2"
+recursion = "0.5.4"
+regex = "1.13.1"
+regex-syntax = "0.8.11"
+sapling-streampager = "0.12.0"
+rustls = { version = "0.23.43", default-features = false }
+self_update = { version = "0.44.0", default-features = false, features = [
+    "archive-tar",
+    "compression-flate2",
+    # nextest only uses self_update for archive extraction (ArchiveKind,
+    # Compression, Extract), not its HTTP client. But self_update's Download
+    # struct unconditionally calls http_client::get, so at least one HTTP
+    # backend must be enabled for it to compile.
+    "ureq",
+] }
+semver = "1.0.28"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_ignored = "0.1.14"
+serde_json = "1.0.151"
+serde_path_to_error = "0.1.20"
+schemars = { version = "1.2.2", features = ["indexmap2"] }
+sha2 = "0.10.9"
+shell-words = "1.1.1"
+smallvec = "1.15.2"
+smol_str = { version = "0.3.2", features = ["serde"] }
+strip-ansi-escapes = "0.2.1"
+supports-color = "3.0.2"
+supports-hyperlinks = "3.2.0"
+supports-unicode = "3.0.0"
+swrite = "0.1.0"
+synoptic = "2.2.9"
+tar = "0.4.46"
+target-spec = { version = "3.6.0", features = ["custom", "summaries"] }
+target-spec-miette = "0.4.8"
+terminal_size = "0.4.4"
+test-case = "3.3.1"
+test-strategy = "0.4.5"
+thiserror = "2.0.20"
+tokio = "1.53.1"
+tokio-stream = "0.1.19"
+toml = "1.1.4"
+toml_edit = "0.25.13"
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", default-features = false, features = ["std", "tracing-log", "fmt"] }
+unicode-ident = "1.0.24"
+unicode-normalization = "0.1.25"
+ureq = { version = "3.3.0", default-features = false }
+usdt = "0.6.0"
+walkdir = "2.5.0"
+whoami = "2.1.2"
+win32job = "2.0.3"
+windows-sys = "0.61.2"
+winnow = "1.0.4"
+xxhash-rust = { version = "0.8.18", features = ["xxh3", "xxh64"] }
+zstd = { version = "0.13.3", features = ["zstdmt"] }
+
+[workspace.lints.clippy]
+format_push_string = "warn"
+ref_option = "warn"
+
+# make backtrace + color-eyre faster on debug builds
+[profile.dev.package.backtrace]
+opt-level = 3
+
+# insta and similar are recommended by insta
+[profile.dev.package.insta]
+opt-level = 3
+
+[profile.dev.package.similar]
+opt-level = 3
+
+[profile.release]
+# Ensure that symbols and debuginfo aren't stripped. They're useful for debugging issues with
+# nextest in the field, and don't bloat up binaries too much
+strip = "none"
+
+[patch.crates-io]
+nextest-workspace-hack = { path = "workspace-hack" }
+
+# Uncomment for testing.
+# cargo_metadata = { path = "../cargo_metadata" }
+# guppy = { path = "../../guppy/guppy" }
+# future-queue = { path = "../future-queue" }
+# target-spec = { path = "../guppy/target-spec" }
+# target-spec-miette = { path = "../guppy/target-spec-miette" }
+# tokio = { path = "../../tokio/tokio" }
+# quick-junit = { path = "../quick-junit/crates/quick-junit" }

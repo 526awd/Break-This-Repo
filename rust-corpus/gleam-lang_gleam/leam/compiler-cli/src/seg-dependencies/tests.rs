@@ -1,0 +1,2157 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2024 The Gleam contributors
+
+use std::{assert_matches, collections::HashMap, rc::Rc};
+
+use camino::{Utf8Path, Utf8PathBuf};
+use ecow::EcoString;
+use hexpm::version::Version;
+use pretty_assertions::assert_eq;
+
+use gleam_core::{
+    Error,
+    build::Runtime,
+    config::{DenoConfig, DenoFlag, Docs, ErlangConfig, JavaScriptConfig},
+    dependency::{PackageFetchError, PackageFetcher},
+    manifest::{Base16Checksum, Manifest, ManifestPackage, ManifestPackageSource},
+    paths::ProjectPaths,
+    requirement::Requirement,
+};
+
+use crate::dependencies::*;
+
+#[test]
+fn list_manifest_format() {
+    let mut buffer = vec![];
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            ManifestPackage {
+                name: "root".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4]),
+                },
+            },
+            ManifestPackage {
+                name: "aaa".into(),
+                version: Version::new(0, 4, 2),
+                build_tools: ["rebar3".into(), "make".into()].into(),
+                otp_app: Some("aaa_app".into()),
+                requirements: vec!["zzz".into(), "gleam_stdlib".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+            ManifestPackage {
+                name: "zzz".into(),
+                version: Version::new(0, 4, 0),
+                build_tools: ["mix".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+        ],
+    };
+    list_manifest_packages(&mut buffer, manifest).unwrap();
+    assert_eq!(
+        std::str::from_utf8(&buffer).unwrap(),
+        "Package  Version
+-------  -------
+root     1.0.0
+aaa      0.4.2
+zzz      0.4.0
+"
+    )
+}
+
+#[test]
+fn tree_format() {
+    let mut buffer = vec![];
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            ManifestPackage {
+                name: "deps_proj".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: [].into(),
+                otp_app: None,
+                requirements: vec!["gleam_regexp".into(), "gleam_stdlib".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4]),
+                },
+            },
+            ManifestPackage {
+                name: "gleam_stdlib".into(),
+                version: Version::new(0, 52, 0),
+                build_tools: ["rebar3".into(), "make".into()].into(),
+                otp_app: Some("aaa_app".into()),
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+            ManifestPackage {
+                name: "gleam_regexp".into(),
+                version: Version::new(1, 0, 0),
+                build_tools: ["mix".into()].into(),
+                otp_app: None,
+                requirements: vec!["gleam_stdlib".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+        ],
+    };
+
+    let options = TreeOptions {
+        package: None,
+        invert: None,
+    };
+
+    let root_package_name = EcoString::from("deps_proj");
+
+    list_package_and_dependencies_tree(
+        &mut buffer,
+        options,
+        manifest.packages.clone(),
+        root_package_name,
+    )
+    .unwrap();
+    assert_eq!(
+        std::str::from_utf8(&buffer).unwrap(),
+        r#"deps_proj v1.0.0
+├── gleam_regexp v1.0.0
+│   └── gleam_stdlib v0.52.0
+└── gleam_stdlib v0.52.0
+"#
+    )
+}
+
+#[test]
+fn tree_package_format() {
+    let mut buffer = vec![];
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            ManifestPackage {
+                name: "gleam_stdlib".into(),
+                version: Version::new(0, 52, 0),
+                build_tools: ["rebar3".into(), "make".into()].into(),
+                otp_app: Some("aaa_app".into()),
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+            ManifestPackage {
+                name: "deps_proj".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: [].into(),
+                otp_app: None,
+                requirements: vec!["gleam_stdlib".into(), "gleam_regexp".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4]),
+                },
+            },
+            ManifestPackage {
+                name: "gleam_regexp".into(),
+                version: Version::new(1, 0, 0),
+                build_tools: ["mix".into()].into(),
+                otp_app: None,
+                requirements: vec!["gleam_stdlib".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+        ],
+    };
+    let options = TreeOptions {
+        package: Some("gleam_regexp".to_string()),
+        invert: None,
+    };
+
+    let root_package_name = EcoString::from("deps_proj");
+
+    list_package_and_dependencies_tree(
+        &mut buffer,
+        options,
+        manifest.packages.clone(),
+        root_package_name,
+    )
+    .unwrap();
+    assert_eq!(
+        std::str::from_utf8(&buffer).unwrap(),
+        r#"gleam_regexp v1.0.0
+└── gleam_stdlib v0.52.0
+"#
+    )
+}
+
+#[test]
+fn tree_invert_format() {
+    let mut buffer = vec![];
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            ManifestPackage {
+                name: "gleam_stdlib".into(),
+                version: Version::new(0, 52, 0),
+                build_tools: ["rebar3".into(), "make".into()].into(),
+                otp_app: Some("aaa_app".into()),
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+            ManifestPackage {
+                name: "deps_proj".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: [].into(),
+                otp_app: None,
+                requirements: vec!["gleam_stdlib".into(), "gleam_regexp".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4]),
+                },
+            },
+            ManifestPackage {
+                name: "gleam_regexp".into(),
+                version: Version::new(1, 0, 0),
+                build_tools: ["mix".into()].into(),
+                otp_app: None,
+                requirements: vec!["gleam_stdlib".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+        ],
+    };
+    let options = TreeOptions {
+        package: None,
+        invert: Some("gleam_stdlib".to_string()),
+    };
+
+    let root_package_name = EcoString::from("deps_proj");
+
+    list_package_and_dependencies_tree(
+        &mut buffer,
+        options,
+        manifest.packages.clone(),
+        root_package_name,
+    )
+    .unwrap();
+    assert_eq!(
+        std::str::from_utf8(&buffer).unwrap(),
+        r#"gleam_stdlib v0.52.0
+├── deps_proj v1.0.0
+└── gleam_regexp v1.0.0
+    └── deps_proj v1.0.0
+"#
+    )
+}
+
+#[test]
+fn list_tree_invalid_package_format() {
+    let mut buffer = vec![];
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            ManifestPackage {
+                name: "gleam_stdlib".into(),
+                version: Version::new(0, 52, 0),
+                build_tools: ["rebar3".into(), "make".into()].into(),
+                otp_app: Some("aaa_app".into()),
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+            ManifestPackage {
+                name: "gleam_regexp".into(),
+                version: Version::new(1, 0, 0),
+                build_tools: ["mix".into()].into(),
+                otp_app: None,
+                requirements: vec!["gleam_stdlib".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![3, 22]),
+                },
+            },
+            ManifestPackage {
+                name: "root".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: [].into(),
+                otp_app: None,
+                requirements: vec!["gleam_regexp".into(), "gleam_stdlib".into()],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4]),
+                },
+            },
+        ],
+    };
+    let options = TreeOptions {
+        package: Some("zzzzzz".to_string()),
+        invert: None,
+    };
+
+    let root_package_name = EcoString::from("deps_proj");
+
+    list_package_and_dependencies_tree(
+        &mut buffer,
+        options,
+        manifest.packages.clone(),
+        root_package_name,
+    )
+    .unwrap();
+    assert_eq!(
+        std::str::from_utf8(&buffer).unwrap(),
+        r#"Package not found. Please check the package name.
+"#
+    )
+}
+
+#[test]
+fn parse_gleam_add_specifier_invalid_semver() {
+    assert!(parse_gleam_add_specifier("some_package@1.2.3.4").is_err());
+}
+
+#[test]
+fn parse_gleam_add_specifier_non_numeric_version() {
+    assert!(parse_gleam_add_specifier("some_package@not_a_version").is_err());
+}
+
+#[test]
+fn parse_gleam_add_specifier_default() {
+    let provided = "some_package";
+    let expected = Requirement::hex(">= 0.0.0").unwrap();
+    let (package, version) = parse_gleam_add_specifier(provided).unwrap();
+    assert_eq!(version, expected);
+    assert_eq!("some_package", package);
+}
+
+#[test]
+fn parse_gleam_add_specifier_major_only() {
+    let provided = "wobble@1";
+    let expected = Requirement::hex(">= 1.0.0 and < 2.0.0").unwrap();
+    let (package, version) = parse_gleam_add_specifier(provided).unwrap();
+    assert_eq!(version, expected);
+    assert_eq!("wobble", package);
+}
+
+#[test]
+fn parse_gleam_add_specifier_major_and_minor() {
+    let provided = "wibble@1.2";
+    let expected = Requirement::hex(">= 1.2.0 and < 2.0.0").unwrap();
+    let (package, version) = parse_gleam_add_specifier(provided).unwrap();
+    assert_eq!(version, expected);
+    assert_eq!("wibble", package);
+}
+
+#[test]
+fn parse_gleam_add_specifier_major_minor_and_patch() {
+    let provided = "bobble@1.2.3";
+    let expected = Requirement::hex("1.2.3").unwrap();
+    let (package, version) = parse_gleam_add_specifier(provided).unwrap();
+    assert_eq!(version, expected);
+    assert_eq!("bobble", package);
+}
+
+#[test]
+fn missing_local_packages() {
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            ManifestPackage {
+                name: "root".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4]),
+                },
+            },
+            ManifestPackage {
+                name: "local1".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4, 5]),
+                },
+            },
+            ManifestPackage {
+                name: "local2".into(),
+                version: Version::parse("3.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4, 5]),
+                },
+            },
+        ],
+    };
+    let mut extra = LocalPackages {
+        packages: [
+            ("local2".into(), Version::parse("2.0.0").unwrap()),
+            ("local3".into(), Version::parse("3.0.0").unwrap()),
+        ]
+        .into(),
+        git: HashMap::new(),
+    }
+    .missing_local_packages(&manifest, "root");
+    extra.sort();
+    assert_eq!(
+        extra,
+        [
+            &ManifestPackage {
+                name: "local1".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4, 5]),
+                },
+            },
+            &ManifestPackage {
+                name: "local2".into(),
+                version: Version::parse("3.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4, 5]),
+                },
+            },
+        ]
+    )
+}
+
+#[test]
+fn extra_local_packages() {
+    let mut extra = LocalPackages {
+        packages: [
+            ("local1".into(), Version::parse("1.0.0").unwrap()),
+            ("local2".into(), Version::parse("2.0.0").unwrap()),
+            ("local3".into(), Version::parse("3.0.0").unwrap()),
+        ]
+        .into(),
+        git: HashMap::new(),
+    }
+    .extra_local_packages(&Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            ManifestPackage {
+                name: "local1".into(),
+                version: Version::parse("1.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![1, 2, 3, 4, 5]),
+                },
+            },
+            ManifestPackage {
+                name: "local2".into(),
+                version: Version::parse("3.0.0").unwrap(),
+                build_tools: ["gleam".into()].into(),
+                otp_app: None,
+                requirements: vec![],
+                source: ManifestPackageSource::Hex {
+                    outer_checksum: Base16Checksum(vec![4, 5]),
+                },
+            },
+        ],
+    });
+    extra.sort();
+    assert_eq!(
+        extra,
+        [
+            ("local2".into(), Version::new(2, 0, 0)),
+            ("local3".into(), Version::new(3, 0, 0)),
+        ]
+    )
+}
+
+#[test]
+fn provide_wrong_package() {
+    let mut provided = HashMap::new();
+    let project_paths = crate::project_paths_at_current_directory_without_toml();
+    let result = provide_local_package(
+        "wrong_name".into(),
+        Utf8Path::new("./test/hello_world"),
+        Utf8Path::new("./"),
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into(), "subpackage".into()],
+    );
+    match result {
+        Err(Error::WrongDependencyProvided {
+            expected, found, ..
+        }) => {
+            assert_eq!(expected, "wrong_name");
+            assert_eq!(found, "hello_world");
+        }
+        _ => {
+            panic!("Expected WrongDependencyProvided error")
+        }
+    }
+}
+
+#[test]
+fn provide_existing_package() {
+    let mut provided = HashMap::new();
+    let project_paths = crate::project_paths_at_current_directory_without_toml();
+
+    let result = provide_local_package(
+        "hello_world".into(),
+        Utf8Path::new("./test/hello_world"),
+        Utf8Path::new("./"),
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into(), "subpackage".into()],
+    );
+    assert_eq!(
+        result,
+        Ok(hexpm::version::Range::new("== 0.1.0".into()).unwrap())
+    );
+
+    let result = provide_local_package(
+        "hello_world".into(),
+        Utf8Path::new("./test/hello_world"),
+        Utf8Path::new("./"),
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into(), "subpackage".into()],
+    );
+    assert_eq!(
+        result,
+        Ok(hexpm::version::Range::new("== 0.1.0".into()).unwrap())
+    );
+}
+
+#[test]
+fn provide_conflicting_package() {
+    let mut provided = HashMap::new();
+    let project_paths = crate::project_paths_at_current_directory_without_toml();
+    let result = provide_local_package(
+        "hello_world".into(),
+        Utf8Path::new("./test/hello_world"),
+        Utf8Path::new("./"),
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into(), "subpackage".into()],
+    );
+    assert_eq!(
+        result,
+        Ok(hexpm::version::Range::new("== 0.1.0".into()).unwrap())
+    );
+
+    let result = provide_package(
+        "hello_world".into(),
+        Utf8PathBuf::from("./test/other"),
+        SourceContext::Local {
+            path: Utf8Path::new("./test/other").to_path_buf(),
+        },
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into(), "subpackage".into()],
+    );
+    match result {
+        Err(Error::ProvidedDependencyConflict { package, .. }) => {
+            assert_eq!(package, "hello_world");
+        }
+        _ => {
+            panic!("Expected ProvidedDependencyConflict error")
+        }
+    }
+}
+
+#[test]
+fn provided_is_absolute() {
+    let mut provided = HashMap::new();
+    let project_paths = crate::project_paths_at_current_directory_without_toml();
+    let result = provide_local_package(
+        "hello_world".into(),
+        Utf8Path::new("./test/hello_world"),
+        Utf8Path::new("./"),
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into(), "subpackage".into()],
+    );
+    assert_eq!(
+        result,
+        Ok(hexpm::version::Range::new("== 0.1.0".into()).unwrap())
+    );
+    let package = provided.get("hello_world").unwrap().clone();
+    match package.source {
+        ProvidedPackageSource::Local { path } => {
+            assert!(path.is_absolute())
+        }
+        _ => {
+            panic!("Provide_local_package provided a package that is not local!")
+        }
+    }
+}
+
+#[test]
+fn provided_recursive() {
+    let mut provided = HashMap::new();
+    let project_paths = crate::project_paths_at_current_directory_without_toml();
+    let result = provide_local_package(
+        "hello_world".into(),
+        Utf8Path::new("./test/hello_world"),
+        Utf8Path::new("./"),
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into(), "hello_world".into(), "subpackage".into()],
+    );
+    assert_eq!(
+        result,
+        Err(Error::PackageCycle {
+            packages: vec!["subpackage".into(), "hello_world".into()],
+        })
+    )
+}
+
+#[test]
+fn provided_local_to_hex() {
+    let provided_package = ProvidedPackage {
+        version: Version::new(1, 0, 0),
+        source: ProvidedPackageSource::Local {
+            path: "canonical/path/to/package".into(),
+        },
+        requirements: [
+            (
+                "req_1".into(),
+                hexpm::version::Range::new("~> 1.0.0".into()).unwrap(),
+            ),
+            (
+                "req_2".into(),
+                hexpm::version::Range::new("== 1.0.0".into()).unwrap(),
+            ),
+        ]
+        .into(),
+    };
+
+    let hex_package = hexpm::Package {
+        name: "package".into(),
+        repository: "local".into(),
+        advisories: vec![],
+        releases: vec![hexpm::Release {
+            version: Version::new(1, 0, 0),
+            retirement_status: None,
+            outer_checksum: vec![],
+            security_advisories: vec![],
+            meta: (),
+            requirements: [
+                (
+                    "req_1".into(),
+                    hexpm::Dependency {
+                        requirement: hexpm::version::Range::new("~> 1.0.0".into()).unwrap(),
+                        optional: false,
+                        app: None,
+                        repository: None,
+                    },
+                ),
+                (
+                    "req_2".into(),
+                    hexpm::Dependency {
+                        requirement: hexpm::version::Range::new("== 1.0.0".into()).unwrap(),
+                        optional: false,
+                        app: None,
+                        repository: None,
+                    },
+                ),
+            ]
+            .into(),
+        }],
+    };
+
+    assert_eq!(
+        provided_package.to_hex_package(&"package".into()),
+        hex_package
+    );
+}
+
+#[test]
+fn provided_git_to_hex() {
+    let provided_package = ProvidedPackage {
+        version: Version::new(1, 0, 0),
+        source: ProvidedPackageSource::Git {
+            repo: "https://github.com/gleam-lang/gleam.git".into(),
+            commit: "bd9fe02f72250e6a136967917bcb1bdccaffa3c8".into(),
+            path: None,
+        },
+        requirements: [
+            (
+                "req_1".into(),
+                hexpm::version::Range::new("~> 1.0.0".into()).unwrap(),
+            ),
+            (
+                "req_2".into(),
+                hexpm::version::Range::new("== 1.0.0".into()).unwrap(),
+            ),
+        ]
+        .into(),
+    };
+
+    let hex_package = hexpm::Package {
+        name: "package".into(),
+        repository: "local".into(),
+        advisories: vec![],
+        releases: vec![hexpm::Release {
+            version: Version::new(1, 0, 0),
+            retirement_status: None,
+            outer_checksum: vec![],
+            meta: (),
+            security_advisories: vec![],
+            requirements: [
+                (
+                    "req_1".into(),
+                    hexpm::Dependency {
+                        requirement: hexpm::version::Range::new("~> 1.0.0".into()).unwrap(),
+                        optional: false,
+                        app: None,
+                        repository: None,
+                    },
+                ),
+                (
+                    "req_2".into(),
+                    hexpm::Dependency {
+                        requirement: hexpm::version::Range::new("== 1.0.0".into()).unwrap(),
+                        optional: false,
+                        app: None,
+                        repository: None,
+                    },
+                ),
+            ]
+            .into(),
+        }],
+    };
+
+    assert_eq!(
+        provided_package.to_hex_package(&"package".into()),
+        hex_package
+    );
+}
+
+#[test]
+fn provided_local_to_manifest() {
+    let provided_package = ProvidedPackage {
+        version: Version::new(1, 0, 0),
+        source: ProvidedPackageSource::Local {
+            path: "canonical/path/to/package".into(),
+        },
+        requirements: [
+            (
+                "req_1".into(),
+                hexpm::version::Range::new("~> 1.0.0".into()).unwrap(),
+            ),
+            (
+                "req_2".into(),
+                hexpm::version::Range::new("== 1.0.0".into()).unwrap(),
+            ),
+        ]
+        .into(),
+    };
+
+    let manifest_package = ManifestPackage {
+        name: "package".into(),
+        version: Version::new(1, 0, 0),
+        otp_app: None,
+        build_tools: vec!["gleam".into()],
+        requirements: vec!["req_1".into(), "req_2".into()],
+        source: ManifestPackageSource::Local {
+            path: "canonical/path/to/package".into(),
+        },
+    };
+
+    assert_eq!(
+        provided_package.to_manifest_package("package"),
+        manifest_package
+    );
+}
+
+#[test]
+fn provided_git_to_manifest() {
+    let provided_package = ProvidedPackage {
+        version: Version::new(1, 0, 0),
+        source: ProvidedPackageSource::Git {
+            repo: "https://github.com/gleam-lang/gleam.git".into(),
+            commit: "bd9fe02f72250e6a136967917bcb1bdccaffa3c8".into(),
+            path: None,
+        },
+        requirements: [
+            (
+                "req_1".into(),
+                hexpm::version::Range::new("~> 1.0.0".into()).unwrap(),
+            ),
+            (
+                "req_2".into(),
+                hexpm::version::Range::new("== 1.0.0".into()).unwrap(),
+            ),
+        ]
+        .into(),
+    };
+
+    let manifest_package = ManifestPackage {
+        name: "package".into(),
+        version: Version::new(1, 0, 0),
+        otp_app: None,
+        build_tools: vec!["gleam".into()],
+        requirements: vec!["req_1".into(), "req_2".into()],
+        source: ManifestPackageSource::Git {
+            repo: "https://github.com/gleam-lang/gleam.git".into(),
+            commit: "bd9fe02f72250e6a136967917bcb1bdccaffa3c8".into(),
+            path: None,
+        },
+    };
+
+    assert_eq!(
+        provided_package.to_manifest_package("package"),
+        manifest_package
+    );
+}
+
+#[test]
+fn provided_git_path_package_resolves_repo_relative_path() {
+    let repo_root = fs::canonicalise(Utf8Path::new("./test")).unwrap();
+    let result = resolve_git_path_package(
+        &"hello_world".into(),
+        Utf8Path::new("../hello_world"),
+        &"https://github.com/gleam-lang/wibble.git".into(),
+        &repo_root.join("hello_world"),
+        &repo_root,
+    );
+    assert_eq!(
+        result,
+        Ok((repo_root.join("hello_world"), "hello_world".into()))
+    );
+}
+
+#[test]
+fn provided_git_path_package_child_uses_canonical_parent_location() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let repo = base.join("repo");
+    fs::mkdir(&repo.join("packages").join("package_a")).unwrap();
+    fs::mkdir(&repo.join("packages").join("package_b")).unwrap();
+    fs::write(
+        &repo.join("packages").join("package_a").join("gleam.toml"),
+        r#"
+name = "package_a"
+version = "0.1.0"
+
+[dependencies]
+package_b = { path = "../package_b" }
+"#,
+    )
+    .unwrap();
+    fs::write(
+        &repo.join("packages").join("package_b").join("gleam.toml"),
+        r#"
+name = "package_b"
+version = "0.2.0"
+"#,
+    )
+    .unwrap();
+
+    let mut provided = HashMap::new();
+    let project_paths = crate::project_paths_at_current_directory_without_toml();
+    let repo_root = fs::canonicalise(&repo).unwrap();
+    let result = provide_package(
+        "package_a".into(),
+        fs::canonicalise(&repo.join("packages").join("package_a")).unwrap(),
+        SourceContext::Git {
+            repo: "https://github.com/gleam-lang/wibble.git".into(),
+            commit: "95cd2c2f45907e5571e9b5fcdfb27ff35cdcdd29".into(),
+            path: Some("packages/package_a".into()),
+            repo_root: &repo_root,
+        },
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into()],
+    );
+    assert_eq!(
+        result,
+        Ok(hexpm::version::Range::new("== 0.1.0".into()).unwrap())
+    );
+    let package = provided.get("package_b").unwrap();
+    assert_eq!(
+        package.source,
+        ProvidedPackageSource::Git {
+            repo: "https://github.com/gleam-lang/wibble.git".into(),
+            commit: "95cd2c2f45907e5571e9b5fcdfb27ff35cdcdd29".into(),
+            path: Some("packages/package_b".into()),
+        }
+    );
+}
+
+#[test]
+fn provided_git_path_package_to_repo_root_has_no_path() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let repo = base.join("repo");
+    fs::mkdir(&repo.join("backends").join("package_a")).unwrap();
+    fs::write(
+        &repo.join("gleam.toml"),
+        r#"
+name = "package_b"
+version = "0.2.0"
+"#,
+    )
+    .unwrap();
+    fs::write(
+        &repo.join("backends").join("package_a").join("gleam.toml"),
+        r#"
+name = "package_a"
+version = "0.1.0"
+
+[dependencies]
+package_b = { path = "../.." }
+"#,
+    )
+    .unwrap();
+
+    let mut provided = HashMap::new();
+    let project_paths = crate::project_paths_at_current_directory_without_toml();
+    let repo_root = fs::canonicalise(&repo).unwrap();
+    let result = provide_package(
+        "package_a".into(),
+        fs::canonicalise(&repo.join("backends").join("package_a")).unwrap(),
+        SourceContext::Git {
+            repo: "https://github.com/gleam-lang/wibble.git".into(),
+            commit: "95cd2c2f45907e5571e9b5fcdfb27ff35cdcdd29".into(),
+            path: Some("backends/package_a".into()),
+            repo_root: &repo_root,
+        },
+        &project_paths,
+        &mut provided,
+        &mut vec!["root".into()],
+    );
+    assert_eq!(
+        result,
+        Ok(hexpm::version::Range::new("== 0.1.0".into()).unwrap())
+    );
+    // A path dependency resolving to the repository root must match how the
+    // same package is provided when declared directly as a git dependency
+    // with no path (`None`), otherwise it is reported as a conflict.
+    let package = provided.get("package_b").unwrap();
+    assert_eq!(
+        package.source,
+        ProvidedPackageSource::Git {
+            repo: "https://github.com/gleam-lang/wibble.git".into(),
+            commit: "95cd2c2f45907e5571e9b5fcdfb27ff35cdcdd29".into(),
+            path: None,
+        }
+    );
+}
+
+#[test]
+fn provided_git_path_package_rejects_missing_directory() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let repo = base.join("repo");
+    fs::mkdir(&repo.join("parent")).unwrap();
+
+    let repo_root = fs::canonicalise(&repo).unwrap();
+    let result = resolve_git_path_package(
+        &"missing".into(),
+        Utf8Path::new("../missing"),
+        &"https://github.com/gleam-lang/wibble.git".into(),
+        &repo_root.join("parent"),
+        &repo_root,
+    );
+    assert_eq!(
+        result,
+        Err(Error::GitDependencyPathNotFound {
+            package: "missing".into(),
+            path: "../missing".into(),
+            repo: "https://github.com/gleam-lang/wibble.git".into(),
+        })
+    );
+}
+
+#[test]
+fn resolve_git_subdir_accepts_directory_inside_repo() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let clone = base.join("clone");
+    fs::mkdir(&clone.join("sub")).unwrap();
+
+    let expected = fs::canonicalise(&clone).unwrap().join("sub");
+    assert_eq!(
+        resolve_git_subdir(&clone, Utf8Path::new("sub")),
+        Some(expected)
+    );
+}
+
+#[test]
+fn resolve_git_subdir_rejects_missing_directory() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let clone = base.join("clone");
+    fs::mkdir(&clone).unwrap();
+
+    assert_eq!(resolve_git_subdir(&clone, Utf8Path::new("missing")), None);
+}
+
+#[cfg(unix)]
+#[test]
+fn resolve_git_subdir_rejects_symlink_escaping_repo() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let clone = base.join("clone");
+    let outside = base.join("outside");
+    fs::mkdir(&clone).unwrap();
+    fs::mkdir(&outside).unwrap();
+    std::os::unix::fs::symlink(outside.as_std_path(), clone.join("escape").as_std_path()).unwrap();
+
+    assert_eq!(resolve_git_subdir(&clone, Utf8Path::new("escape")), None);
+}
+
+#[test]
+fn provided_git_path_package_rejects_escaping_path() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let repo = base.join("repo");
+    let outside = base.join("outside");
+    fs::mkdir(&repo.join("parent")).unwrap();
+    fs::mkdir(&outside).unwrap();
+
+    let repo_root = fs::canonicalise(&repo).unwrap();
+    let result = resolve_git_path_package(
+        &"package_a".into(),
+        Utf8Path::new("../../outside"),
+        &"https://github.com/gleam-lang/wibble.git".into(),
+        &repo_root.join("parent"),
+        &repo_root,
+    );
+    assert_eq!(
+        result,
+        Err(Error::GitDependencyPathNotFound {
+            package: "package_a".into(),
+            path: "../../outside".into(),
+            repo: "https://github.com/gleam-lang/wibble.git".into(),
+        })
+    );
+}
+
+#[cfg(unix)]
+#[test]
+fn provided_git_path_package_rejects_symlink_escaping_repo() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let repo = base.join("repo");
+    let outside = base.join("outside");
+    fs::mkdir(&repo.join("parent")).unwrap();
+    fs::mkdir(&outside).unwrap();
+    std::os::unix::fs::symlink(outside.as_std_path(), repo.join("escape").as_std_path()).unwrap();
+
+    let repo_root = fs::canonicalise(&repo).unwrap();
+    let result = resolve_git_path_package(
+        &"escape".into(),
+        Utf8Path::new("../escape"),
+        &"https://github.com/gleam-lang/wibble.git".into(),
+        &repo_root.join("parent"),
+        &repo_root,
+    );
+    assert_eq!(
+        result,
+        Err(Error::GitDependencyPathNotFound {
+            package: "escape".into(),
+            path: "../escape".into(),
+            repo: "https://github.com/gleam-lang/wibble.git".into(),
+        })
+    );
+}
+
+#[test]
+fn git_repo_dir_name_uses_repo_basename_and_hash_of_full_url() {
+    assert_eq!(
+        git_repo_dir_name("https://github.com/gleam-lang/gleam"),
+        "gleam-4d40009bf5eb0110"
+    );
+    assert_eq!(
+        git_repo_dir_name("https://github.com/gleam-lang/gleam.git"),
+        "gleam-ea2aeaa3761e8bc6"
+    );
+    assert_eq!(
+        git_repo_dir_name("git@github.com:gleam-lang/gleam.git"),
+        "gleam-102c9e1e5cf87965"
+    );
+    assert_eq!(
+        git_repo_dir_name("C:\\src\\gleam.git"),
+        "gleam-ab03c1f252f639da"
+    );
+}
+
+#[test]
+fn git_staging_path_is_clone_path_with_staging_suffix() {
+    let paths = ProjectPaths::new("/app".into());
+    let repo = "https://github.com/gleam-lang/gleam.git";
+    assert_eq!(
+        paths.build_git_repo(&git_repo_dir_name(repo)),
+        Utf8PathBuf::from("/app/build/git/gleam-ea2aeaa3761e8bc6")
+    );
+    assert_eq!(
+        git_staging_path(&paths, repo, "wibble"),
+        Utf8PathBuf::from("/app/build/git/gleam-ea2aeaa3761e8bc6-wibble-staging")
+    );
+}
+
+#[test]
+fn git_checkout_cleanup_deletes_staging_directory() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let staging_path = base.join("clone-staging");
+    fs::mkdir(&staging_path).unwrap();
+    fs::write(&staging_path.join("gleam.toml"), "name = \"wibble\"").unwrap();
+
+    let checkout = GitCheckout::Staged {
+        commit: "95cd2c2f45907e5571e9b5fcdfb27ff35cdcdd29".into(),
+        staging_path: staging_path.clone(),
+    };
+    assert_eq!(checkout.cleanup(), Ok(()));
+
+    assert!(!staging_path.exists());
+}
+
+#[test]
+fn git_checkout_cleanup_without_staging_is_noop() {
+    let checkout = GitCheckout::InPlace {
+        commit: "95cd2c2f45907e5571e9b5fcdfb27ff35cdcdd29".into(),
+    };
+    assert_eq!(checkout.cleanup(), Ok(()));
+}
+
+#[test]
+fn remove_unused_git_clones_sweeps_unexpected_directories() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let paths = ProjectPaths::new(root);
+    let repo = "https://github.com/gleam-lang/gleam.git";
+
+    let expected_clone = paths.build_git_repo(&git_repo_dir_name(repo));
+    let stale_clone = paths.build_git_repo("other-0011223344556677");
+    let stale_staging = paths.build_git_repo(&format!("{}-staging", git_repo_dir_name(repo)));
+    fs::mkdir(&expected_clone).unwrap();
+    fs::mkdir(&stale_clone).unwrap();
+    fs::mkdir(&stale_staging).unwrap();
+
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![ManifestPackage {
+            name: "wibble".into(),
+            version: Version::new(1, 0, 0),
+            build_tools: ["gleam".into()].into(),
+            otp_app: None,
+            requirements: vec![],
+            source: ManifestPackageSource::Git {
+                repo: repo.into(),
+                commit: "95cd2c2f45907e5571e9b5fcdfb27ff35cdcdd29".into(),
+                path: Some("wibble".into()),
+            },
+        }],
+    };
+
+    assert_eq!(remove_unused_git_clones(&paths, &manifest), Ok(()));
+
+    assert!(expected_clone.is_dir());
+    assert!(!stale_clone.exists());
+    assert!(!stale_staging.exists());
+}
+
+#[test]
+fn remove_unused_git_clones_missing_directory_is_noop() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let paths = ProjectPaths::new(root);
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![],
+    };
+
+    assert_eq!(remove_unused_git_clones(&paths, &manifest), Ok(()));
+}
+
+#[test]
+fn verified_requirements_equality_with_canonicalized_paths() {
+    let temp_dir = tempfile::tempdir().expect("Failed to create a temp directory");
+    let temp_path = Utf8PathBuf::from_path_buf(temp_dir.path().to_path_buf())
+        .expect("Path should be valid UTF-8");
+
+    let sub_dir = temp_path.join("subdir");
+    std::fs::create_dir(&sub_dir).expect("Failed to create a subdir");
+    let file_path = sub_dir.join("file.txt");
+    fs::write(&file_path, "content").expect("Failed to write to file");
+
+    let canonical_path = std::fs::canonicalize(&file_path).expect("Failed to canonicalize path");
+    let relative_path = temp_path.join("./subdir/../subdir/./file.txt");
+
+    let requirements1 = HashMap::from([(
+        EcoString::from("dep1"),
+        Requirement::Path {
+            path: Utf8PathBuf::from(canonical_path.to_str().expect("Path should be valid UTF-8")),
+        },
+    )]);
+
+    let requirements2 = HashMap::from([(
+        EcoString::from("dep1"),
+        Requirement::Path {
+            path: Utf8PathBuf::from(relative_path.to_string()),
+        },
+    )]);
+
+    assert!(
+        is_same_requirements(&requirements1, &requirements2, &temp_path)
+            .expect("Requirements should be the same")
+    );
+}
+
+#[test]
+fn test_path_dependency_config_updates() {
+    let temp_dir = tempfile::tempdir().expect("Failed to create a temp directory");
+    let root_path = Utf8PathBuf::from_path_buf(temp_dir.path().to_path_buf())
+        .expect("Path should be valid UTF-8");
+    let paths = ProjectPaths::new(root_path.clone());
+    let dep_path = root_path.join("dep");
+    std::fs::create_dir_all(&dep_path).expect("Failed to create dependency directory");
+    let build_packages_dir = root_path.join("build").join("packages");
+    std::fs::create_dir_all(&build_packages_dir)
+        .expect("Failed to create build/packages directory");
+
+    let config = "name = \"dep\"
+version = \"1.0.0\"
+
+[dependencies]
+";
+    let dep_config_path = dep_path.join("gleam.toml");
+    fs::write(&dep_config_path, config).expect("Failed to write to manifest file");
+
+    let requirements = HashMap::from([(
+        EcoString::from("dep"),
+        Requirement::Path {
+            path: Utf8PathBuf::from("dep"),
+        },
+    )]);
+
+    // Initial check testing
+
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(!unchanged, "fresh always needs resolution");
+
+    let fingerprint_path = build_packages_dir.join("dep.config_fingerprint");
+    assert!(fingerprint_path.exists(), "fingerprint must exist");
+
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(unchanged, "is unchanged");
+
+    // Set fingerprint mtime to some time in the past. This causes the mtime check to fail,
+    // so it moves on to checking the fingerprint itself.
+    let past = std::time::SystemTime::now() - std::time::Duration::from_secs(10);
+    let past = filetime::FileTime::from_system_time(past);
+    filetime::set_file_mtime(&fingerprint_path, past).unwrap();
+
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(unchanged, "mtime is outdated, but content has not changed");
+
+    // Writing new content means the mtime and the fingerprint checks will fail.
+    let config = "name = \"dep\"
+version = \"1.0.0\"
+
+[dependencies]
+blah = \">= 1.0.0\"
+";
+    fs::write(&dep_config_path, config).unwrap();
+
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(!unchanged, "content has changed");
+
+    // Run again, to ensure that the fingerprint has been updated.
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(unchanged, "no changes since last run");
+
+    // Test that mtime is checked first, and that content is not checked when the mtime
+    // is still valid. We do this by having having content that would fail the fingerprint
+    // check, but having a fresh mtime so it never gets checked.
+    // This can never happen in reality as you can't update the content without updating
+    // the mtime, but we create the situation in this test to verify the short-circuiting
+    // behaviour.
+    let config = "name = \"dep\"
+version = \"1.0.0\"
+
+[dependencies]
+blah = \">= 1.0.0\"
+wub = \">= 1.0.0\"
+";
+    fs::write(&dep_config_path, config).unwrap();
+    let future = std::time::SystemTime::now() + std::time::Duration::from_secs(10);
+    let future = filetime::FileTime::from_system_time(future);
+    filetime::set_file_mtime(&fingerprint_path, future).unwrap();
+
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(unchanged, "fingerprint is outdated, but mtime is not");
+}
+
+#[test]
+fn test_path_dependency_config_updates_with_multiple_dependencies() {
+    let temp_dir = tempfile::tempdir().expect("Failed to create a temp directory");
+    let root_path = Utf8PathBuf::from_path_buf(temp_dir.path().to_path_buf())
+        .expect("Path should be valid UTF-8");
+    let paths = ProjectPaths::new(root_path.clone());
+    let build_packages_dir = root_path.join("build").join("packages");
+    std::fs::create_dir_all(&build_packages_dir)
+        .expect("Failed to create build/packages directory");
+
+    let config = "name = \"dep\"
+version = \"1.0.0\"
+
+[dependencies]
+";
+
+    let mut requirements = HashMap::new();
+    for name in ["dep1", "dep2", "dep3"] {
+        let dep_path = root_path.join(name);
+        std::fs::create_dir_all(&dep_path).expect("Failed to create dependency directory");
+        fs::write(&dep_path.join("gleam.toml"), config).expect("Failed to write to manifest file");
+        let _ = requirements.insert(
+            EcoString::from(name),
+            Requirement::Path {
+                path: Utf8PathBuf::from(name),
+            },
+        );
+    }
+
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(!unchanged);
+
+    for name in ["dep1", "dep2", "dep3"] {
+        let fingerprint_path = build_packages_dir.join(format!("{name}.config_fingerprint"));
+        assert!(fingerprint_path.exists());
+    }
+
+    let unchanged = path_dependency_configs_unchanged(&requirements, &paths).unwrap();
+    assert!(unchanged);
+}
+
+fn create_testable_unlock_manifest(
+    packages: Vec<(EcoString, Version, Vec<EcoString>)>,
+    requirements: Vec<(EcoString, EcoString)>,
+) -> Manifest {
+    let manifest_packages = packages
+        .into_iter()
+        .map(|(name, version, requirements)| ManifestPackage {
+            name,
+            version,
+            build_tools: vec!["gleam".into()],
+            otp_app: None,
+            requirements,
+            source: ManifestPackageSource::Hex {
+                outer_checksum: Base16Checksum(vec![]),
+            },
+        })
+        .collect();
+
+    let root_requirements = requirements
+        .into_iter()
+        .map(|(name, range)| {
+            (
+                name,
+                Requirement::Hex {
+                    version: hexpm::version::Range::new(range.into()).unwrap(),
+                },
+            )
+        })
+        .collect();
+
+    Manifest {
+        packages: manifest_packages,
+        requirements: root_requirements,
+    }
+}
+
+#[test]
+fn test_unlock_package() {
+    let mut locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+        ("package_c".into(), Version::new(3, 0, 0)),
+        ("package_d".into(), Version::new(4, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_b".into()],
+        ),
+        (
+            "package_b".into(),
+            Version::new(2, 0, 0),
+            vec!["package_c".into()],
+        ),
+        ("package_c".into(), Version::new(3, 0, 0), vec![]),
+        ("package_d".into(), Version::new(4, 0, 0), vec![]),
+    ];
+
+    let manifest = create_testable_unlock_manifest(packages, Vec::new());
+
+    let packages_to_unlock = vec!["package_a".into()];
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert!(!locked.contains_key("package_a"));
+    assert!(!locked.contains_key("package_b"));
+    assert!(!locked.contains_key("package_c"));
+    assert!(locked.contains_key("package_d"));
+}
+
+#[test]
+fn test_unlock_package_without_manifest() {
+    let mut locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+        ("package_c".into(), Version::new(3, 0, 0)),
+    ]);
+
+    let packages_to_unlock = vec!["package_a".into()];
+    unlock_packages(&mut locked, &packages_to_unlock, None).unwrap();
+
+    assert!(!locked.contains_key("package_a"));
+    assert!(locked.contains_key("package_b"));
+    assert!(locked.contains_key("package_c"));
+}
+
+#[test]
+fn test_unlock_nonexistent_package() {
+    let initial_locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_b".into()],
+        ),
+        ("package_b".into(), Version::new(2, 0, 0), vec![]),
+    ];
+
+    let manifest = create_testable_unlock_manifest(packages, Vec::new());
+
+    let packages_to_unlock = vec!["nonexistent_package".into()];
+    let mut locked = initial_locked.clone();
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert_eq!(
+        initial_locked, locked,
+        "Locked packages should remain unchanged"
+    );
+}
+
+#[test]
+fn test_unlock_multiple_packages() {
+    let mut locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+        ("package_c".into(), Version::new(3, 0, 0)),
+        ("package_d".into(), Version::new(4, 0, 0)),
+        ("package_e".into(), Version::new(5, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_b".into()],
+        ),
+        (
+            "package_b".into(),
+            Version::new(2, 0, 0),
+            vec!["package_c".into()],
+        ),
+        ("package_c".into(), Version::new(3, 0, 0), vec![]),
+        (
+            "package_d".into(),
+            Version::new(4, 0, 0),
+            vec!["package_e".into()],
+        ),
+        ("package_e".into(), Version::new(5, 0, 0), vec![]),
+    ];
+
+    let manifest = create_testable_unlock_manifest(packages, Vec::new());
+
+    let packages_to_unlock = vec!["package_a".into(), "package_d".into()];
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert!(!locked.contains_key("package_a"));
+    assert!(!locked.contains_key("package_b"));
+    assert!(!locked.contains_key("package_c"));
+    assert!(!locked.contains_key("package_d"));
+    assert!(!locked.contains_key("package_e"));
+}
+
+#[test]
+fn test_unlock_packages_empty_input() {
+    let initial_locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_b".into()],
+        ),
+        ("package_b".into(), Version::new(2, 0, 0), vec![]),
+    ];
+
+    let manifest = create_testable_unlock_manifest(packages, Vec::new());
+
+    let packages_to_unlock: Vec<EcoString> = vec![];
+    let mut locked = initial_locked.clone();
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert_eq!(
+        initial_locked, locked,
+        "Locked packages should remain unchanged when no packages are specified to unlock"
+    );
+}
+
+#[test]
+fn test_unlock_package_preserve_shared_deps() {
+    let mut locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+        ("package_c".into(), Version::new(3, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_c".into()],
+        ),
+        (
+            "package_b".into(),
+            Version::new(2, 0, 0),
+            vec!["package_c".into()],
+        ),
+        ("package_c".into(), Version::new(3, 0, 0), vec![]),
+    ];
+
+    let manifest = create_testable_unlock_manifest(packages, Vec::new());
+
+    let packages_to_unlock: Vec<EcoString> = vec!["package_a".into()];
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert!(!locked.contains_key("package_a"));
+    assert!(locked.contains_key("package_b"));
+    assert!(locked.contains_key("package_c"));
+}
+
+#[test]
+fn test_unlock_package_with_root_dep() {
+    let mut locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+        ("package_c".into(), Version::new(3, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_b".into()],
+        ),
+        (
+            "package_b".into(),
+            Version::new(2, 0, 0),
+            vec!["package_c".into()],
+        ),
+        ("package_c".into(), Version::new(3, 0, 0), vec![]),
+    ];
+
+    let requirements = vec![("package_b".into(), ">= 2.0.0".into())];
+
+    let manifest = create_testable_unlock_manifest(packages, requirements);
+
+    let packages_to_unlock: Vec<EcoString> = vec!["package_a".into()];
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert!(!locked.contains_key("package_a"));
+    assert!(locked.contains_key("package_b"));
+    assert!(locked.contains_key("package_c"));
+}
+
+#[test]
+fn test_unlock_root_dep_package() {
+    let mut locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+        ("package_c".into(), Version::new(3, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_b".into()],
+        ),
+        ("package_b".into(), Version::new(2, 0, 0), vec![]),
+        ("package_c".into(), Version::new(3, 0, 0), vec![]),
+    ];
+
+    let requirements = vec![("package_a".into(), ">= 1.0.0".into())];
+
+    let manifest = create_testable_unlock_manifest(packages, requirements);
+
+    let packages_to_unlock: Vec<EcoString> = vec!["package_a".into()];
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert!(!locked.contains_key("package_a"));
+    assert!(!locked.contains_key("package_b"));
+    assert!(locked.contains_key("package_c"));
+}
+
+#[test]
+fn test_unlock_package_with_and_without_root_dep() {
+    let mut locked = HashMap::from([
+        ("package_a".into(), Version::new(1, 0, 0)),
+        ("package_b".into(), Version::new(2, 0, 0)),
+        ("package_c".into(), Version::new(3, 0, 0)),
+    ]);
+
+    let packages = vec![
+        (
+            "package_a".into(),
+            Version::new(1, 0, 0),
+            vec!["package_b".into(), "package_c".into()],
+        ),
+        ("package_b".into(), Version::new(2, 0, 0), vec![]),
+        ("package_c".into(), Version::new(3, 0, 0), vec![]),
+    ];
+
+    let requirements = vec![("package_b".into(), ">= 2.0.0".into())];
+
+    let manifest = create_testable_unlock_manifest(packages, requirements);
+
+    let packages_to_unlock: Vec<EcoString> = vec!["package_a".into()];
+    unlock_packages(&mut locked, &packages_to_unlock, Some(&manifest)).unwrap();
+
+    assert!(!locked.contains_key("package_a"));
+    assert!(locked.contains_key("package_b"));
+    assert!(!locked.contains_key("package_c"));
+}
+
+fn manifest_package(name: &str, version: &str, requirements: Vec<EcoString>) -> ManifestPackage {
+    ManifestPackage {
+        name: name.into(),
+        version: Version::parse(version).unwrap(),
+        build_tools: ["gleam".into()].into(),
+        otp_app: None,
+        requirements,
+        source: ManifestPackageSource::Hex {
+            outer_checksum: Base16Checksum(vec![1, 2, 3, 4]),
+        },
+    }
+}
+
+fn package_config(
+    dependencies: HashMap<EcoString, Requirement>,
+    dev_dependencies: HashMap<EcoString, Requirement>,
+) -> PackageConfig {
+    PackageConfig {
+        name: "the_package".into(),
+        version: Version::parse("1.0.0").unwrap(),
+        gleam_version: None,
+        licences: vec![],
+        description: "".into(),
+        documentation: Docs { pages: vec![] },
+        dependencies,
+        dev_dependencies,
+        repository: None,
+        links: vec![],
+        erlang: ErlangConfig {
+            application_start_module: None,
+            application_start_argument: None,
+            extra_applications: vec![],
+        },
+        javascript: JavaScriptConfig {
+            typescript_declarations: false,
+            source_maps: false,
+            runtime: Runtime::NodeJs,
+            deno: DenoConfig {
+                allow_env: DenoFlag::AllowAll,
+                allow_sys: true,
+                allow_hrtime: true,
+                allow_net: DenoFlag::AllowAll,
+                allow_ffi: true,
+                allow_read: DenoFlag::AllowAll,
+                allow_run: DenoFlag::AllowAll,
+                allow_write: DenoFlag::AllowAll,
+                allow_all: true,
+                unstable: true,
+                location: None,
+            },
+        },
+        target: Target::Erlang,
+        internal_modules: None,
+    }
+}
+
+#[test]
+fn test_remove_do_nothing() {
+    let config = package_config(
+        HashMap::from([("a".into(), Requirement::hex("~>1.0").unwrap())]),
+        HashMap::from([("b".into(), Requirement::hex("~>2.0").unwrap())]),
+    );
+
+    let mut manifest = Manifest {
+        requirements: HashMap::from([
+            ("a".into(), Requirement::hex("~>1.0").unwrap()),
+            ("b".into(), Requirement::hex("~>2.0").unwrap()),
+        ]),
+        packages: vec![
+            manifest_package("a", "1.0.0", vec![]),
+            manifest_package("b", "2.0.8", vec![]),
+        ],
+    };
+
+    let manifest_copy = manifest.clone();
+
+    remove_extra_requirements(&config, &mut manifest).unwrap();
+
+    assert_eq!(manifest.requirements, manifest_copy.requirements);
+    assert_eq!(manifest.packages, manifest_copy.packages);
+}
+
+#[test]
+fn test_remove_simple() {
+    let config = package_config(HashMap::new(), HashMap::new());
+
+    let mut manifest = Manifest {
+        requirements: HashMap::from([("a".into(), Requirement::hex("~>1.0").unwrap())]),
+        packages: vec![manifest_package("a", "1.0.0", vec![])],
+    };
+
+    remove_extra_requirements(&config, &mut manifest).unwrap();
+
+    assert_eq!(manifest.requirements, config.dependencies);
+    assert_eq!(manifest.packages, vec![]);
+}
+
+#[test]
+fn test_remove_package_with_transitive_dependencies() {
+    let config = package_config(HashMap::new(), HashMap::new());
+
+    let mut manifest = Manifest {
+        requirements: HashMap::from([("a".into(), Requirement::hex("~>1.0").unwrap())]),
+        packages: vec![
+            manifest_package("a", "1.0.0", vec!["b".into()]),
+            manifest_package("b", "1.2.3", vec!["c".into()]),
+            manifest_package("c", "2.0.0", vec![]),
+        ],
+    };
+
+    remove_extra_requirements(&config, &mut manifest).unwrap();
+
+    assert_eq!(manifest.requirements, config.dependencies);
+    assert_eq!(manifest.packages, vec![]);
+}
+
+#[test]
+fn test_remove_package_with_shared_transitive_dependencies() {
+    let config = package_config(
+        HashMap::from([("a".into(), Requirement::hex("~>1.0").unwrap())]),
+        HashMap::new(),
+    );
+
+    let mut manifest = Manifest {
+        requirements: HashMap::from([
+            ("a".into(), Requirement::hex("~>1.0").unwrap()),
+            ("b".into(), Requirement::hex("~>1.0").unwrap()),
+        ]),
+        packages: vec![
+            manifest_package("a", "1.0.0", vec!["c".into()]),
+            manifest_package("b", "1.2.3", vec!["c".into(), "d".into()]),
+            manifest_package("c", "2.0.0", vec![]),
+            manifest_package("d", "0.1.0", vec![]),
+        ],
+    };
+
+    remove_extra_requirements(&config, &mut manifest).unwrap();
+
+    assert_eq!(manifest.requirements, config.dependencies);
+    assert_eq!(
+        manifest.packages,
+        vec![
+            manifest_package("a", "1.0.0", vec!["c".into()]),
+            manifest_package("c", "2.0.0", vec![]),
+        ]
+    );
+}
+
+#[test]
+fn test_remove_package_that_is_also_a_transitive_dependency() {
+    let config = package_config(
+        HashMap::from([("a".into(), Requirement::hex("~>1.0").unwrap())]),
+        HashMap::new(),
+    );
+
+    let mut manifest = Manifest {
+        requirements: HashMap::from([
+            ("a".into(), Requirement::hex("~>1.0").unwrap()),
+            ("b".into(), Requirement::hex("~>1.0").unwrap()),
+        ]),
+        packages: vec![
+            manifest_package("a", "1.0.0", vec!["b".into(), "c".into()]),
+            manifest_package("b", "1.2.3", vec!["c".into(), "d".into()]),
+            manifest_package("c", "2.0.0", vec![]),
+            manifest_package("d", "0.1.0", vec![]),
+        ],
+    };
+
+    let manifest_copy = manifest.clone();
+
+    remove_extra_requirements(&config, &mut manifest).unwrap();
+
+    assert_eq!(manifest.requirements, config.dependencies);
+    assert_eq!(manifest.packages, manifest_copy.packages);
+}
+
+#[test]
+fn test_pretty_print_major_versions_available() {
+    let versions = vec![
+        (
+            "very_long_package_name".to_string(),
+            (Version::new(18, 382, 43), Version::new(19, 0, 38)),
+        ),
+        (
+            "gleam_stdlib".to_string(),
+            (Version::new(0, 45, 0), Version::new(1, 0, 0)),
+        ),
+        (
+            "short_name".to_string(),
+            (Version::new(1, 0, 0), Version::new(2, 0, 0)),
+        ),
+    ]
+    .into_iter()
+    .collect();
+
+    let output = pretty_print_major_versions_available(versions);
+
+    insta::assert_snapshot!(output);
+}
+
+#[test]
+fn test_pretty_print_version_updates() {
+    let versions = vec![
+        (
+            "gleam_stdlib".to_string(),
+            (Version::new(0, 45, 0), Version::new(0, 46, 0)),
+        ),
+        (
+            "wisp".to_string(),
+            (Version::new(2, 1, 0), Version::new(2, 1, 1)),
+        ),
+        (
+            "very_long_package_name".to_string(),
+            (Version::new(12, 12, 12), Version::new(120, 12, 12)),
+        ),
+    ]
+    .into_iter()
+    .collect();
+
+    let output = pretty_print_version_updates(versions);
+
+    insta::assert_snapshot!(output);
+}
+
+#[test]
+fn test_pretty_print_outdated_versions() {
+    let versions = vec![
+        (
+            "gleam_stdlib".to_string(),
+            (Version::new(0, 45, 0), Version::new(0, 46, 0)),
+        ),
+        (
+            "wisp".to_string(),
+            (Version::new(2, 1, 0), Version::new(2, 1, 1)),
+        ),
+        (
+            "very_long_package_name".to_string(),
+            (Version::new(12, 12, 12), Version::new(120, 12, 12)),
+        ),
+    ]
+    .into_iter()
+    .collect();
+
+    let output = pretty_print_outdated_versions(12, versions);
+
+    insta::assert_snapshot!(output);
+}
+
+#[test]
+fn test_pretty_print_outdated_versions_no_updates() {
+    let versions: HashMap<String, (Version, Version)> = HashMap::new();
+
+    let output = pretty_print_outdated_versions(12, versions);
+
+    insta::assert_snapshot!(output);
+}
+
+#[test]
+fn test_ensure_packages_exist_locally_all_present() {
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            manifest_package("package_a", "1.0.0", vec![]),
+            manifest_package("package_b", "2.0.0", vec![]),
+            manifest_package("package_c", "3.0.0", vec![]),
+        ],
+    };
+
+    let packages_to_check = vec!["package_a".into(), "package_b".into()];
+    let result = dependency_manager::ensure_packages_exist_locally(&manifest, &packages_to_check);
+
+    assert!(result.is_ok(), "All packages exist, should return Ok");
+}
+
+#[test]
+fn test_ensure_packages_exist_locally_some_missing() {
+    let manifest = Manifest {
+        requirements: HashMap::new(),
+        packages: vec![
+            manifest_package("package_a", "1.0.0", vec![]),
+            manifest_package("package_b", "2.0.0", vec![]),
+        ],
+    };
+
+    let packages_to_check = vec![
+        "package_a".into(),
+        "package_b".into(),
+        "missing_package".into(),
+        "another_missing".into(),
+    ];
+    let result = dependency_manager::ensure_packages_exist_locally(&manifest, &packages_to_check);
+
+    match result {
+        Err(Error::PackagesToUpdateNotExist { packages }) => {
+            assert_eq!(packages.len(), 2);
+            assert!(packages.contains(&"missing_package".into()));
+            assert!(packages.contains(&"another_missing".into()));
+        }
+        _ => panic!("Expected PackagesToUpdateNotExist error"),
+    }
+}
+
+struct FakeFetcher {
+    packages: HashMap<String, Rc<hexpm::Package>>,
+}
+
+impl PackageFetcher for FakeFetcher {
+    fn get_dependencies(&self, package: &str) -> Result<Rc<hexpm::Package>, PackageFetchError> {
+        self.packages
+            .get(package)
+            .map(Rc::clone)
+            .ok_or_else(|| PackageFetchError::NotFoundError(package.to_string()))
+    }
+}
+
+fn signed_package(
+    name: &str,
+    version: &str,
+    outer_checksum: Vec<u8>,
+    requirements: &[&str],
+) -> Rc<hexpm::Package> {
+    let requirements = requirements
+        .iter()
+        .map(|name| {
+            let dependency = hexpm::Dependency {
+                requirement: hexpm::version::Range::new("~> 1.0".into()).unwrap(),
+                optional: false,
+                app: None,
+                repository: None,
+            };
+            ((*name).to_string(), dependency)
+        })
+        .collect();
+    Rc::new(hexpm::Package {
+        name: name.into(),
+        repository: "hexpm".into(),
+        releases: vec![hexpm::Release {
+            version: Version::parse(version).unwrap(),
+            requirements,
+            retirement_status: None,
+            outer_checksum,
+            meta: (),
+            security_advisories: vec![],
+        }],
+        advisories: vec![],
+    })
+}
+
+#[test]
+fn verified_releases_reads_signed_metadata() {
+    let fetcher = FakeFetcher {
+        packages: [(
+            "wibble".to_string(),
+            signed_package("wibble", "1.0.0", vec![0x01, 0x02, 0x03], &["gleam_stdlib"]),
+        )]
+        .into_iter()
+        .collect(),
+    };
+    let resolved: HashMap<String, Version> =
+        [("wibble".to_string(), Version::parse("1.0.0").unwrap())]
+            .into_iter()
+            .collect();
+
+    let releases = verified_releases(&fetcher, &resolved, &HashMap::new()).unwrap();
+
+    assert_eq!(
+        releases,
+        [(
+            "wibble".to_string(),
+            VerifiedRelease {
+                outer_checksum: vec![0x01, 0x02, 0x03],
+                requirements: vec!["gleam_stdlib".into()],
+            }
+        )]
+        .into_iter()
+        .collect()
+    );
+}
+
+#[test]
+fn verified_releases_errors_when_version_absent() {
+    let empty = Rc::new(hexpm::Package {
+        name: "wibble".into(),
+        repository: "hexpm".into(),
+        releases: vec![],
+        advisories: vec![],
+    });
+    let fetcher = FakeFetcher {
+        packages: [("wibble".to_string(), empty)].into_iter().collect(),
+    };
+    let resolved: HashMap<String, Version> =
+        [("wibble".to_string(), Version::parse("1.0.0").unwrap())]
+            .into_iter()
+            .collect();
+
+    assert_matches!(
+        verified_releases(&fetcher, &resolved, &HashMap::new()),
+        Err(Error::DependencyResolutionError(message))
+            if message == "The signed registry metadata for wibble did not include the release 1.0.0"
+    )
+}
+
+#[test]
+fn verified_releases_errors_when_checksum_empty() {
+    let fetcher = FakeFetcher {
+        packages: [(
+            "wibble".to_string(),
+            signed_package("wibble", "1.0.0", vec![], &[]),
+        )]
+        .into_iter()
+        .collect(),
+    };
+    let resolved: HashMap<String, Version> =
+        [("wibble".to_string(), Version::parse("1.0.0").unwrap())]
+            .into_iter()
+            .collect();
+
+    assert_matches!(
+        verified_releases(&fetcher, &resolved, &HashMap::new()),
+        Err(Error::DependencyResolutionError(message))
+            if message == "The signed registry metadata for wibble@1.0.0 did not include a checksum"
+    )
+}
+
+#[test]
+fn verified_releases_skips_provided_packages() {
+    let fetcher = FakeFetcher {
+        packages: [(
+            "wibble".to_string(),
+            signed_package("wibble", "2.0.0", vec![0x0A, 0x0B], &[]),
+        )]
+        .into_iter()
+        .collect(),
+    };
+    let resolved: HashMap<String, Version> = [
+        ("wibble".to_string(), Version::parse("2.0.0").unwrap()),
+        ("wobble".to_string(), Version::parse("1.0.0").unwrap()),
+    ]
+    .into_iter()
+    .collect();
+    let provided: HashMap<EcoString, ProvidedPackage> = [(
+        "wobble".into(),
+        ProvidedPackage {
+            version: Version::new(1, 0, 0),
+            source: ProvidedPackageSource::Local {
+                path: "path/to/wobble".into(),
+            },
+            requirements: HashMap::new(),
+        },
+    )]
+    .into_iter()
+    .collect();
+
+    let releases = verified_releases(&fetcher, &resolved, &provided).unwrap();
+
+    assert_eq!(
+        releases,
+        [(
+            "wibble".to_string(),
+            VerifiedRelease {
+                outer_checksum: vec![0x0A, 0x0B],
+                requirements: vec![],
+            }
+        )]
+        .into_iter()
+        .collect()
+    );
+}
+
+#[test]
+fn hex_manifest_package_uses_verified_checksum_and_requirements() {
+    let verified = VerifiedRelease {
+        outer_checksum: vec![0x01, 0x02, 0x03],
+        requirements: vec!["gleam_stdlib".into()],
+    };
+    let meta = hexpm::ReleaseMeta {
+        app: "wibble_app".into(),
+        build_tools: vec!["gleam".into()],
+    };
+
+    let package = hex_manifest_package(
+        "wibble".into(),
+        Version::parse("1.0.0").unwrap(),
+        verified,
+        meta,
+    );
+
+    assert_eq!(
+        package,
+        ManifestPackage {
+            name: "wibble".into(),
+            version: Version::parse("1.0.0").unwrap(),
+            build_tools: vec!["gleam".into()],
+            otp_app: Some("wibble_app".into()),
+            requirements: vec!["gleam_stdlib".into()],
+            source: ManifestPackageSource::Hex {
+                outer_checksum: Base16Checksum(vec![0x01, 0x02, 0x03]),
+            },
+        }
+    );
+}

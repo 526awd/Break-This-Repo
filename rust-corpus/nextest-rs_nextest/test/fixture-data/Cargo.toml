@@ -1,0 +1,19 @@
+[package]
+name = "fixture-data"
+version = "0.1.0"
+description = "Fixture data for nextest integration tests"
+repository = "https://github.com/nextest-rs/nextest"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+exclude.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+bitflags.workspace = true
+iddqd.workspace = true
+nextest-metadata.workspace = true
+nextest-workspace-hack.workspace = true

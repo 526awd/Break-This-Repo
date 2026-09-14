@@ -1,0 +1,111 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2020 The Gleam contributors
+
+use crate::{
+    CompilePackage, config,
+    fs::{self, ConsoleWarningEmitter, ProjectIO},
+};
+use camino::Utf8Path;
+use ecow::EcoString;
+use gleam_core::{
+    Error, Result,
+    build::{
+        ErlangOutput, Mode, NullTelemetry, PackageCompiler, StaleTracker, Target,
+        TargetCodegenConfiguration,
+    },
+    error::{FileIoAction, FileKind},
+    metadata,
+    paths::{self, ProjectPaths},
+    type_::ModuleInterface,
+    uid::UniqueIdGenerator,
+    warning::WarningEmitter,
+};
+use std::{collections::HashSet, rc::Rc};
+
+pub fn command(options: CompilePackage) -> Result<()> {
+    let ids = UniqueIdGenerator::new();
+    let mut type_manifests = load_libraries(&ids, &options.libraries_directory)?;
+    let mut defined_modules = imbl::HashMap::new();
+    let warnings = WarningEmitter::new(Rc::new(ConsoleWarningEmitter));
+    let paths = ProjectPaths::new(options.package_directory.clone());
+    let config = config::read(paths.root_config())?;
+
+    let io = ProjectIO::new();
+    // Initialise the BEAM compiler instance eagerly, so we don't have to wait
+    // for it to boot when we come to use it for the first time.
+    if options.target.is_erlang() && !options.skip_beam_compilation {
+        io.initialise_beam_compiler()?;
+    }
+
+    let target = match options.target {
+        Target::Erlang => TargetCodegenConfiguration::Erlang {
+            app_file: None,
+            output: ErlangOutput::Binary,
+        },
+        Target::JavaScript => TargetCodegenConfiguration::JavaScript {
+            emit_typescript_definitions: false,
+            emit_source_maps: false,
+            prelude_location: options
+                .javascript_prelude
+                .ok_or_else(|| Error::JavaScriptPreludeRequired)?,
+        },
+    };
+
+    tracing::info!("Compiling package");
+
+    let mut compiler = PackageCompiler::new(
+        &config,
+        Mode::Dev,
+        &options.package_directory,
+        &options.output_directory,
+        &options.libraries_directory,
+        &target,
+        ids,
+        io,
+    );
+    compiler.write_entrypoint = false;
+    compiler.write_metadata = true;
+    compiler.compile_beam_bytecode = !options.skip_beam_compilation;
+    compiler
+        .compile(
+            &warnings,
+            &mut type_manifests,
+            &mut defined_modules,
+            &mut StaleTracker::default(),
+            &mut HashSet::new(),
+            &NullTelemetry,
+        )
+        .into_result()
+        .map(|_| ())
+}
+
+fn load_libraries(
+    ids: &UniqueIdGenerator,
+    lib: &Utf8Path,
+) -> Result<imbl::HashMap<EcoString, ModuleInterface>> {
+    tracing::info!("Reading precompiled module metadata files");
+    let mut manifests = imbl::HashMap::new();
+    for lib in fs::read_dir(lib)?.filter_map(Result::ok) {
+        let path = lib.path().join(paths::ARTEFACT_DIRECTORY_NAME);
+        if !path.is_dir() {
+            continue;
+        }
+        for module in fs::module_caches_paths(path)? {
+            let bytes = fs::read_bytes(module.clone())?;
+            let module = match metadata::decode(&bytes, ids.clone()) {
+                Ok(module) => module,
+                Err(e) => {
+                    return Err(Error::FileIo {
+                        kind: FileKind::File,
+                        action: FileIoAction::Parse,
+                        path: module,
+                        err: Some(e.to_string()),
+                    });
+                }
+            };
+            let _ = manifests.insert(module.name.clone(), module);
+        }
+    }
+
+    Ok(manifests)
+}

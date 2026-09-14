@@ -1,0 +1,287 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2022 The Gleam contributors
+
+use std::io::Cursor;
+
+use camino::{Utf8Path, Utf8PathBuf};
+use gleam_core::io::{Content, OutputFile};
+use itertools::Itertools;
+
+use crate::fs::create_tar_archive;
+
+#[test]
+fn is_inside_git_work_tree_ok() {
+    let tmp_dir = tempfile::tempdir().unwrap();
+    let path = Utf8Path::from_path(tmp_dir.path()).expect("Non Utf-8 Path");
+
+    assert!(!super::is_inside_git_work_tree(path).unwrap());
+    assert_eq!(super::git_init(path), Ok(()));
+    assert!(super::is_inside_git_work_tree(path).unwrap())
+}
+
+#[test]
+fn git_init_success() {
+    let tmp_dir = tempfile::tempdir().unwrap();
+    let path = Utf8Path::from_path(tmp_dir.path()).expect("Non Utf-8 Path");
+    let git = path.join(".git");
+
+    assert!(!git.exists());
+    assert_eq!(super::git_init(path), Ok(()));
+    assert!(git.exists());
+}
+
+#[test]
+fn git_init_already_in_git() {
+    let tmp_dir = tempfile::tempdir().unwrap();
+    let git = Utf8Path::from_path(tmp_dir.path())
+        .expect("Non Utf-8 Path")
+        .join(".git");
+    assert!(!git.exists());
+    assert_eq!(
+        super::git_init(Utf8Path::from_path(tmp_dir.path()).expect("Non Utf-8 Path")),
+        Ok(())
+    );
+    assert!(git.exists());
+
+    let sub = Utf8Path::from_path(tmp_dir.path())
+        .expect("Non Utf-8 Path")
+        .join("subproject");
+    let git = sub.join(".git");
+    crate::fs::mkdir(&sub).unwrap();
+    assert!(!git.exists());
+    assert_eq!(super::git_init(&sub), Ok(()));
+    assert!(!git.exists());
+}
+
+#[test]
+fn exclude_build_dir() {
+    /*
+    a
+    |-- gleam.toml
+    |-- build
+    |  |-- f.gleam  # do not count as gleam file
+    b
+    |-- build
+    |  |-- f.gleam  # count as gleam file
+     */
+
+    let tmp_dir = tempfile::tempdir().unwrap();
+    let path = Utf8Path::from_path(tmp_dir.path()).expect("Non Utf-8 Path");
+
+    // excluded gleam file
+    {
+        let gleam_toml = path.join("a/gleam.toml").to_path_buf();
+        super::write(&gleam_toml, "").unwrap();
+
+        let gleam_file = path.join("a/build/f.gleam").to_path_buf();
+        super::write(&gleam_file, "").unwrap();
+    };
+
+    // included gleam file
+    let gleam_file = path.join("b/build/f.gleam").to_path_buf();
+    super::write(&gleam_file, "").unwrap();
+
+    let files = super::gleam_files(path).collect::<Vec<_>>();
+
+    assert_eq!(files, vec![gleam_file]);
+}
+
+#[test]
+fn erlang_files_include_gitignored_files() {
+    let tmp_dir = tempfile::tempdir().unwrap();
+    let path = Utf8Path::from_path(tmp_dir.path()).expect("Non Utf-8 Path");
+
+    let included_files = &[
+        ".hidden.erl",
+        "abc.erl",
+        "abc.hrl",
+        "build/include/abc.erl",
+        "build/include/abc.hrl",
+        "ignored.erl",
+        "ignored.hrl",
+    ];
+
+    let excluded_files = &[
+        ".gitignore",
+        "abc.gleam",
+        "abc.js",
+        "build/abc.gleam",
+        "build/abc.js",
+    ];
+
+    let gitignore = "build/
+ignored.*";
+
+    for &file in included_files.iter().chain(excluded_files) {
+        let contents = match file {
+            ".gitignore" => gitignore,
+            _ => "",
+        };
+
+        super::write(&path.join(file), contents).unwrap();
+    }
+
+    let mut chosen_files = super::erlang_files(path).collect_vec();
+    chosen_files.sort_unstable();
+
+    let expected_files = included_files.iter().map(|s| path.join(s)).collect_vec();
+
+    assert_eq!(expected_files, chosen_files);
+}
+
+#[test]
+fn is_gleam_path_test() {
+    assert!(super::is_gleam_path(
+        Utf8Path::new("/some-prefix/a.gleam"),
+        Utf8Path::new("/some-prefix/")
+    ));
+
+    assert!(super::is_gleam_path(
+        Utf8Path::new("/some-prefix/one_two/a.gleam"),
+        Utf8Path::new("/some-prefix/")
+    ));
+
+    assert!(super::is_gleam_path(
+        Utf8Path::new("/some-prefix/one_two/a123.gleam"),
+        Utf8Path::new("/some-prefix/")
+    ));
+
+    assert!(super::is_gleam_path(
+        Utf8Path::new("/some-prefix/one_2/a123.gleam"),
+        Utf8Path::new("/some-prefix/")
+    ));
+}
+
+#[test]
+fn extract_distro_id_test() {
+    let os_release = "
+PRETTY_NAME=\"Debian GNU/Linux 12 (bookworm)\"
+NAME=\"Debian GNU/Linux\"
+VERSION_ID=\"12\"
+VERSION=\"12 (bookworm)\"
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL=\"https://www.debian.org/\"
+";
+    assert_eq!(super::extract_distro_id(os_release.to_string()), "debian");
+
+    let os_release = "
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL=\"https://www.ubuntu.com/\"
+";
+    assert_eq!(super::extract_distro_id(os_release.to_string()), "ubuntu");
+
+    assert_eq!(super::extract_distro_id("".to_string()), "");
+    assert_eq!(super::extract_distro_id("\n".to_string()), "");
+    assert_eq!(super::extract_distro_id("ID=".to_string()), "");
+    assert_eq!(super::extract_distro_id("ID= ".to_string()), " ");
+    assert_eq!(
+        super::extract_distro_id("ID= space test ".to_string()),
+        " space test "
+    );
+    assert_eq!(super::extract_distro_id("id=ubuntu".to_string()), "");
+    assert_eq!(
+        super::extract_distro_id("NAME=\"Debian\"\nID=debian".to_string()),
+        "debian"
+    );
+    assert_eq!(
+        super::extract_distro_id("\n\nNAME=\n\n\nID=test123\n".to_string()),
+        "test123"
+    );
+    assert_eq!(
+        super::extract_distro_id("\nID=\"id first\"\nID=another_id".to_string()),
+        "id first"
+    );
+}
+
+#[test]
+fn hardlink_dir_copies_files_and_directories() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let src = base.join("src");
+    let dest = base.join("dest");
+
+    super::mkdir(&src).unwrap();
+    super::mkdir(&src.join("sub")).unwrap();
+    super::write(&src.join("a.txt"), "hello").unwrap();
+    super::write(&src.join("sub").join("b.txt"), "world").unwrap();
+
+    super::mkdir(&dest).unwrap();
+    super::hardlink_dir(&src, &dest).unwrap();
+
+    assert_eq!(
+        std::fs::read_to_string(dest.join("a.txt")).unwrap(),
+        "hello"
+    );
+    assert_eq!(
+        std::fs::read_to_string(dest.join("sub").join("b.txt")).unwrap(),
+        "world"
+    );
+}
+
+#[test]
+fn hardlink_dir_empty_source_creates_empty_dest() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let src = base.join("src");
+    let dest = base.join("dest");
+
+    super::mkdir(&src).unwrap();
+    super::mkdir(&dest).unwrap();
+    super::hardlink_dir(&src, &dest).unwrap();
+
+    assert!(dest.exists());
+    assert_eq!(std::fs::read_dir(&dest).unwrap().count(), 0);
+}
+
+#[cfg(unix)]
+#[test]
+fn hardlink_dir_skips_symlinks() {
+    let tmp = tempfile::tempdir().unwrap();
+    let base = Utf8PathBuf::from_path_buf(tmp.path().to_path_buf()).unwrap();
+    let src = base.join("src");
+    let dest = base.join("dest");
+    let outside = base.join("outside");
+
+    super::mkdir(&src).unwrap();
+    super::mkdir(&dest).unwrap();
+    super::mkdir(&outside).unwrap();
+    super::write(&src.join("real.txt"), "kept").unwrap();
+    super::write(&outside.join("secret.txt"), "stolen").unwrap();
+
+    std::os::unix::fs::symlink(outside.as_std_path(), src.join("escape").as_std_path()).unwrap();
+
+    super::hardlink_dir(&src, &dest).unwrap();
+
+    assert!(dest.join("real.txt").exists());
+    assert!(!dest.join("escape").exists());
+}
+
+// https://github.com/gleam-lang/gleam/issues/5992
+#[test]
+fn create_tar_archive_sets_proper_permissions() {
+    let compressed_archive = create_tar_archive(vec![
+        OutputFile {
+            content: Content::Text("Hello".into()),
+            path: "./wibble.txt".into(),
+        },
+        OutputFile {
+            content: Content::Binary(vec![11, 6, 7]),
+            path: "./wobble.bin".into(),
+        },
+    ])
+    .expect("should create archive");
+
+    let decoder = flate2::read::GzDecoder::new(Cursor::new(compressed_archive));
+    let mut archive = tar::Archive::new(decoder);
+
+    for entry in archive.entries().expect("archive entries") {
+        let entry = entry.expect("archive entry");
+        let mode = entry.header().mode().expect("entry mode");
+        let entry_path = entry.path().expect("entry path");
+        let path_str = entry_path.to_str().expect("path string");
+        assert_eq!(mode, 0o600, "entry {path_str} has unexpected mode")
+    }
+}

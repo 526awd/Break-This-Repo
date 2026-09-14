@@ -1,0 +1,841 @@
+use std::{
+    collections::{BTreeMap, HashMap},
+    io::Write,
+    path::PathBuf,
+    time::SystemTime,
+};
+
+use clap::Args;
+use dora_core::descriptor::Descriptor;
+use dora_message::{
+    common::Timestamped, coordinator_to_cli::DataflowIdAndName, daemon_to_daemon::InterDaemonEvent,
+    id::NodeId,
+};
+use dora_recording::{RecordEntry, RecordingHeader, RecordingWriter};
+use eyre::{Context, bail};
+
+use crate::command::{Executable, Run, default_tracing, topic::selector::public_topic_output_id};
+
+/// Wall-clock nanoseconds since the Unix epoch, falling back to `0` when the
+/// clock is set before 1970 (e.g. an embedded target booting with an unset RTC
+/// before NTP sync) rather than panicking. Using the same fallback for both the
+/// recording base and each entry keeps `timestamp_offset_nanos` consistent.
+fn epoch_nanos() -> u64 {
+    SystemTime::now()
+        .duration_since(SystemTime::UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_nanos() as u64
+}
+
+/// Record dataflow messages to a file for offline replay.
+///
+/// Injects a record node into the dataflow that captures all (or filtered)
+/// topic data and writes it to a `.drec` recording file.
+///
+/// Examples:
+///
+///   Record all topics:
+///     dora record dataflow.yml
+///
+///   Record specific topics:
+///     dora record dataflow.yml --topics sensor/image,lidar/points
+///
+///   Specify output file:
+///     dora record dataflow.yml -o capture.drec
+///
+///   Just generate the modified YAML:
+///     dora record dataflow.yml --output-yaml modified.yml
+///
+///   Stream data through coordinator WS (for diskless targets):
+///     dora record dataflow.yml --proxy
+#[derive(Debug, Args)]
+#[clap(verbatim_doc_comment)]
+pub struct Record {
+    /// Path to the dataflow descriptor YAML file
+    #[clap(value_name = "DATAFLOW_YAML")]
+    file: String,
+
+    /// Output recording file (default: recording_{timestamp}.drec)
+    #[clap(short, long, value_name = "PATH")]
+    output: Option<String>,
+
+    /// Topics to record (comma-separated node/output, default: all outputs)
+    #[clap(long, value_name = "TOPICS", value_delimiter = ',')]
+    topics: Vec<String>,
+
+    /// Just generate modified YAML, don't run
+    #[clap(long, value_name = "PATH")]
+    output_yaml: Option<String>,
+
+    /// Stream data through coordinator WebSocket instead of recording on target.
+    /// Useful when the target machine has no local disk.
+    #[clap(long)]
+    proxy: bool,
+
+    /// Name of the running dataflow to record (matches `dora start --name`).
+    ///
+    /// Only used in `--proxy` mode. When omitted, dora auto-selects if a
+    /// single dataflow is running and prompts otherwise.
+    #[clap(long, value_name = "NAME")]
+    name: Option<String>,
+
+    #[clap(flatten)]
+    coordinator: crate::common::CoordinatorOptions,
+}
+
+impl Executable for Record {
+    fn execute(self) -> eyre::Result<()> {
+        if self.proxy {
+            // Proxy mode handles recording directly without delegating to Run,
+            // so it needs its own tracing subscriber.
+            default_tracing()?;
+            run_record_proxy(self)
+        } else {
+            // Run::execute() sets up its own tracing subscriber.
+            run_record(self)
+        }
+    }
+}
+
+/// Discover all `(node_id, output_id)` pairs from a parsed descriptor YAML.
+fn discover_descriptor_outputs(
+    descriptor: &serde_yaml::Value,
+) -> eyre::Result<Vec<(String, String)>> {
+    let nodes = descriptor
+        .get("nodes")
+        .and_then(|v| v.as_sequence())
+        .ok_or_else(|| eyre::eyre!("descriptor has no nodes array"))?;
+
+    let mut outputs = Vec::new();
+    for node in nodes {
+        let node_id = node.get("id").and_then(|v| v.as_str()).unwrap_or_default();
+        extend_outputs(&mut outputs, node_id, node.get("outputs"));
+        extend_outputs(
+            &mut outputs,
+            node_id,
+            node.get("operator").and_then(|v| v.get("outputs")),
+        );
+        if let Some(operators) = node.get("operators").and_then(|v| v.as_sequence()) {
+            for operator in operators {
+                let Some(operator_id) = operator.get("id").and_then(|v| v.as_str()) else {
+                    continue;
+                };
+                extend_prefixed_outputs(
+                    &mut outputs,
+                    node_id,
+                    operator_id,
+                    operator.get("outputs"),
+                );
+            }
+        }
+    }
+
+    if outputs.is_empty() {
+        bail!(
+            "no outputs found in descriptor\n\n  \
+             hint: ensure nodes in the dataflow declare `outputs` in their YAML definition"
+        );
+    }
+    Ok(outputs)
+}
+
+fn extend_outputs(
+    outputs: &mut Vec<(String, String)>,
+    node_id: &str,
+    value: Option<&serde_yaml::Value>,
+) {
+    if let Some(node_outputs) = value.and_then(|v| v.as_sequence()) {
+        for output in node_outputs {
+            if let Some(output_id) = output.as_str() {
+                outputs.push((node_id.to_string(), output_id.to_string()));
+            }
+        }
+    }
+}
+
+fn extend_prefixed_outputs(
+    outputs: &mut Vec<(String, String)>,
+    node_id: &str,
+    prefix: &str,
+    value: Option<&serde_yaml::Value>,
+) {
+    if let Some(node_outputs) = value.and_then(|v| v.as_sequence()) {
+        for output in node_outputs {
+            if let Some(output_id) = output.as_str() {
+                outputs.push((node_id.to_string(), format!("{prefix}/{output_id}")));
+            }
+        }
+    }
+}
+
+/// Build the record node's `{ input_id: topic }` map from the selected
+/// `(topic, input_id)` pairs.
+///
+/// Input ids can't contain `/`, so each `node/output` topic is re-encoded as
+/// `node___output`. That encoding is not injective: node `x` with output
+/// `y___z` and node `x___y` with output `z` both encode to `x___y___z`.
+/// Collecting straight into a map keyed by input id would let the second entry
+/// silently overwrite the first, dropping one topic from the recording with no
+/// error. Detect the collision and fail loudly instead.
+fn build_input_id_map<'a>(
+    topics: impl IntoIterator<Item = (&'a str, &'a str)>,
+) -> eyre::Result<BTreeMap<&'a str, &'a str>> {
+    let mut map: BTreeMap<&str, &str> = BTreeMap::new();
+    for (topic, input_id) in topics {
+        if let Some(existing) = map.insert(input_id, topic) {
+            bail!(
+                "record: topics `{existing}` and `{topic}` both map to the record-node \
+                 input id `{input_id}`; the `/` -> `___` encoding cannot tell them apart. \
+                 Rename one of the colliding node/output ids, or select only one with --topics."
+            );
+        }
+    }
+    Ok(map)
+}
+
+fn run_record(args: Record) -> eyre::Result<()> {
+    let yaml_bytes =
+        std::fs::read(&args.file).wrap_err_with(|| format!("failed to read {}", args.file))?;
+    let mut descriptor: serde_yaml::Value =
+        serde_yaml::from_slice(&yaml_bytes).wrap_err("failed to parse descriptor YAML")?;
+
+    let all_outputs = discover_descriptor_outputs(&descriptor)?;
+    let mut all_topics: BTreeMap<String, String> = BTreeMap::new();
+    for (node_id, output_id) in &all_outputs {
+        let topic = format!("{node_id}/{output_id}");
+        // input_id on record node: sanitized to avoid / in IDs
+        let input_id = format!("{node_id}___{output_id}");
+        all_topics.insert(topic, input_id);
+    }
+
+    // Filter topics if --topics specified
+    let topics: BTreeMap<String, String> = if args.topics.is_empty() {
+        all_topics
+    } else {
+        let mut filtered = BTreeMap::new();
+        for requested in &args.topics {
+            match all_topics.get(requested) {
+                Some(input_id) => {
+                    filtered.insert(requested.clone(), input_id.clone());
+                }
+                None => bail!(
+                    "topic `{requested}` not found in descriptor. Available: {}",
+                    all_topics.keys().cloned().collect::<Vec<_>>().join(", ")
+                ),
+            }
+        }
+        filtered
+    };
+
+    let output_file = match &args.output {
+        Some(p) => p.clone(),
+        None => {
+            let ts = chrono::Local::now().format("%Y%m%d_%H%M%S");
+            format!("recording_{ts}.drec")
+        }
+    };
+    let cwd = std::env::current_dir().wrap_err("failed to get current directory")?;
+    let output_path = dunce::canonicalize(&cwd).unwrap_or(cwd).join(&output_file);
+
+    // Build topic map JSON: { "input_id": "node/output" }
+    //
+    // Validate the input-id encoding *before* `find_record_node_binary` below,
+    // which can trigger a multi-minute `cargo build`/`cargo install`: a
+    // colliding topic set must fail fast, not after that build completes.
+    let topic_map = build_input_id_map(topics.iter().map(|(t, i)| (t.as_str(), i.as_str())))?;
+    let topics_json =
+        serde_json::to_string(&topic_map).wrap_err("failed to serialize topic map")?;
+
+    // Build the record node's YAML inputs from the validated map, so this
+    // second `input_id`-keyed structure cannot reintroduce a collision
+    // independently of `topic_map` (it would otherwise silently overwrite).
+    let mut inputs_mapping = serde_yaml::Mapping::new();
+    for (input_id, topic) in &topic_map {
+        inputs_mapping.insert(
+            serde_yaml::Value::String((*input_id).to_owned()),
+            serde_yaml::Value::String((*topic).to_owned()),
+        );
+    }
+
+    // Find record node binary
+    let record_node_bin = find_record_node_binary()?;
+
+    // Build env vars
+    let mut env_mapping = serde_yaml::Mapping::new();
+    env_mapping.insert(
+        serde_yaml::Value::String("DORA_RECORD_FILE".to_string()),
+        serde_yaml::Value::String(output_path.to_string_lossy().to_string()),
+    );
+    env_mapping.insert(
+        serde_yaml::Value::String("DORA_RECORD_TOPICS".to_string()),
+        serde_yaml::Value::String(topics_json),
+    );
+    env_mapping.insert(
+        serde_yaml::Value::String("DORA_RECORD_DESCRIPTOR".to_string()),
+        serde_yaml::Value::String(String::from_utf8_lossy(&yaml_bytes).to_string()),
+    );
+
+    // Build the record node YAML entry
+    let mut record_node = serde_yaml::Mapping::new();
+    record_node.insert(
+        serde_yaml::Value::String("id".to_string()),
+        serde_yaml::Value::String("__dora_record__".to_string()),
+    );
+    record_node.insert(
+        serde_yaml::Value::String("path".to_string()),
+        serde_yaml::Value::String(record_node_bin.to_string_lossy().to_string()),
+    );
+    record_node.insert(
+        serde_yaml::Value::String("inputs".to_string()),
+        serde_yaml::Value::Mapping(inputs_mapping),
+    );
+    record_node.insert(
+        serde_yaml::Value::String("env".to_string()),
+        serde_yaml::Value::Mapping(env_mapping),
+    );
+
+    // Append record node to descriptor
+    let nodes_mut = descriptor
+        .get_mut("nodes")
+        .and_then(|v| v.as_sequence_mut())
+        .ok_or_else(|| eyre::eyre!("descriptor has no nodes array"))?;
+    nodes_mut.push(serde_yaml::Value::Mapping(record_node));
+
+    let modified_yaml =
+        serde_yaml::to_string(&descriptor).wrap_err("failed to serialize modified descriptor")?;
+
+    // If --output-yaml, just write and exit
+    if let Some(yaml_output_path) = args.output_yaml {
+        std::fs::write(&yaml_output_path, &modified_yaml)
+            .wrap_err_with(|| format!("failed to write {yaml_output_path}"))?;
+        eprintln!("Modified descriptor written to {yaml_output_path}");
+        return Ok(());
+    }
+
+    // The tempfile lives in /tmp but descriptor-relative paths
+    // (`build:` cargo, node binaries) must still resolve against the
+    // original source dir, so pass it as an explicit `working_dir`
+    // override to `Run`.
+    let source_dir = PathBuf::from(&args.file)
+        .parent()
+        .filter(|p| !p.as_os_str().is_empty())
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("."));
+    let mut tmp =
+        tempfile::NamedTempFile::with_suffix(".yml").wrap_err("failed to create temp file")?;
+    tmp.write_all(modified_yaml.as_bytes())?;
+    tmp.flush()?;
+    let tmp_path = tmp.into_temp_path();
+
+    eprintln!("Recording {} topics to {output_file}", topics.len());
+    eprintln!(
+        "Topics: {}",
+        format_topics(topics.keys().cloned().collect())
+    );
+    eprintln!();
+
+    Run::new(tmp_path.to_string_lossy().to_string())
+        .with_working_dir(source_dir)
+        .execute()
+}
+
+/// What a Ctrl-C on the recording loop should do, given whether one was already
+/// seen. Split out from the signal handler so the escalation state machine is
+/// unit-testable without delivering a real signal (which also exits the process
+/// via `process::exit`, and races the handler-installation window).
+#[derive(Debug, PartialEq, Eq)]
+enum CtrlCAction {
+    /// First Ctrl-C: request a graceful stop (finalize the recording).
+    RequestStop,
+    /// Repeated Ctrl-C: give up and exit immediately, even if a write is wedged.
+    ExitImmediately,
+}
+
+/// Advance the Ctrl-C escalation state: the first call requests a stop, every
+/// later call escalates. Taking `&mut bool` is deliberate — the handler owns
+/// the flag across invocations, so dropping the `mut` there would fail to
+/// compile rather than silently disabling escalation.
+fn record_ctrlc_action(signalled: &mut bool) -> CtrlCAction {
+    if *signalled {
+        CtrlCAction::ExitImmediately
+    } else {
+        *signalled = true;
+        CtrlCAction::RequestStop
+    }
+}
+
+fn run_record_proxy(args: Record) -> eyre::Result<()> {
+    let yaml_bytes =
+        std::fs::read(&args.file).wrap_err_with(|| format!("failed to read {}", args.file))?;
+
+    let descriptor: serde_yaml::Value =
+        serde_yaml::from_slice(&yaml_bytes).wrap_err("failed to parse descriptor YAML")?;
+
+    // A second, typed parse, used only to translate wire output ids back to
+    // public ones below. Deliberately non-fatal: the untyped walk above is what
+    // `--proxy` needs to work, and a descriptor that fails the typed parse
+    // should still record -- just without the translation.
+    let typed_descriptor: Option<Descriptor> = serde_yaml::from_slice(&yaml_bytes).ok();
+
+    let all_topics = discover_descriptor_outputs(&descriptor)?;
+
+    // Filter topics if --topics specified
+    let topics: Vec<(String, String)> = if args.topics.is_empty() {
+        all_topics
+    } else {
+        let mut filtered = Vec::new();
+        for requested in &args.topics {
+            let parts: Vec<&str> = requested.splitn(2, '/').collect();
+            if parts.len() != 2 {
+                bail!("invalid topic format `{requested}`, expected `node/output`");
+            }
+            let (node, output) = (parts[0].to_string(), parts[1].to_string());
+            if !all_topics.iter().any(|(n, o)| n == &node && o == &output) {
+                let available: Vec<String> =
+                    all_topics.iter().map(|(n, o)| format!("{n}/{o}")).collect();
+                bail!(
+                    "topic `{requested}` not found in descriptor. Available: {}",
+                    available.join(", ")
+                );
+            }
+            filtered.push((node, output));
+        }
+        filtered
+    };
+
+    let output_file = match &args.output {
+        Some(p) => p.clone(),
+        None => {
+            let ts = chrono::Local::now().format("%Y%m%d_%H%M%S");
+            format!("recording_{ts}.drec")
+        }
+    };
+
+    eprintln!("Proxy recording {} topics to {output_file}", topics.len());
+    eprintln!(
+        "Topics: {}",
+        format_topics(topics.iter().map(|(n, o)| format!("{n}/{o}")).collect())
+    );
+    eprintln!("Waiting for dataflow to start...");
+
+    // Connect to coordinator and wait for the dataflow
+    let session = args.coordinator.connect()?;
+
+    // List running dataflows, find the one that matches our descriptor name
+    // For proxy mode, the user should have already started the dataflow
+    let list_raw = session
+        .request(
+            &serde_json::to_vec(&dora_message::cli_to_coordinator::ControlRequest::List)
+                .wrap_err("failed to serialize List request")?,
+        )
+        .wrap_err("failed to list dataflows")?;
+    let list_reply: dora_message::coordinator_to_cli::ControlRequestReply =
+        serde_json::from_slice(&list_raw).wrap_err("failed to parse list reply")?;
+
+    let active_ids = match list_reply {
+        dora_message::coordinator_to_cli::ControlRequestReply::DataflowList(list) => {
+            list.get_active()
+        }
+        _ => bail!("unexpected reply to List"),
+    };
+
+    if active_ids.is_empty() {
+        bail!(
+            "no running dataflows found. Start a dataflow first with `dora start`, \
+             then use `dora record --proxy` to record it."
+        );
+    }
+
+    // Narrow the running dataflows down to the one to record.
+    let file_stem = PathBuf::from(&args.file)
+        .file_stem()
+        .and_then(|s| s.to_str())
+        .map(str::to_string);
+    let dataflow_id = match select_dataflow(active_ids, args.name.as_deref(), file_stem.as_deref())?
+    {
+        Selection::One(dataflow) => dataflow.uuid,
+        Selection::Many(candidates) => {
+            let choices: Vec<String> = candidates.iter().map(|d| d.to_string()).collect();
+            let selected = inquire::Select::new("Select dataflow to record:", choices)
+                .prompt()
+                .wrap_err("dataflow selection cancelled")?;
+            candidates
+                .iter()
+                .find(|d| d.to_string() == selected)
+                .unwrap()
+                .uuid
+        }
+    };
+
+    // Subscribe to topics via WS
+    let ws_topics: Vec<_> = topics
+        .iter()
+        .map(|(n, o)| -> eyre::Result<_> {
+            Ok((
+                n.parse::<NodeId>()
+                    .map_err(|e| eyre::eyre!("invalid node ID in topic: {e}"))?,
+                o.clone().into(),
+            ))
+        })
+        .collect::<eyre::Result<Vec<_>>>()?;
+    let (_subscription_id, data_rx) = session.subscribe_topics(dataflow_id, ws_topics)?;
+
+    // Set up recording writer. `duration_since(UNIX_EPOCH)` errors when the
+    // wall clock is set before 1970; `epoch_nanos` falls back to a zero base
+    // rather than panicking the recorder (see its doc).
+    let start_nanos = epoch_nanos();
+
+    let header = RecordingHeader {
+        version: dora_recording::FORMAT_VERSION,
+        start_nanos,
+        dataflow_id,
+        descriptor_yaml: yaml_bytes,
+    };
+
+    let file = std::fs::File::create(&output_file)
+        .wrap_err_with(|| format!("failed to create {output_file}"))?;
+    let mut writer = RecordingWriter::new(file, &header)?;
+
+    eprintln!("Recording... (press Ctrl-C to stop)");
+
+    // Set up Ctrl-C handler.
+    //
+    // The first Ctrl-C requests a graceful stop (finalize the recording and
+    // exit). Escalate on a repeated signal — as the daemon, coordinator, and
+    // `dora start` attach handlers all do — so an operator is never stuck: the
+    // recording loop does blocking file I/O between poll ticks, and a write that
+    // wedges (full disk, stalled network mount, a large flush) would otherwise
+    // swallow every subsequent Ctrl-C with no way out but SIGKILL from another
+    // terminal. The second signal exits immediately with the conventional SIGINT
+    // status; the partial file is left in place, but the message warns that it
+    // may be truncated so the operator knows `dora replay` will get a short
+    // recording (a missing footer is tolerated by `RecordingReader`, and the
+    // flush before `finish()` below bounds the loss to the footer).
+    //
+    // Two deliberate departures from those siblings, both because what wedges
+    // here is our own teardown rather than a child process:
+    //   * `process::exit` rather than the daemon's unwinding `bail!` — the
+    //     thing being escaped IS `writer.finish()`, so unwinding through it
+    //     would re-enter the wedge. Nothing here owns child processes to
+    //     orphan.
+    //   * exit 130 (128 + SIGINT) rather than the attach handler's 1, so a
+    //     supervisor can tell an operator abort from a recording error. This
+    //     is the only place in the CLI that returns it; see docs/cli.md.
+    let (stop_tx, stop_rx) = std::sync::mpsc::channel();
+    let mut signalled = false;
+    ctrlc::set_handler(move || match record_ctrlc_action(&mut signalled) {
+        CtrlCAction::RequestStop => {
+            let _ = stop_tx.send(());
+        }
+        CtrlCAction::ExitImmediately => {
+            eprintln!("received second Ctrl-C -> exiting immediately (recording may be truncated)");
+            std::process::exit(130);
+        }
+    })
+    .wrap_err("failed to set ctrl-c handler")?;
+
+    // Node lookup for the wire -> public output-id translation below. Empty
+    // when the typed parse failed, which just means no translation.
+    let nodes: HashMap<_, _> = typed_descriptor
+        .iter()
+        .flat_map(|d| d.nodes.iter())
+        .map(|n| (n.id.clone(), n))
+        .collect();
+
+    let mut msg_count: u64 = 0;
+    loop {
+        // Check for Ctrl-C
+        if stop_rx.try_recv().is_ok() {
+            break;
+        }
+
+        match data_rx.recv_timeout(std::time::Duration::from_millis(100)) {
+            Ok(Ok(payload)) => {
+                // The payload is already `Timestamped<InterDaemonEvent>` postcard bytes.
+                // Parse it to extract node_id and output_id for the recording entry.
+                let mut event = match Timestamped::deserialize_inter_daemon_event(&payload) {
+                    Ok(e) => e,
+                    Err(_) => continue,
+                };
+
+                // The daemon reports the *wire* output id, which for a single
+                // `operator:` node is `op/image` where the descriptor (and
+                // `replay_node_outputs`) call it `image`. Rewrite it to the
+                // public id in both the entry index and the embedded event, so
+                // a `--proxy` recording is shaped exactly like one from the
+                // record node -- which stores the bare `source_output` in both
+                // places. Left as-is, replay declares `outputs: [image]` and
+                // then calls `send_output("op/image", ..)`; `validate_output`
+                // rejects it, `send_output` still returns `Ok(())`, and every
+                // message is dropped with a single warning (dora-rs/dora#2893).
+                let (node_id, output_id) = match &mut event.inner {
+                    InterDaemonEvent::Output {
+                        node_id, output_id, ..
+                    } => {
+                        if let Some(node) = nodes.get(node_id) {
+                            *output_id = public_topic_output_id(node, output_id);
+                        }
+                        (node_id.to_string(), output_id.to_string())
+                    }
+                    InterDaemonEvent::OutputClosed { .. } => continue,
+                    // `InterDaemonEvent` is `#[non_exhaustive]`: skip events this build predates.
+                    _ => continue,
+                };
+
+                // Re-serialize rather than storing `payload`: the id inside the
+                // event is what `replay-node` re-emits, so an untouched payload
+                // would carry the wire id no matter what the entry says.
+                let event_bytes = match event.serialize() {
+                    Ok(bytes) => bytes,
+                    Err(e) => {
+                        tracing::warn!("failed to re-encode recorded event: {e}");
+                        continue;
+                    }
+                };
+
+                let now_nanos = epoch_nanos();
+
+                let entry = RecordEntry {
+                    node_id,
+                    output_id,
+                    timestamp_offset_nanos: now_nanos.saturating_sub(start_nanos),
+                    event_bytes,
+                };
+                writer.write_entry(&entry)?;
+                msg_count += 1;
+
+                if msg_count.is_multiple_of(100) {
+                    writer.flush()?;
+                }
+            }
+            Ok(Err(_)) => continue,
+            Err(std::sync::mpsc::RecvTimeoutError::Timeout) => continue,
+            Err(std::sync::mpsc::RecvTimeoutError::Disconnected) => break,
+        }
+    }
+
+    // Flush before the blocking finalize, not as part of it. `finish()` writes
+    // the buffered tail AND the footer, and it is the call most likely to wedge
+    // (full disk, stalled network mount) — which is exactly when an operator
+    // reaches for the second Ctrl-C. Escalating out of an unflushed `finish()`
+    // discards every entry since the last 100-message flush: with fewer than
+    // 100 messages recorded that is the whole file, and `dora replay` then
+    // fails with "failed to read recording header" rather than replaying a
+    // short recording. Flushing here bounds what escalation can cost to the
+    // 24-byte footer, which readers already tolerate.
+    writer.flush()?;
+
+    let footer = writer.finish()?;
+    eprintln!(
+        "Recording complete: {} messages, {:.2} MB",
+        footer.total_messages,
+        footer.total_bytes as f64 / 1_048_576.0
+    );
+
+    Ok(())
+}
+
+fn find_record_node_binary() -> eyre::Result<PathBuf> {
+    super::node_binary::find("dora-record-node", "dora-record-node")
+}
+
+fn format_topics(topics: Vec<String>) -> String {
+    if topics.len() <= 5 {
+        topics.join(", ")
+    } else {
+        format!("{} topics", topics.len())
+    }
+}
+
+#[derive(Debug)]
+enum Selection {
+    One(DataflowIdAndName),
+    Many(Vec<DataflowIdAndName>),
+}
+
+/// Choose which running dataflow to record.
+///
+/// Priority:
+/// 1. If `explicit_name` is given, filter by exact coordinator name — error if
+///    no match, auto-select if exactly one, prompt if multiple.
+/// 2. If `file_stem` matches exactly one running dataflow's name, silently
+///    auto-select it (convenience for `dora start --name <stem>` users).
+/// 3. Fall back: single running dataflow → auto-select; multiple → prompt.
+fn select_dataflow(
+    active_ids: Vec<DataflowIdAndName>,
+    explicit_name: Option<&str>,
+    file_stem: Option<&str>,
+) -> eyre::Result<Selection> {
+    if let Some(name) = explicit_name {
+        let mut matched: Vec<_> = active_ids
+            .into_iter()
+            .filter(|d| d.name.as_deref() == Some(name))
+            .collect();
+        return match matched.len() {
+            0 => bail!(
+                "no running dataflow named `{name}`. \
+                 Run `dora list` to see the names of running dataflows."
+            ),
+            1 => Ok(Selection::One(matched.remove(0))),
+            _ => Ok(Selection::Many(matched)),
+        };
+    }
+    if let Some(stem) = file_stem {
+        let mut matched: Vec<_> = active_ids
+            .iter()
+            .filter(|d| d.name.as_deref() == Some(stem))
+            .cloned()
+            .collect();
+        if matched.len() == 1 {
+            return Ok(Selection::One(matched.remove(0)));
+        }
+    }
+    Ok(match active_ids.len() {
+        1 => Selection::One(active_ids.into_iter().next().unwrap()),
+        _ => Selection::Many(active_ids),
+    })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use uuid::Uuid;
+
+    fn make_df(name: Option<&str>) -> DataflowIdAndName {
+        DataflowIdAndName {
+            uuid: Uuid::new_v4(),
+            name: name.map(str::to_string),
+        }
+    }
+
+    fn discovered_topics(yaml: &str) -> Vec<String> {
+        let descriptor: serde_yaml::Value = serde_yaml::from_str(yaml).unwrap();
+        discover_descriptor_outputs(&descriptor)
+            .unwrap()
+            .into_iter()
+            .map(|(node, output)| format!("{node}/{output}"))
+            .collect()
+    }
+
+    #[test]
+    fn discovers_recordable_outputs_from_all_descriptor_node_kinds() {
+        // `custom:` is deliberately absent: `Node` is `deny_unknown_fields` and
+        // has no `custom` field, so such a descriptor cannot deserialize and
+        // `--proxy` (which needs a running dataflow) can never see one.
+        let topics = discovered_topics(concat!(
+            "nodes:\n",
+            "- id: standard\n",
+            "  path: ./source\n",
+            "  outputs:\n",
+            "    - status\n",
+            "- id: single\n",
+            "  operator:\n",
+            "    python: single.py\n",
+            "    outputs:\n",
+            "      - image\n",
+            "- id: runtime\n",
+            "  operators:\n",
+            "  - id: op\n",
+            "    python: runtime.py\n",
+            "    outputs:\n",
+            "      - status\n",
+        ));
+
+        assert_eq!(
+            topics,
+            vec!["standard/status", "single/image", "runtime/op/status"]
+        );
+    }
+
+    #[test]
+    fn build_input_id_map_detects_encoding_collision() {
+        // Node `x` with output `y___z` and node `x___y` with output `z` both
+        // encode to the record-node input id `x___y___z`. Recording both must
+        // fail loudly rather than silently drop one.
+        let err = build_input_id_map([("x/y___z", "x___y___z"), ("x___y/z", "x___y___z")])
+            .expect_err("colliding input ids must be rejected");
+        let msg = format!("{err}");
+        assert!(
+            msg.contains("x___y___z") && msg.contains("x/y___z") && msg.contains("x___y/z"),
+            "error must name the colliding topics and input id: {msg}"
+        );
+    }
+
+    #[test]
+    fn build_input_id_map_accepts_distinct_input_ids() {
+        let map = build_input_id_map([
+            ("cam/frame", "cam___frame"),
+            ("lidar/points", "lidar___points"),
+        ])
+        .expect("distinct input ids must be accepted");
+        assert_eq!(map.len(), 2);
+        assert_eq!(map["cam___frame"], "cam/frame");
+        assert_eq!(map["lidar___points"], "lidar/points");
+    }
+
+    #[test]
+    fn ctrlc_requests_stop_first_then_escalates() {
+        // The recording loop's Ctrl-C handler must ask for a graceful stop on
+        // the first signal and escalate to an immediate exit on every one
+        // after — so a wedged write can't swallow repeated Ctrl-C. Pins the
+        // state machine without a real signal (#2952).
+        let mut signalled = false;
+        assert_eq!(
+            record_ctrlc_action(&mut signalled),
+            CtrlCAction::RequestStop
+        );
+        assert_eq!(
+            record_ctrlc_action(&mut signalled),
+            CtrlCAction::ExitImmediately
+        );
+        assert_eq!(
+            record_ctrlc_action(&mut signalled),
+            CtrlCAction::ExitImmediately
+        );
+    }
+
+    #[test]
+    fn explicit_name_selects_exact_match() {
+        let target = make_df(Some("my-flow"));
+        let other = make_df(Some("other-flow"));
+        let target_uuid = target.uuid;
+        let result = select_dataflow(vec![other, target], Some("my-flow"), None).unwrap();
+        assert!(matches!(result, Selection::One(d) if d.uuid == target_uuid));
+    }
+
+    #[test]
+    fn explicit_name_with_no_match_is_an_error() {
+        let df = make_df(Some("happy-tree"));
+        let result = select_dataflow(vec![df], Some("my-flow"), None);
+        assert!(result.is_err());
+        let msg = format!("{}", result.unwrap_err());
+        assert!(
+            msg.contains("my-flow"),
+            "error should name the missing flow: {msg}"
+        );
+    }
+
+    #[test]
+    fn file_stem_auto_selects_single_match() {
+        let target = make_df(Some("dataflow"));
+        let target_uuid = target.uuid;
+        let result = select_dataflow(vec![target], None, Some("dataflow")).unwrap();
+        assert!(matches!(result, Selection::One(d) if d.uuid == target_uuid));
+    }
+
+    #[test]
+    fn unmatched_stem_falls_back_to_single_running_without_warning() {
+        let df = make_df(Some("happy-tree"));
+        let df_uuid = df.uuid;
+        // stem doesn't match the petname → fall back to the only running dataflow
+        let result = select_dataflow(vec![df], None, Some("dataflow")).unwrap();
+        assert!(matches!(result, Selection::One(d) if d.uuid == df_uuid));
+    }
+
+    #[test]
+    fn unmatched_stem_with_multiple_running_prompts() {
+        let dfs = vec![make_df(Some("happy-tree")), make_df(Some("sad-rock"))];
+        let result = select_dataflow(dfs, None, Some("dataflow")).unwrap();
+        assert!(matches!(result, Selection::Many(v) if v.len() == 2));
+    }
+}
