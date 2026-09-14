@@ -79,8 +79,8 @@ and commit time; it is not live and may differ from GitHub's cached presentation
 
 ## 猫爪消退日报 / Interval diary
 
-Compare two **mainline** snapshots after the meow event (use the merge commit
-that integrated PR #508 as the start, rather than its side-branch commit):
+Compare two snapshots after the meow event. The start must be an ancestor of
+the end; the original PR #508 side-branch commit is also a valid start:
 
 ```sh
 python3 meow_diary.py .. --from START_SHA --to END_SHA --output /tmp/diary.md
@@ -93,8 +93,11 @@ are separate from additions/deletions. Transient changes canceled before the
 end do not appear in these net counts. Mainline events follow the first-parent
 chain, so a branch and its merge are not counted twice. `--limit` (1–1000,
 default 100) limits only the displayed events; totals still cover the interval.
-The start must be on the end's first-parent chain. As with the museum, output
-must be a new file and shallow or incomplete history fails explicitly.
+Events follow the end's first-parent chain and exclude commits already reachable
+from the start. A side-branch start can therefore show its later integration as
+an event even when the endpoint file diff is empty; the two metrics are distinct.
+As with the museum, output must be a new file and shallow or incomplete history
+fails explicitly.
 
 This is a manually generated interval report, not a scheduled job. The included
 `diary.md` / `diary.html` record the inaugural museum merge: the observatory
