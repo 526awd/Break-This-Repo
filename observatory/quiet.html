@@ -3,40 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>·</title>
+<title>observatory/quiet.html</title>
 <meta name="robots" content="noindex">
+<!-- observatory/quiet.html · 2026-09-14 · 点阵取自系统 CJK 字体，9×9 采样 · 出处 observatory/ -->
 <style>
-:root{--bg:#0d1014;--lit:#7ba7d7;--dim:#1b212a;--tx2:#98a3b3;--tx3:#4e5866}
+:root{--bg:#0b0e12;--lit:#a8c8ec;--dim:#1d232c;--tx2:#98a3b3;--tx3:#5c6675}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
  background:var(--bg);color:var(--tx2);
  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace}
-main{width:100%;max-width:520px;padding:40px 24px;text-align:center}
-.board{display:grid;grid-template-columns:repeat(15,1fr);gap:6px;margin:0 auto}
+main{width:100%;max-width:760px;padding:44px 20px;text-align:center}
+.board{display:grid;grid-template-columns:repeat(29,1fr);gap:5px;margin:0 auto}
 .board i{aspect-ratio:1;border-radius:50%;background:var(--dim)}
 .board i.on{background:var(--lit)}
-p{margin:40px 0 0;font-size:12.5px;line-height:2.2;color:var(--tx3)}
+p{margin:40px 0 0;font-size:13px;line-height:2.4;color:var(--tx3)}
 p b{color:var(--tx2);font-weight:400}
-a{color:var(--tx3);text-decoration:none;border-bottom:1px solid #2b333f}
-a:hover{color:var(--tx2)}
-/* S */
+a{color:var(--tx2);text-decoration:none;border-bottom:1px solid #3a4450;padding-bottom:1px}
+a:hover{border-bottom-color:var(--lit)}
+a:focus-visible{outline:2px solid var(--lit);outline-offset:3px}
 </style>
 </head>
 <body>
 <main>
   <div class="board" id="b"></div>
-  <p>停留 <b id="t">0.0</b> 秒<br>
-     <a href="index.html">index.html</a></p>
+  <p>停留 <b id="t">0.0</b> 秒 · <a href="index.html">观测站</a></p>
 </main>
 <script>
 var PATTERN = [
-  "011100111000100",
-  "010100111000001",
-  "111100111000111",
-  "001000111000101",
-  "011100111000111",
-  "000100101000010",
-  "000000000000000"
+  "00000000000000000000000000000",
+  "00110110000000100000000000100",
+  "00100100000011111000001011110",
+  "01111111000010101000000000100",
+  "00010100000111111100011010100",
+  "01110110000001110000001000100",
+  "00000100000010101000001001100",
+  "00101011000100100100010111110",
+  "00000000000000000000000000000"
 ];
 var board = document.getElementById('b');
 for (var r = 0; r < PATTERN.length; r++) {
@@ -48,8 +50,7 @@ for (var r = 0; r < PATTERN.length; r++) {
 }
 var t0 = performance.now(), el = document.getElementById('t');
 setInterval(function(){ el.textContent = ((performance.now() - t0) / 1000).toFixed(1); }, 100);
-console.log('%c 我来过 ', 'background:#7ba7d7;color:#0d1014;font:12px ui-monospace,monospace;padding:2px 6px');
-console.log('%c 6d6d0a60ee963ca9848a4bee746a6a3309e2fcbea7cc9f77b5406373598b278318bf3f281553c79e6fc792a0faa9733cd18ab7e89bac4bff09e454eb074771e30bb89c23f8c8', 'color:#2b333f;font:9px ui-monospace,monospace;word-break:break-all');
+console.log('%c 6d6d0a60ee963ca9848a4bee746a6a3309e2fcbea7cc9f77b5406373598b', 'color:#2b333f;font:9px ui-monospace,monospace;word-break:break-all');
 </script>
 </body>
 </html>
