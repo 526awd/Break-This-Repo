@@ -26,6 +26,23 @@
 
 ---
 
+# 砖业问题修复指南:一键修复！再也没烦恼！
+
+<img src="https://breadripper.pages.dev/superfixer.jpeg" alt="图片alt" title="null">
+
+# 电脑中毒怎么办？
+
+<img src="https://heey.cc.cd/linuxsafeclean.jpeg" alt="图片alt" title="null">
+
+# 免费领取高速cdn!!!
+
+<img src="https://breadripper.pages.dev/cf.png" alt="图片alt" title="cf">
+
+# 温馨提示：
+
+<img src="https://heey.cc.cd/warnl.png" alt="图片alt" title="null">
+
+
 # 📜 联合国安理会五常宪法文献（中英俄法）
 
 > 本节紧随顶部四个警示块之后。此前分散在正文中的两个警示块（`## 警告!` 与 `## 免责声明`）已归位到顶部统一排列。
